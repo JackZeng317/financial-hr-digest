@@ -101,6 +101,25 @@ h1{margin:0 0 4px;font-size:25px;letter-spacing:.5px}
 .ovcard span{font-size:12px;color:var(--muted)}
 .opsum{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--op);
   border-radius:0 8px 8px 0;padding:10px 14px;font-size:13.5px;color:#39445a;margin-bottom:16px}
+
+/* 本週職位概覽 */
+.opbrief{background:linear-gradient(180deg,#f7fbf9 0%,#fff 100%);
+  border:1px solid #d6ebe2;border-left:3px solid var(--op);border-radius:10px;
+  padding:12px 16px 14px;margin-bottom:14px}
+.opbrief-h{font-size:13px;font-weight:700;color:var(--op);margin-bottom:6px;
+  display:flex;align-items:center;gap:6px;letter-spacing:.3px}
+.opbrief-t{font-size:13.5px;color:#39445a;line-height:1.72}
+
+/* 重要提示 */
+.ophl{background:linear-gradient(180deg,#fffbf2 0%,#fff7e6 100%);
+  border:1px solid #f3dcae;border-left:3px solid #d98416;border-radius:10px;
+  padding:12px 16px 14px;margin-bottom:14px}
+.ophl-h{font-size:13px;font-weight:700;color:#9a5d10;margin-bottom:8px;
+  display:flex;align-items:center;gap:6px;letter-spacing:.3px}
+.ophl-l{margin:0;padding-left:22px;font-size:13px;color:#5c4e2a;line-height:1.7}
+.ophl-l li{margin-bottom:6px}
+.ophl-l li:last-child{margin-bottom:0}
+.ophl-l li::marker{color:#d98416;font-weight:700}
 .catcard{background:var(--card);border:1px solid var(--border);border-radius:12px;
   box-shadow:var(--shadow);margin-bottom:16px;overflow:hidden}
 .cathead{padding:12px 18px;font-size:15px;font-weight:700;background:#f7fafc;border-bottom:1px solid var(--border);
@@ -225,7 +244,14 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       <select id="opSel"></select>
     </div>
     <div class="opov" id="opOv"></div>
-    <div class="opsum" id="opSum"></div>
+    <div class="opbrief hide" id="opBrief">
+      <div class="opbrief-h" id="opBriefH">📋 本週職位概覽</div>
+      <div class="opbrief-t" id="opBriefT"></div>
+    </div>
+    <div class="ophl hide" id="opHl">
+      <div class="ophl-h">⚠️ 重要提示</div>
+      <ol class="ophl-l" id="opHlL"></ol>
+    </div>
     <main id="opList"></main>
   </div>
 
@@ -238,7 +264,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 </div>
 
 <script>window.DATA={"hrDigest":{
- "generatedAt": "2026-09-01 11:09:43",
+ "generatedAt": "2026-09-01 11:24:24",
  "reportCount": 53,
  "totalItems": 356,
  "dateRange": [
@@ -8160,7 +8186,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   "2026-04-16",
   "2026-08-26"
  ],
- "generatedAt": "2026-09-01 11:09",
+ "generatedAt": "2026-09-01 11:24",
  "reports": [
   {
    "categories": [
@@ -8522,7 +8548,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
    ],
    "overview": {},
    "summary": "",
-   "date": "2026-04-16"
+   "date": "2026-04-16",
+   "weekBrief": "",
+   "highlights": []
   },
   {
    "categories": [
@@ -8884,7 +8912,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
    ],
    "overview": {},
    "summary": "",
-   "date": "2026-04-17"
+   "date": "2026-04-17",
+   "weekBrief": "",
+   "highlights": []
   },
   {
    "categories": [
@@ -9246,7 +9276,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
    ],
    "overview": {},
    "summary": "",
-   "date": "2026-04-22"
+   "date": "2026-04-22",
+   "weekBrief": "",
+   "highlights": []
   },
   {
    "categories": [
@@ -9530,7 +9562,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
    ],
    "overview": {},
    "summary": "",
-   "date": "2026-04-23"
+   "date": "2026-04-23",
+   "weekBrief": "",
+   "highlights": []
   },
   {
    "categories": [
@@ -9866,7 +9900,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
    ],
    "overview": {},
    "summary": "",
-   "date": "2026-04-29"
+   "date": "2026-04-29",
+   "weekBrief": "",
+   "highlights": []
   },
   {
    "categories": [
@@ -9967,7 +10003,13 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "change": "↓ 5 個"
    },
    "summary": "",
-   "date": "2026-05-06"
+   "date": "2026-05-06",
+   "weekBrief": "",
+   "highlights": [
+    "LinkedIn 職位驗證：部分 LinkedIn 搜尋結果顯示已關閉職位（「No longer accepting applications」），本週報已逐一驗證連結狀態。",
+    "VIE Programme：Amundi 的 VIE 職位為法國國際志願者計劃，適合年輕專業人士申請。",
+    "Fidelity Analyst 截止日期：Analyst, Currency Management 申請截止為 2026年5月12日，請有興趣者從速申請。"
+   ]
   },
   {
    "categories": [
@@ -10202,8 +10244,15 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "etf": 3,
     "change": "↑ 62 個"
    },
-   "summary": "📌 完整職位列表及申請：[Jane Street 香港招聘頁面](https://www.janestreet.com/join-jane-street/open-roles/?location=Hong+Kong)",
-   "date": "2026-05-13"
+   "summary": "",
+   "date": "2026-05-13",
+   "weekBrief": "",
+   "highlights": [
+    "LinkedIn 職位驗證：本週報所有職位均已驗證連結有效性",
+    "Fidelity 截止日期：Analyst, Currency Management 截止為 2026年5月12日（今天） ⚠️",
+    "Fidelity Head of Marketing：截止日期為 2026年5月31日",
+    "VIE Programme：Amundi 的 VIE 職位為法國國際志願者計劃，適合年輕專業人士申請"
+   ]
   },
   {
    "categories": [
@@ -10408,7 +10457,16 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "change": "↑ 43 個"
    },
    "summary": "",
-   "date": "2026-05-20"
+   "date": "2026-05-20",
+   "weekBrief": "",
+   "highlights": [
+    "Jane Street 正式納入追蹤：本週起將 Jane Street 香港 43 個開放職位納入長期追蹤（涵蓋量化交易、機器學習、科技、網絡安全、銷售、人力資源、法律等部門）",
+    "LinkedIn 職位驗證：本週報中所有職位均已逐一驗證連結有效性",
+    "Fidelity 截止日期：Head of Marketing、RFP Senior Manager、Senior Business Analyst 截止均為 2026年5月31日",
+    "Fidelity Portfolio Construction & Risk：申請截止為 2026年7月6日",
+    "VIE Programme：Amundi 的 VIE 職位為法國國際志願者計劃，適合年輕專業人士申請",
+    "JPMorgan ETF Specialist VP：重新確認開放，建議有興趣者盡速申請"
+   ]
   },
   {
    "categories": [
@@ -10644,7 +10702,15 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "change": "持平（上週 35 個）"
    },
    "summary": "",
-   "date": "2026-05-27"
+   "date": "2026-05-27",
+   "weekBrief": "",
+   "highlights": [
+    "Fidelity 截止日期臨近：Head of Marketing、RFP Senior Manager、Senior Business Analyst 均於 5月31日（週日） 截止，請盡速申請",
+    "施羅德動態：近期宣布關閉中國公募基金業務，建議持續關注其香港業務後續影響",
+    "Value Partners / Harvest 全面關閉：兩家本地/中資公司本週所有追蹤職位均已停止申請，持續關注是否有新職位發布",
+    "BOCOM International / ICBC UBS AM / Bosera：招聘平台顯示有職位但因動態頁面限制無法提取具體名稱，建議直接訪問平台查詢",
+    "LinkedIn 鏈接不穩定性：本周發現多個 LinkedIn 職位鏈接被重定向，職位本身可能仍在招聘但使用新鏈接，建議同時在公司官網或招聘平台交叉查詢"
+   ]
   },
   {
    "categories": [
@@ -10985,7 +11051,15 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "companies": 15
    },
    "summary": "",
-   "date": "2026-06-03"
+   "date": "2026-06-03",
+   "weekBrief": "",
+   "highlights": [
+    "Amundi CFO 持續掛網超 5 個月：發布於 2025-12-22，仍在官網接受申請，但實際招聘狀態存疑",
+    "施羅德動態：近期宣布關閉中國公募基金業務，LinkedIn 無法確認香港職位，建議手動訪問官網",
+    "Harvest Global 持續零職位：建議持續關注是否有新職位發布",
+    "部分 JobsDB 職位即將到期：ICBC UBS Officer - Operations、Bosera Director & Senior Manager 發布已超 1 個月",
+    "LinkedIn 鏈接不穩定性：部分 LinkedIn 職位鏈接可能被重定向，建議同時在公司官網或招聘平台交叉查詢"
+   ]
   },
   {
    "categories": [
@@ -11352,7 +11426,16 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "companies": 16
    },
    "summary": "",
-   "date": "2026-06-10"
+   "date": "2026-06-10",
+   "weekBrief": "",
+   "highlights": [
+    "Amundi CFO 持續掛網超 5 個月：發布於 2025-12-22，仍在官網接受申請，但實際招聘狀態存疑",
+    "Fidelity 截止日臨近：AMP Value Stream Owner 截止 6/26，Sales Support Manager 截止 6/30",
+    "Bosera 僅餘 1 個職位：Director 和 Senior Manager 均已從 JobsDB 下架，Operations 職位即將到期",
+    "Schroders 持續零職位：LinkedIn 無法確認香港經驗職位，建議手動訪問官網",
+    "LinkedIn 鏈接不穩定性：部分 LinkedIn 職位鏈接可能被重定向，建議同時在公司官網或招聘平台交叉查詢",
+    "Hang Seng IM ETF Operations 狀態：LinkedIn 顯示開放但 HSBC 官方招聘頁面顯示「已招滿」，建議直接申請確認"
+   ]
   },
   {
    "categories": [
@@ -11719,7 +11802,15 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "companies": 15
    },
    "summary": "",
-   "date": "2026-06-17"
+   "date": "2026-06-17",
+   "weekBrief": "",
+   "highlights": [
+    "Harvest Global 重新開放：本週從 0 個職位增至 3 個，建議持續關注",
+    "BOCOM 擴張：新增 4 個職位，顯示招聘力度加大",
+    "Jane Street 職位調整：以 Greenhouse 平台最新列表為準",
+    "部分 JobsDB 職位即將到期：ICBC UBS Officer - Operations、Bosera Director & Senior Manager 發布已超 1 個月",
+    "LinkedIn 職位驗證限制：WebFetch 無法檢測 \"No longer accepting applications\"，建議定期手動查詢"
+   ]
   },
   {
    "categories": [
@@ -13300,7 +13391,17 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "companies": 15
    },
    "summary": "",
-   "date": "2026-06-24"
+   "date": "2026-06-24",
+   "weekBrief": "",
+   "highlights": [
+    "ICBC UBS AM 大幅收縮：僅剩 ETF Portfolio Manager 1 個職位，上週的 4 個職位全部已下架",
+    "Bosera 收縮：僅剩 1 個 ETF Operations 職位，Sales 和 Products 職位已關閉",
+    "CICC 擴張至 17 個：JobsDB 新發現 5 個職位，合規團隊擴充明顯（3 個 Compliance Officer）",
+    "BOCOM 持續擴張：新增 3 個合規職位（Regulatory Compliance、AML、Control Room）",
+    "部分 JobsDB 職位即將到期：BOCOM Associate Executive Office、Treasury Cash Management、Fixed Income Sales、OTC Product 顯示「Expiring」狀態",
+    "Harvest Global 名稱變化：JobsDB 以「New Harvest Wealth (Hong Kong) Limited」名稱發布職位",
+    "LinkedIn 職位驗證限制：WebFetch 無法檢測 \"No longer accepting applications\"，建議定期手動查詢"
+   ]
   },
   {
    "categories": [
@@ -14982,8 +15083,21 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "change": "+18（上週 76 個）",
     "companies": 15
    },
-   "summary": "📌 本週 Jane Street 香港經驗候選人職位從上週 6 個大幅增至 **39 個**（官網大幅擴充招聘；不含 3 個 Campus Recruiter 校園招聘職位，依 2026-07-10 領導審閱確認之排除規則追溯移除），為總數增加主因。 💡 此章節按「職位類型」交叉列出各公司招聘情況，方便快速查找某類職位有哪些公司在招。",
-   "date": "2026-07-01"
+   "summary": "📌 本週 Jane Street 香港經驗候選人職位從上週 6 個大幅增至 39 個（官網大幅擴充招聘；不含 3 個 Campus Recruiter 校園招聘職位，依 2026-07-10 領導審閱確認之排除規則追溯移除），為總數增加主因。",
+   "date": "2026-07-01",
+   "weekBrief": "📌 本週 Jane Street 香港經驗候選人職位從上週 6 個大幅增至 39 個（官網大幅擴充招聘；不含 3 個 Campus Recruiter 校園招聘職位，依 2026-07-10 領導審閱確認之排除規則追溯移除），為總數增加主因。",
+   "highlights": [
+    "ICBC UBS AM 顯著擴張：從上週僅剩 1 個職位增至 5 個，新增 Credit Analyst 及 ICBC AM (Global) 3 個職位",
+    "BOCOM 大幅收縮：從 10 個降至 5 個，合規職位仍保留但 Control Room、Executive Office、Treasury、Fixed Income Sales 均已下架",
+    "Jane Street 招聘爆發：經驗候選人職位從 6 個猛增至 39 個，覆蓋交易、技術、運營、HR、合規等全領域（已追溯排除 3 個 Campus Recruiter 校園招聘職位）",
+    "Value Partners 實習生招聘季：新增 3 個實習職位（Fund Operations、Fixed Income、Digital Operations），推測進入夏季實習招聘週期",
+    "Fidelity 內部更替：Senior Investment Specialist CTgoodjobs 已過期但 JobsDB 仍有新版本；新增 Portfolio Analyst",
+    "Amundi 職位更新：VIE RFP Writer 已過期，由全新「Asia Global Fixed Income Investment Specialist」取代",
+    "⚠️ 瀏覽器驗證發現大量「隱形關閉」：8 個職位在 HTTP 檢查時顯示「hiring」，但在瀏覽器中實際顯示「已停止接受求職申請」。詳見驗證說明。",
+    "ICBC UBS ETF Portfolio Manager：顯示「即將到期」，需盡快申請",
+    "Fidelity CTgoodjobs 職位：RFP Senior Manager 及 Senior Business Analyst 申請截止日為 2026-05-31（已過），但 JobsDB 版本仍活躍接受申請",
+    "JPMorgan 職位動態：Alternative Investments VP 及 ETF Specialist 均重新發布（1天前），推測原發布過期後重新上架"
+   ]
   },
   {
    "categories": [
@@ -16981,8 +17095,21 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "change": "+19（上週 97 個）",
     "companies": 15
    },
-   "summary": "📌 本週 ChinaAMC 大幅擴張（從 4 個增至 9 個，全部標記為 ETF 相關 ⭐），Fidelity International 新增 ETF 分銷及投資崗位，CICC 新增多個 WM 全職崗位。ICBC UBS ETF Portfolio Manager 已關閉。Jane Street 維持 39 個職位。 💡 此章節按「職位類型」交叉列出各公司招聘情況，方便快速查找某類職位有哪些公司在招。",
-   "date": "2026-07-08"
+   "summary": "📌 本週 ChinaAMC 大幅擴張（從 4 個增至 9 個，全部標記為 ETF 相關 ⭐），Fidelity International 新增 ETF 分銷及投資崗位，CICC 新增多個 WM 全職崗位。ICBC UBS ETF Portfolio Manager 已關閉。Jane Street 維持 39 個職位。",
+   "date": "2026-07-08",
+   "weekBrief": "📌 本週 ChinaAMC 大幅擴張（從 4 個增至 9 個，全部標記為 ETF 相關 ⭐），Fidelity International 新增 ETF 分銷及投資崗位，CICC 新增多個 WM 全職崗位。ICBC UBS ETF Portfolio Manager 已關閉。Jane Street 維持 39 個職位。",
+   "highlights": [
+    "ChinaAMC 全員 ETF 化標記：按用戶規則（2026-06-04 更新），ChinaAMC (Hong Kong) 所有 9 個職位均標記為 ETF 相關 ⭐，使 ETF 職位數從上週 7 個增至 13 個",
+    "ChinaAMC 大幅擴張：從上週 4 個職位增至 9 個，新增 5 個崗位，包括 Index Strategist 重新發布（上週因「已停止接受求職申請」被移除）",
+    "ICBC UBS ETF Portfolio Manager 關閉：確認已從 JobsDB 下架，本週不再納入",
+    "Fidelity International 擴張：從 7 個增至 10 個職位，新增 ETF Distribution Support ⭐、Portfolio Construction & Risk Analyst、Marketing、Client Services、Risk 等崗位",
+    "Schroders 重返招聘：從上週 0 個增至 3 個職位，包括 Investment Product Analyst Multi-Asset、Investment Manager 及 Client Service Executive",
+    "CICC 新增 WM 崗位：新增 Wealth Management - Trader、Investment Assistant，加股票研究分析師及產品專員",
+    "BOCOM 略有回升：從 5 個增至 6 個，新增 Company Secretary Associate",
+    "Harvest Global 擴張：從 3 個增至 5 個，新增 Investment Solutions Investment Manager，ETF/Quant Analyst 經 agent-browser 確認開放",
+    "⚠️ agent-browser 驗證繼續執行：本週 23 個 LinkedIn 職位經 agent-browser 真實瀏覽器驗證（含 8 個新增直接連結職位），所有已報告職位均顯示 Apply 按鈕，無「隱形關閉」發現。所有 LinkedIn 職位均已替換為直接職位連結（/jobs/view/...）",
+    "JPMorgan AM 縮減：從 6 個降至 5 個，Alternative Investments VP 已關閉"
+   ]
   },
   {
    "categories": [
@@ -19392,8 +19519,21 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "change": "持平（上週 116 個）",
     "companies": 15
    },
-   "summary": "📌 本週 BOCOM International 大幅擴張（從 6 個增至 15 個，合規與銷售團隊全面招聘）；ICBC AM Global 新增 2 個投資分析師職位；JPMorgan AWM 新增 2 個 AM 職位。Fidelity / CICC / BOCOM / Bosera 多個職位已關閉並移除。Jane Street 維持 39 個職位（扣除 2 個校園招聘）。 💡 職位按「公司類別 → 公司 → 前台/中台/後台」三級分類排列。 - **前台**：投資管理、交易、銷售、研究、業務發展、財富管理 - **中台**：風險管理、合規、產品開發、市場推廣、客戶服務、內部審計 - **後台**：運營、IT/技術、人力資源、財務、法律/公司秘書、行政",
-   "date": "2026-07-15"
+   "summary": "📌 本週 BOCOM International 大幅擴張（從 6 個增至 15 個，合規與銷售團隊全面招聘）；ICBC AM Global 新增 2 個投資分析師職位；JPMorgan AWM 新增 2 個 AM 職位。Fidelity / CICC / BOCOM / Bosera 多個職位已關閉並移除。Jane Street 維持 39 個職位（扣除 2 個校園招聘）。",
+   "date": "2026-07-15",
+   "weekBrief": "📌 本週 BOCOM International 大幅擴張（從 6 個增至 15 個，合規與銷售團隊全面招聘）；ICBC AM Global 新增 2 個投資分析師職位；JPMorgan AWM 新增 2 個 AM 職位。Fidelity / CICC / BOCOM / Bosera 多個職位已關閉並移除。Jane Street 維持 39 個職位（扣除 2 個校園招聘）。",
+   "highlights": [
+    "BOCOM International 大幅擴張：從 6 個增至 15 個（+9 個全新），合規與銷售團隊全面招聘，包含 1 個新的「Sales, Asset Management」資管銷售職位。同時新增多個 VP/AVP 合規、市場風險、固收及股票銷售職位",
+    "ICBC AM Global 投資團隊擴張：從 3 個增至 5 個，新增 Investment Analyst 與 Junior Investment Analyst 兩個職位（15-16 小時前發布）",
+    "CICC 大幅縮減：從 19 個降至 12 個（-7 個），LinkedIn 與 JobsDB 兩端均有職位關閉：3 個 LinkedIn 隱形關閉（AML Officer、WM Trader、Cost Controller），4 個 JobsDB 已下架（Product Specialist、3 個 Delta One/風險管理）",
+    "JPMorgan AWM 結構調整：新增 AWM Regulatory Control Management VP 與 Investment Risk (Alt) Analyst；同時 Transfer Agency Analyst 與 NLP/LLM Data Scientist 兩個 LinkedIn 職位已關閉；Sustainable Investing CTgoodjobs 版本亦已過期",
+    "Bosera 換崗：原 Manager/Officer Operations 已關閉，新增 Senior Manager, Operations（仍為 ETF 運營相關 ⭐）",
+    "Fidelity 結構調整：新增 Investment Client Service Specialist 職位；替換已 404 的 RFP Manager 為新版本；Senior Business Analyst（CTgoodjobs 版本）已過期；2 個 LinkedIn 職位（Senior Investment Specialist、Senior Risk Manager Ops）已關閉",
+    "Harvest Global 收縮：從 5 個降至 3 個，Fund Accountant 與 Investment Fund Analyst 已下架",
+    "Value Partners 擴張：從 7 個增至 9 個，新增 Assistant Manager Fund Operations 與 Intern Digital Marketing",
+    "Hang Seng IM 鏈接更新：CTgoodjobs 部分版本（Head of Equities, 10107785）已過期（19-MAY-2026），改用 JobsDB 鏈接；Senior PM Multi-Assets（10169784）將於 30-JUL-2026 過期，建議盡速申請",
+    "⚠️ agent-browser 強制驗證：本週使用 agent-browser 重新驗證所有 7 個「隱形關閉」LinkedIn 職位，確認 7 個全部關閉並移除，符合 2026-07-02 教訓"
+   ]
   },
   {
    "categories": [
@@ -21757,8 +21897,21 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "change": "-6（上週 116 個）",
     "companies": 15
    },
-   "summary": "📌 本週 JPMorgan AM 新增 Internal Auditor、ETF Content Marketing、AM Ops Derivatives 共 3 個職位；Amundi 從 1 個增至 3 個；Bosera 從 1 個增至 3 個；Value Partners 新增 VP ETF Sales（⭐）。Jane Street 從 39 個降至 35 個。CICC、PIMCO、Franklin Templeton 部分 LinkedIn 職位經重新驗證後發現已停止接受申請，已從週報移除。 💡 職位按「公司類別 → 公司 → 前台/中台/後台」三級分類排列。 - **前台**：投資管理、交易、銷售、研究、業務發展、財富管理 - **中台**：風險管理、合規、產品開發、市場推廣、客戶服務、內部審計 - **後台**：運營、IT/技術、人力資源、財務、法律/公司秘書、行政 ℹ️ 另含 HR Partner、Experienced Hire Recruiter、Events Specialist、Workplace Services APAC Lead 等非技術崗位。已排除 2 個校園招聘 Campus Recruiter 職位。 📌 原列入本表之 Franklin Templeton（Associate/Senior Associate Product Development、Paralegal）與 PIMCO（Retail Account Manager、Analyst/Associate Client Solutions & Analytics）共 4 個職位，經 2026-07-22 curl + agent-browser 重新驗證後確認 LinkedIn 已顯示「不再受理應徵」，已移至下方「已移除職位」。",
-   "date": "2026-07-22"
+   "summary": "📌 本週 JPMorgan AM 新增 Internal Auditor、ETF Content Marketing、AM Ops Derivatives 共 3 個職位；Amundi 從 1 個增至 3 個；Bosera 從 1 個增至 3 個；Value Partners 新增 VP ETF Sales（⭐）。Jane Street 從 39 個降至 35 個。CICC、PIMCO、Franklin Templeton 部分 LinkedIn 職位經重新驗證後發現已停止接受申請，已從週報移除。",
+   "date": "2026-07-22",
+   "weekBrief": "📌 本週 JPMorgan AM 新增 Internal Auditor、ETF Content Marketing、AM Ops Derivatives 共 3 個職位；Amundi 從 1 個增至 3 個；Bosera 從 1 個增至 3 個；Value Partners 新增 VP ETF Sales（⭐）。Jane Street 從 39 個降至 35 個。CICC、PIMCO、Franklin Templeton 部分 LinkedIn 職位經重新驗證後發現已停止接受申請，已從週報移除。",
+   "highlights": [
+    "外資機構增減不一：JPMorgan AM（+3，增至 7 個）、Amundi（+2，增至 3 個）持續擴張；PIMCO 淨增 1 個（增至 2 個）；Franklin Templeton 減少 2 個（降至 1 個）。本週初辨識為「新增」的 PIMCO（Retail Account Manager、Client Solutions & Analytics）與 Franklin Templeton（Product Development、Paralegal、Wealth Client Service Manager、Senior Events Marketing）共 6 個 LinkedIn 職位，經重新驗證後確認已停止接受申請，已從週報移除。",
+    "Bosera AM 擴張：從 1 個增至 3 個（+2），新增 Director Sales and Client Services（渠道銷售）及 法规专员（合規法務）。Sales 崗位重新出現，此前該類崗位於 2026-06 關閉。",
+    "Value Partners 結構調整：從 9 個降至 5 個（-4），三個中後台職位消失（Internal Auditor、VP Business Management、Digital Operations Intern）。但新增 VP ETF Sales（⭐），為 Value Partners 首個 ETF 銷售崗，值得關注。",
+    "CICC JobsDB 大規模過期：6 個 JobsDB 職位中的 5 個已顯示 30d+ ago（J19123、J19145、J19409、J19421、J18917）——可能已自然關閉。僅 Credit Risk（J19436）和 Operations Specialist（J19438）仍在 30 天內。新增 Position for Equity Review（J19486）。",
+    "ICBC AM 收縮：從 5 個降至 3 個（-2），Legal and Compliance Manager 從 JobsDB 完全下架（HTTP 404），Credit Analyst 顯示 Expiring。",
+    "JPMorgan AM 新增 3 個職位：Internal Auditor AWM（92893539）、JPMAM APAC Lead for ETF Product & Content Marketing（⭐92611734）、AM Ops Derivatives Middle Office（93470666，僅 14 小時前發布）。",
+    "PIMCO 實際僅淨增 1 個：表面由 1 個增至 4 個，但經重新驗證後 Retail Account Manager 與 Client Solutions & Analytics 兩個「新增」職位已停止接受申請，實際保留 Senior Private Bank Account Manager 與 Account Analyst Greater China 共 2 個（+1）。",
+    "ETF 職位增至 16 個（+3）：JPMorgan 新增 ETF Content Marketing（⭐）、Value Partners 新增 VP ETF Sales（⭐），ETF 相關招聘持續活躍。",
+    "Jane Street 減少至 35 個（-4）：從上週 39 個降至 35 個，但所有核心交易/工程崗位保持不變。",
+    "⚠️ 本週驗證缺失導致漏網（已補救）：由於自動化任務時間限制，本週初僅以 WebFetch 標題檢查（顯示 \"hiring\"）辨識新增職位，未進行瀏覽器級驗證。用戶於 2026-07-22 發現 CICC Market Risk / Quant Risk 已顯示「不再受理應徵」。隨後以 curl 抓取 LinkedIn 服務端渲染 HTML 標記（closed-job__flavor--closed）+ agent-browser 確認，全面重驗發現額外 6 個「隱形關閉」職位（Franklin Templeton 4 個、PIMCO 2 個），已全部移除。未來每次週報必須以 curl 或 agent-browser 逐一驗證所有 LinkedIn 職位，不可僅依賴 WebFetch / HTTP 標題。"
+   ]
   },
   {
    "categories": [
@@ -24110,8 +24263,18 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "change": "+1（上週 110 個）",
     "companies": 15
    },
-   "summary": "📌 本週 Jane Street 官網經驗候選人職位由 35 個增至 39 個（排除 2 個 Campus Recruiter），主要新增 HR / Recruiting / Workplace Services 等非技術崗位。CICC 新增 Trader、風險管理崗、Settlement Support 等 3 個 JobsDB 職位，但 JobsDB 與 LinkedIn 出現同名 Credit Risk（Wealth Management）職位，已按單一職位去重計算。Harvest Global ETF/Quant Analyst、Value Partners VP ETF Sales 等 ETF 職位已關閉或失效，ETF 總數由 16 個降至 13 個。 💡 職位按「公司類別 → 公司 → 前台/中台/後台」三級分類排列。 - **前台**：投資管理、交易、銷售、研究、業務發展、財富管理 - **中台**：風險管理、合規、產品開發、市場推廣、客戶服務、內部審計 - **後台**：運營、IT/技術、人力資源、財務、法律/公司秘書、行政 ℹ️ 已排除 2 個 Campus Recruiter 校園招聘職位。 📌 以上 Jane Street 4 個新增職位上週可能存在於官網但未列入表格，本週經 agent-browser 完整渲染後納入統計。 📌 另 CICC LinkedIn 與 JobsDB 同時出現「Credit Risk (Wealth Management)」職位，經內容比對後判定為同一職位的跨平台發布，本週報僅計算一次。",
-   "date": "2026-07-29"
+   "summary": "📌 本週 Jane Street 官網經驗候選人職位由 35 個增至 39 個（排除 2 個 Campus Recruiter），主要新增 HR / Recruiting / Workplace Services 等非技術崗位。CICC 新增 Trader、風險管理崗、Settlement Support 等 3 個 JobsDB 職位，但 JobsDB 與 LinkedIn 出現同名 Credit Risk（Wealth Management）職位，已按單一職位去重計算。Harvest Global ETF/Quant Analyst、Value Partners VP ETF Sales 等 ETF 職位已關閉或失效，ETF 總數由 16 個降至 13 個。",
+   "date": "2026-07-29",
+   "weekBrief": "📌 本週 Jane Street 官網經驗候選人職位由 35 個增至 39 個（排除 2 個 Campus Recruiter），主要新增 HR / Recruiting / Workplace Services 等非技術崗位。CICC 新增 Trader、風險管理崗、Settlement Support 等 3 個 JobsDB 職位，但 JobsDB 與 LinkedIn 出現同名 Credit Risk（Wealth Management）職位，已按單一職位去重計算。Harvest Global ETF/Quant Analyst、Value Partners VP ETF Sales 等 ETF 職位已關閉或失效，ETF 總數由 16 個降至 13 個。",
+   "highlights": [
+    "CICC 職位回升：由 7 個增至 10 個（+3），新增 Trader、風險管理崗、Settlement Support，顯示中資券商後台與風控仍有招聘需求。LinkedIn 上的 Wealth Management Trader 與 Delta One Trader 已關閉。",
+    "Bosera 持續擴張：由 3 個增至 4 個（+1），新增 资深IT经理，後台 IT 能力建設值得關注。",
+    "港資 ETF 職位收縮：Harvest Global ETF/Quant Analyst 與 Value Partners VP ETF Sales 均關閉/失效，本週港資公司無 ETF 相關開放職位。",
+    "外資機構總數持平：Jane Street 增加 4 個（39 個），抵銷 Fidelity、PIMCO、Amundi 的減少。Amundi 僅剩 1 個前台職位，PIMCO 僅剩 1 個 GWM 職位。",
+    "ETF 相關職位降至 13 個：主要因港資 ETF 職位關閉；ChinaAMC 仍佔 9 個，為 ETF 招聘主力。",
+    "Jane Street 非技術崗位增加：本週完整納入 HR Partner、Experienced Hire Recruiter、Events Specialist、Workplace Services APAC Lead，後台佔比升至 24/39。",
+    "本週已嚴格執行瀏覽器級 / curl 級驗證：所有 LinkedIn 職位均檢查 closed-job__flavor--closed 與 No longer accepting applications 標記；JobsDB 透過 window.SEEK_REDUX_DATA 解析 isExpired 與 jobStatus；Jane Street 與 Amundi 使用 agent-browser 渲染驗證；PIMCO TechJobAsia 職位檢查頁面 JSON 狀態欄位。"
+   ]
   },
   {
    "categories": [
@@ -26616,8 +26779,19 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "change": "+10（上週 111 個）",
     "companies": 15
    },
-   "summary": "📌 本週中資機構大規模擴張：CICC +4（中台風險團隊新增三個 Risk Analyst/Equities Market Risk Specialist 職位 + 新增 Senior Company Secretarial Officer 後台職位）、BOCOM +7（合規/風控/中後台招聘新 7 個職位，包括 ECM Syndicate、AVP Equity Sales、Market Risk、Regulatory Compliance、Treasury、HR、Finance & Accounting）。Fidelity 新增 Senior Risk Manager Operational Risk APAC。Amundi 新增 VIE - US Expertise Investment Specialist（香港 VIE 職位）。PIMCO Senior Private Bank Account Manager 確認關閉（LinkedIn `closed-job__flavor--closed`），PIMCO 從 1 個降至 0 個。Jane Street 經驗候選人職位 39→37（China ECM Analyst 與 Regulatory Lawyer 兩個職位下架）。 💡 職位按「公司類別 → 公司 → 前台/中台/後台」三級分類排列。 - **前台**：投資管理、交易、銷售、研究、業務發展、財富管理 - **中台**：風險管理、合規、產品開發、市場推廣、客戶服務、內部審計 - **後台**：運營、IT/技術、人力資源、財務、法律/公司秘書、行政 本週 PIMCO 香港辦公室無開放職位。 Senior Private Bank Account Manager – Hong Kong GWM（LinkedIn 4378490612）經 agent-browser 確認顯示 `closed-job__flavor--closed`，已從列表移除。 可考慮追蹤 [PIMCO LinkedIn](https://hk.linkedin.com/company/pimco/jobs/) 以接收職位更新通知。 ℹ️ 已排除 2 個 Campus Recruiter 校園招聘職位（Campus Recruiter、Campus Recruiter, Early Careers Partnerships and Initiatives）。 📌 CICC 一週內同時發布 Risk Quant / Market Risk / Equities Market Risk Specialist 三個風險管理崗，意味風險團隊全面擴張。BOCOM 一口氣新增 7 個職位（涵蓋前台銷售/中台風控合規/後台財務+HR），反映交銀國際在港團隊擴充訊號明確。Amundi 新增香港 VIE US Expertise Investment Specialist（2026-114703）為首個香港 VIE 編制職位，屬戰略性人才部署。 📌 PIMCO 香港 GWM 私人銀行業務在本週關閉唯一開放職位，由 1 個降至 0 個，需特別關注未來是否重新開放（2026-04-30 JPMorgan ETF Specialist 重新開放案例可參考）。Jane Street 兩個職位（China ECM Analyst、Regulatory Lawyer）從官網列表移除，建議持續追蹤官網職位列表變化。",
-   "date": "2026-08-05"
+   "summary": "📌 本週中資機構大規模擴張：CICC +4（中台風險團隊新增三個 Risk Analyst/Equities Market Risk Specialist 職位 + 新增 Senior Company Secretarial Officer 後台職位）、BOCOM +7（合規/風控/中後台招聘新 7 個職位，包括 ECM Syndicate、AVP Equity Sales、Market Risk、Regulatory Compliance、Treasury、HR、Finance & Accounting）。Fidelity 新增 Senior Risk Manager Operational Risk APAC。Amundi 新增 VIE - US Expertise Investment Specialist（香港 VIE 職位）。PIMCO Senior Private Bank Account Manager 確認關閉（LinkedIn closed-job__flavor--closed），PIMCO 從 1 個降至 0 個。Jane Street 經驗候選人職位 39→37（China ECM Analyst 與 Regulatory Lawyer 兩個職位下架）。",
+   "date": "2026-08-05",
+   "weekBrief": "📌 本週中資機構大規模擴張：CICC +4（中台風險團隊新增三個 Risk Analyst/Equities Market Risk Specialist 職位 + 新增 Senior Company Secretarial Officer 後台職位）、BOCOM +7（合規/風控/中後台招聘新 7 個職位，包括 ECM Syndicate、AVP Equity Sales、Market Risk、Regulatory Compliance、Treasury、HR、Finance & Accounting）。Fidelity 新增 Senior Risk Manager Operational Risk APAC。Amundi 新增 VIE - US Expertise Investment Specialist（香港 VIE 職位）。PIMCO Senior Private Bank Account Manager 確認關閉（LinkedIn closed-job__flavor--closed），PIMCO 從 1 個降至 0 個。Jane Street 經驗候選人職位 39→37（China ECM Analyst 與 Regulatory Lawyer 兩個職位下架）。",
+   "highlights": [
+    "CICC 風險團隊大幅擴張：本週新增 4 個職位中 3 個為中台風險管理相關（Risk Analyst - Market Risk、Risk Analyst - Risk Quant、Equities Market Risk Specialist）。Risk Quant 是新方向，反映中資券商加速量化風險建模能力；資深招聘週期短（1 day ago），可能屬離職員工補位。",
+    "BOCOM International 大幅擴張（+7）：從 15 個增至 22 個，新增職位涵蓋 ECM Syndicate（新業務線）、AVP Equity Sales、Senior Associate/AVP Market Risk、Regulatory Compliance、AVP Treasury Cash Management、Senior Specialist HR、Senior Associate/AVP Finance & Accounting——顯示交銀國際全面重整合規+風控+財務+HR 中後台職能，並新增 ECM 業務線。",
+    "CICC 與 BOCOM 全面接管 ETF 之外招聘：在港中資機構本週 +11（CICC +4、BOCOM +7、其他 0），與此同時港資維持 11、外資 -1，整體「中資替代外資」訊號明顯。",
+    "PIMCO 進入零職位狀態：PIMCO 香港 GWM Senior Private Bank Account Manager 確認關閉，PIMCO 從 1 個降至 0 個，這是自 2026 年第二季以來首次。建議讀者前往 [PIMCO 亞洲招聘頁](https://hk.linkedin.com/company/pimco/jobs/) 設置 job alert 接收後續職位更新。",
+    "Fidelity 新增 Operational Risk 職位：Senior Risk Manager, Operational Risk APAC（careerjet.hk J63738），位於香港，支援 Asia ex Japan & Middle East Wholesale and Private Banking 業務，反映 Fidelity 在亞太風險管控上深化投入。",
+    "Amundi 首個香港 VIE 職位：VIE - US Expertise Investment Specialist（2026-114703，2026-08-03 發布）是 Amundi 香港辦公室首個 VIE 編制，主要支援美國投資哲學/流程/業績對亞太客戶的傳達。",
+    "Jane Street 持續精簡：本週從 39 個降至 37 個（China ECM Analyst、Regulatory Lawyer 兩個職位下架），但仍為外資最大招聘機構，佔外資總數 64%。",
+    "本週嚴格執行瀏覽器級 + curl 級驗證：所有 LinkedIn 職位均經 agent-browser 渲染檢查 No longer accepting applications 標記（22 open / 1 closed / 1 unknown），JobsDB 通過 window.SEEK_REDUX_DATA 解析 isExpired / jobStatus，Jane Street 與 Amundi 通過 WebFetch 抓取官網完整職位列表；Schroders Investment Manager 經 WebFetch 雙重驗證為 open（agent-browser 解析異常）。"
+   ]
   },
   {
    "categories": [
@@ -28900,8 +29074,19 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "change": "↓15（上週 122 個）",
     "companies": 15
    },
-   "summary": "📌 本週以職位清理為主：JobsDB 批量驗證發現 10 個職位已過期或 404；LinkedIn 瀏覽器級驗證發現 4 個職位顯示「No longer accepting applications」；另 Fidelity Senior Risk Manager, Operational Risk APAC（J63738）經 Workday `postingAvailable=false` 與外部聚合平台標記為已過期，一併移除。本週未發現需要納入的新增職位。 💡 職位按「公司類別 → 公司 → 前台/中台/後台」三級分類排列。 - **前台**：投資管理、交易、銷售、研究、業務發展、財富管理 - **中台**：風險管理、合規、產品開發、市場推廣、客戶服務、內部審計 - **後台**：運營、IT/技術、人力資源、財務、法律/公司秘書、行政 本週 PIMCO 香港辦公室無開放職位。 可考慮追蹤 [PIMCO LinkedIn](https://hk.linkedin.com/company/pimco/jobs/) 以接收職位更新通知。",
-   "date": "2026-08-12"
+   "summary": "📌 本週以職位清理為主：JobsDB 批量驗證發現 10 個職位已過期或 404；LinkedIn 瀏覽器級驗證發現 4 個職位顯示「No longer accepting applications」；另 Fidelity Senior Risk Manager, Operational Risk APAC（J63738）經 Workday postingAvailable=false 與外部聚合平台標記為已過期，一併移除。本週未發現需要納入的新增職位。",
+   "date": "2026-08-12",
+   "weekBrief": "📌 本週以職位清理為主：JobsDB 批量驗證發現 10 個職位已過期或 404；LinkedIn 瀏覽器級驗證發現 4 個職位顯示「No longer accepting applications」；另 Fidelity Senior Risk Manager, Operational Risk APAC（J63738）經 Workday postingAvailable=false 與外部聚合平台標記為已過期，一併移除。本週未發現需要納入的新增職位。",
+   "highlights": [
+    "本週以「去庫存」為主，新增職位為零：在連續數週中資機構大幅擴張後，本週未發現新開職位，反而有 15 個職位因到期或關閉而下架。",
+    "CICC 下架 4 個職位：包括前台 2 個（Wealth Management Investment Assistant、Equity Research Analyst）與中台 2 個（Trader、风险管理岗），反映部分前台與交易崗位招聘週期結束。",
+    "BOCOM 下架 4 個職位：前台 ECM Syndicate、後台 Settlement Officer / Company Secretary Associate / Finance & Accounting，顯示部分中後台職能招聘放緩。",
+    "Fidelity 兩個職位 deadline 已過但仍顯示開放：ETF Distribution Support 與 Marketing Senior Manager / Head of Marketing 的 LinkedIn 頁面顯示 Application Deadline 為 2026-08-06（已過），但目前仍顯示「Apply」且無關閉標記，故暫時保留；建議申請人盡快遞交。",
+    "Fidelity Senior Risk Manager Operational Risk APAC 確認關閉：該職位（J63738）在 Workday 後台標記 postingAvailable=false，且 beBee 顯示「Oferta expirada」、careerjet 與 GlobalRiskJobs 顯示截止日期 2026-07-13 已過，故本期移除。",
+    "港資公司收縮：Value Partners 下架 2 個職位（前台投資分析、後台運營實習），Harvest Global 下架 1 個前台投資經理，港資總數由 11 減至 8。",
+    "ETF 相關職位保持 13 個：雖然整體職位減少，但 ETF 相關崗位未受影響，ChinaAMC、JPMorgan、Bosera、Fidelity 的 ETF 職位仍然開放。",
+    "驗證方式：本週 JobsDB 透過 window.SEEK_REDUX_DATA 批量解析；LinkedIn 因 agent-browser 被登入牆阻擋，改以 WebFetch 逐個檢查「No longer accepting applications」與 closed-job__flavor--closed；Fidelity Workday 職位透過頁面 postingAvailable 標記輔助判斷。"
+   ]
   },
   {
    "categories": [
@@ -30927,8 +31112,17 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "change": "↓15（上週 107 個）",
     "companies": 15
    },
-   "summary": "📌 本週 JobsDB 大量職位自然到期（30 天週期），中資與港資機構尤為明顯；同一時間外資機構新開職位活躍，部分抵消了到期流失。⚠️ 經全量 JobsDB 連結復核，另發現 5 個職位（CICC 2 個、BOCOM 3 個）顯示「no longer advertised」已移除（詳見已移除職位）。另 JPMorgan ETF Specialist - VP 初版納入後，經用戶反饋發現 LinkedIn 已「不再接受應徵」，亦已移除。 💡 職位按「公司類別 → 公司 → 前台/中台/後台」三級分類排列。 - **前台**：投資管理、交易、銷售、研究、業務發展、財富管理 - **中台**：風險管理、合規、產品開發、市場推廣、客戶服務、內部審計 - **後台**：運營、IT/技術、人力資源、財務、法律/公司秘書、行政 本週未驗證到惠理基金開放的全職經驗崗位。 本週未驗證到嘉實國際開放的全職經驗崗位。 📉 本週 Fidelity ETF Distribution Support 因申請截止日期（2026-08-06）已過而移除；另 JPMorgan ETF Specialist - VP 經用戶反饋已停止接受申請並移除。ETF 相關職位總數由 13 降至 11。 註：部分職位已由新發布職位替代（如 BOCOM Equity Sales、ICBC Investment Analyst 等），新舊職位分別計入新增與移除。",
-   "date": "2026-08-19"
+   "summary": "📌 本週 JobsDB 大量職位自然到期（30 天週期），中資與港資機構尤為明顯；同一時間外資機構新開職位活躍，部分抵消了到期流失。⚠️ 經全量 JobsDB 連結復核，另發現 5 個職位（CICC 2 個、BOCOM 3 個）顯示「no longer advertised」已移除（詳見已移除職位）。另 JPMorgan ETF Specialist - VP 初版納入後，經用戶反饋發現 LinkedIn 已「不再接受應徵」，亦已移除。",
+   "date": "2026-08-19",
+   "weekBrief": "📌 本週 JobsDB 大量職位自然到期（30 天週期），中資與港資機構尤為明顯；同一時間外資機構新開職位活躍，部分抵消了到期流失。⚠️ 經全量 JobsDB 連結復核，另發現 5 個職位（CICC 2 個、BOCOM 3 個）顯示「no longer advertised」已移除（詳見已移除職位）。另 JPMorgan ETF Specialist - VP 初版納入後，經用戶反饋發現 LinkedIn 已「不再接受應徵」，亦已移除。",
+   "highlights": [
+    "本週整體職位數下降 10 個：從 107 個降至 97 個。中資機構減少 9 個、港資減少 6 個，但外資機構增加 5 個，顯示不同類別機構招聘節奏出現分化。",
+    "JobsDB 大規模到期潮：本週 JobsDB 驗證發現 28 個職位已過期或 404，主要集中於在港中資（BOCOM 11 個、CICC/Bosera/ICBC 各 3 個）及港資機構（Value Partners 4 個、Harvest Global 4 個）。這與 JobsDB 職位通常保留 30 天的機制一致，多為自然到期而非主動撤招。",
+    "外資機構活躍度回升：JPMorgan、Franklin Templeton、PIMCO、Schroders 均有新職位開放，PIMCO 更從零職位回升至 3 個，反映國際資管對香港市場的招聘需求仍在。",
+    "ETF 職位降至 11 個：Fidelity ETF Distribution Support 因截止日期已過移除，JPMorgan ETF Specialist - VP 經用戶反饋已停止接受申請並移除；ChinaAMC、JPMorgan（APAC Lead）、Bosera 的 ETF 職位仍開放。",
+    "港資機構本週歸零：Value Partners 與 Harvest Global 所有追蹤職位均已過期或關閉，未驗證到新的全職經驗崗位。Hang Seng IM 維持 2 個高階投資崗位。",
+    "驗證方式：本週 LinkedIn 職位以 WebFetch 抓取頁面內容判斷，重點檢查「No longer accepting applications」及申請截止日期；JobsDB 透過頁面 isExpired / jobStatus 與「no longer advertised」標記判斷；官網職位直接訪問驗證。"
+   ]
   },
   {
    "categories": [
@@ -33261,11 +33455,20 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "change": "↑18（上週 92 個）",
     "companies": 16
    },
-   "summary": "📌 本週職位數顯著回升：新增 22 個職位，其中 12 個為本週引入「LinkedIn 公司搜索 + JobsDB 雇主頁全量複查」機制後補錄的前期漏檢職位（Harvest Global 3 個、Hang Seng IM 2 個、Schroders 2 個、CICC 2 個等），8 個為本週新發布，另 2 個為本週新追蹤的在港中資公司中國人壽富蘭克林資產管理（CLAMC）的官網開放職位。移除 4 個：Schroders Investment Manager（LinkedIn 已停止接受申請）、ICBC AM 兩個 Investment Analyst（JobsDB 404，已由新發布職位替代）、Jane Street Machine Learning Engineer（官網已下架，由新貼文 Machine Learning Research Engineer 取代）。 💡 職位按「公司類別 → 公司 → 前台/中台/後台」三級分類排列。 - **前台**：投資管理、交易、銷售、研究、業務發展、財富管理 - **中台**：風險管理、合規、產品開發、市場推廣、客戶服務、內部審計 - **後台**：運營、IT/技術、人力資源、財務、法律/公司秘書、行政 本週無後台職位。 📌 本週新追蹤的在港中資公司（中國人壽與富蘭克林坦伯頓合資，香港證監會第 4、9 類牌照）。官網招聘頁（中/英/簡體）均開放 2 個職位；CTgoodjobs 上的 IT Officer/Manager（10212555）與官網 IT Manager 為同一職位描述模板，不重複計入；Investment Product Analyst、Fund Accountant、Credit Risk Management Analyst 等第三方平台職位均已過期，實習職位按範圍規則排除。投遞郵箱：hr@clamc.com.hk。 本週未驗證到惠理基金開放的全職經驗崗位。 本週無後台職位。 ➡️ 本週 ETF 職位數量持平，無新增或移除。ChinaAMC 9 個、Bosera 1 個、JPMorgan AM 1 個 ETF 相關職位均經驗證開放。 註：其中 12 個為本週全渠道複查補錄的前期漏檢職位（Harvest Global 3 個、Hang Seng IM 2 個、Schroders 2 個、CICC 2 個、BOCOM 1 個、Franklin Templeton 1 個、JPMorgan AM Trade Surveillance 1 個），均經逐一直接驗證當前開放後納入；8 個為本週新發布；2 個為本週新追蹤的在港中資公司中國人壽富蘭克林（CLAMC）官網開放職位。",
-   "date": "2026-08-26"
+   "summary": "📌 本週職位數顯著回升：新增 22 個職位，其中 12 個為本週引入「LinkedIn 公司搜索 + JobsDB 雇主頁全量複查」機制後補錄的前期漏檢職位（Harvest Global 3 個、Hang Seng IM 2 個、Schroders 2 個、CICC 2 個等），8 個為本週新發布，另 2 個為本週新追蹤的在港中資公司中國人壽富蘭克林資產管理（CLAMC）的官網開放職位。移除 4 個：Schroders Investment Manager（LinkedIn 已停止接受申請）、ICBC AM 兩個 Investment Analyst（JobsDB 404，已由新發布職位替代）、Jane Street Machine Learning Engineer（官網已下架，由新貼文 Machine Learning Research Engineer 取代）。",
+   "date": "2026-08-26",
+   "weekBrief": "📌 本週職位數顯著回升：新增 22 個職位，其中 12 個為本週引入「LinkedIn 公司搜索 + JobsDB 雇主頁全量複查」機制後補錄的前期漏檢職位（Harvest Global 3 個、Hang Seng IM 2 個、Schroders 2 個、CICC 2 個等），8 個為本週新發布，另 2 個為本週新追蹤的在港中資公司中國人壽富蘭克林資產管理（CLAMC）的官網開放職位。移除 4 個：Schroders Investment Manager（LinkedIn 已停止接受申請）、ICBC AM 兩個 Investment Analyst（JobsDB 404，已由新發布職位替代）、Jane Street Machine Learning Engineer（官網已下架，由新貼文 Machine Learning Research Engineer 取代）。",
+   "highlights": [
+    "本週職位數上升 18 個：從 92 個增至 110 個。新增 22 個（含 12 個補錄、8 個新發布、2 個新追蹤公司 CLAMC）、移除 4 個。本週引入「LinkedIn 公司搜索 API + JobsDB 雇主頁 + 官網 JSON 數據」三渠道全量複查機制，顯著提高了職位發現覆蓋率。",
+    "前期漏檢職位已補錄：上週報告因搜索渠道覆蓋不足，漏檢 Harvest Global（3 個）、Hang Seng IM（2 個）、Schroders（2 個）、CICC（2 個）等共 12 個職位，本週已全部補錄並逐一直接驗證開放狀態。其中嘉實國際從上週的 0 個回升至 3 個，恒生投資管理從 2 個增至 4 個。",
+    "ICBC AM 職位新舊交替：上週的兩個 Investment Analyst（94000723/94000713）頁面已 404，但公司隨即發布新職位 Investment Analyst（94194788）與 Senior Product Manager（94195781），職位總數維持 3 個。",
+    "Jane Street 職位結構微調：Machine Learning Engineer 貼文下架，新增 Machine Learning Research Engineer；Cybersecurity Detection and Response Analyst 更名為 Cybersecurity Engineer - Detection and Response。香港 Experienced 職位總數維持 38 個（不含 2 個 Campus Recruiter 職位）。",
+    "中資與港資機構招聘回暖：在港中資小計從 30 增至 37，港資小計從 2 增至 7，主要來自補錄、新發布與新追蹤的 CLAMC（2 個）。惠理基金連續第二週無開放職位。",
+    "驗證方式升級：本週 LinkedIn 職位經 agent-browser 頁面渲染檢查「No longer accepting applications」標記；JobsDB 職位經 curl 檢查「no longer advertised」/404；Jane Street 直接解析官網 /jobs/main.json 數據源；Amundi 與 HSBC Careers 經官網驗證；CLAMC 以官網招聘頁（中/英/簡體）為準，並交叉核對 CTgoodjobs、Glassdoor、Joblum、eFinancialCareers 等第三方平台確認無其他在招職位。"
+   ]
   }
  ]
-},"maintenanceHtml":"<h1>維護守則</h1>\n<blockquote class='callout'>看板 = 源頭 <code>.md</code> 的鏡像。<strong>改源檔 → 跑同步 → 網站更新。</strong></blockquote>\n<hr>\n<h2>你可以做</h2>\n<ul><li><strong>加一則人事新聞</strong>：貼給我，或寫進 <code>.workbuddy/supplementary-news.md</code>（等下個推送日自動生效）</li><li><strong>立即上人事看板</strong>：編輯 <code>reports/financial-hr-digest/&lt;最新日期&gt;.md</code>，按格式加條目</li><li><strong>加 / 下架招聘職位</strong>：編輯 <code>20260415160214/External Openings Weekly Summary - &lt;最新週三&gt;.md</code>，加列或刪列</li><li><strong>改這份守則</strong>：編輯 <code>MAINTENANCE.md</code>，跑同步</li></ul>\n<h2>你不要做</h2>\n<ul><li>❌ <strong>直接改 <code>dashboard/index.html</code></strong> — 跑同步會被覆蓋，白改</li><li>❌ <strong>標 <code>Closed</code></strong> — 已關閉職位直接刪除</li></ul>\n<h2>跑這條就更新看板</h2>\n<pre><code>C:\\Users\\jackzeng\\.workbuddy\\binaries\\python\\versions\\3.13.12\\python.exe C:\\Users\\jackzeng\\WorkBuddy\\20260415174158\\.workbuddy\\scripts\\sync_dashboard.py</code></pre>\n<p>或者直接告訴我「加進人事速遞：⋯」或「把 XX 職位下架」，我來改源檔 + 跑同步，你刷新網址就好。</p>\n<h2>自動化時程</h2>\n<ul><li>👔 人事速遞：每週一、四 17:00 HKT</li><li>💼 招聘週報：每週三 09:00 HKT</li></ul>\n<p>兩個自動化跑完都會自動同步看板，不用手動。</p>","generatedAt":"2026-09-01 11:09"};</script>
+},"maintenanceHtml":"<h1>維護守則</h1>\n<blockquote class='callout'>看板 = 源頭 <code>.md</code> 的鏡像。<strong>改源檔 → 跑同步 → 網站更新。</strong></blockquote>\n<hr>\n<h2>你可以做</h2>\n<ul><li><strong>加一則人事新聞</strong>：貼給我，或寫進 <code>.workbuddy/supplementary-news.md</code>（等下個推送日自動生效）</li><li><strong>立即上人事看板</strong>：編輯 <code>reports/financial-hr-digest/&lt;最新日期&gt;.md</code>，按格式加條目</li><li><strong>加 / 下架招聘職位</strong>：編輯 <code>20260415160214/External Openings Weekly Summary - &lt;最新週三&gt;.md</code>，加列或刪列</li><li><strong>改這份守則</strong>：編輯 <code>MAINTENANCE.md</code>，跑同步</li></ul>\n<h2>你不要做</h2>\n<ul><li>❌ <strong>直接改 <code>dashboard/index.html</code></strong> — 跑同步會被覆蓋，白改</li><li>❌ <strong>標 <code>Closed</code></strong> — 已關閉職位直接刪除</li></ul>\n<h2>跑這條就更新看板</h2>\n<pre><code>C:\\Users\\jackzeng\\.workbuddy\\binaries\\python\\versions\\3.13.12\\python.exe C:\\Users\\jackzeng\\WorkBuddy\\20260415174158\\.workbuddy\\scripts\\sync_dashboard.py</code></pre>\n<p>或者直接告訴我「加進人事速遞：⋯」或「把 XX 職位下架」，我來改源檔 + 跑同步，你刷新網址就好。</p>\n<h2>自動化時程</h2>\n<ul><li>👔 人事速遞：每週一、四 17:00 HKT</li><li>💼 招聘週報：每週三 09:00 HKT</li></ul>\n<p>兩個自動化跑完都會自動同步看板，不用手動。</p>","generatedAt":"2026-09-01 11:24"};</script>
 <script>
 (function(){
   var DATA=window.DATA||{};
@@ -33497,7 +33700,21 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       '<div class="ovcard"><b>'+(ov.change||'—')+'</b><span>較上週變化</span></div>'+
       '<div class="ovcard"><b>'+(ov.companies||0)+'</b><span>追蹤公司</span></div>';
     document.getElementById('opOv').innerHTML=ovcards;
-    document.getElementById('opSum').innerHTML=r.summary?hl(r.summary,q):'（本期無摘要）';
+    // 本週職位概覽
+    var briefEl=document.getElementById('opBrief');
+    var briefT=document.getElementById('opBriefT');
+    var wk=(r.weekBrief||'').trim();
+    if(wk){briefEl.classList.remove('hide');briefT.innerHTML=hl(wk,q);}
+    else{briefEl.classList.add('hide');briefT.innerHTML='';}
+    // 重要提示
+    var hlEl=document.getElementById('opHl');
+    var hlL=document.getElementById('opHlL');
+    if(r.highlights&&r.highlights.length){
+      hlEl.classList.remove('hide');
+      hlL.innerHTML=r.highlights.map(function(t){return '<li>'+esc(t)+'</li>';}).join('');
+    }else{
+      hlEl.classList.add('hide');hlL.innerHTML='';
+    }
     // 類別 → 公司 → 前中後台 → 職位
     var cats=(r.categories||[]);
     var totalShown=0;
@@ -33547,7 +33764,13 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       var box=document.getElementById('opList');
       box.innerHTML=html||'<div class="empty">跨週搜尋查無符合職位，試試其他關鍵字。</div>';
       document.getElementById('opOv').innerHTML='';
-      document.getElementById('opSum').textContent= q ? '跨全部週期搜尋「'+q+'」的結果。' : '選擇上方週期查看該週職位，或搜尋跨週職位。';
+      // 跨週模式：本週職位概覽改為提示文字、重要提示卡隱藏
+      var msg= q ? ('跨全部週期搜尋「<b>'+esc(q)+'</b>」的結果。') : '選擇上方週期查看該週職位，或搜尋跨週職位。';
+      var bEl=document.getElementById('opBrief');
+      bEl.classList.remove('hide');
+      document.getElementById('opBriefH').textContent=q?'🔍 跨週搜尋結果':'📅 跨週瀏覽模式';
+      document.getElementById('opBriefT').innerHTML=msg;
+      document.getElementById('opHl').classList.add('hide');
       document.getElementById('count').textContent='共 '+total+' 個職位符合';
     }else{
       var r=OP.reports.filter(function(x){return x.date===state.opDate;})[0];
