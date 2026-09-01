@@ -128,30 +128,6 @@ mark{background:#ffe9a8;padding:0 2px;border-radius:2px}
 .empty{text-align:center;padding:48px 20px;color:var(--muted)}
 footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 
-/* 日曆選擇器 (HR) */
-.calwrap{background:var(--card);border:1px solid var(--border);border-radius:12px;
-  padding:14px 16px 12px;margin-bottom:16px;box-shadow:var(--shadow)}
-.calhdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.calhdr .ttl{font-size:15px;font-weight:700;color:var(--text);cursor:pointer;padding:2px 8px;border-radius:6px}
-.calhdr .ttl:hover{background:var(--accent-soft);color:var(--accent)}
-.calnav{border:1px solid var(--border);background:var(--card);border-radius:8px;width:34px;height:30px;
-  font-size:17px;line-height:1;color:var(--muted);cursor:pointer}
-.calnav:hover{border-color:var(--accent);color:var(--accent)}
-.calgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
-.calwd{text-align:center;font-size:11px;color:var(--muted);padding:4px 0;font-weight:600}
-.calcell{position:relative;text-align:center;padding:9px 0 15px;border-radius:8px;font-size:13px;
-  color:var(--muted);border:1px solid transparent;min-height:34px}
-.calcell.empty{visibility:hidden}
-.calcell.has{background:var(--accent-soft);color:var(--accent);font-weight:700;cursor:pointer;border-color:#cfe0f5}
-.calcell.has:hover{background:var(--accent);color:#fff}
-.calcell.sel{background:var(--accent);color:#fff;border-color:var(--accent)}
-.caldot{position:absolute;bottom:2px;left:0;right:0;font-size:10px;font-weight:600;opacity:.8}
-.calcell.has:hover .caldot{color:#fff}.calcell.sel .caldot{color:#fff}
-.calf{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-size:12.5px;color:var(--muted)}
-.calf button{background:none;border:1px solid var(--border);border-radius:7px;padding:4px 11px;
-  color:var(--muted);cursor:pointer;font-size:12px}
-.calf button:hover{border-color:var(--accent);color:var(--accent)}
-
 .hide{display:none!important}
 
 /* 維護守則 */
@@ -233,9 +209,12 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     </div>
   </div>
 
-  <!-- HR 模式：日曆 + 列表 -->
+  <!-- HR 模式：週期下拉 + 列表 -->
   <div id="hrView">
-    <div class="calwrap hide" id="cal"></div>
+    <div class="opbar hide" id="hrBar">
+      <label for="hrSel">報告週期</label>
+      <select id="hrSel"></select>
+    </div>
     <main id="list"></main>
   </div>
 
@@ -259,7 +238,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 </div>
 
 <script>window.DATA={"hrDigest":{
- "generatedAt": "2026-09-01 10:51:34",
+ "generatedAt": "2026-09-01 10:58:22",
  "reportCount": 53,
  "totalItems": 356,
  "dateRange": [
@@ -8181,7 +8160,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   "2026-04-16",
   "2026-08-26"
  ],
- "generatedAt": "2026-09-01 10:51",
+ "generatedAt": "2026-09-01 10:58",
  "reports": [
   {
    "categories": [],
@@ -24615,7 +24594,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
    "date": "2026-08-26"
   }
  ]
-},"maintenanceHtml":"<h1>維護守則</h1>\n<blockquote class='callout'>看板 = 源頭 <code>.md</code> 的鏡像。<strong>改源檔 → 跑同步 → 網站更新。</strong></blockquote>\n<hr>\n<h2>你可以做</h2>\n<ul><li><strong>加一則人事新聞</strong>：貼給我，或寫進 <code>.workbuddy/supplementary-news.md</code>（等下個推送日自動生效）</li><li><strong>立即上人事看板</strong>：編輯 <code>reports/financial-hr-digest/&lt;最新日期&gt;.md</code>，按格式加條目</li><li><strong>加 / 下架招聘職位</strong>：編輯 <code>20260415160214/External Openings Weekly Summary - &lt;最新週三&gt;.md</code>，加列或刪列</li><li><strong>改這份守則</strong>：編輯 <code>MAINTENANCE.md</code>，跑同步</li></ul>\n<h2>你不要做</h2>\n<ul><li>❌ <strong>直接改 <code>dashboard/index.html</code></strong> — 跑同步會被覆蓋，白改</li><li>❌ <strong>標 <code>Closed</code></strong> — 已關閉職位直接刪除</li></ul>\n<h2>跑這條就更新看板</h2>\n<pre><code>C:\\Users\\jackzeng\\.workbuddy\\binaries\\python\\versions\\3.13.12\\python.exe C:\\Users\\jackzeng\\WorkBuddy\\20260415174158\\.workbuddy\\scripts\\sync_dashboard.py</code></pre>\n<p>或者直接告訴我「加進人事速遞：⋯」或「把 XX 職位下架」，我來改源檔 + 跑同步，你刷新網址就好。</p>\n<h2>自動化時程</h2>\n<ul><li>👔 人事速遞：每週一、四 17:00 HKT</li><li>💼 招聘週報：每週三 09:00 HKT</li></ul>\n<p>兩個自動化跑完都會自動同步看板，不用手動。</p>","generatedAt":"2026-09-01 10:51"};</script>
+},"maintenanceHtml":"<h1>維護守則</h1>\n<blockquote class='callout'>看板 = 源頭 <code>.md</code> 的鏡像。<strong>改源檔 → 跑同步 → 網站更新。</strong></blockquote>\n<hr>\n<h2>你可以做</h2>\n<ul><li><strong>加一則人事新聞</strong>：貼給我，或寫進 <code>.workbuddy/supplementary-news.md</code>（等下個推送日自動生效）</li><li><strong>立即上人事看板</strong>：編輯 <code>reports/financial-hr-digest/&lt;最新日期&gt;.md</code>，按格式加條目</li><li><strong>加 / 下架招聘職位</strong>：編輯 <code>20260415160214/External Openings Weekly Summary - &lt;最新週三&gt;.md</code>，加列或刪列</li><li><strong>改這份守則</strong>：編輯 <code>MAINTENANCE.md</code>，跑同步</li></ul>\n<h2>你不要做</h2>\n<ul><li>❌ <strong>直接改 <code>dashboard/index.html</code></strong> — 跑同步會被覆蓋，白改</li><li>❌ <strong>標 <code>Closed</code></strong> — 已關閉職位直接刪除</li></ul>\n<h2>跑這條就更新看板</h2>\n<pre><code>C:\\Users\\jackzeng\\.workbuddy\\binaries\\python\\versions\\3.13.12\\python.exe C:\\Users\\jackzeng\\WorkBuddy\\20260415174158\\.workbuddy\\scripts\\sync_dashboard.py</code></pre>\n<p>或者直接告訴我「加進人事速遞：⋯」或「把 XX 職位下架」，我來改源檔 + 跑同步，你刷新網址就好。</p>\n<h2>自動化時程</h2>\n<ul><li>👔 人事速遞：每週一、四 17:00 HKT</li><li>💼 招聘週報：每週三 09:00 HKT</li></ul>\n<p>兩個自動化跑完都會自動同步看板，不用手動。</p>","generatedAt":"2026-09-01 10:58"};</script>
 <script>
 (function(){
   var DATA=window.DATA||{};
@@ -24634,8 +24613,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     q:'',
     region:'all',
     open:{}, allOpen:false,
-    hrFilter:{type:'all'},
-    calMonth:(HR.reports.length?HR.reports[HR.reports.length-1].date.slice(0,7):''),
+    hrDate:(HR.reports.length?'ALL':'ALL'),
     opDate:(OP.reports.length?OP.reports[OP.reports.length-1].date:'ALL')
   };
 
@@ -24683,7 +24661,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     var q=document.getElementById('q');
     var chips=document.getElementById('chips');
     var toggle=document.getElementById('toggleAll');
-    var cal=document.getElementById('cal');
+    var hrBar=document.getElementById('hrBar');
     if(m==='maint'){
       tb.classList.add('hide');
       document.getElementById('maintDoc').innerHTML=
@@ -24693,10 +24671,10 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     tb.classList.remove('hide');
     if(m==='hr'){
       q.placeholder='搜尋機構／人物／關鍵字，例如：匯豐、私銀、Citi、裁員、公募基金…';
-      chips.classList.remove('hide'); toggle.classList.remove('hide'); cal.classList.remove('hide');
+      chips.classList.remove('hide'); toggle.classList.remove('hide'); hrBar.classList.remove('hide');
     }else{
       q.placeholder='搜尋職位／公司／前中後台，例如：ETF、Compliance、CICC、前台…';
-      chips.classList.add('hide'); toggle.classList.add('hide'); cal.classList.add('hide');
+      chips.classList.add('hide'); toggle.classList.add('hide'); hrBar.classList.add('hide');
     }
     render();
   }
@@ -24719,53 +24697,17 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     });
   })();
 
-  // ===== HR：日曆 =====
-  function monthCount(ym){var n=0;HR.reports.forEach(function(r){if(r.date.indexOf(ym)===0)n++;});return n;}
-  function shiftMonth(d){
-    var p=state.calMonth.split('-'); var y=+p[0], m=+p[1]+d;
-    if(m<1){m=12;y--;} if(m>12){m=1;y++;}
-    state.calMonth=y+'-'+pad(m);
-    if(state.hrFilter.type==='month') state.hrFilter.ym=state.calMonth;
-    renderCalendar();
-  }
-  function renderCalendar(){
-    var ym=state.calMonth; if(!ym){return;}
-    var p=ym.split('-'); var y=+p[0], m=+p[1];
-    var startDow=new Date(y,m-1,1).getDay(), days=new Date(y,m,0).getDate();
-    var map={};
-    HR.reports.forEach(function(r){ if(r.date.indexOf(ym)===0) map[r.date]=r; });
-    var WD=['日','一','二','三','四','五','六'], h='';
-    h+='<div class="calhdr"><button class="calnav" id="calPrev">‹</button>'+
-       '<span class="ttl" id="calTitle">'+y+' 年 '+m+' 月</span>'+
-       '<button class="calnav" id="calNext">›</button></div>';
-    h+='<div class="calgrid">';
-    WD.forEach(function(w){h+='<div class="calwd">'+w+'</div>';});
-    for(var i=0;i<startDow;i++) h+='<div class="calcell empty"></div>';
-    for(var d=1;d<=days;d++){
-      var ds=ym+'-'+pad(d), has=map[ds];
-      var cls='calcell'+(has?' has':'')+(state.hrFilter.type==='day'&&state.hrFilter.date===ds?' sel':'');
-      h+='<div class="'+cls+'"'+(has?' data-d="'+ds+'"':'')+'>'+d+(has?'<span class="caldot">'+has.itemCount+'</span>':'')+'</div>';
-    }
-    h+='</div>';
-    var cap='';
-    if(state.hrFilter.type==='day') cap='已選擇：'+state.hrFilter.date+'（'+(map[state.hrFilter.date]?map[state.hrFilter.date].itemCount:0)+' 條）';
-    else if(state.hrFilter.type==='month') cap='已篩選：'+state.hrFilter.ym.replace('-',' 年 ')+' 月（'+monthCount(ym)+' 期）';
-    else cap='點選藍色日期看當天；點月份標題看整月';
-    h+='<div class="calf"><span>'+cap+'</span>';
-    if(state.hrFilter.type!=='all') h+='<button id="calClear">✕ 清除日期篩選</button>';
-    h+='</div>';
-    document.getElementById('cal').innerHTML=h;
-    document.getElementById('calPrev').onclick=function(){shiftMonth(-1);};
-    document.getElementById('calNext').onclick=function(){shiftMonth(1);};
-    document.getElementById('calTitle').onclick=function(){
-      state.hrFilter={type:'month',ym:state.calMonth};renderCalendar();render();
-    };
-    [].forEach.call(document.querySelectorAll('#cal .calcell.has'),function(c){
-      c.onclick=function(){var ds=c.getAttribute('data-d');state.hrFilter={type:'day',date:ds};state.open[ds]=true;renderCalendar();render();};
+  // ===== HR：週期下拉 =====
+  (function(){
+    var sel=document.getElementById('hrSel');
+    var h='<option value="ALL">全部週期（跨週搜尋）</option>';
+    HR.reports.slice().reverse().forEach(function(r){
+      h+='<option value="'+esc(r.date)+'">'+esc(r.date)+'（'+r.itemCount+' 條）</option>';
     });
-    var clr=document.getElementById('calClear');
-    if(clr)clr.onclick=function(){state.hrFilter={type:'all'};renderCalendar();render();};
-  }
+    sel.innerHTML=h;
+    sel.value=state.hrDate;
+    sel.addEventListener('change',function(){state.hrDate=this.value;render();});
+  })();
 
   function matchItem(it,q){
     if(!q)return true;
@@ -24802,8 +24744,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     var q=state.q.trim(), list=document.getElementById('list');
     var shown=0, html='';
     var rs=HR.reports.slice().reverse();
-    if(state.hrFilter.type==='month') rs=rs.filter(function(r){return r.date.indexOf(state.hrFilter.ym)===0;});
-    else if(state.hrFilter.type==='day') rs=rs.filter(function(r){return r.date===state.hrFilter.date;});
+    if(state.hrDate!=='ALL') rs=rs.filter(function(r){return r.date===state.hrDate;});
     rs.forEach(function(r){
       var secs=(r.sections||[]).filter(function(s){return state.region==='all'||s.region===state.region;});
       var blocks='', cnt=0;
@@ -24819,7 +24760,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       });
       if(!cnt)return;
       shown+=cnt;
-      var open=state.allOpen||state.open[r.date]||(state.hrFilter.type==='day'&&r.date===state.hrFilter.date);
+      var open=state.allOpen||state.open[r.date]||(state.hrDate!=='ALL'&&r.date===state.hrDate);
       var badges='';
       (r.sessions||[]).forEach(function(s){
         if(s==='evening')badges+='<span class="rbadge evening">含晚間場</span>';
@@ -24967,9 +24908,11 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 
   // ===== 初始化 =====
   if(state.mode==='hr'){
-    renderCalendar();
+    if(HR.reports.length){
+      if(state.hrDate==='ALL') state.allOpen=true;
+      else state.open[state.hrDate]=true;
+    }
     renderHR();
-    if(HR.reports.length){state.open[HR.reports[HR.reports.length-1].date]=true;renderHR();}
   }else{
     renderOpenings();
   }
