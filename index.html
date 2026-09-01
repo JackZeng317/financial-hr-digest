@@ -301,7 +301,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 </div>
 
 <script>window.DATA={"hrDigest":{
- "generatedAt": "2026-09-01 17:49:31",
+ "generatedAt": "2026-09-01 18:02:18",
  "reportCount": 53,
  "totalItems": 356,
  "dateRange": [
@@ -8223,7 +8223,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   "2026-04-16",
   "2026-09-01"
  ],
- "generatedAt": "2026-09-01 17:49",
+ "generatedAt": "2026-09-01 18:02",
  "reports": [
   {
    "categories": [
@@ -32268,7 +32268,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     }
   ],
   "disclaimer": "本報告由人工智能助理根據公開資料整理，內容僅供內部參考，不構成法律意見。法規條文隨時可能修訂，具體適用情況請以官方最新公布為準，並在作出任何決策前諮詢合資格的法律專業人士。資料來源已於各項目及來源清單中列明，惟連結可能隨時間失效。"
-},"generatedAt":"2026-09-01 17:49"};</script>
+},"generatedAt":"2026-09-01 18:02"};</script>
 <script>
 (function(){
   var DATA=window.DATA||{};
@@ -32331,12 +32331,12 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       lbPeriod=DATA.labour.period||'';
     }
     document.getElementById('stats').innerHTML=
-      '<div class="stat"><b>'+HR.reportCount+'</b><span>人事速遞期數</span></div>'+
-      '<div class="stat"><b>'+hrTot+'</b><span>條人事資訊</span></div>'+
-      '<div class="stat"><b>'+OP.reportCount+'</b><span>招聘週報期數</span></div>'+
-      '<div class="stat"><b>'+opLatestCount+'</b><span>最新開放職位（'+opMonthLabel+'）</span></div>'+
-      '<div class="stat"><b>'+lbTot+'</b><span>勞動法更新事項'+(lbPeriod?('（'+lbPeriod+'）'):'')+'</span></div>'+
-      '<div class="stat"><b>'+(DATA.generatedAt||'')+'</b><span>最後更新</span></div>';
+      '<div class="stat" data-mode="hr"><b>'+HR.reportCount+'</b><span>人事速遞期數</span></div>'+
+      '<div class="stat" data-mode="hr"><b>'+hrTot+'</b><span>條人事資訊</span></div>'+
+      '<div class="stat" data-mode="op"><b>'+OP.reportCount+'</b><span>招聘週報期數</span></div>'+
+      '<div class="stat" data-mode="op"><b>'+opLatestCount+'</b><span>最新開放職位（'+opMonthLabel+'）</span></div>'+
+      '<div class="stat" data-mode="labour"><b>'+lbTot+'</b><span>勞動法更新事項'+(lbPeriod?('（'+lbPeriod+'）'):'')+'</span></div>'+
+      '<div class="stat" data-mode="all"><b>'+(DATA.generatedAt||'')+'</b><span>最後更新</span></div>';
     document.getElementById('tHR').textContent=HR.reportCount?(' '+HR.reportCount):'';
     document.getElementById('tOP').textContent=OP.reportCount?(' '+OP.reportCount):'';
     document.getElementById('foot').textContent='資料來源：金融人事速遞自動化 + 香港金融招聘週報自動化 · 更新於 '+(DATA.generatedAt||'');
@@ -32380,10 +32380,23 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       opChips.classList.remove('hide'); lbChips.classList.add('hide');
     }
     render();
+    renderStats();
+  }
+  // 根據 state.mode 切換 hero stats 的可見性（每個 tab 只看見自己的統計）
+  function renderStats(){
+    var cards=document.querySelectorAll('#stats .stat[data-mode]');
+    cards.forEach(function(c){
+      var md=c.getAttribute('data-mode');
+      // data-mode='all'（如「最後更新」）永遠顯示
+      var show=(md==='all') || (md===state.mode);
+      c.classList.toggle('hide',!show);
+    });
   }
   document.querySelectorAll('.tab').forEach(function(t){
     t.addEventListener('click',function(){setMode(t.getAttribute('data-mode'));});
   });
+  // 初次載入：依 state.mode 篩選 hero stats（預設顯示為 'hr' → 人事速遞兩個卡片 + 最後更新）
+  renderStats();
 
   // ===== HR：region chips =====
   (function(){
