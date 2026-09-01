@@ -153,6 +153,35 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 .calf button:hover{border-color:var(--accent);color:var(--accent)}
 
 .hide{display:none!important}
+
+/* 維護守則 */
+.mdoc{max-width:780px;margin:0 auto;padding-top:6px}
+.mdoc h1{font-size:23px;margin:6px 0 4px;color:var(--accent)}
+.mdoc h2{font-size:18.5px;margin:24px 0 8px;color:var(--accent);
+  border-bottom:2px solid var(--accent-soft);padding-bottom:6px}
+.mdoc h3{font-size:15.5px;margin:16px 0 6px;color:var(--text)}
+.mdoc h4{font-size:14px;margin:12px 0 4px;color:var(--text)}
+.mdoc p{font-size:14px;color:#39445a;margin:9px 0;line-height:1.7}
+.mdoc ul,.mdoc ol{font-size:14px;color:#39445a;padding-left:24px;margin:9px 0}
+.mdoc li{margin-bottom:5px}
+.mdoc a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-soft)}
+.mdoc a:hover{color:var(--cn)}
+.mdoc code{background:#eef2f7;color:#b83227;padding:1px 6px;border-radius:5px;
+  font-size:12.5px;font-family:ui-monospace,Menlo,Consolas,monospace}
+.mdoc pre{background:#1e2433;color:#e6edf3;padding:13px 15px;border-radius:9px;
+  overflow:auto;font-size:12.5px;line-height:1.6;margin:10px 0}
+.mdoc pre code{background:none;color:inherit;padding:0}
+.mdoc hr{border:none;border-top:1px solid var(--border);margin:20px 0}
+.mdoc blockquote.callout{background:#fff7e6;border-left:4px solid var(--comp);
+  padding:11px 15px;border-radius:0 9px 9px 0;font-size:13.5px;color:#5c4e2a;margin:12px 0}
+.mdoc blockquote.callout p{margin:0;color:#5c4e2a}
+.mdoc table.mtab{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px;
+  background:var(--card);border:1px solid var(--border);border-radius:9px;overflow:hidden}
+.mdoc table.mtab th{background:var(--accent-soft);color:var(--accent);text-align:left;
+  padding:9px 11px;font-weight:700;border-bottom:1px solid var(--border)}
+.mdoc table.mtab td{padding:8px 11px;border-bottom:1px solid var(--border);color:#39445a;vertical-align:top}
+.mdoc table.mtab tr:last-child td{border-bottom:none}
+
 @media(max-width:600px){
   h1{font-size:21px}
   .tab{padding:9px 14px;font-size:14px}
@@ -175,6 +204,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 <div class="tabs"><div class="wrap">
   <div class="tab on" data-mode="hr">👔 人事速遞<span class="tnum" id="tHR"></span></div>
   <div class="tab" data-mode="op">💼 招聘週報<span class="tnum" id="tOP"></span></div>
+  <div class="tab" data-mode="maint">🛠 維護守則</div>
 </div></div>
 
 <div class="wrap">
@@ -204,11 +234,16 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     <main id="opList"></main>
   </div>
 
+  <!-- 維護守則模式 -->
+  <div id="maintView" class="hide">
+    <div class="mdoc" id="maintDoc"></div>
+  </div>
+
   <footer id="foot"></footer>
 </div>
 
 <script>window.DATA={"hrDigest":{
- "generatedAt": "2026-09-01 10:12:22",
+ "generatedAt": "2026-09-01 10:37:30",
  "reportCount": 53,
  "totalItems": 356,
  "dateRange": [
@@ -8130,7 +8165,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   "2026-04-16",
   "2026-08-26"
  ],
- "generatedAt": "2026-09-01 10:12",
+ "generatedAt": "2026-09-01 10:37",
  "reports": [
   {
    "categories": [],
@@ -24564,7 +24599,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
    "date": "2026-08-26"
   }
  ]
-},"generatedAt":"2026-09-01 10:12"};</script>
+},"maintenanceHtml":"<h1>金融情報看板 · 維護守則<\\/h1>\n<p>本守則說明如何日常維護團隊看板（人事速遞 + 招聘週報）。<\\/p>\n<p>看板網址永久不變：<strong>https://jackzeng317.github.io/financial-hr-digest/<\\/strong><\\/p>\n<hr>\n<h2>核心觀念（最重要的一點）<\\/h2>\n<blockquote class='callout'>看板 = 源頭 <code>.md<\\/code> 報告的「鏡像」，不是編輯對象。<\\/blockquote>\n<blockquote class='callout'><code>dashboard/index.html<\\/code> 每次同步都會被整個重新生成並覆蓋，<strong>永遠不要直接改它<\\/strong>。<\\/blockquote>\n<blockquote class='callout'>任何增刪，都是去改「源頭的 <code>.md<\\/code> 檔」，然後跑一次同步，網站就更新。<\\/blockquote>\n<p>兩個看板的單一真理源與自動化時程：<\\/p>\n<table class='mtab'><thead><tr><th>看板<\\/th><th>單一真理源（改這裡）<\\/th><th>自動化時程<\\/th><\\/tr><\\/thead><tbody><tr><td>👔 人事速遞<\\/td><td><code>reports/financial-hr-digest/YYYY-MM-DD.md<\\/code><\\/td><td>週一、四 17:00 HKT<\\/td><\\/tr><tr><td>💼 招聘週報<\\/td><td><code>20260415160214/External Openings Weekly Summary - YYYYMMDD.md<\\/code>（另一專案）<\\/td><td>週三 09:00 HKT<\\/td><\\/tr><\\/tbody><\\/table>\n<hr>\n<h2>一、人事速遞：新增一則內容<\\/h2>\n<p><strong>最省事（推薦）<\\/strong>：直接把新聞貼給我（或寫進 <code>.workbuddy/supplementary-news.md<\\/code>），等到下次週一／四 17:00 自動推送時會自動納入並同步看板，你什麼都不用做。<\\/p>\n<p><strong>想立即生效（不等自動化）<\\/strong>：<\\/p>\n<ol><li>編輯 <code>reports/financial-hr-digest/最新一期日期.md<\\/code>，在對應地區分節下加一條：<\\/li><\\/ol>\n<p>   - 分節：<code>━━━ 🇭🇰 HK/Greater China ━━━<\\/code><\\/p>\n<p>   - 條目：<code>1）標題<\\/code>（中文右括弧）<\\/p>\n<p>   - 來源：<code>📎 <a href=\"url\" target=\"_blank\" rel=\"noopener\">媒體名<\\/a><\\/code><\\/p>\n<ol><li>跑同步命令（見第四章）。<\\/li><\\/ol>\n<h2>二、人事速遞：刪減 / 修正<\\/h2>\n<p>直接編輯該期 <code>.md<\\/code> → 刪掉或改正條目 → 跑同步。<strong>改完網站才會變，重推 Telegram 不會自動更新網站。<\\/strong><\\/p>\n<h2>三、招聘週報：職位上架 / 下架<\\/h2>\n<ol><li>編輯 <code>20260415160214/External Openings Weekly Summary - 最新週三日期.md<\\/code><\\/li><li>在對應「公司 → 前／中／後台」的職位表加一列（上架）或刪一列（下架）<\\/li><li>已關閉職位<strong>直接刪除<\\/strong>，不要標 <code>Closed<\\/code><\\/li><li>跑同步命令<\\/li><\\/ol>\n<h2>四、一鍵同步命令（增刪後必跑）<\\/h2>\n<pre><code>C:\\Users\\jackzeng\\.workbuddy\\binaries\\python\\versions\\3.13.12\\python.exe C:\\Users\\jackzeng\\WorkBuddy\\20260415174158\\.workbuddy\\scripts\\sync_dashboard.py<\\/code><\\/pre>\n<p>它會：重新解析兩份源 → 合併成雙 Tab 單檔 → git push 到 GitHub Pages。約 1 分鐘內網站更新。<\\/p>\n<h2>五、最常見的誤區<\\/h2>\n<blockquote class='callout'>❌ <strong>手動改 <code>index.html<\\/code><\\/strong> → 下次同步立刻被覆蓋，白改。<\\/blockquote>\n<blockquote class='callout'>⚠️ <strong>「我重推了 Telegram」≠「網站更新了」<\\/strong> → 只要源 <code>.md<\\/code> 有變動，就必須單獨跑同步。<\\/blockquote>\n<p>✅ <strong>「等自動化跑」最省心<\\/strong> → 週三 09:00／週一四 17:00 跑完都會自動 sync，平時你只要餵內容、或改源檔即可。<\\/p>\n<h2>六、最簡單的維護方式<\\/h2>\n<p>你日常看到要加／刪的，直接把連結或文字貼給我（說「加進人事速遞」或「把某某職位下架」），我會去改對應的源 <code>.md<\\/code> 並跑同步，你打開網址刷新就看到。你不需要自己跑命令。<\\/p>\n<h2>七、本守則本身要改怎麼辦<\\/h2>\n<p>本守則是看板的一部分，來源即本檔 <code>MAINTENANCE.md<\\/code>。修改後跑一次第四章的同步命令，看板的「🛠 維護守則」Tab 即同步更新。<\\/p>","generatedAt":"2026-09-01 10:37"};</script>
 <script>
 (function(){
   var DATA=window.DATA||{};
@@ -24627,10 +24662,19 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     });
     document.getElementById('hrView').classList.toggle('hide',m!=='hr');
     document.getElementById('opView').classList.toggle('hide',m!=='op');
+    document.getElementById('maintView').classList.toggle('hide',m!=='maint');
+    var tb=document.querySelector('.toolbar');
     var q=document.getElementById('q');
     var chips=document.getElementById('chips');
     var toggle=document.getElementById('toggleAll');
     var cal=document.getElementById('cal');
+    if(m==='maint'){
+      tb.classList.add('hide');
+      document.getElementById('maintDoc').innerHTML=
+        DATA.maintenanceHtml||'<p style="color:var(--muted)">維護守則載入失敗。</p>';
+      return;
+    }
+    tb.classList.remove('hide');
     if(m==='hr'){
       q.placeholder='搜尋機構／人物／關鍵字，例如：匯豐、私銀、Citi、裁員、公募基金…';
       chips.classList.remove('hide'); toggle.classList.remove('hide'); cal.classList.remove('hide');
