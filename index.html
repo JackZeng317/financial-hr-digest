@@ -206,6 +206,30 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   .itemtitle{font-size:14px}
   .bullets{padding-left:18px}
 }
+
+/* ===== 勞動法更新 Tab ===== */
+.lb-summary{background:linear-gradient(180deg,#f3f8ff 0%,#eaf1fb 100%);border:1px solid var(--border);
+  border-radius:10px;padding:14px 18px;margin-bottom:18px}
+.lb-summary-h{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:6px}
+.lb-summary-b{font-size:14px;line-height:1.75;color:#39445a}
+.lb-region{margin-bottom:22px}
+.lb-region-h{font-size:18px;color:var(--accent);border-left:4px solid var(--accent);padding-left:10px;margin:6px 0 4px}
+.lb-intro{font-size:13.5px;color:var(--muted);margin-bottom:12px;line-height:1.7}
+.lb-item{background:var(--card);border:1px solid var(--border);border-radius:9px;padding:14px 16px;margin-bottom:12px;
+  box-shadow:0 1px 3px rgba(20,40,80,.04)}
+.lb-item-h{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:10px}
+.lb-tbl{width:100%;border-collapse:collapse;font-size:13px}
+.lb-tbl td{border-bottom:1px solid var(--border);padding:7px 8px;vertical-align:top;line-height:1.7}
+.lb-tbl tr:last-child td{border-bottom:none}
+.lb-k{width:96px;color:var(--accent);font-weight:600;background:var(--accent-soft);white-space:nowrap}
+.lb-sources{margin-top:18px;background:var(--card);border:1px solid var(--border);border-radius:9px;padding:10px 16px}
+.lb-sources summary{cursor:pointer;font-size:13.5px;font-weight:700;color:var(--accent)}
+.lb-sources ul{margin:10px 0 4px;padding-left:22px;font-size:12.5px;color:#39445a}
+.lb-sources li{margin-bottom:6px;line-height:1.6;word-break:break-all}
+.lb-sources a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-soft)}
+.lb-sources a:hover{border-bottom-color:var(--accent)}
+.lb-disc{margin-top:18px;font-size:12px;color:var(--muted);background:#fff8ec;border:1px dashed #e6c98a;
+  border-radius:8px;padding:10px 14px;line-height:1.7}
 </style>
 </head>
 <body>
@@ -218,6 +242,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 <div class="tabs"><div class="wrap">
   <div class="tab on" data-mode="hr">👔 人事速遞<span class="tnum" id="tHR"></span></div>
   <div class="tab" data-mode="op">💼 招聘週報<span class="tnum" id="tOP"></span></div>
+  <div class="tab" data-mode="labour">⚖️ 勞動法更新</div>
   <div class="tab hide" data-mode="maint">🛠 維護守則</div><!-- 暫時隱藏，恢復時移除 hide class -->
 </div></div>
 
@@ -225,6 +250,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   <div class="toolbar">
     <input id="q" type="search" placeholder="" autocomplete="off">
     <div class="chips hide" id="chips"></div>
+    <div class="chips hide" id="labourChips"></div>
     <div class="meta">
       <span id="count"></span>
       <button id="toggleAll" class="hide">展開全部</button>
@@ -268,11 +294,14 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     <div class="mdoc" id="maintDoc"></div>
   </div>
 
+  <!-- 勞動法更新模式 -->
+  <div id="labourView" class="hide"></div>
+
   <footer id="foot"></footer>
 </div>
 
 <script>window.DATA={"hrDigest":{
- "generatedAt": "2026-09-01 16:55:33",
+ "generatedAt": "2026-09-01 17:49:03",
  "reportCount": 53,
  "totalItems": 356,
  "dateRange": [
@@ -8194,7 +8223,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   "2026-04-16",
   "2026-09-01"
  ],
- "generatedAt": "2026-09-01 16:55",
+ "generatedAt": "2026-09-01 17:49",
  "reports": [
   {
    "categories": [
@@ -32044,7 +32073,202 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
    ]
   }
  ]
-},"maintenanceHtml":"<h1>維護守則</h1>\n<blockquote class='callout'>看板 = 源頭 <code>.md</code> 的鏡像。<strong>改源檔 → 跑同步 → 網站更新。</strong></blockquote>\n<hr>\n<h2>你可以做</h2>\n<ul><li><strong>加一則人事新聞</strong>：貼給我，或寫進 <code>.workbuddy/supplementary-news.md</code>（等下個推送日自動生效）</li><li><strong>立即上人事看板</strong>：編輯 <code>reports/financial-hr-digest/&lt;最新日期&gt;.md</code>，按格式加條目</li><li><strong>加 / 下架招聘職位</strong>：編輯 <code>20260415160214/External Openings Weekly Summary - &lt;最新週三&gt;.md</code>，加列或刪列</li><li><strong>改這份守則</strong>：編輯 <code>MAINTENANCE.md</code>，跑同步</li></ul>\n<h2>你不要做</h2>\n<ul><li>❌ <strong>直接改 <code>dashboard/index.html</code></strong> — 跑同步會被覆蓋，白改</li><li>❌ <strong>標 <code>Closed</code></strong> — 已關閉職位直接刪除</li></ul>\n<h2>跑這條就更新看板</h2>\n<pre><code>C:\\Users\\jackzeng\\.workbuddy\\binaries\\python\\versions\\3.13.12\\python.exe C:\\Users\\jackzeng\\WorkBuddy\\20260415174158\\.workbuddy\\scripts\\sync_dashboard.py</code></pre>\n<p>或者直接告訴我「加進人事速遞：⋯」或「把 XX 職位下架」，我來改源檔 + 跑同步，你刷新網址就好。</p>\n<h2>自動化時程</h2>\n<ul><li>👔 人事速遞：每週一、四 17:00 HKT</li><li>💼 招聘週報：每週三 09:00 HKT</li></ul>\n<p>兩個自動化跑完都會自動同步看板，不用手動。</p>","generatedAt":"2026-09-01 16:55"};</script>
+},"maintenanceHtml":"<h1>維護守則</h1>\n<blockquote class='callout'>看板 = 源頭 <code>.md</code> 的鏡像。<strong>改源檔 → 跑同步 → 網站更新。</strong></blockquote>\n<hr>\n<h2>你可以做</h2>\n<ul><li><strong>加一則人事新聞</strong>：貼給我，或寫進 <code>.workbuddy/supplementary-news.md</code>（等下個推送日自動生效）</li><li><strong>立即上人事看板</strong>：編輯 <code>reports/financial-hr-digest/&lt;最新日期&gt;.md</code>，按格式加條目</li><li><strong>加 / 下架招聘職位</strong>：編輯 <code>20260415160214/External Openings Weekly Summary - &lt;最新週三&gt;.md</code>，加列或刪列</li><li><strong>改這份守則</strong>：編輯 <code>MAINTENANCE.md</code>，跑同步</li></ul>\n<h2>你不要做</h2>\n<ul><li>❌ <strong>直接改 <code>dashboard/index.html</code></strong> — 跑同步會被覆蓋，白改</li><li>❌ <strong>標 <code>Closed</code></strong> — 已關閉職位直接刪除</li></ul>\n<h2>跑這條就更新看板</h2>\n<pre><code>C:\\Users\\jackzeng\\.workbuddy\\binaries\\python\\versions\\3.13.12\\python.exe C:\\Users\\jackzeng\\WorkBuddy\\20260415174158\\.workbuddy\\scripts\\sync_dashboard.py</code></pre>\n<p>或者直接告訴我「加進人事速遞：⋯」或「把 XX 職位下架」，我來改源檔 + 跑同步，你刷新網址就好。</p>\n<h2>自動化時程</h2>\n<ul><li>👔 人事速遞：每週一、四 17:00 HKT</li><li>💼 招聘週報：每週三 09:00 HKT</li></ul>\n<p>兩個自動化跑完都會自動同步看板，不用手動。</p>","labour":{
+  "period": "2026 年 7 月 – 8 月",
+  "generated": "2026 年 8 月 20 日",
+  "summary": "本期（2026 年 7 月至 8 月）三地勞動法動態重點如下：<b>新加坡<\/b>於 7 月 1 日集中落地多項重大變更——本地員工薪金門檻上調至 S$1,800、法定退休年齡升至 64 歲、《職場公平法案》正式生效，並預告 2027 年 EP/S 準證薪金門檻再度上調；<b>中國內地<\/b>首部《超齡勞動者基本權益保障暫行規定》7 月 1 日施行，退休返聘合規要求全面升級；<b>香港<\/b>本月無重大新法例出台，惟早前生效的「4-68」連續性合約規則、最低工資 HK$43.1 及 eMPF 平台等合規要求持續影響企業運作，並有 2027 年起法定假日繼續遞增的安排。",
+  "regions": [
+    {
+      "key": "HK",
+      "name": "香港特別行政區",
+      "title": "一、香港特別行政區",
+      "intro": "本期香港未有重大新法例發布，以下為近期已生效且持續影響 HR 合規運作的重要變更。",
+      "items": [
+        {
+          "title": "法定最低工資調升至每小時 HK$43.1",
+          "meta": "生效日期：2026 年 5 月 1 日（「一年一檢」機制下首次調整）",
+          "summary": "法定最低工資由每小時 HK$42.1 調升至 HK$43.1，增幅約 2.38%，是政府改行「一年一檢」方程式後的首個調整結果。同時，僱主可獲豁免記錄僱員總工作時數的月薪金額上限，由每月 HK$17,200 提高至 HK$17,600。",
+          "impact": "僱主須即時更新薪酬系統及最低工資合規檢查；月薪低於 HK$17,600 的僱員須逐項記錄工作時數。涉及基層崗位（清潔、保安、零售、飲食業等）的人力成本將相應上升，建議檢視薪酬結構以確保合規。",
+          "sources": "勞工處：https://www.labour.gov.hk/tc/news/mwo.htm"
+        },
+        {
+          "title": "「連續性合約」門檻由「4-18」改為「4-68」規則",
+          "meta": "生效日期：2026 年 1 月 18 日",
+          "summary": "《僱傭條例》下連續性合約的判定標準由「4 星期內每星期工作至少 18 小時」改為「連續 4 星期內總工作時數達 68 小時」；另設每周 17 小時的分支門檻。預計令超過 11,000 名兼職及不規則工時僱員新納入連續性合約保障範圍。",
+          "impact": "須重新審視兼職及輪班員工的工時計算，改以滾動 4 星期總工時監察。獲連續性合約身分的僱員將享有有薪年假、法定假日、病假津貼、休息日、產假/侍產假及遣散費/長期服務金等法定權益，影響零售、餐飲、酒店及物流業尤甚。",
+          "sources": "勞工處：https://www.labour.gov.hk/tc/legislat/content5.htm；BGC 集團 2026 香港勞工法更新分析：https://bgc-group.com/hk/key-hong-kong-labor-law-updates-for-2026"
+        },
+        {
+          "title": "法定假日增至 15 日（2026 年新增復活節星期一）",
+          "meta": "生效日期：2026 年 1 月 1 日起逐年實施（2026 年達 15 日）",
+          "summary": "根據《2021 年僱傭（修訂）條例》，法定假日與公眾假期逐步看齊。2026 年新增復活節星期一（2026 年 4 月 6 日）為法定假日，總數增至 15 日。若法定假日適逢僱員休息日，僱主須於翌日補假。",
+          "impact": "確認 2026 年度假日曆中新增的法定假日並安排補假；假期安排須計入輪班編制。未來年度（2027-2030）將繼續增加，直至與公眾假期完全一致。",
+          "sources": "勞工處法定假日頁面：https://www.labour.gov.hk/tc/legislat/content5.htm"
+        },
+        {
+          "title": "強積金對沖安排取消 + eMPF 平台全面推行",
+          "meta": "對沖取消生效日期：2025 年 5 月 1 日；eMPF 於 2025/2026 年成為強制標準",
+          "summary": "自 2025 年 5 月 1 日起，僱主不可再以強制性強積金供款對沖遣散費/長期服務金（僅過渡期前的服務年期仍可對沖，自願性供款仍適用）。政府設 25 年補貼計劃上限僱主責任。eMPF 平台全面推行後，積金局可實時監察供款時效及準確性，遲交或錯誤申報的成本大幅上升。",
+          "impact": "長期服務僱員的離職成本須以現金全數預留，不能再以強積金對沖；須為每名僱員分別追蹤 2025 年 5 月 1 日前後兩段服務年期。eMPF 強制使用後，供款申報的合規壓力顯著增加，建議檢視現有薪酬系統與 eMPF 的對接。",
+          "sources": "積金局：https://www.mpfa.org.hk；HR Plus Talent 2026 合規報告：https://www.hrplustalent.com/post/hong-kong-hr-payroll-compliance-in-2026-a-trends-report-for-employers"
+        }
+      ]
+    },
+    {
+      "key": "SG",
+      "name": "新加坡",
+      "title": "二、新加坡",
+      "intro": "新加坡於 2026 年 7 月 1 日集中實施多項勞工法令調整，加上 2027 年準證門檻已公布，屬本期合規重點地區。",
+      "items": [
+        {
+          "title": "本地員工薪金門檻（LQS）上調至 S$1,800",
+          "meta": "生效日期：2026 年 7 月 1 日",
+          "summary": "本地員工薪金門檻由每月 S$1,600 上調至 S$1,800。低於此門檻的本地員工在外籍員工配額計算中只計 0.5 個名額，直接影響企業的外籍工作準證配額。",
+          "impact": "聘用外籍員工的企業須檢視本地員工薪酬結構，確保符合 LQS 以免外籍配額被扣減；低於 S$1,800 的本地員工須調整薪酬或重新評估外籍員工編制。",
+          "sources": "MOM 公告（2026 年 5-6 月）；Humance 知識庫：https://www.humancehr.com/knowledge-base/singapores-labor-law-adjustments-in-2026"
+        },
+        {
+          "title": "法定退休年齡上調至 64 歲、重新僱傭年齡上限提高至 69 歲",
+          "meta": "生效日期：2026 年 7 月 1 日",
+          "summary": "法定退休年齡由 63 歲上調至 64 歲，重新僱傭年齡上限由 68 歲提高至 69 歲。符合條件的僱員可獲重新僱傭至 69 歲，僱主無正當理由不得以年齡為由拒絕。",
+          "impact": "更新退休及重新僱傭政策，規劃 64 歲及以上員工的重新僱傭安排；Work Permit年齡上限同步調整，接近原年齡上限的外籍員工可能取得新的續簽途徑。",
+          "sources": "MOM 退休與重新僱傭政策：https://www.mom.gov.sg；Raffles 企業服務：https://singaporesecretaryservices.com/work-permit-singapore-2026-complete-employer-guide-quota-levy-age-limits-and-compliance"
+        },
+        {
+          "title": "《職場公平法案》（Workplace Fairness Act）正式生效",
+          "meta": "生效日期：2026 年 7 月 1 日",
+          "summary": "反就業歧視由行政準則升級為強制法律，禁止基於年齡、性別、種族、宗教、殘障、婚姻狀況、心理健康等 11 類歧視，涵蓋招聘、晉升、調崗、解僱及薪酬各環節。25 人以上企業必須設立內部投訴渠道，爭議統一由僱傭糾紛法庭處理。",
+          "impact": "須建立標準化反歧視內部申訴機制，對招聘人員進行合規培訓，並留存招聘及考核紀錄備查；違規可能面臨重罰及外籍用工配額限制。建議盡快更新員工手冊。",
+          "sources": "MOM Workplace Fairness：https://www.mom.gov.sg；People Matters：https://www.peoplemattersglobal.com/article/global-perspective/gamification-has-evolved-to-solve-new-age-workforce-challenges-21185"
+        },
+        {
+          "title": "共享帶薪育兒假由 6 周延長至 10 周",
+          "meta": "生效日期：2026 年 4 月 1 日（適用於當日或之後出生/領養的子女）",
+          "summary": "符合資格的在職父母共享帶薪育兒假由 6 周增至 10 周，可於子女出生後 12 個月內靈活分配使用。政府提供每周最高 S$2,500 的薪金補貼。",
+          "impact": "更新育兒假政策及薪酬系統；安排假期覆核機制，配合員工靈活使用共享育兒假。對人手編制及臨時替代安排有實際影響。",
+          "sources": "MOM 家庭假期：https://www.mom.gov.sg；People Matters 2026 年報"
+        },
+        {
+          "title": "EP / S 準證最低薪金門檻上調（2026 現行 + 2027 預告）",
+          "meta": "現行：2026 年 7 月生效；新門檻：2027 年 1 月 1 日起（新申請）",
+          "summary": "2026 年現行門檻：EP 非金融業 S$5,600、金融業 S$6,200（隨年齡遞增至 45 歲以上最高 S$10,700 / S$11,800）；S 準證 S$3,300。已公布 2027 年 1 月起新申請上調：EP S$6,000 / S$6,600（金融業），S 準證 S$3,600；2028 年續簽同步上調。EP 須通過 COMPASS 計分（40 分合格線），學歷認證須經 MOM 核准第三方核實。",
+          "impact": "規劃 2027-2028 年招聘預算時須預留薪金門檻上調空間；外籍員工續簽及新增準證申請須重新檢視薪酬設定；COMPASS 學歷認證要求將增加申請處理時間。",
+          "sources": "MOM：https://www.mom.gov.sg；Alitium 2026 外籍人才僱傭指南：https://www.alitium.com/hiring-foreign-talent-in-2026-for-singapore-malaysia"
+        },
+        {
+          "title": "CPF 繳存上限上調至 S$8,000 + 外包 PWM 工人年假 7→10 日（2029 起分階段）",
+          "meta": "CPF 上限：2026 年 1 月起；PWM 年假：2026 年 7 月公布、2029 年起分階段實施",
+          "summary": "2026 年 CPF 普通工資月度上限由 S$7,400 上調至 S$8,000，55-65 歲員工僱主繳存比例小幅上調（政府配套補貼緩衝）。另 MOM 於 2026 年 7 月公布，清潔、保安、園藝、升降機及電扶梯、廢物管理五個 PWM 行業的外包員工最低年假由 7 日增至 10 日，2029 年起分階段推行，預計惠及約 60% 相關外包員工。",
+          "impact": "更新薪酬系統的 CPF 計算上限及僱主繳存率；外包服務合約須預留年假成本上升空間，與服務供應商重新議價時應將 PWM 年假調整納入考量。",
+          "sources": "CPF Board：https://www.cpf.gov.sg；People Matters：https://www.peoplemattersglobal.com/article/global-perspective/gamification-has-evolved-to-solve-new-age-workforce-challenges-21185"
+        }
+      ]
+    },
+    {
+      "key": "CN",
+      "name": "中國內地",
+      "title": "三、中國內地",
+      "intro": "中國內地本期焦點為《超齡勞動者基本權益保障暫行規定》施行，以及新就業形態勞動者權益保障的立法推進。",
+      "items": [
+        {
+          "title": "《超齡勞動者基本權益保障暫行規定》施行（全國首部）",
+          "meta": "公布日期：2026 年 5 月 10 日；施行日期：2026 年 7 月 1 日",
+          "summary": "人社部等五部門令第 56 號，首次以國家層面規章系統保障超過法定退休年齡勞動者的權益。四大核心權益：① 勞動報酬——不得低於當地最低工資，按月足額發放；② 休息休假——原則上不安排加班，確需加班按《勞動法》標準支付 150%/200%/300% 加班費；③ 勞動安全——按身體狀況安排崗位，不得安排危險作業；④ 工傷保障——用人單位須為其繳納工傷保險費（個人不繳費）。",
+          "impact": "聘用退休返聘人員的企業須簽訂書面用工協議（明確薪酬、工時、社保等），並為其參加工傷保險；檢視現有退休返聘合約及薪酬結構，確保符合最低工資及加班費規定。相關爭議可循勞動調解/仲裁程序處理。",
+          "sources": "人社部令第 56 號全文及解讀：https://www.lnlh.gov.cn/info/1566/49236.htm；中華網報導：https://3g.china.com/act/redian/13004758/20260710/49601173.html"
+        },
+        {
+          "title": "新就業形態勞動者社保覆蓋擴大（「十五五」規劃部署）",
+          "meta": "發布日期：2026 年 7 月（人社部例行新聞發布會 2026-07-22）",
+          "summary": "《人力資源和社會保障事業發展「十五五」規劃》部署：研究建立新就業形態統計制度、健全平台勞動規則和算法監管、擴大職業傷害保障試點、鼓勵新就業形態勞動者參加職工養老保險；抓緊出台《新就業形態勞動者權益保障辦法》。",
+          "impact": "使用平台用工、靈活用工的企業須密切關注《新就業形態勞動者權益保障辦法》立法進展；平台企業須就訂單分配、收入抽成、工時休息等規則與勞動者協商（《平台勞動規則和算法協商指引（試行）》2026 年 3 月已出台）。",
+          "sources": "人民日報 2026-07-24：https://sc.people.cn/BIG5/n2/2026/0724/c345167-41648290.html；中工網 2026-08-19：https://www.workercn.cn/c/2026-08-19/8873812.shtml"
+        },
+        {
+          "title": "2026 年社保重點政策：養老保險繳費年限、補繳限制、醫保轉移等",
+          "meta": "發布日期：2026 年（陸續發布）",
+          "summary": "① 職工養老保險最低繳費年限自 2030 年起由 15 年逐步延長至 20 年（設過渡期）；② 社保斷繳僅限當年補繳，全面取消跨年一次性補繳；③ 全面取消靈活就業及新就業形態勞動者參保的戶籍限制；④ 職工醫保跨省轉移全程網上辦理；⑤ 用人單位須在用工 30 日內辦理參保登記並足額代扣代繳。",
+          "impact": "為員工辦理入職時須確保 30 日內完成參保登記；向員工說明養老保險繳費年限延長政策對長期規劃的影響；跨省調動員工的醫保轉移可全程網辦，簡化異地入職流程。",
+          "sources": "人社部官網：https://www.mohrss.gov.cn；2026 年社保重點政策解讀：https://www.liangyuan.gov.cn/xzjdxxgk/lkz/fdzdgknr3/zcjd5/content_253728"
+        },
+        {
+          "title": "企業年金個人帳戶線上轉移接續 + 《實施就業優先戰略「十五五」規劃》",
+          "meta": "發布日期：2026 年 7 月（人社部相關文件）",
+          "summary": "人社部辦公廳印發《企業年金個人帳戶轉移接續辦法》，實現企業年金個人帳戶線上轉移接續，便利員工跨單位流動。國務院《實施就業優先戰略「十五五」規劃》提出完善帶薪年休假制度、督促企業依法落實工作時間與休息休假規定、健全最低工資標準調整機制及工資集體協商制度。",
+          "impact": "關注帶薪年休假執行的監管趨嚴趨勢；企業年金管理系統須支援線上轉移接續；最低工資調整機制完善後，各地最低工資標準可能更頻繁調整，須定期核查。",
+          "sources": "人社部官網：https://www.mohrss.gov.cn；汕頭市人社局轉載解讀：https://www.shantou.gov.cn/hrss/zwgk/gzdt/content/post_2555466.html"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "香港・勞工處（法定最低工資）",
+      "url": "https://www.labour.gov.hk/tc/news/mwo.htm"
+    },
+    {
+      "name": "香港・《最低工資條例》第 608 章",
+      "url": "https://www.labour.gov.hk/tc/legislat/content5.htm"
+    },
+    {
+      "name": "香港・BGC 集團 2026 勞工法更新",
+      "url": "https://bgc-group.com/hk/key-hong-kong-labor-law-updates-for-2026"
+    },
+    {
+      "name": "香港・HR Plus Talent 2026 合規趨勢",
+      "url": "https://www.hrplustalent.com/post/hong-kong-hr-payroll-compliance-in-2026-a-trends-report-for-employers"
+    },
+    {
+      "name": "香港・1823 最低工資計算",
+      "url": "https://www.1823.gov.hk/tc/faq/how-to-determine-if-wages-meet-the-minimum-wage-requirement"
+    },
+    {
+      "name": "新加坡・MOM 人力部",
+      "url": "https://www.mom.gov.sg"
+    },
+    {
+      "name": "新加坡・CPF Board",
+      "url": "https://www.cpf.gov.sg"
+    },
+    {
+      "name": "新加坡・Humance 2026 勞工法令調整",
+      "url": "https://www.humancehr.com/knowledge-base/singapores-labor-law-adjustments-in-2026"
+    },
+    {
+      "name": "新加坡・Alitium 外籍人才僱傭指南",
+      "url": "https://www.alitium.com/hiring-foreign-talent-in-2026-for-singapore-malaysia"
+    },
+    {
+      "name": "新加坡・Raffles 企業服務 Work Permit 指南",
+      "url": "https://singaporesecretaryservices.com/work-permit-singapore-2026-complete-employer-guide-quota-levy-age-limits-and-compliance"
+    },
+    {
+      "name": "新加坡・People Matters 2026 年報",
+      "url": "https://www.peoplemattersglobal.com/article/global-perspective/gamification-has-evolved-to-solve-new-age-workforce-challenges-21185"
+    },
+    {
+      "name": "中國・人社部官方網站",
+      "url": "https://www.mohrss.gov.cn"
+    },
+    {
+      "name": "中國・《超齡勞動者基本權益保障暫行規定》解讀",
+      "url": "https://www.lnlh.gov.cn/info/1566/49236.htm"
+    },
+    {
+      "name": "中國・人民日報（新就業形態社保覆蓋）",
+      "url": "https://sc.people.cn/BIG5/n2/2026/0724/c345167-41648290.html"
+    },
+    {
+      "name": "中國・中工網（新就業群體權益保障）",
+      "url": "https://www.workercn.cn/c/2026-08-19/8873812.shtml"
+    },
+    {
+      "name": "中國・2026 社保重點政策解讀",
+      "url": "https://www.liangyuan.gov.cn/xzjdxxgk/lkz/fdzdgknr3/zcjd5/content_253728"
+    }
+  ],
+  "disclaimer": "本報告由人工智能助理根據公開資料整理，內容僅供內部參考，不構成法律意見。法規條文隨時可能修訂，具體適用情況請以官方最新公布為準，並在作出任何決策前諮詢合資格的法律專業人士。資料來源已於各項目及來源清單中列明，惟連結可能隨時間失效。"
+},"generatedAt":"2026-09-01 17:49"};</script>
 <script>
 (function(){
   var DATA=window.DATA||{};
@@ -32065,7 +32289,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     open:{}, allOpen:false,
     hrDate:(HR.reports.length?'ALL':'ALL'),
     opDate:(OP.reports.length?OP.reports[OP.reports.length-1].date:'ALL'),
-    opCompany:'all'
+    opCompany:'all',
+    labourRegion:'all'
   };
 
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){
@@ -32073,6 +32298,13 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   function escRe(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
   function hl(s,q){
     s=esc(s);
+    if(!q) return s;
+    try{return s.replace(new RegExp('('+escRe(esc(q))+')','gi'),'<mark>$1</mark>');}catch(e){return s;}
+  }
+  function hlBold(s,q){
+    // 先跳脫，再只放行 <b>/</b>（轉為 <strong>），其餘標籤一律當純文字
+    s=esc(s);
+    s=s.replace(/&lt;b&gt;/g,'<strong>').replace(/&lt;\/b&gt;/g,'</strong>');
     if(!q) return s;
     try{return s.replace(new RegExp('('+escRe(esc(q))+')','gi'),'<mark>$1</mark>');}catch(e){return s;}
   }
@@ -32092,11 +32324,18 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     var opLatestCount=(opLatest.jobsFlat||[]).length;
     var opLatestDate=opLatest.date||'';
     var opMonthLabel=opLatestDate? (opLatestDate.slice(0,7).replace('-','年').replace('年0','年')+'月') : '';
+    // 勞動法：最新報告的更新事項總數
+    var lbTot=0, lbPeriod='';
+    if(DATA.labour && DATA.labour.regions){
+      DATA.labour.regions.forEach(function(r){lbTot+=(r.items||[]).length;});
+      lbPeriod=DATA.labour.period||'';
+    }
     document.getElementById('stats').innerHTML=
       '<div class="stat"><b>'+HR.reportCount+'</b><span>人事速遞期數</span></div>'+
       '<div class="stat"><b>'+hrTot+'</b><span>條人事資訊</span></div>'+
       '<div class="stat"><b>'+OP.reportCount+'</b><span>招聘週報期數</span></div>'+
       '<div class="stat"><b>'+opLatestCount+'</b><span>最新開放職位（'+opMonthLabel+'）</span></div>'+
+      '<div class="stat"><b>'+lbTot+'</b><span>勞動法更新事項'+(lbPeriod?('（'+lbPeriod+'）'):'')+'</span></div>'+
       '<div class="stat"><b>'+(DATA.generatedAt||'')+'</b><span>最後更新</span></div>';
     document.getElementById('tHR').textContent=HR.reportCount?(' '+HR.reportCount):'';
     document.getElementById('tOP').textContent=OP.reportCount?(' '+OP.reportCount):'';
@@ -32112,6 +32351,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     document.getElementById('hrView').classList.toggle('hide',m!=='hr');
     document.getElementById('opView').classList.toggle('hide',m!=='op');
     document.getElementById('maintView').classList.toggle('hide',m!=='maint');
+    document.getElementById('labourView').classList.toggle('hide',m!=='labour');
     var tb=document.querySelector('.toolbar');
     var q=document.getElementById('q');
     var chips=document.getElementById('chips');
@@ -32125,14 +32365,19 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     }
     tb.classList.remove('hide');
     var opChips=document.getElementById('opChips');
+    var lbChips=document.getElementById('labourChips');
     if(m==='hr'){
       q.placeholder='搜尋機構／人物／關鍵字，例如：匯豐、私銀、Citi、裁員、公募基金…';
       chips.classList.remove('hide'); toggle.classList.remove('hide'); hrBar.classList.remove('hide');
-      opChips.classList.add('hide');
+      opChips.classList.add('hide'); lbChips.classList.add('hide');
+    }else if(m==='labour'){
+      q.placeholder='搜尋法規／關鍵字，例如：最低工資、年假、簽證、CPF、退休…';
+      chips.classList.add('hide'); toggle.classList.add('hide'); hrBar.classList.add('hide');
+      opChips.classList.add('hide'); lbChips.classList.remove('hide');
     }else{
       q.placeholder='搜尋職位／公司／前中後台，例如：ETF、Compliance、CICC、前台…';
       chips.classList.add('hide'); toggle.classList.add('hide'); hrBar.classList.add('hide');
-      opChips.classList.remove('hide');
+      opChips.classList.remove('hide'); lbChips.classList.add('hide');
     }
     render();
   }
@@ -32174,6 +32419,27 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     el.addEventListener('click',function(e){
       var t=e.target.closest('.chip');if(!t)return;
       state.opCompany=t.getAttribute('data-c');
+      [].forEach.call(el.querySelectorAll('.chip'),function(x){x.classList.remove('on');});
+      t.classList.add('on');render();
+    });
+  })();
+
+  // ===== 勞動法：地區 chips =====
+  (function(){
+    var LABOUR_REGIONS=[
+      {k:'HK',label:'香港'},
+      {k:'SG',label:'新加坡'},
+      {k:'CN',label:'中國內地'}
+    ];
+    var h='<div class="chip'+(state.labourRegion==='all'?' on':'')+'" data-l="all">全部地區</div>';
+    LABOUR_REGIONS.forEach(function(r){
+      h+='<div class="chip'+(state.labourRegion===r.k?' on':'')+'" data-l="'+esc(r.k)+'">'+esc(r.label)+'</div>';
+    });
+    var el=document.getElementById('labourChips');
+    el.innerHTML=h;
+    el.addEventListener('click',function(e){
+      var t=e.target.closest('.chip');if(!t)return;
+      state.labourRegion=t.getAttribute('data-l');
       [].forEach.call(el.querySelectorAll('.chip'),function(x){x.classList.remove('on');});
       t.classList.add('on');render();
     });
@@ -32383,9 +32649,69 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     }
   }
 
+  // ===== 勞動法更新 =====
+  function renderLabourSources(s){
+    var t=esc(s||'');
+    // 將 URL 轉為可點連結（保留中文分號作為分隔）
+    return t.replace(/https?:\/\/[^\s；;]+/g,function(u){
+      return '<a href="'+u+'" target="_blank" rel="noopener">'+u+'</a>';
+    });
+  }
+  function renderLabour(){
+    var q=state.q.trim().toLowerCase();
+    var L=(typeof DATA!=='undefined'&&DATA.labour)||{regions:[],sources:[],summary:'',disclaimer:'',period:''};
+    var regions=(L.regions||[]).filter(function(r){
+      return state.labourRegion==='all'||r.key===state.labourRegion;
+    });
+    var shown=0;
+    var html='';
+    html+='<div class="lb-summary"><div class="lb-summary-h">📌 報告摘要（'+(L.period||'')+'）</div>'+
+           '<div class="lb-summary-b">'+hlBold(L.summary||'',state.q)+'</div></div>';
+    regions.forEach(function(r){
+      var items=(r.items||[]).filter(function(it){
+        if(!q)return true;
+        var s=(it.title||'')+' '+(it.summary||'')+' '+(it.impact||'')+' '+(it.meta||'');
+        return s.toLowerCase().indexOf(q)>=0;
+      });
+      if(!items.length && q) return;
+      shown+=items.length;
+      html+='<div class="lb-region"><h3 class="lb-region-h">'+esc(r.title)+'</h3>';
+      html+='<div class="lb-intro">'+esc(r.intro||'')+'</div>';
+      items.forEach(function(it,idx){
+        html+='<div class="lb-item">'+
+          '<div class="lb-item-h">'+(idx+1)+'. '+hl(it.title||'',state.q)+'</div>'+
+          '<table class="lb-tbl"><tbody>'+
+            '<tr><td class="lb-k">發佈 / 生效</td><td>'+hl(it.meta||'',state.q)+'</td></tr>'+
+            '<tr><td class="lb-k">要點摘要</td><td>'+hl(it.summary||'',state.q)+'</td></tr>'+
+            '<tr><td class="lb-k">對 HR 的影響</td><td>'+hl(it.impact||'',state.q)+'</td></tr>'+
+            '<tr><td class="lb-k">資料來源</td><td>'+renderLabourSources(it.sources||'')+'</td></tr>'+
+          '</tbody></table>'+
+        '</div>';
+      });
+      html+='</div>';
+    });
+    var srcs=(L.sources||[]);
+    if(srcs.length){
+      html+='<details class="lb-sources"><summary>📚 資料來源清單（'+srcs.length+' 項）</summary><ul>';
+      srcs.forEach(function(s){
+        var u=safeUrl(s.url);
+        html+='<li>'+esc(s.name||'')+(u?(' — <a href="'+esc(u)+'" target="_blank" rel="noopener">'+esc(u)+'</a>'):'')+'</li>';
+      });
+      html+='</ul></details>';
+    }
+    if(L.disclaimer){
+      html+='<div class="lb-disc">⚠️ '+esc(L.disclaimer)+'</div>';
+    }
+    var box=document.getElementById('labourView');
+    box.innerHTML=html||'<div class="empty">查無符合條件的勞動法更新。</div>';
+    var total=0;(L.regions||[]).forEach(function(r){total+=(r.items||[]).length;});
+    document.getElementById('count').textContent='共 '+total+' 項更新事項'+(q?('，符合 '+shown+' 項'):'');
+  }
+
   // ===== 主渲染分派 =====
   function render(){
     if(state.mode==='hr') renderHR();
+    else if(state.mode==='labour') renderLabour();
     else renderOpenings();
   }
 
