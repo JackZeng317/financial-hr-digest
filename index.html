@@ -155,32 +155,48 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 .hide{display:none!important}
 
 /* 維護守則 */
-.mdoc{max-width:780px;margin:0 auto;padding-top:6px}
-.mdoc h1{font-size:23px;margin:6px 0 4px;color:var(--accent)}
-.mdoc h2{font-size:18.5px;margin:24px 0 8px;color:var(--accent);
-  border-bottom:2px solid var(--accent-soft);padding-bottom:6px}
-.mdoc h3{font-size:15.5px;margin:16px 0 6px;color:var(--text)}
-.mdoc h4{font-size:14px;margin:12px 0 4px;color:var(--text)}
-.mdoc p{font-size:14px;color:#39445a;margin:9px 0;line-height:1.7}
-.mdoc ul,.mdoc ol{font-size:14px;color:#39445a;padding-left:24px;margin:9px 0}
-.mdoc li{margin-bottom:5px}
-.mdoc a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-soft)}
-.mdoc a:hover{color:var(--cn)}
-.mdoc code{background:#eef2f7;color:#b83227;padding:1px 6px;border-radius:5px;
-  font-size:12.5px;font-family:ui-monospace,Menlo,Consolas,monospace}
-.mdoc pre{background:#1e2433;color:#e6edf3;padding:13px 15px;border-radius:9px;
-  overflow:auto;font-size:12.5px;line-height:1.6;margin:10px 0}
-.mdoc pre code{background:none;color:inherit;padding:0}
-.mdoc hr{border:none;border-top:1px solid var(--border);margin:20px 0}
-.mdoc blockquote.callout{background:#fff7e6;border-left:4px solid var(--comp);
-  padding:11px 15px;border-radius:0 9px 9px 0;font-size:13.5px;color:#5c4e2a;margin:12px 0}
+.mdoc{max-width:800px;margin:0 auto;padding:22px 24px 12px;background:var(--card);
+  border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow)}
+.mdoc h1{font-size:26px;margin:0 0 4px;color:var(--accent);font-weight:700;letter-spacing:.3px}
+.mdoc h2{font-size:16px;margin:26px 0 10px;color:var(--text);font-weight:700;
+  display:flex;align-items:center;gap:9px;padding-bottom:7px;
+  border-bottom:1px solid var(--border)}
+.mdoc h2::before{content:"";display:inline-block;width:4px;height:16px;
+  background:var(--accent);border-radius:2px}
+.mdoc h3{font-size:14.5px;margin:16px 0 6px;color:var(--accent);font-weight:700}
+.mdoc p{font-size:14.5px;color:#39445a;margin:9px 0;line-height:1.75}
+.mdoc ul,.mdoc ol{font-size:14.5px;color:#39445a;padding-left:24px;margin:10px 0}
+.mdoc li{margin-bottom:6px;line-height:1.7}
+.mdoc li::marker{color:var(--accent)}
+.mdoc a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-soft);
+  transition:.15s;padding:0 1px}
+.mdoc a:hover{border-bottom-color:var(--accent);background:var(--accent-soft)}
+.mdoc strong{color:var(--accent)}
+.mdoc code{background:#eef2f7;color:#1e4d8c;padding:2px 7px;border-radius:5px;
+  font-size:13px;font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:500}
+.mdoc pre{background:linear-gradient(135deg,#1e2433,#252d40);color:#e6edf3;
+  padding:14px 16px;border-radius:10px;overflow:auto;font-size:12.5px;
+  line-height:1.65;margin:12px 0;border:1px solid #2a3144;
+  font-family:ui-monospace,Menlo,Consolas,monospace}
+.mdoc pre code{background:none;color:inherit;padding:0;font-size:12.5px;font-weight:400}
+.mdoc hr{border:none;border-top:1px dashed var(--border);margin:22px 0}
+.mdoc blockquote.callout{background:linear-gradient(135deg,#fff7e6,#fff3d6);
+  border-left:4px solid var(--comp);border-radius:0 10px 10px 0;
+  padding:13px 16px;font-size:14px;color:#5c4e2a;margin:14px 0;
+  box-shadow:0 1px 3px rgba(184,134,11,.08);font-weight:500}
 .mdoc blockquote.callout p{margin:0;color:#5c4e2a}
-.mdoc table.mtab{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px;
-  background:var(--card);border:1px solid var(--border);border-radius:9px;overflow:hidden}
+.mdoc blockquote.callout code{background:rgba(184,134,11,.12);color:#7a5a10}
+.mdoc table.mtab{width:100%;border-collapse:separate;border-spacing:0;
+  margin:14px 0;font-size:13.5px;background:var(--card);
+  border:1px solid var(--border);border-radius:10px;overflow:hidden;
+  box-shadow:0 1px 2px rgba(20,30,50,.04)}
 .mdoc table.mtab th{background:var(--accent-soft);color:var(--accent);text-align:left;
-  padding:9px 11px;font-weight:700;border-bottom:1px solid var(--border)}
-.mdoc table.mtab td{padding:8px 11px;border-bottom:1px solid var(--border);color:#39445a;vertical-align:top}
+  padding:11px 14px;font-weight:700;border-bottom:1px solid var(--border);
+  font-size:13px;letter-spacing:.3px}
+.mdoc table.mtab td{padding:10px 14px;border-bottom:1px solid var(--border);
+  color:#39445a;vertical-align:top;line-height:1.6}
 .mdoc table.mtab tr:last-child td{border-bottom:none}
+.mdoc table.mtab tbody tr:hover{background:#fafbfd}
 
 @media(max-width:600px){
   h1{font-size:21px}
@@ -243,7 +259,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 </div>
 
 <script>window.DATA={"hrDigest":{
- "generatedAt": "2026-09-01 10:37:56",
+ "generatedAt": "2026-09-01 10:46:17",
  "reportCount": 53,
  "totalItems": 356,
  "dateRange": [
@@ -8165,7 +8181,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   "2026-04-16",
   "2026-08-26"
  ],
- "generatedAt": "2026-09-01 10:37",
+ "generatedAt": "2026-09-01 10:46",
  "reports": [
   {
    "categories": [],
@@ -24599,7 +24615,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
    "date": "2026-08-26"
   }
  ]
-},"maintenanceHtml":"<h1>金融情報看板 · 維護守則<\\/h1>\n<p>本守則說明如何日常維護團隊看板（人事速遞 + 招聘週報）。<\\/p>\n<p>看板網址永久不變：<strong>https://jackzeng317.github.io/financial-hr-digest/<\\/strong><\\/p>\n<hr>\n<h2>核心觀念（最重要的一點）<\\/h2>\n<blockquote class='callout'>看板 = 源頭 <code>.md<\\/code> 報告的「鏡像」，不是編輯對象。<\\/blockquote>\n<blockquote class='callout'><code>dashboard/index.html<\\/code> 每次同步都會被整個重新生成並覆蓋，<strong>永遠不要直接改它<\\/strong>。<\\/blockquote>\n<blockquote class='callout'>任何增刪，都是去改「源頭的 <code>.md<\\/code> 檔」，然後跑一次同步，網站就更新。<\\/blockquote>\n<p>兩個看板的單一真理源與自動化時程：<\\/p>\n<table class='mtab'><thead><tr><th>看板<\\/th><th>單一真理源（改這裡）<\\/th><th>自動化時程<\\/th><\\/tr><\\/thead><tbody><tr><td>👔 人事速遞<\\/td><td><code>reports/financial-hr-digest/YYYY-MM-DD.md<\\/code><\\/td><td>週一、四 17:00 HKT<\\/td><\\/tr><tr><td>💼 招聘週報<\\/td><td><code>20260415160214/External Openings Weekly Summary - YYYYMMDD.md<\\/code>（另一專案）<\\/td><td>週三 09:00 HKT<\\/td><\\/tr><\\/tbody><\\/table>\n<hr>\n<h2>一、人事速遞：新增一則內容<\\/h2>\n<p><strong>最省事（推薦）<\\/strong>：直接把新聞貼給我（或寫進 <code>.workbuddy/supplementary-news.md<\\/code>），等到下次週一／四 17:00 自動推送時會自動納入並同步看板，你什麼都不用做。<\\/p>\n<p><strong>想立即生效（不等自動化）<\\/strong>：<\\/p>\n<ol><li>編輯 <code>reports/financial-hr-digest/最新一期日期.md<\\/code>，在對應地區分節下加一條：<\\/li><\\/ol>\n<p>   - 分節：<code>━━━ 🇭🇰 HK/Greater China ━━━<\\/code><\\/p>\n<p>   - 條目：<code>1）標題<\\/code>（中文右括弧）<\\/p>\n<p>   - 來源：<code>📎 <a href=\"url\" target=\"_blank\" rel=\"noopener\">媒體名<\\/a><\\/code><\\/p>\n<ol><li>跑同步命令（見第四章）。<\\/li><\\/ol>\n<h2>二、人事速遞：刪減 / 修正<\\/h2>\n<p>直接編輯該期 <code>.md<\\/code> → 刪掉或改正條目 → 跑同步。<strong>改完網站才會變，重推 Telegram 不會自動更新網站。<\\/strong><\\/p>\n<h2>三、招聘週報：職位上架 / 下架<\\/h2>\n<ol><li>編輯 <code>20260415160214/External Openings Weekly Summary - 最新週三日期.md<\\/code><\\/li><li>在對應「公司 → 前／中／後台」的職位表加一列（上架）或刪一列（下架）<\\/li><li>已關閉職位<strong>直接刪除<\\/strong>，不要標 <code>Closed<\\/code><\\/li><li>跑同步命令<\\/li><\\/ol>\n<h2>四、一鍵同步命令（增刪後必跑）<\\/h2>\n<pre><code>C:\\Users\\jackzeng\\.workbuddy\\binaries\\python\\versions\\3.13.12\\python.exe C:\\Users\\jackzeng\\WorkBuddy\\20260415174158\\.workbuddy\\scripts\\sync_dashboard.py<\\/code><\\/pre>\n<p>它會：重新解析兩份源 → 合併成雙 Tab 單檔 → git push 到 GitHub Pages。約 1 分鐘內網站更新。<\\/p>\n<h2>五、最常見的誤區<\\/h2>\n<blockquote class='callout'>❌ <strong>手動改 <code>index.html<\\/code><\\/strong> → 下次同步立刻被覆蓋，白改。<\\/blockquote>\n<blockquote class='callout'>⚠️ <strong>「我重推了 Telegram」≠「網站更新了」<\\/strong> → 只要源 <code>.md<\\/code> 有變動，就必須單獨跑同步。<\\/blockquote>\n<p>✅ <strong>「等自動化跑」最省心<\\/strong> → 週三 09:00／週一四 17:00 跑完都會自動 sync，平時你只要餵內容、或改源檔即可。<\\/p>\n<h2>六、最簡單的維護方式<\\/h2>\n<p>你日常看到要加／刪的，直接把連結或文字貼給我（說「加進人事速遞」或「把某某職位下架」），我會去改對應的源 <code>.md<\\/code> 並跑同步，你打開網址刷新就看到。你不需要自己跑命令。<\\/p>\n<h2>七、本守則本身要改怎麼辦<\\/h2>\n<p>本守則是看板的一部分，來源即本檔 <code>MAINTENANCE.md<\\/code>。修改後跑一次第四章的同步命令，看板的「🛠 維護守則」Tab 即同步更新。<\\/p>","generatedAt":"2026-09-01 10:37"};</script>
+},"maintenanceHtml":"<h1>維護守則</h1>\n<blockquote class='callout'>看板 = 源頭 <code>.md</code> 的鏡像。<strong>改源檔 → 跑同步 → 網站更新。</strong></blockquote>\n<hr>\n<h2>你可以做</h2>\n<ul><li><strong>加一則人事新聞</strong>：貼給我，或寫進 <code>.workbuddy/supplementary-news.md</code>（等下個推送日自動生效）</li><li><strong>立即上人事看板</strong>：編輯 <code>reports/financial-hr-digest/&lt;最新日期&gt;.md</code>，按格式加條目</li><li><strong>加 / 下架招聘職位</strong>：編輯 <code>20260415160214/External Openings Weekly Summary - &lt;最新週三&gt;.md</code>，加列或刪列</li><li><strong>改這份守則</strong>：編輯 <code>MAINTENANCE.md</code>，跑同步</li></ul>\n<h2>你不要做</h2>\n<ul><li>❌ <strong>直接改 <code>dashboard/index.html</code></strong> — 跑同步會被覆蓋，白改</li><li>❌ <strong>標 <code>Closed</code></strong> — 已關閉職位直接刪除</li></ul>\n<h2>跑這條就更新看板</h2>\n<pre><code>C:\\Users\\jackzeng\\.workbuddy\\binaries\\python\\versions\\3.13.12\\python.exe C:\\Users\\jackzeng\\WorkBuddy\\20260415174158\\.workbuddy\\scripts\\sync_dashboard.py</code></pre>\n<p>或者直接告訴我「加進人事速遞：⋯」或「把 XX 職位下架」，我來改源檔 + 跑同步，你刷新網址就好。</p>\n<h2>自動化時程</h2>\n<ul><li>👔 人事速遞：每週一、四 17:00 HKT</li><li>💼 招聘週報：每週三 09:00 HKT</li></ul>\n<p>兩個自動化跑完都會自動同步看板，不用手動。</p>","generatedAt":"2026-09-01 10:46"};</script>
 <script>
 (function(){
   var DATA=window.DATA||{};
