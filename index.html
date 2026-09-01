@@ -99,16 +99,19 @@ h1{margin:0 0 4px;font-size:25px;letter-spacing:.5px}
 .ovcard{background:var(--op-soft);border:1px solid #c7e6df;border-radius:10px;padding:10px 14px}
 .ovcard b{display:block;font-size:19px;color:var(--op);line-height:1.2}
 .ovcard span{font-size:12px;color:var(--muted)}
-.opsum{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--op);
-  border-radius:0 8px 8px 0;padding:10px 14px;font-size:13.5px;color:#39445a;margin-bottom:16px}
+.ophint{background:var(--card);border:1px dashed var(--border);border-radius:8px;
+  padding:9px 14px;font-size:13px;color:var(--muted);margin-bottom:14px}
 
-/* 本週職位概覽 */
-.opbrief{background:linear-gradient(180deg,#f7fbf9 0%,#fff 100%);
-  border:1px solid #d6ebe2;border-left:3px solid var(--op);border-radius:10px;
-  padding:12px 16px 14px;margin-bottom:14px}
-.opbrief-h{font-size:13px;font-weight:700;color:var(--op);margin-bottom:6px;
-  display:flex;align-items:center;gap:6px;letter-spacing:.3px}
-.opbrief-t{font-size:13.5px;color:#39445a;line-height:1.72}
+/* 前中後台分類說明（預設收合） */
+.oplegend{background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:8px 14px;margin-bottom:14px;font-size:12.5px;color:var(--muted)}
+.oplegend summary{cursor:pointer;font-weight:600;color:var(--fg);user-select:none;
+  list-style:none;display:flex;align-items:center;gap:6px;padding:2px 0}
+.oplegend summary::-webkit-details-marker{display:none}
+.oplegend summary::before{content:'▸';color:var(--op);transition:transform .15s}
+.oplegend[open] summary::before{content:'▾'}
+.oplegend ul{margin:8px 0 4px;padding-left:18px;line-height:1.85}
+.oplegend b{color:var(--fg)}
 
 /* 重要提示 */
 .ophl{background:linear-gradient(180deg,#fffbf2 0%,#fff7e6 100%);
@@ -244,14 +247,18 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       <select id="opSel"></select>
     </div>
     <div class="opov" id="opOv"></div>
-    <div class="opbrief hide" id="opBrief">
-      <div class="opbrief-h" id="opBriefH">📋 本週職位概覽</div>
-      <div class="opbrief-t" id="opBriefT"></div>
-    </div>
     <div class="ophl hide" id="opHl">
-      <div class="ophl-h">⚠️ 重要提示</div>
+      <div class="ophl-h">⚠️ 重要提醒</div>
       <ol class="ophl-l" id="opHlL"></ol>
     </div>
+    <details class="oplegend hide" id="opLegend">
+      <summary>前台 / 中台 / 後台 分類說明</summary>
+      <ul>
+        <li><b>前台</b>：投資管理、交易、銷售、研究、業務發展、財富管理</li>
+        <li><b>中台</b>：風險管理、合規、產品開發、市場推廣、客戶服務、內部審計</li>
+        <li><b>後台</b>：運營、IT／技術、人力資源、財務、法律／公司秘書、行政</li>
+      </ul>
+    </details>
     <main id="opList"></main>
   </div>
 
@@ -264,7 +271,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 </div>
 
 <script>window.DATA={"hrDigest":{
- "generatedAt": "2026-09-01 11:24:24",
+ "generatedAt": "2026-09-01 11:51:48",
  "reportCount": 53,
  "totalItems": 356,
  "dateRange": [
@@ -8186,7 +8193,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   "2026-04-16",
   "2026-08-26"
  ],
- "generatedAt": "2026-09-01 11:24",
+ "generatedAt": "2026-09-01 11:51",
  "reports": [
   {
    "categories": [
@@ -33468,7 +33475,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
    ]
   }
  ]
-},"maintenanceHtml":"<h1>維護守則</h1>\n<blockquote class='callout'>看板 = 源頭 <code>.md</code> 的鏡像。<strong>改源檔 → 跑同步 → 網站更新。</strong></blockquote>\n<hr>\n<h2>你可以做</h2>\n<ul><li><strong>加一則人事新聞</strong>：貼給我，或寫進 <code>.workbuddy/supplementary-news.md</code>（等下個推送日自動生效）</li><li><strong>立即上人事看板</strong>：編輯 <code>reports/financial-hr-digest/&lt;最新日期&gt;.md</code>，按格式加條目</li><li><strong>加 / 下架招聘職位</strong>：編輯 <code>20260415160214/External Openings Weekly Summary - &lt;最新週三&gt;.md</code>，加列或刪列</li><li><strong>改這份守則</strong>：編輯 <code>MAINTENANCE.md</code>，跑同步</li></ul>\n<h2>你不要做</h2>\n<ul><li>❌ <strong>直接改 <code>dashboard/index.html</code></strong> — 跑同步會被覆蓋，白改</li><li>❌ <strong>標 <code>Closed</code></strong> — 已關閉職位直接刪除</li></ul>\n<h2>跑這條就更新看板</h2>\n<pre><code>C:\\Users\\jackzeng\\.workbuddy\\binaries\\python\\versions\\3.13.12\\python.exe C:\\Users\\jackzeng\\WorkBuddy\\20260415174158\\.workbuddy\\scripts\\sync_dashboard.py</code></pre>\n<p>或者直接告訴我「加進人事速遞：⋯」或「把 XX 職位下架」，我來改源檔 + 跑同步，你刷新網址就好。</p>\n<h2>自動化時程</h2>\n<ul><li>👔 人事速遞：每週一、四 17:00 HKT</li><li>💼 招聘週報：每週三 09:00 HKT</li></ul>\n<p>兩個自動化跑完都會自動同步看板，不用手動。</p>","generatedAt":"2026-09-01 11:24"};</script>
+},"maintenanceHtml":"<h1>維護守則</h1>\n<blockquote class='callout'>看板 = 源頭 <code>.md</code> 的鏡像。<strong>改源檔 → 跑同步 → 網站更新。</strong></blockquote>\n<hr>\n<h2>你可以做</h2>\n<ul><li><strong>加一則人事新聞</strong>：貼給我，或寫進 <code>.workbuddy/supplementary-news.md</code>（等下個推送日自動生效）</li><li><strong>立即上人事看板</strong>：編輯 <code>reports/financial-hr-digest/&lt;最新日期&gt;.md</code>，按格式加條目</li><li><strong>加 / 下架招聘職位</strong>：編輯 <code>20260415160214/External Openings Weekly Summary - &lt;最新週三&gt;.md</code>，加列或刪列</li><li><strong>改這份守則</strong>：編輯 <code>MAINTENANCE.md</code>，跑同步</li></ul>\n<h2>你不要做</h2>\n<ul><li>❌ <strong>直接改 <code>dashboard/index.html</code></strong> — 跑同步會被覆蓋，白改</li><li>❌ <strong>標 <code>Closed</code></strong> — 已關閉職位直接刪除</li></ul>\n<h2>跑這條就更新看板</h2>\n<pre><code>C:\\Users\\jackzeng\\.workbuddy\\binaries\\python\\versions\\3.13.12\\python.exe C:\\Users\\jackzeng\\WorkBuddy\\20260415174158\\.workbuddy\\scripts\\sync_dashboard.py</code></pre>\n<p>或者直接告訴我「加進人事速遞：⋯」或「把 XX 職位下架」，我來改源檔 + 跑同步，你刷新網址就好。</p>\n<h2>自動化時程</h2>\n<ul><li>👔 人事速遞：每週一、四 17:00 HKT</li><li>💼 招聘週報：每週三 09:00 HKT</li></ul>\n<p>兩個自動化跑完都會自動同步看板，不用手動。</p>","generatedAt":"2026-09-01 11:51"};</script>
 <script>
 (function(){
   var DATA=window.DATA||{};
@@ -33700,12 +33707,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       '<div class="ovcard"><b>'+(ov.change||'—')+'</b><span>較上週變化</span></div>'+
       '<div class="ovcard"><b>'+(ov.companies||0)+'</b><span>追蹤公司</span></div>';
     document.getElementById('opOv').innerHTML=ovcards;
-    // 本週職位概覽
-    var briefEl=document.getElementById('opBrief');
-    var briefT=document.getElementById('opBriefT');
-    var wk=(r.weekBrief||'').trim();
-    if(wk){briefEl.classList.remove('hide');briefT.innerHTML=hl(wk,q);}
-    else{briefEl.classList.add('hide');briefT.innerHTML='';}
+    // 前中後台分類說明：單週模式才顯示
+    document.getElementById('opLegend').classList.remove('hide');
     // 重要提示
     var hlEl=document.getElementById('opHl');
     var hlL=document.getElementById('opHlL');
@@ -33763,14 +33766,11 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       });
       var box=document.getElementById('opList');
       box.innerHTML=html||'<div class="empty">跨週搜尋查無符合職位，試試其他關鍵字。</div>';
-      document.getElementById('opOv').innerHTML='';
-      // 跨週模式：本週職位概覽改為提示文字、重要提示卡隱藏
-      var msg= q ? ('跨全部週期搜尋「<b>'+esc(q)+'</b>」的結果。') : '選擇上方週期查看該週職位，或搜尋跨週職位。';
-      var bEl=document.getElementById('opBrief');
-      bEl.classList.remove('hide');
-      document.getElementById('opBriefH').textContent=q?'🔍 跨週搜尋結果':'📅 跨週瀏覽模式';
-      document.getElementById('opBriefT').innerHTML=msg;
+      document.getElementById('opOv').innerHTML=
+        '<div class="ophint">'+(q?('🔍 跨全部週期搜尋「<b>'+esc(q)+'</b>」的結果。')
+                                :'📅 跨週瀏覽模式：選擇上方週期查看該週職位，或輸入關鍵字跨週搜尋。')+'</div>';
       document.getElementById('opHl').classList.add('hide');
+      document.getElementById('opLegend').classList.add('hide');
       document.getElementById('count').textContent='共 '+total+' 個職位符合';
     }else{
       var r=OP.reports.filter(function(x){return x.date===state.opDate;})[0];
