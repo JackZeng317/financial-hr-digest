@@ -334,7 +334,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 </div>
 
 <script>window.DATA={"hrDigest":{
- "generatedAt": "2026-09-17 10:55:30",
+ "generatedAt": "2026-09-17 12:03:05",
  "reportCount": 57,
  "totalItems": 397,
  "dateRange": [
@@ -9083,7 +9083,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   "2026-04-16",
   "2026-09-14"
  ],
- "generatedAt": "2026-09-17 10:55",
+ "generatedAt": "2026-09-17 12:03",
  "reports": [
   {
    "categories": [
@@ -37791,7 +37791,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "added": [],
     "removed": []
   }
-},"generatedAt":"2026-09-17 10:55"};</script>
+},"generatedAt":"2026-09-17 12:03"};</script>
 <script>
 (function(){
   var DATA=window.DATA||{};
@@ -38272,10 +38272,6 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       if(adds.length) html+='<span class="add">🟢 本週新增 '+adds.length+' 家：'+esc(adds.join('、'))+'</span>';
       if(rems.length) html+='<span class="rem">🔴 本週退出 '+rems.length+' 家：'+esc(rems.join('、'))+'</span>';
       html+='</div>';
-    }
-    // AUM 狀態提示
-    if(E.aumStatus==='paused'){
-      html+='<div class="etp-note">ℹ️ 發行商「資產管理規模（AUM）」追蹤暫停—HKEX 逐隻 ETP 規模數據受 bot 防護保護，腳本化抓取被阻擋。本區目前僅顯示官方發行商名單（每週自動更新）。</div>';
     }
     // 統計摘要
     var t=E.totals||{};
