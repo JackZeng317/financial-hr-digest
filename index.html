@@ -230,6 +230,35 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 .lb-sources a:hover{border-bottom-color:var(--accent)}
 .lb-disc{margin-top:18px;font-size:12px;color:var(--muted);background:#fff8ec;border:1px dashed #e6c98a;
   border-radius:8px;padding:10px 14px;line-height:1.7}
+
+/* ===== ETP 發行商 Tab ===== */
+.etp-meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px;font-size:13px;color:var(--muted)}
+.etp-meta .src{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:5px 12px}
+.etp-meta .src a{color:var(--accent);text-decoration:none}
+.etp-meta .src a:hover{text-decoration:underline}
+.etp-chg{font-size:13px;margin-bottom:14px}
+.etp-chg .add{color:var(--op);background:var(--op-soft);border:1px solid #c7e6df;border-radius:8px;padding:6px 12px;display:inline-block;margin:3px 6px 3px 0}
+.etp-chg .rem{color:#c0392b;background:#fdecea;border:1px solid #f5c6c0;border-radius:8px;padding:6px 12px;display:inline-block;margin:3px 6px 3px 0}
+.etp-note{background:var(--card);border:1px dashed var(--border);border-radius:8px;padding:9px 14px;
+  font-size:13px;color:var(--muted);margin-bottom:14px}
+.etp-table{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);
+  border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);font-size:14px}
+.etp-table thead th{background:var(--accent-soft);color:var(--accent);text-align:left;padding:11px 14px;
+  font-weight:700;font-size:13px;letter-spacing:.3px;border-bottom:1px solid var(--border)}
+.etp-table tbody td{padding:10px 14px;border-bottom:1px solid var(--border);color:#39445a;vertical-align:middle}
+.etp-table tbody tr:last-child td{border-bottom:none}
+.etp-table tbody tr:hover{background:#fafbfd}
+.etp-table .idx{width:46px;color:var(--muted);font-weight:600;text-align:center}
+.etp-name{font-weight:600;color:var(--text)}
+.etp-name .self{display:inline-block;margin-left:8px;font-size:11px;font-weight:700;color:#fff;background:var(--accent);
+  padding:1px 8px;border-radius:4px;vertical-align:middle}
+.etp-table tr.self td{background:#f3f8ff}
+.etp-table tr.self:hover td{background:#eaf1fb}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;white-space:nowrap}
+.tag.etf{color:var(--accent);background:var(--accent-soft)}
+.tag.lv{color:#b8860b;background:#fbf2dc}
+.tag.none{color:var(--muted);background:#eef2f7}
+.etp-aum{color:var(--muted);font-size:12px}
 </style>
 </head>
 <body>
@@ -243,6 +272,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   <div class="tab on" data-mode="hr">👔 人事速遞<span class="tnum" id="tHR"></span></div>
   <div class="tab" data-mode="op">💼 招聘週報<span class="tnum" id="tOP"></span></div>
   <div class="tab" data-mode="labour">⚖️ 勞動法更新</div>
+  <div class="tab" data-mode="etp">📈 ETP 發行商</div>
   <div class="tab hide" data-mode="maint">🛠 維護守則</div><!-- 暫時隱藏，恢復時移除 hide class -->
 </div></div>
 
@@ -297,11 +327,14 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   <!-- 勞動法更新模式 -->
   <div id="labourView" class="hide"></div>
 
+  <!-- ETP 發行商模式 -->
+  <div id="etpView" class="hide"></div>
+
   <footer id="foot"></footer>
 </div>
 
 <script>window.DATA={"hrDigest":{
- "generatedAt": "2026-09-14 17:09:07",
+ "generatedAt": "2026-09-17 10:55:30",
  "reportCount": 57,
  "totalItems": 397,
  "dateRange": [
@@ -9050,7 +9083,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   "2026-04-16",
   "2026-09-14"
  ],
- "generatedAt": "2026-09-14 17:09",
+ "generatedAt": "2026-09-17 10:55",
  "reports": [
   {
    "categories": [
@@ -37531,7 +37564,234 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     }
   ],
   "disclaimer": "本報告由人工智能助理根據公開資料整理，內容僅供內部參考，不構成法律意見。法規條文隨時可能修訂，具體適用情況請以官方最新公布為準，並在作出任何決策前諮詢合資格的法律專業人士。資料來源已於各項目及來源清單中列明，惟連結可能隨時間失效。"
-},"generatedAt":"2026-09-14 17:09"};</script>
+},"etp":{
+  "generatedAt": "2026-09-17 10:43",
+  "source": "HKEX List of ETP Issuers（香港交易所·官方在港 ETP 發行商名單）",
+  "sourceUrl": "https://www.hkex.com.hk/Products/Securities/Exchange-Traded-Products/Issuers/List-of-Issuers?sc_lang=zh-HK",
+  "aumEnabled": false,
+  "aumStatus": "paused",
+  "issuers": [
+    {
+      "name": "東方匯理資產管理香港有限公司",
+      "phone": "852-2827 3842",
+      "email": "capitalmarkets@hk.amundi.com",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "貝萊德資產管理北亞有限公司",
+      "phone": "852-3903 2823",
+      "email": "iSharesAsiaEnquiry@blackrock.com",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "中銀國際英國保誠資產管理有限公司",
+      "phone": "852-2280 8697",
+      "email": "info@boci-pru.com.hk",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "博時基金(國際)有限公司",
+      "phone": "852-2537 6658",
+      "email": "ask@bosera.com.hk",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "華夏基金（香港）有限公司",
+      "phone": "852-3406 8686",
+      "email": "chinaamc_etf@chinaamc.com?subject=chinaamc_etf%40chinaamc.com",
+      "isETF": true,
+      "isLeveraged": true
+    },
+    {
+      "name": "中國國際金融香港資產管理有限公司",
+      "phone": "852-2872 2000",
+      "email": "CICC_HK_ETF@cicc.com.cn",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "招商證券資產管理（香港）有限公司",
+      "phone": "852-2530 0698",
+      "email": "cmsam-cs@cmschina.com.hk",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "南方東英資產管理有限公司",
+      "phone": "852-3406 5688",
+      "email": "info@csopasset.com",
+      "isETF": true,
+      "isLeveraged": true
+    },
+    {
+      "name": "Deutsche Asset Management S.A.",
+      "phone": "852-2203 6886",
+      "email": "info.dbx-trackers@db.com",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "都會金融香港有限公司",
+      "phone": "852-3755 3466",
+      "email": "cs@doofinancial.hk",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "易方達資產管理（香港）有限公司",
+      "phone": "852-3929 0960",
+      "email": "clientservice@efunds.com.hk",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "富邦基金管理",
+      "phone": "852-3918 3388 / 852-3918 3233",
+      "email": "ffmhk.invtrust@fubon.com",
+      "isETF": true,
+      "isLeveraged": true
+    },
+    {
+      "name": "富國資產管理（香港）有限公司",
+      "phone": "852-3713 0000",
+      "email": "fg-etf@fullgoal.com.hk",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "恒生投資管理有限公司",
+      "phone": "852-2198 5890",
+      "email": "etf@hangseng.com",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "嘉實國際資產管理有限公司",
+      "phone": "852-3913 3393",
+      "email": "HGIclientservice@hk.jsfund.cn",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "匯豐投資基金(香港)有限公司",
+      "phone": "852-2284 1118",
+      "email": "assetmanagement@hsbc.com.hk",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "工銀瑞信資產管理（國際）有限公司",
+      "phone": "852- 3975 3618",
+      "email": "assetmanagement@hsbc.com.hk",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "Invesco Capital Management LLC",
+      "phone": "852-3128 6000",
+      "email": "APAC.ETF@Invesco.com",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "日興資產管理香港有限公司",
+      "phone": "852-3940 3900",
+      "email": "asiaetf@nikkoam.com",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "小飛資產管理有限公司",
+      "phone": "852-3188 0110",
+      "email": "microbit_enquiry@web3.com",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "未來資產環球投資 (香港)有限公司",
+      "phone": "852-2295 1500",
+      "email": "etf@horizonsetfs.com.hk",
+      "isETF": true,
+      "isLeveraged": true
+    },
+    {
+      "name": "潘渡有限公司",
+      "phone": "852- 3891 3288",
+      "email": "etf@pandofinance.com.hk",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "中國平安資產管理 (香港)有限公司",
+      "phone": "852-3762 9228",
+      "email": "enquiries@pingan.com.hk",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "輝立資本管理（香港）有限公司",
+      "phone": "852- 2277 6698",
+      "email": "assetmgt@phillip.com.hk",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "Premia Partners Company Limited",
+      "phone": "852-2950 5700",
+      "email": "enquiries@premia-partners.com",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "三星資產運用（香港）有限公司",
+      "phone": "852-2115 8710",
+      "email": "etf.enquiry@samsung.com",
+      "isETF": true,
+      "isLeveraged": true
+    },
+    {
+      "name": "山證國際資產管理有限公司",
+      "phone": "852-2501 1039",
+      "email": "ssifametf@ssif.com.hk",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "道富環球投資管理亞洲有限公司",
+      "phone": "852-2103 0100 / 65-6826 7500",
+      "email": "SSGAASIA@SSgA.com",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "泰康資產管理 (香港) 有限公司",
+      "phone": "852-3975-5100",
+      "email": "ETF_TKHK@taikangamc.com.cn",
+      "isETF": true,
+      "isLeveraged": false
+    },
+    {
+      "name": "惠理基金管理香港有限公司",
+      "phone": "852-2880 9263",
+      "email": "operations@valueETF.com.hk",
+      "isETF": true,
+      "isLeveraged": false
+    }
+  ],
+  "totals": {
+    "issuerCount": 30,
+    "etfIssuerCount": 30,
+    "lvIssuerCount": 5
+  },
+  "changes": {
+    "added": [],
+    "removed": []
+  }
+},"generatedAt":"2026-09-17 10:55"};</script>
 <script>
 (function(){
   var DATA=window.DATA||{};
@@ -37599,6 +37859,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       '<div class="stat" data-mode="op"><b>'+OP.reportCount+'</b><span>招聘週報期數</span></div>'+
       '<div class="stat" data-mode="op"><b>'+opLatestCount+'</b><span>最新開放職位（'+opMonthLabel+'）</span></div>'+
       '<div class="stat" data-mode="labour"><b>'+lbTot+'</b><span>勞動法更新事項'+(lbPeriod?('（'+lbPeriod+'）'):'')+'</span></div>'+
+      '<div class="stat" data-mode="etp"><b>'+(DATA.etp&&DATA.etp.totals?DATA.etp.totals.issuerCount:'—')+'</b><span>在港 ETP 發行商</span></div>'+
       '<div class="stat" data-mode="all"><b>'+(DATA.generatedAt||'')+'</b><span>最後更新</span></div>';
     document.getElementById('tHR').textContent=HR.reportCount?(' '+HR.reportCount):'';
     document.getElementById('tOP').textContent=OP.reportCount?(' '+OP.reportCount):'';
@@ -37615,6 +37876,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     document.getElementById('opView').classList.toggle('hide',m!=='op');
     document.getElementById('maintView').classList.toggle('hide',m!=='maint');
     document.getElementById('labourView').classList.toggle('hide',m!=='labour');
+    document.getElementById('etpView').classList.toggle('hide',m!=='etp');
     var tb=document.querySelector('.toolbar');
     var q=document.getElementById('q');
     var chips=document.getElementById('chips');
@@ -37637,6 +37899,10 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       q.placeholder='搜尋法規／關鍵字，例如：最低工資、年假、簽證、CPF、退休…';
       chips.classList.add('hide'); toggle.classList.add('hide'); hrBar.classList.add('hide');
       opChips.classList.add('hide'); lbChips.classList.remove('hide');
+    }else if(m==='etp'){
+      q.placeholder='搜尋發行商名稱，例如：CSOP、南方東英、華夏、BlackRock、三星…';
+      chips.classList.add('hide'); toggle.classList.add('hide'); hrBar.classList.add('hide');
+      opChips.classList.add('hide'); lbChips.classList.add('hide');
     }else{
       q.placeholder='搜尋職位／公司／前中後台，例如：ETF、Compliance、CICC、前台…';
       chips.classList.add('hide'); toggle.classList.add('hide'); hrBar.classList.add('hide');
@@ -37984,10 +38250,73 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     document.getElementById('count').textContent='共 '+total+' 項更新事項'+(q?('，符合 '+shown+' 項'):'');
   }
 
+  // ===== ETP 發行商名單 =====
+  function renderEtp(){
+    var q=state.q.trim().toLowerCase();
+    var E=(typeof DATA!=='undefined'&&DATA.etp)||{issuers:[],totals:{},changes:{}};
+    var issuers=(E.issuers||[]).filter(function(it){
+      if(!q)return true;
+      return (it.name||'').toLowerCase().indexOf(q)>=0;
+    });
+    var html='';
+    // 來源 + 更新時間
+    html+='<div class="etp-meta"><span class="src">資料來源：'+
+      (E.sourceUrl?'<a href="'+esc(E.sourceUrl)+'" target="_blank" rel="noopener">':'')+
+      esc(E.source||'HKEX')+(E.sourceUrl?'</a>':'')+'</span>'+
+      '<span class="src">抓取時間：'+(E.generatedAt||'—')+'</span></div>';
+    // 名單變動提示
+    var ch=E.changes||{};
+    var adds=(ch.added||[]), rems=(ch.removed||[]);
+    if(adds.length||rems.length){
+      html+='<div class="etp-chg">';
+      if(adds.length) html+='<span class="add">🟢 本週新增 '+adds.length+' 家：'+esc(adds.join('、'))+'</span>';
+      if(rems.length) html+='<span class="rem">🔴 本週退出 '+rems.length+' 家：'+esc(rems.join('、'))+'</span>';
+      html+='</div>';
+    }
+    // AUM 狀態提示
+    if(E.aumStatus==='paused'){
+      html+='<div class="etp-note">ℹ️ 發行商「資產管理規模（AUM）」追蹤暫停—HKEX 逐隻 ETP 規模數據受 bot 防護保護，腳本化抓取被阻擋。本區目前僅顯示官方發行商名單（每週自動更新）。</div>';
+    }
+    // 統計摘要
+    var t=E.totals||{};
+    html+='<div class="opov" style="margin-bottom:14px">'+
+      '<div class="ovcard"><b>'+(t.issuerCount||issuers.length)+'</b><span>ETP 發行商總數</span></div>'+
+      '<div class="ovcard"><b>'+(t.etfIssuerCount||0)+'</b><span>ETF 發行商</span></div>'+
+      '<div class="ovcard"><b>'+(t.lvIssuerCount||0)+'</b><span>槓桿／反向發行商</span></div>'+
+      '<div class="ovcard"><b>'+(E.aumEnabled?'✅':'⏸')+'</b><span>AUM 追蹤</span></div>'+
+    '</div>';
+    // 表格
+    if(!issuers.length){
+      html+='<div class="empty">查無符合條件的發行商，試試其他關鍵字。</div>';
+    }else{
+      html+='<table class="etp-table"><thead><tr>'+
+        '<th class="idx">#</th><th>發行商</th><th>類型</th><th>資產管理規模</th></tr></thead><tbody>';
+      issuers.forEach(function(it,idx){
+        var isSelf=(/南方東英|CSOP/i).test(it.name||'');
+        var tags='';
+        if(it.isLeveraged) tags+='<span class="tag lv">槓桿／反向</span> ';
+        if(it.isETF) tags+='<span class="tag etf">ETF</span>';
+        if(!it.isETF&&!it.isLeveraged) tags+='<span class="tag none">—</span>';
+        var aum='<span class="etp-aum">'+(it.aum!=null?esc(it.aum+(it.aumUnit?(' '+it.aumUnit):'')):'待啟用')+'</span>';
+        html+='<tr class="'+(isSelf?'self':'')+'">'+
+          '<td class="idx">'+(idx+1)+'</td>'+
+          '<td class="etp-name">'+hl(it.name,q)+(isSelf?'<span class="self">CSOP（自營）</span>':'')+'</td>'+
+          '<td>'+tags+'</td>'+
+          '<td>'+aum+'</td>'+
+        '</tr>';
+      });
+      html+='</tbody></table>';
+    }
+    document.getElementById('etpView').innerHTML=html;
+    var tot=(E.issuers||[]).length;
+    document.getElementById('count').textContent='共 '+tot+' 家發行商'+(q?('，符合 '+issuers.length+' 家'):'');
+  }
+
   // ===== 主渲染分派 =====
   function render(){
     if(state.mode==='hr') renderHR();
     else if(state.mode==='labour') renderLabour();
+    else if(state.mode==='etp') renderEtp();
     else renderOpenings();
   }
 
@@ -38002,6 +38331,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       if(state.mode==='hr'){
         if(v.trim()){state.allOpen=true;document.getElementById('toggleAll').textContent='摺疊全部';}
         renderHR();
+      }else if(state.mode==='etp'){
+        renderEtp();
       }else{renderOpenings();}
     },180);
   });
