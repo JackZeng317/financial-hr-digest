@@ -102,6 +102,31 @@ h1{margin:0 0 4px;font-size:25px;letter-spacing:.5px}
 .ophint{background:var(--card);border:1px dashed var(--border);border-radius:8px;
   padding:9px 14px;font-size:13px;color:var(--muted);margin-bottom:14px}
 
+/* ===== 招聘可視化圖表 ===== */
+.opviz{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0 16px}
+.vizcard{background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:16px 18px;box-shadow:var(--shadow)}
+.vizcard.full{grid-column:1/-1}
+.viz-h{font-size:15px;font-weight:700;margin:0 0 15px;color:var(--text)}
+.viz-bar{display:flex;height:14px;border-radius:999px;overflow:hidden;margin-bottom:16px;background:#eef1f5}
+.viz-bar>i{display:block;height:100%;transition:width .45s ease}
+.viz-nums{display:flex;flex-wrap:wrap;gap:14px 26px}
+.viz-num b{display:block;font-size:26px;font-weight:700;line-height:1.1;color:var(--text)}
+.viz-num .lab{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;
+  color:var(--muted);margin-top:3px;white-space:nowrap}
+.viz-num .lab em{font-style:normal;color:var(--text);font-weight:600}
+.viz-dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto;display:inline-block}
+/* 週趨勢柱狀圖 */
+.viz-trend{display:flex;align-items:flex-end;gap:5px;padding-top:4px}
+.viz-col{flex:1;min-width:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-end}
+.viz-col .cnt{font-size:11px;font-weight:700;color:var(--muted);margin-bottom:3px}
+.viz-col .bar{width:100%;max-width:34px;min-height:3px;border-radius:5px 5px 0 0;
+  background:#c9dff5;transition:height .45s ease}
+.viz-col.on .bar{background:var(--op)}
+.viz-col.on .cnt{color:var(--op)}
+.viz-col .dt{font-size:10px;color:var(--muted);margin-top:6px;white-space:nowrap}
+
 /* 前中後台分類說明（預設收合） */
 .oplegend{background:var(--card);border:1px solid var(--border);border-radius:8px;
   padding:8px 14px;margin-bottom:14px;font-size:12.5px;color:var(--muted)}
@@ -201,6 +226,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   .tab{padding:9px 14px;font-size:14px}
   .toolbar{top:50px}
   .opov{grid-template-columns:repeat(2,1fr)}
+  .opviz{grid-template-columns:1fr}
+  .viz-nums{gap:12px 20px}
+  .viz-num b{font-size:22px}
   .rhead{padding:12px 14px}
   .rsum,.rbody{padding-left:14px;padding-right:14px}
   .itemtitle{font-size:14px}
@@ -306,6 +334,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     </div>
     <div class="chips hide" id="opChips"></div>
     <div class="opov" id="opOv"></div>
+    <div class="opviz" id="opViz"></div>
     <div class="ophl hide" id="opHl">
       <div class="ophl-h">⚠️ 重要提醒</div>
       <ol class="ophl-l" id="opHlL"></ol>
@@ -336,7 +365,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 </div>
 
 <script>window.DATA={"hrDigest":{
- "generatedAt": "2026-09-17 17:10:25",
+ "generatedAt": "2026-09-17 18:07:05",
  "reportCount": 58,
  "totalItems": 407,
  "dateRange": [
@@ -9301,7 +9330,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   "2026-04-16",
   "2026-09-14"
  ],
- "generatedAt": "2026-09-17 17:10",
+ "generatedAt": "2026-09-17 18:07",
  "reports": [
   {
    "categories": [
@@ -38037,7 +38066,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "added": [],
     "removed": []
   }
-},"generatedAt":"2026-09-17 17:10"};</script>
+},"generatedAt":"2026-09-17 18:07"};</script>
 <script>
 (function(){
   var DATA=window.DATA||{};
@@ -38356,6 +38385,80 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     if(safeUrl(j.link))h+='<a class="apply" href="'+esc(safeUrl(j.link))+'" target="_blank" rel="noopener">申請 ↗</a>';
     return h+'</li>';
   }
+
+  // ===== 招聘可視化圖表 =====
+  var VIZ_FMB=[
+    {k:'前台',c:'#2563eb'},
+    {k:'中台',c:'#a855f7'},
+    {k:'後台',c:'#16a34a'}
+  ];
+  var VIZ_CAT=[
+    {k:'外資公司',c:'#2563eb'},
+    {k:'在港中資機構',c:'#c0392b'},
+    {k:'國際公司',c:'#6b4ea8'},
+    {k:'港資公司',c:'#b8860b'},
+    {k:'香港本地公司',c:'#16857a'}
+  ];
+  function vizCount(jobs,keyFn){
+    var m={};
+    (jobs||[]).forEach(function(j){
+      var k=keyFn(j);
+      if(k)m[k]=(m[k]||0)+1;
+    });
+    return m;
+  }
+  // 堆疊比例條 + 大數字 + 圓點圖例（含百分比）
+  function vizBlock(title,defs,map,total){
+    var segs='',nums='',used=0;
+    defs.forEach(function(d){
+      var n=map[d.k]||0;
+      if(!n)return;
+      used+=n;
+      var pct=total?Math.round(n/total*100):0;
+      segs+='<i style="width:'+(total?(n/total*100):0)+'%;background:'+d.c+'"></i>';
+      nums+='<div class="viz-num"><b>'+n+'</b>'+
+        '<span class="lab"><span class="viz-dot" style="background:'+d.c+'"></span>'+
+        esc(d.k)+' <em>'+pct+'%</em></span></div>';
+    });
+    if(!segs)segs='<i style="width:100%;background:#eef1f5"></i>';
+    if(!nums)nums='<div class="viz-num"><b>0</b><span class="lab">無資料</span></div>';
+    return '<div class="vizcard"><div class="viz-h">'+title+'</div>'+
+      '<div class="viz-bar">'+segs+'</div><div class="viz-nums">'+nums+'</div></div>';
+  }
+  // 近 N 週職位總數柱狀圖
+  function vizTrend(highlightDate){
+    // OP.reports 為舊→新排序；取最新 12 週，維持左→右由舊到新的時間軸
+    var reps=OP.reports.filter(function(r){return (r.jobsFlat||[]).length;});
+    if(!reps.length)return '';
+    var arr=reps.slice(-12);
+    var max=Math.max.apply(null,arr.map(function(r){return r.jobsFlat.length;}));
+    var cols='';
+    arr.forEach(function(r){
+      var n=r.jobsFlat.length;
+      var hgt=Math.max(4,Math.round(n/max*86));
+      var on=highlightDate&&r.date===highlightDate;
+      cols+='<div class="viz-col'+(on?' on':'')+'">'+
+        '<span class="cnt">'+n+'</span>'+
+        '<div class="bar" style="height:'+hgt+'px"></div>'+
+        '<span class="dt">'+esc(String(r.date).slice(5))+'</span></div>';
+    });
+    return '<div class="vizcard full"><div class="viz-h">📊 每週開放職位趨勢（近 '+arr.length+' 週）</div>'+
+      '<div class="viz-trend">'+cols+'</div></div>';
+  }
+  function renderOpViz(jobs,highlightDate){
+    var el=document.getElementById('opViz');
+    if(!el)return;
+    jobs=jobs||[];
+    if(!jobs.length){el.innerHTML='';return;}
+    var fmb=vizCount(jobs,function(j){return j.function;});
+    var main={},mainTotal=0;
+    VIZ_FMB.forEach(function(d){main[d.k]=fmb[d.k]||0;mainTotal+=main[d.k];});
+    var cat=vizCount(jobs,function(j){return j.category;});
+    el.innerHTML=vizBlock('前 / 中 / 後台分布',VIZ_FMB,main,mainTotal)+
+      vizBlock('機構類型分布',VIZ_CAT,cat,jobs.length)+
+      vizTrend(highlightDate);
+  }
+
   function renderOpReport(r,q){
     var html='';
     var ov=r.overview||{};
@@ -38365,6 +38468,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       '<div class="ovcard"><b>'+(ov.change||'—')+'</b><span>較上週變化</span></div>'+
       '<div class="ovcard"><b>'+(ov.companies||0)+'</b><span>追蹤公司</span></div>';
     document.getElementById('opOv').innerHTML=ovcards;
+    // 可視化圖表（依當前搜尋／公司篩選條件即時計算）
+    renderOpViz((r.jobsFlat||[]).filter(function(j){return matchJob(j,q)&&matchCompany(j);}),r.date);
     // 前中後台分類說明：單週模式才顯示
     document.getElementById('opLegend').classList.remove('hide');
     // 重要提示
@@ -38412,11 +38517,11 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     var q=state.q.trim();
     if(state.opDate==='ALL'){
       // 跨週：按日期分組顯示
-      var html=''; var total=0;
+      var html=''; var total=0; var allJobs=[];
       OP.reports.slice().reverse().forEach(function(r){
         var jobs=(r.jobsFlat||[]).filter(function(j){return matchJob(j,q)&&matchCompany(j);});
         if(!jobs.length)return;
-        total+=jobs.length;
+        total+=jobs.length; allJobs=allJobs.concat(jobs);
         html+='<div class="opdate">📅 '+esc(r.date)+' · '+jobs.length+' 個職位</div>';
         html+='<div class="catcard" style="margin-bottom:18px"><div class="company"><ul class="jobs">';
         jobs.forEach(function(j){html+=renderJob(j,q);});
@@ -38427,6 +38532,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       document.getElementById('opOv').innerHTML=
         '<div class="ophint">'+(q?('🔍 跨全部週期搜尋「<b>'+esc(q)+'</b>」的結果。')
                                 :'📅 跨週瀏覽模式：選擇上方週期查看該週職位，或輸入關鍵字跨週搜尋。')+'</div>';
+      renderOpViz(allJobs,null);
       document.getElementById('opHl').classList.add('hide');
       document.getElementById('opLegend').classList.add('hide');
       document.getElementById('count').textContent='共 '+total+' 個職位符合';
