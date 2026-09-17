@@ -258,7 +258,6 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 .tag.etf{color:var(--accent);background:var(--accent-soft)}
 .tag.lv{color:#b8860b;background:#fbf2dc}
 .tag.none{color:var(--muted);background:#eef2f7}
-.etp-aum{color:var(--muted);font-size:12px}
 .etp-table .etp-site{color:var(--muted);white-space:nowrap}
 .etp-table .etp-site a{color:var(--accent);text-decoration:none;font-weight:600}
 .etp-table .etp-site a:hover{text-decoration:underline}
@@ -337,7 +336,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 </div>
 
 <script>window.DATA={"hrDigest":{
- "generatedAt": "2026-09-17 12:20:00",
+ "generatedAt": "2026-09-17 12:23:40",
  "reportCount": 57,
  "totalItems": 397,
  "dateRange": [
@@ -9086,7 +9085,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   "2026-04-16",
   "2026-09-14"
  ],
- "generatedAt": "2026-09-17 12:20",
+ "generatedAt": "2026-09-17 12:23",
  "reports": [
   {
    "categories": [
@@ -37571,8 +37570,6 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   "generatedAt": "2026-09-17 10:43",
   "source": "HKEX List of ETP Issuers（香港交易所·官方在港 ETP 發行商名單）",
   "sourceUrl": "https://www.hkex.com.hk/Products/Securities/Exchange-Traded-Products/Issuers/List-of-Issuers?sc_lang=zh-HK",
-  "aumEnabled": false,
-  "aumStatus": "paused",
   "issuers": [
     {
       "name": "東方匯理資產管理香港有限公司",
@@ -37824,7 +37821,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "added": [],
     "removed": []
   }
-},"generatedAt":"2026-09-17 12:20"};</script>
+},"generatedAt":"2026-09-17 12:23"};</script>
 <script>
 (function(){
   var DATA=window.DATA||{};
@@ -38312,26 +38309,23 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       '<div class="ovcard"><b>'+(t.issuerCount||issuers.length)+'</b><span>ETP 發行商總數</span></div>'+
       '<div class="ovcard"><b>'+(t.etfIssuerCount||0)+'</b><span>ETF 發行商</span></div>'+
       '<div class="ovcard"><b>'+(t.lvIssuerCount||0)+'</b><span>槓桿／反向發行商</span></div>'+
-      '<div class="ovcard"><b>'+(E.aumEnabled?'✅':'⏸')+'</b><span>AUM 追蹤</span></div>'+
     '</div>';
     // 表格
     if(!issuers.length){
       html+='<div class="empty">查無符合條件的發行商，試試其他關鍵字。</div>';
     }else{
       html+='<table class="etp-table"><thead><tr>'+
-        '<th class="idx">#</th><th>發行商</th><th>類型</th><th>資產管理規模</th><th>官網</th></tr></thead><tbody>';
+        '<th class="idx">#</th><th>發行商</th><th>類型</th><th>官網</th></tr></thead><tbody>';
       issuers.forEach(function(it,idx){
         var isSelf=(/南方東英|CSOP/i).test(it.name||'');
         var tags='';
         if(it.isLeveraged) tags+='<span class="tag lv">槓桿／反向</span> ';
         if(it.isETF) tags+='<span class="tag etf">ETF</span>';
         if(!it.isETF&&!it.isLeveraged) tags+='<span class="tag none">—</span>';
-        var aum='<span class="etp-aum">'+(it.aum!=null?esc(it.aum+(it.aumUnit?(' '+it.aumUnit):'')):'待啟用')+'</span>';
         html+='<tr class="'+(isSelf?'self':'')+'">'+
           '<td class="idx">'+(idx+1)+'</td>'+
           '<td class="etp-name">'+hl(it.name,q)+(isSelf?'<span class="self">CSOP（自營）</span>':'')+'</td>'+
           '<td>'+tags+'</td>'+
-          '<td>'+aum+'</td>'+
           '<td class="etp-site">'+(it.website?'<a href="'+esc(it.website)+'" target="_blank" rel="noopener">官網 ↗</a>':'—')+'</td>'+
         '</tr>';
       });
