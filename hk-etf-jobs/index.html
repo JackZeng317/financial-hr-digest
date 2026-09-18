@@ -158,16 +158,16 @@
     }
     .role-donut {
       background: conic-gradient(
-        var(--front) 0 39.08%,
-        var(--middle) 39.08% 75.86%,
-        var(--back) 75.86% 100%
+        var(--front) 0 38.95%,
+        var(--middle) 38.95% 76.84%,
+        var(--back) 76.84% 100%
       );
     }
     .origin-donut {
       background: conic-gradient(
-        var(--origin-cn) 0 74.71%,
-        var(--origin-hk) 74.71% 78.16%,
-        var(--origin-foreign) 78.16% 100%
+        var(--origin-cn) 0 68.42%,
+        var(--origin-hk) 68.42% 71.58%,
+        var(--origin-foreign) 71.58% 100%
       );
     }
     .donut-center {
@@ -416,16 +416,16 @@
     <section aria-labelledby="page-title">
       <div class="eyebrow">ETF / ETP Issuer Careers</div>
       <h1 id="page-title">香港 ETF 發行商招聘每周看板</h1>
-      <p class="lede">追蹤港交所發行商在香港公開招聘的非實習職位；優先採用公司官方申請入口，並以 LinkedIn、JobsDB 交叉核對。</p>
+      <p class="lede">追蹤港交所發行商及使用者指定補充資產管理機構在香港公開招聘的非實習職位；優先採用公司官方申請入口，並以 LinkedIn、JobsDB 交叉核對。</p>
       <div class="hero-actions">
         <button class="btn btn-primary" id="jump-jobs" type="button">瀏覽全部職位</button>
       </div>
     </section>
 
     <section class="kpis" aria-label="招聘摘要">
-      <article class="card kpi"><div class="kpi-label">已驗證職位</div><div class="kpi-value">87</div><div class="kpi-note">截至 2026-09-18 14:47 香港時間</div></article>
-      <article class="card kpi"><div class="kpi-label">有招聘的發行商品牌</div><div class="kpi-value">17</div><div class="kpi-note">31 個法律實體已逐家核查</div></article>
-      <article class="card kpi"><div class="kpi-label">官方直連職位</div><div class="kpi-value" id="official-count">22</div><div class="kpi-note">優先於平台轉載連結</div></article>
+      <article class="card kpi"><div class="kpi-label">已驗證職位</div><div class="kpi-value">95</div><div class="kpi-note">截至 2026-09-18 香港時間</div></article>
+      <article class="card kpi"><div class="kpi-label">有招聘的監察品牌</div><div class="kpi-value">18</div><div class="kpi-note">31 個 HKEX 法律實體＋1 個補充機構</div></article>
+      <article class="card kpi"><div class="kpi-label">官方直連職位</div><div class="kpi-value" id="official-count">30</div><div class="kpi-note">優先於平台轉載連結</div></article>
       <article class="card kpi"><div class="kpi-label">待核實線索</div><div class="kpi-value">0</div><div class="kpi-note">目前沒有待核實職位</div></article>
     </section>
 
@@ -433,26 +433,26 @@
       <article class="card panel">
         <h2>前／中／後台分布</h2>
         <div class="donut-layout">
-          <div class="donut-chart role-donut" role="img" aria-label="共 87 個職位：前台 34，佔 39%；中台 32，佔 37%；後台 21，佔 24%">
-            <div class="donut-center"><strong>87</strong><span>總計</span></div>
+          <div class="donut-chart role-donut" role="img" aria-label="共 95 個職位：前台 37，佔 39%；中台 36，佔 38%；後台 22，佔 23%">
+            <div class="donut-center"><strong>95</strong><span>總計</span></div>
           </div>
           <div class="chart-legend">
-            <div class="chart-legend-row"><span class="chart-legend-label"><i class="legend-dot dot-front"></i>前台</span><strong class="chart-legend-value">34</strong><span class="chart-legend-percent">39%</span></div>
-            <div class="chart-legend-row"><span class="chart-legend-label"><i class="legend-dot dot-middle"></i>中台</span><strong class="chart-legend-value">32</strong><span class="chart-legend-percent">37%</span></div>
-            <div class="chart-legend-row"><span class="chart-legend-label"><i class="legend-dot dot-back"></i>後台</span><strong class="chart-legend-value">21</strong><span class="chart-legend-percent">24%</span></div>
+            <div class="chart-legend-row"><span class="chart-legend-label"><i class="legend-dot dot-front"></i>前台</span><strong class="chart-legend-value">37</strong><span class="chart-legend-percent">39%</span></div>
+            <div class="chart-legend-row"><span class="chart-legend-label"><i class="legend-dot dot-middle"></i>中台</span><strong class="chart-legend-value">36</strong><span class="chart-legend-percent">38%</span></div>
+            <div class="chart-legend-row"><span class="chart-legend-label"><i class="legend-dot dot-back"></i>後台</span><strong class="chart-legend-value">22</strong><span class="chart-legend-percent">23%</span></div>
           </div>
         </div>
       </article>
       <article class="card panel">
         <h2>機構類型分布</h2>
         <div class="donut-layout">
-          <div class="donut-chart origin-donut" role="img" aria-label="共 87 個職位：在港中資 65，佔 75%；港資 3，佔 3%；外資 19，佔 22%">
-            <div class="donut-center"><strong>87</strong><span>總計</span></div>
+          <div class="donut-chart origin-donut" role="img" aria-label="共 95 個職位：在港中資 65，佔 68%；港資 3，佔 3%；外資 27，佔 28%">
+            <div class="donut-center"><strong>95</strong><span>總計</span></div>
           </div>
           <div class="chart-legend">
-            <div class="chart-legend-row"><span class="chart-legend-label"><i class="legend-dot dot-origin-cn"></i>在港中資</span><strong class="chart-legend-value">65</strong><span class="chart-legend-percent">75%</span></div>
+            <div class="chart-legend-row"><span class="chart-legend-label"><i class="legend-dot dot-origin-cn"></i>在港中資</span><strong class="chart-legend-value">65</strong><span class="chart-legend-percent">68%</span></div>
             <div class="chart-legend-row"><span class="chart-legend-label"><i class="legend-dot dot-origin-hk"></i>港資</span><strong class="chart-legend-value">3</strong><span class="chart-legend-percent">3%</span></div>
-            <div class="chart-legend-row"><span class="chart-legend-label"><i class="legend-dot dot-origin-foreign"></i>外資</span><strong class="chart-legend-value">19</strong><span class="chart-legend-percent">22%</span></div>
+            <div class="chart-legend-row"><span class="chart-legend-label"><i class="legend-dot dot-origin-foreign"></i>外資</span><strong class="chart-legend-value">27</strong><span class="chart-legend-percent">28%</span></div>
           </div>
         </div>
       </article>
@@ -463,12 +463,13 @@
           <div class="mini-row"><span>中銀國際英國保誠資產管理</span><div class="mini-track"><div class="mini-fill" style="width:65.4%"></div></div><strong>17</strong></div>
           <div class="mini-row"><span>Invesco Capital Management LLC／Invesco Hong Kong</span><div class="mini-track"><div class="mini-fill" style="width:50.0%"></div></div><strong>13</strong></div>
           <div class="mini-row"><span>華夏基金</span><div class="mini-track"><div class="mini-fill" style="width:30.8%"></div></div><strong>8</strong></div>
-          <div class="mini-row"><span>博時基金</span><div class="mini-track"><div class="mini-fill" style="width:23.1%"></div></div><strong>6</strong></div>
+          <div class="mini-row"><span>J.P. Morgan</span><div class="mini-track"><div class="mini-fill" style="width:30.8%"></div></div><strong>8</strong></div>
         </div>
       </article>
       <article class="card panel">
         <h2>本輪變動</h2>
         <ul class="change-list">
+          <li><span class="delta up">+8</span><div>新增 JPMorgan Asset Management<small>官方香港正式職位；列作使用者指定補充監察機構</small></div></li>
           <li><span class="delta down">−8</span><div>本輪 QC 剔除失效職位<small>JobsDB 5 個、LinkedIn 1 個、OfferToday 2 個</small></div></li>
           <li><span class="delta down">−2</span><div>ICBC AM<small>Junior Investment Analyst、Execution Trader</small></div></li>
           <li><span class="delta down">−4</span><div>BOCI、博時、南方東英、恒生<small>各移除 1 個已下架或停止申請職位</small></div></li>
@@ -479,7 +480,7 @@
 
     <section class="origin-overview" aria-labelledby="origin-title">
       <div class="section-head">
-        <h2 id="origin-title">發行商背景分類</h2>
+        <h2 id="origin-title">監察機構背景分類</h2>
         <span class="result-count">按母集團主要背景與品牌來源地歸類；台、日、韓、歐美機構列作外資</span>
       </div>
       <div class="origin-grid">
@@ -499,9 +500,9 @@
         </article>
         <article class="card origin-card">
           <h3><span class="badge badge-origin-foreign">外資</span></h3>
-          <div class="origin-count">12 個法律實體</div>
+          <div class="origin-count">12 個 HKEX 法律實體＋1 個補充機構</div>
           <ul class="origin-list">
-            <li>東方匯理（法國）</li><li>貝萊德（美國）</li><li>DWS（德國）</li><li>富邦（台灣）</li><li>匯豐資產管理（英國）</li><li>Invesco（美國）</li><li>未來資產（韓國）</li><li>日興資產管理（日本）</li><li>輝立資本管理（新加坡）</li><li>三星資產運用（韓國）</li><li>State Street 亞洲實體（美國）</li><li>State Street 新加坡實體（美國）</li>
+            <li>東方匯理（法國）</li><li>貝萊德（美國）</li><li>DWS（德國）</li><li>富邦（台灣）</li><li>匯豐資產管理（英國）</li><li>Invesco（美國）</li><li>未來資產（韓國）</li><li>日興資產管理（日本）</li><li>輝立資本管理（新加坡）</li><li>三星資產運用（韓國）</li><li>State Street 亞洲實體（美國）</li><li>State Street 新加坡實體（美國）</li><li>J.P. Morgan Asset Management（美國；補充監察）</li>
           </ul>
         </article>
       </div>
@@ -700,6 +701,19 @@
           </div>
         </details>
         <details class="card job-company" open>
+          <summary><div class="company-heading"><span class="company-logo-frame" aria-hidden="true"><img class="company-logo" src="assets/logos/jpmorgan.svg" alt="" loading="lazy"></span><div class="company-heading-copy"><h3>J.P. Morgan Asset Management（摩根資產管理）</h3><span class="badge badge-origin-foreign">外資</span></div></div><span class="company-job-count">8 個職位</span></summary>
+          <div class="job-list">
+            <article class="job-item"><span class="job-number">01</span><div><a class="job-title-link" href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210789736" target="_blank" rel="noopener noreferrer">Asset Management – Fixed Income Investment Specialist – Vice President</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="badge badge-official">官方</span><span class="source-label">官方（2026-09-14 發布，210789736）</span></div></div><a class="apply" href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210789736" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">02</span><div><a class="job-title-link" href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210786014" target="_blank" rel="noopener noreferrer">Asset Management - Investment Platform - Trading Analytics and Strategy – Vice President/ Associate</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="badge badge-official">官方</span><span class="source-label">官方（2026-09-01 發布，210786014）</span></div></div><a class="apply" href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210786014" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">03</span><div><a class="job-title-link" href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210771028" target="_blank" rel="noopener noreferrer">Asset Management - Hong Kong Intermediary Business, Client Advisor - Vice President</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="badge badge-official">官方</span><span class="source-label">官方（2026-07-17 發布，210771028）</span></div></div><a class="apply" href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210771028" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">04</span><div><a class="job-title-link" href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210771837" target="_blank" rel="noopener noreferrer">Asset Management - Controls Management - Associate</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="badge badge-official">官方</span><span class="source-label">官方（2026-07-22 發布，210771837）</span></div></div><a class="apply" href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210771837" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">05</span><div><a class="job-title-link" href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210775182" target="_blank" rel="noopener noreferrer">Investment Risk - Associate</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="badge badge-official">官方</span><span class="source-label">官方（2026-07-30 發布，210775182）</span></div></div><a class="apply" href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210775182" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">06</span><div><a class="job-title-link" href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210765962" target="_blank" rel="noopener noreferrer">Investment Risk - Analyst</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="badge badge-official">官方</span><span class="source-label">官方（2026-07-03 發布，210765962）</span></div></div><a class="apply" href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210765962" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">07</span><div><a class="job-title-link" href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210755231" target="_blank" rel="noopener noreferrer">JPMAM APAC Lead for ETF Product and Content Marketing, Managing Writer/Editor</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="badge badge-official">官方</span><span class="source-label">官方（2026-06-09 發布，210755231）</span></div></div><a class="apply" href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210755231" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">08</span><div><a class="job-title-link" href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210788583" target="_blank" rel="noopener noreferrer">Software Engineer II, Asset Management Trading Technology</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="badge badge-official">官方</span><span class="source-label">官方（2026-09-07 發布，210788583）</span></div></div><a class="apply" href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210788583" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+          </div>
+        </details>
+        <details class="card job-company" open>
           <summary><div class="company-heading"><span class="company-logo-frame" aria-hidden="true"><img class="company-logo" src="assets/logos/ping-an.jpg" alt="" loading="lazy"></span><div class="company-heading-copy"><h3>中國平安資產管理（香港）有限公司（Ping An）</h3><span class="badge badge-origin-cn">在港中資</span></div></div><span class="company-job-count">2 個職位</span></summary>
           <div class="job-list">
             <article class="job-item"><span class="job-number">01</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94206079" target="_blank" rel="noopener noreferrer">Portfolio Associate</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94206079" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
@@ -744,8 +758,8 @@
     </section>
 
     <section id="coverage-panel" role="tabpanel" aria-labelledby="coverage-tab" hidden>
-      <div class="section-head"><h2>31 個法律實體官方網站核查</h2><span class="result-count">已逐家打開官方來源</span></div>
-      <p class="note">「未見公開職位」不等於公司沒有招聘；只代表官方網站未提供可直接核驗的香港申請入口。平台職位會另外標示。</p>
+      <div class="section-head"><h2>31 個 HKEX 法律實體＋1 個補充機構官方網站核查</h2><span class="result-count">已逐家打開官方來源</span></div>
+      <p class="note">J.P. Morgan Asset Management 為使用者指定的補充監察機構，不在目前 HKEX 31 家發行商法律實體名單內。「未見公開職位」不等於公司沒有招聘；只代表官方網站未提供可直接核驗的香港申請入口。平台職位會另外標示。</p>
       <div class="table-wrap">
         <table aria-label="官方網站核查結果">
           <thead><tr><th>#</th><th>法律實體</th><th>公司背景</th><th>官方來源</th><th>核查結果</th></tr></thead>
@@ -781,13 +795,14 @@
           <tr><td data-label="#">29</td><td class="company-cell" data-label="法律實體">State Street Global Advisors Singapore Limited</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="官方來源"><a class="job-link" href="https://careers.statestreet.com/global/en/search-results" target="_blank" rel="noopener noreferrer">State Street 招聘</a></td><td data-label="核查結果"><span class="status">未見官方職位</span><div class="coverage-result">未找到由新加坡發行商實體對外招聘、且工作地點在香港的可核驗職位</div></td></tr>
           <tr><td data-label="#">30</td><td class="company-cell" data-label="法律實體">Taikang Asset Management (Hong Kong) Company Limited</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="官方來源"><a class="job-link" href="https://hk.taikangasset.cn/" target="_blank" rel="noopener noreferrer">公司官網</a></td><td data-label="核查結果"><span class="status">已檢查</span><div class="coverage-result">官網未見可直接申請職位；JobsDB 1 個已核驗</div></td></tr>
           <tr><td data-label="#">31</td><td class="company-cell" data-label="法律實體">Value Partners Hong Kong Limited</td><td data-label="公司背景"><span class="badge badge-origin-hk">港資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.valuepartners-group.com/" target="_blank" rel="noopener noreferrer">Value Partners 官網</a></td><td data-label="核查結果"><span class="status">已檢查</span><div class="coverage-result">官網未見可直接申請職位清單；JobsDB 1 個已核驗</div></td></tr>
+          <tr><td data-label="#">補充</td><td class="company-cell" data-label="法律實體">J.P. Morgan Asset Management（摩根資產管理）</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="官方來源"><a class="job-link" href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/requisitions" target="_blank" rel="noopener noreferrer">JPMorganChase Careers</a></td><td data-label="核查結果"><span class="status">官方在招</span><div class="coverage-result">補充監察機構；官方 8 個香港資產管理正式職位，逐項核驗可申請，已排除實習職位</div></td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
     <section id="appendix-panel" role="tabpanel" aria-labelledby="appendix-tab" hidden>
-      <div class="section-head"><h2>集團招聘入口</h2><span class="result-count">20 個，不計入嚴格口徑 87 個</span></div>
+      <div class="section-head"><h2>集團招聘入口</h2><span class="result-count">20 個，不計入目前 95 個已驗證職位</span></div>
       <p class="note">職位位於香港且可申請，但法律僱主並非港交所名單中的發行商實體。</p>
       <div class="table-wrap">
         <table aria-label="集團招聘職位">
@@ -841,6 +856,7 @@
     {
       "date": "2026-09-18",
       "checkedAt": "2026-09-18 14:47",
+      "jobsRef": "current",
       "jobs": [{"company":"東方匯理資產管理香港有限公司（Amundi）","category":"前台","title":"Asia Global Fixed Income Investment Specialist H/F","url":"https://jobs.amundi.com/offre-de-emploi/emploi-asia-global-fixed-income-investment-specialist-h-f_109979.aspx","source":"官方"},{"company":"貝萊德資產管理北亞有限公司（BlackRock）","category":"中台","title":"Associate, APAC ETF Platform","url":"https://careers.blackrock.com/job/hong-kong/associate-apac-etf-platform/45831/99062046976","source":"官方"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"Research Analyst (Investment-Japan Equity)","url":"https://hk.jobsdb.com/job/94616679","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"VP to Director, Institutional Business (Sales)","url":"https://hk.jobsdb.com/job/94382222","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"Assistant Portfolio Manager/Portfolio Manager","url":"https://hk.jobsdb.com/job/94540255","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"Senior Manager to Vice President, Investment Fund Services","url":"https://hk.jobsdb.com/job/94227441","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"Analyst, Global Equities","url":"https://hk.jobsdb.com/job/93788287","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"Analyst to AVP, Multi-Asset Investment (Quantitative)","url":"https://hk.jobsdb.com/job/94090922","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"Quantitative Researcher","url":"https://hk.jobsdb.com/job/94330255","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"Manager to VP, Portfolio Analysis & Solutions","url":"https://hk.jobsdb.com/job/94227875","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"VP to Director, ETF Specialist","url":"https://hk.jobsdb.com/job/94093412","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"Manager/Senior Manager, Retirement Services (Business Development, MPF and ORSO)","url":"https://hk.jobsdb.com/job/94091056","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"中台","title":"Analyst, Risk Control (Risk Management)","url":"https://hk.jobsdb.com/job/94205771","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"後台","title":"Assistant System Analyst","url":"https://hk.jobsdb.com/job/94583578","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"後台","title":"Senior Analyst Programmer","url":"https://hk.jobsdb.com/job/94583639","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"後台","title":"Senior Administrator, Unit Trust Dealing (Operations)","url":"https://hk.jobsdb.com/job/94616114","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"後台","title":"(Assistant) System Administrator","url":"https://hk.jobsdb.com/job/94187648","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"後台","title":"Assistant Manager, Unit Trust Dealing (Operations)","url":"https://hk.jobsdb.com/job/94090682","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"後台","title":"Senior Customer Service Officer (Call Centre Team)","url":"https://hk.jobsdb.com/job/94090764","source":"JobsDB"},{"company":"博時基金（國際）有限公司（Bosera）","category":"後台","title":"資深 IT 經理 Director, IT（官方職位頁；電郵申請）","url":"https://www.bosera.com.hk/zh-HK/careers#job","source":"官方；申請至 hkhr@bosera.com"},{"company":"博時基金（國際）有限公司（Bosera）","category":"中台","title":"法規專員 Analyst, Risk, Legal and Compliance（官方職位頁；電郵申請）","url":"https://www.bosera.com.hk/zh-HK/careers#job","source":"官方；申請至 hkhr@bosera.com"},{"company":"博時基金（國際）有限公司（Bosera）","category":"中台","title":"產品經理 Manager, Products（官方職位頁；電郵申請）","url":"https://www.bosera.com.hk/zh-HK/careers#job","source":"官方；申請至 hkhr@bosera.com"},{"company":"博時基金（國際）有限公司（Bosera）","category":"後台","title":"運營 Manager, Operations（官方職位頁；電郵申請）","url":"https://www.bosera.com.hk/zh-HK/careers#job","source":"官方；申請至 hkhr@bosera.com"},{"company":"博時基金（國際）有限公司（Bosera）","category":"前台","title":"Analyst, Equity","url":"https://hk.jobsdb.com/job/94133857","source":"JobsDB"},{"company":"博時基金（國際）有限公司（Bosera）","category":"後台","title":"公司综合管理高级专员","url":"https://hk.jobsdb.com/job/94101006","source":"JobsDB"},{"company":"華夏基金（香港）有限公司（ChinaAMC）","category":"前台","title":"Index Strategist","url":"https://hk.linkedin.com/jobs/view/index-strategist-at-china-asset-management-hong-kong-4431637831","source":"LinkedIn"},{"company":"華夏基金（香港）有限公司（ChinaAMC）","category":"前台","title":"ETF Portfolio Manager","url":"https://hk.linkedin.com/jobs/view/etf-portfolio-manager-at-china-asset-management-hong-kong-4412744040","source":"LinkedIn"},{"company":"華夏基金（香港）有限公司（ChinaAMC）","category":"前台","title":"Research Assistant","url":"https://hk.linkedin.com/jobs/view/research-assistant-at-china-asset-management-hong-kong-4434448835","source":"LinkedIn"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"前台","title":"Wealth Management - Trader","url":"https://hk.linkedin.com/jobs/view/wealth-management-trader-at-cicc-4455605440","source":"LinkedIn"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"前台","title":"Wealth Management - Investment Assistant","url":"https://hk.linkedin.com/jobs/view/wealth-management-investment-assistant-at-cicc-4455609400","source":"LinkedIn"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"前台","title":"Wealth Management - Institutional Wealth Advisor","url":"https://hk.linkedin.com/jobs/view/wealth-management-institutional-wealth-advisor-at-cicc-4462933342","source":"LinkedIn"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"前台","title":"Wealth Management - Private Wealth Advisor","url":"https://hk.linkedin.com/jobs/view/wealth-management-private-wealth-advisor-at-cicc-4462938339","source":"LinkedIn"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"前台","title":"Client Development and Management Specialist (J19525)","url":"https://hk.jobsdb.com/job/93791070","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"前台","title":"Business Development and Marketing Specialist (J17564)","url":"https://hk.jobsdb.com/job/94083188","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"前台","title":"Trader (J19561)","url":"https://hk.jobsdb.com/job/94116789","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"前台","title":"Position for Equity Financing Business Development and Execution (J19582)","url":"https://hk.jobsdb.com/job/94306657","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"前台","title":"Assistant Wealth Manager","url":"https://hk.jobsdb.com/job/93964126","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Position for Equity Review (J19486)","url":"https://hk.jobsdb.com/job/93467321","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Client Digital Service Specialist (J19523)","url":"https://hk.jobsdb.com/job/93791069","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Risk Analyst - Market Risk (J19517)","url":"https://hk.jobsdb.com/job/93791071","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Risk Analyst - Risk Quant (J19519)","url":"https://hk.jobsdb.com/job/93791072","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Customer Strategy Specialist (J18750)","url":"https://hk.jobsdb.com/job/93803269","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Equities Market Risk Specialist (J19350)","url":"https://hk.jobsdb.com/job/93883988","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"OTC Desk Middle Office (J19558)","url":"https://hk.jobsdb.com/job/94116783","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"後台","title":"Position for General Support","url":"https://hk.linkedin.com/jobs/view/position-for-general-support-at-cicc-4406960151","source":"LinkedIn"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"後台","title":"Operations Specialist (Syndicate Support) (J19741)","url":"https://hk.jobsdb.com/job/94528631","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"後台","title":"Operations Specialist (Project Management Support) (J19743)","url":"https://hk.jobsdb.com/job/94528629","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"後台","title":"Operations Specialist (Account Opening Support) (J19739)","url":"https://hk.jobsdb.com/job/94528630","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"後台","title":"Operations Specialist (Settlement Support) (J19483)","url":"https://hk.jobsdb.com/job/93525728","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"後台","title":"Operations Specialist (J19533)","url":"https://hk.jobsdb.com/job/93817600","source":"JobsDB"},{"company":"南方東英資產管理有限公司（CSOP）","category":"後台","title":"Junior Fund Operations","url":"https://hk.jobsdb.com/job/94492174","source":"JobsDB"},{"company":"Deutsche Asset Management S.A.／DWS","category":"前台","title":"Coverage Specialist, Hong Kong & Mainland China","url":"https://db.wd3.myworkdayjobs.com/en-US/DWSWebsite/job/Hong-Kong-Intl-Commerce-Ctr/Coverage-Specialist--Hong-Kong---Mainland-China_R0446056","source":"官方（DWS Workday，R0446056）"},{"company":"Deutsche Asset Management S.A.／DWS","category":"前台","title":"2027 DWS Graduate Program (P.A.C.E.) - Investment – Hong Kong SAR","url":"https://db.wd3.myworkdayjobs.com/en-US/DWSWebsite/job/Hong-Kong-Intl-Commerce-Ctr/XMLNAME-2027-DWS-Graduate-Program--PACE----Investment---Hong-Kong_R0446314","source":"官方（全職，R0446314）"},{"company":"Deutsche Asset Management S.A.／DWS","category":"中台","title":"2027 DWS Graduate Program (P.A.C.E.) – Communications, Brand & CSR team – Hong Kong SAR","url":"https://db.wd3.myworkdayjobs.com/en-US/DWSWebsite/job/Hong-Kong-Intl-Commerce-Ctr/XMLNAME-2027-DWS-Graduate-Program--PACE----Communications--Brand---CSR-team---Hong-Kong-SAR_R0445385","source":"官方（全職，R0445385）"},{"company":"都會金融香港有限公司（Doo Financial）","category":"中台","title":"Trading Operations Officer (Metals)","url":"https://hk.jobsdb.com/job/94416395","source":"JobsDB"},{"company":"富邦基金管理（香港）有限公司（Fubon）","category":"前台","title":"Senior Portfolio Manager / ETF Investment Management Lead 資深基金經理／ETF投資管理主管","url":"https://hk.jobsdb.com/job/94077710","source":"JobsDB"},{"company":"恒生投資管理有限公司（Hang Seng Investment Management）","category":"前台","title":"Assistant Portfolio Manager, Index Investments","url":"https://hk.jobsdb.com/job/94172356","source":"JobsDB（Hang Seng Bank 招聘實體）"},{"company":"嘉實國際資產管理有限公司（Harvest Global Investments）","category":"前台","title":"Bond Dealer-Analyst/Asso","url":"https://hk.linkedin.com/jobs/view/bond-dealer-analyst-asso-at-harvest-global-investments-limited-4458938570","source":"LinkedIn"},{"company":"嘉實國際資產管理有限公司（Harvest Global Investments）","category":"中台","title":"Product Manager","url":"https://hk.linkedin.com/jobs/view/product-manager-at-harvest-global-investments-limited-4442016771","source":"LinkedIn"},{"company":"工銀瑞信資產管理（國際）有限公司（ICBC AM）","category":"前台","title":"Investment Analyst","url":"https://hk.jobsdb.com/job/94194788","source":"JobsDB"},{"company":"工銀瑞信資產管理（國際）有限公司（ICBC AM）","category":"中台","title":"Senior Product Manager","url":"https://hk.jobsdb.com/job/94195781","source":"JobsDB"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"前台","title":"Associate, Strategy & Analytics (Invesco Real Estate)","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Associate--Strategy---Analytics--Invesco-Real-Estate-_R-15396","source":"官方（R-15396）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"前台","title":"Equity ETF Strategist, APAC","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Equity-ETF-Strategist--APAC_R-15484","source":"官方（R-15484）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"前台","title":"Fixed Income ETF Strategist, APAC","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Fixed-Income-ETF-Strategist--APAC_R-15485","source":"官方（R-15485）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"中台","title":"Assistant Manager, Compliance","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Assistant-Manager--Compliance_R-14486","source":"官方（R-14486）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"中台","title":"Lead, Content Strategy & Digital Engagement (Marketing)","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Lead--Content-Strategy---Digital-Engagement_R-15357","source":"官方（R-15357）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"中台","title":"Manager, Intermediary Marketing","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Manager--Intermediary-Marketing_R-15397","source":"官方（R-15397）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"中台","title":"Director, Private Markets Product, Real Estate, APAC","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Dir--Private-Markets-Product--Real-Esate--APAC_R-14824","source":"官方（R-14824）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"中台","title":"Head of Investments Legal, Asia Pacific","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Head-of-Investments-Legal--Asia-Pacific_R-14821","source":"官方（R-14821）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"中台","title":"Regional Head of Front Office Operations - APAC","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Regional-Head-of-Front-Office-Operations---APAC_R-14549","source":"官方（R-14549）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"後台","title":"Associate Director, Technology Hong Kong & Singapore","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Associate-Director--Technology-Hong-Kong---Singapore_R-14546","source":"官方（R-14546）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"後台","title":"Senior Business Analyst, Investment Technology","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Senior-Business-Analyst--Investment-Technology_R-14956","source":"官方（R-14956）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"後台","title":"Senior Business Analyst, Digital Distribution & Enterprise Engineering","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Senior-Business-Analyst--Digital-Distribution---Enterprise-Engineering_R-14367","source":"官方（R-14367）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"後台","title":"Senior Manager, APAC Product Owner – Digital Distribution & Enterprise Engineering","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Senior-Manager--APAC-Product-Owner---Digital-Distribution---Enterprise-Engineering_R-14368","source":"官方（R-14368）"},{"company":"中國平安資產管理（香港）有限公司（Ping An）","category":"中台","title":"Portfolio Associate","url":"https://hk.jobsdb.com/job/94206079","source":"JobsDB"},{"company":"中國平安資產管理（香港）有限公司（Ping An）","category":"後台","title":"Operations Associate / Senior Associate (Contract)","url":"https://hk.jobsdb.com/job/94092197","source":"JobsDB"},{"company":"泰康資產管理（香港）有限公司（Taikang）","category":"中台","title":"VP of Product Management","url":"https://hk.jobsdb.com/job/92211976","source":"JobsDB"},{"company":"惠理基金管理香港有限公司（Value Partners）","category":"中台","title":"Senior Associate / Assistant Manager – Fund Operations","url":"https://hk.jobsdb.com/job/94424065","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Compliance Officer (AML team)","url":"https://hk.linkedin.com/jobs/view/compliance-officer-aml-team-at-cicc-4452304157","source":"LinkedIn（使用者於 2026-09-18 人工確認）"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Credit Risk (Wealth Management)","url":"https://hk.linkedin.com/jobs/view/credit-risk-wealth-management-at-cicc-4462991900","source":"LinkedIn（使用者於 2026-09-18 人工確認）"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Wealth Management - Business Analyst Specialist","url":"https://hk.linkedin.com/jobs/view/wealth-management-business-analyst-specialist-at-cicc-4462943315","source":"LinkedIn（使用者於 2026-09-18 人工確認）"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Wealth Management - Customer Strategy Specialist","url":"https://hk.linkedin.com/jobs/view/wealth-management-customer-strategy-specialist-at-cicc-4462941325","source":"LinkedIn（使用者於 2026-09-18 人工確認）"},{"company":"華夏基金（香港）有限公司（ChinaAMC）","category":"前台","title":"券商渠道銷售","url":"https://hk.linkedin.com/jobs/view/%E5%88%B8%E5%95%86%E6%B8%A0%E9%81%93%E9%94%80%E5%94%AE-at-china-asset-management-hong-kong-4421814976","source":"LinkedIn（使用者於 2026-09-18 人工確認）"},{"company":"華夏基金（香港）有限公司（ChinaAMC）","category":"中台","title":"Product Development","url":"https://hk.linkedin.com/jobs/view/product-development-at-china-asset-management-hong-kong-4464078588","source":"LinkedIn（使用者於 2026-09-18 人工確認）"},{"company":"華夏基金（香港）有限公司（ChinaAMC）","category":"中台","title":"ETF Product Manager 产品主理人","url":"https://hk.linkedin.com/jobs/view/etf-strategist-product-manager-at-china-asset-management-hong-kong-4414550339","source":"LinkedIn（使用者於 2026-09-18 人工確認）"},{"company":"華夏基金（香港）有限公司（ChinaAMC）","category":"中台","title":"Legal and Product Compliance VP/Senior Manager","url":"https://hk.linkedin.com/jobs/view/legal-and-product-compliance-vice-president-senior-manager-at-china-asset-management-hong-kong-4436368408","source":"LinkedIn（使用者於 2026-09-18 人工確認）"},{"company":"華夏基金（香港）有限公司（ChinaAMC）","category":"中台","title":"Fund Operations Officer","url":"https://hk.linkedin.com/jobs/view/fund-operations-officer-at-china-asset-management-hong-kong-4433088404","source":"LinkedIn（使用者於 2026-09-18 人工確認）"}]
     }
   ],
@@ -1453,6 +1469,62 @@
       "title": "Fund Operations Officer",
       "url": "https://hk.linkedin.com/jobs/view/fund-operations-officer-at-china-asset-management-hong-kong-4433088404",
       "source": "LinkedIn（使用者於 2026-09-18 人工確認）"
+    },
+    {
+      "company": "J.P. Morgan Asset Management（摩根資產管理）",
+      "category": "後台",
+      "title": "Software Engineer II, Asset Management Trading Technology",
+      "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210788583",
+      "source": "官方（2026-09-07 發布，210788583）"
+    },
+    {
+      "company": "J.P. Morgan Asset Management（摩根資產管理）",
+      "category": "中台",
+      "title": "Asset Management - Controls Management - Associate",
+      "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210771837",
+      "source": "官方（2026-07-22 發布，210771837）"
+    },
+    {
+      "company": "J.P. Morgan Asset Management（摩根資產管理）",
+      "category": "前台",
+      "title": "Asset Management – Fixed Income Investment Specialist – Vice President",
+      "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210789736",
+      "source": "官方（2026-09-14 發布，210789736）"
+    },
+    {
+      "company": "J.P. Morgan Asset Management（摩根資產管理）",
+      "category": "前台",
+      "title": "Asset Management - Investment Platform - Trading Analytics and Strategy – Vice President/ Associate",
+      "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210786014",
+      "source": "官方（2026-09-01 發布，210786014）"
+    },
+    {
+      "company": "J.P. Morgan Asset Management（摩根資產管理）",
+      "category": "前台",
+      "title": "Asset Management - Hong Kong Intermediary Business, Client Advisor - Vice President",
+      "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210771028",
+      "source": "官方（2026-07-17 發布，210771028）"
+    },
+    {
+      "company": "J.P. Morgan Asset Management（摩根資產管理）",
+      "category": "中台",
+      "title": "Investment Risk - Associate",
+      "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210775182",
+      "source": "官方（2026-07-30 發布，210775182）"
+    },
+    {
+      "company": "J.P. Morgan Asset Management（摩根資產管理）",
+      "category": "中台",
+      "title": "Investment Risk - Analyst",
+      "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210765962",
+      "source": "官方（2026-07-03 發布，210765962）"
+    },
+    {
+      "company": "J.P. Morgan Asset Management（摩根資產管理）",
+      "category": "中台",
+      "title": "JPMAM APAC Lead for ETF Product and Content Marketing, Managing Writer/Editor",
+      "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210755231",
+      "source": "官方（2026-06-09 發布，210755231）"
     }
   ],
   "appendix": [
@@ -1815,6 +1887,13 @@
       "label": "Value Partners 官網",
       "url": "https://www.valuepartners-group.com/",
       "result": "官網未見可直接申請職位清單；JobsDB 1 個已核驗"
+    },
+    {
+      "n": "補充",
+      "entity": "J.P. Morgan Asset Management（摩根資產管理）",
+      "label": "JPMorganChase Careers",
+      "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/requisitions",
+      "result": "補充監察機構；官方 8 個香港資產管理正式職位，逐項核驗可申請，已排除實習職位"
     }
   ]
 }

@@ -9,6 +9,7 @@
       "都會金融香港有限公司（Doo Financial）":"港資", "富邦基金管理（香港）有限公司（Fubon）":"外資",
       "恒生投資管理有限公司（Hang Seng Investment Management）":"港資", "嘉實國際資產管理有限公司（Harvest Global Investments）":"在港中資",
       "工銀瑞信資產管理（國際）有限公司（ICBC AM）":"在港中資", "Invesco Capital Management LLC／Invesco Hong Kong":"外資",
+      "J.P. Morgan Asset Management（摩根資產管理）":"外資",
       "中國平安資產管理（香港）有限公司（Ping An）":"在港中資", "泰康資產管理（香港）有限公司（Taikang）":"在港中資",
       "惠理基金管理香港有限公司（Value Partners）":"港資", "招商證券國際有限公司":"在港中資",
       "山證國際金融控股有限公司":"在港中資", "State Street 集團香港招聘入口":"外資",
@@ -45,6 +46,7 @@
       "嘉實國際資產管理有限公司（Harvest Global Investments）":"assets/logos/harvest.png",
       "工銀瑞信資產管理（國際）有限公司（ICBC AM）":"assets/logos/icbc-am.png",
       "Invesco Capital Management LLC／Invesco Hong Kong":"assets/logos/invesco.svg",
+      "J.P. Morgan Asset Management（摩根資產管理）":"assets/logos/jpmorgan.svg",
       "中國平安資產管理（香港）有限公司（Ping An）":"assets/logos/ping-an.jpg",
       "泰康資產管理（香港）有限公司（Taikang）":"assets/logos/taikang.png",
       "惠理基金管理香港有限公司（Value Partners）":"assets/logos/value-partners.png"
