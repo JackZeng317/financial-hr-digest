@@ -1,0 +1,1824 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="香港 ETF／ETP 發行商招聘職位看板">
+  <title>香港 ETF 發行商招聘看板</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --surface-soft: #eef3f9;
+      --text: #142236;
+      --muted: #66758b;
+      --line: #d8e0ea;
+      --navy: #132c4f;
+      --brand: #087f8c;
+      --brand-soft: #d9f2f3;
+      --front: #1677ff;
+      --middle: #8b5cf6;
+      --back: #0f9f6e;
+      --origin-cn: #c74634;
+      --origin-hk: #b8870b;
+      --origin-foreign: #3f61e8;
+      --warn: #b96b00;
+      --shadow: 0 10px 30px rgba(26, 46, 75, .08);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0e1724;
+        --surface: #152235;
+        --surface-soft: #1b2b40;
+        --text: #edf4ff;
+        --muted: #a9b6c9;
+        --line: #31435a;
+        --navy: #d9e7fb;
+        --brand: #5fd4dc;
+        --brand-soft: #173c43;
+        --front: #63a7ff;
+        --middle: #b79bff;
+        --back: #4bd6a3;
+        --origin-cn: #ef7767;
+        --origin-hk: #e4b94d;
+        --origin-foreign: #7590ff;
+        --warn: #f1b45f;
+        --shadow: 0 14px 36px rgba(0, 0, 0, .2);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 90% 0%, color-mix(in srgb, var(--brand) 13%, transparent), transparent 34rem),
+        var(--bg);
+    }
+    a { color: inherit; }
+    button, input, select { font: inherit; }
+    button, select, input { min-height: 42px; }
+    .shell { width: min(1480px, calc(100% - 32px)); margin: 0 auto; }
+    .topbar {
+      background: color-mix(in srgb, var(--surface) 92%, transparent);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+    }
+    .topbar-inner {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--brand);
+      color: #fff;
+      letter-spacing: -.04em;
+      font-size: 13px;
+    }
+    .top-meta { color: var(--muted); font-size: 13px; text-align: right; }
+    main { padding: 40px 0 56px; }
+    .eyebrow {
+      color: var(--brand);
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    h1 { margin: 8px 0 10px; max-width: 760px; font-size: clamp(32px, 5vw, 56px); line-height: 1.08; letter-spacing: -.035em; }
+    .lede { margin: 0; max-width: 760px; color: var(--muted); font-size: 16px; line-height: 1.7; }
+    .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+    .btn {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 0 14px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font-weight: 650;
+    }
+    .btn:hover { border-color: var(--brand); }
+    .btn-primary { background: var(--navy); color: var(--bg); border-color: transparent; }
+    @media (prefers-color-scheme: dark) { .btn-primary { background: var(--brand); color: #082025; } }
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 34px 0 22px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+    .kpi { padding: 20px; }
+    .kpi-label { color: var(--muted); font-size: 13px; }
+    .kpi-value { font-size: 34px; font-weight: 750; margin-top: 4px; letter-spacing: -.03em; }
+    .kpi-note { color: var(--muted); font-size: 12px; margin-top: 5px; }
+    .insights {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .panel { padding: 20px; }
+    .panel h2 { margin: 0 0 16px; font-size: 17px; }
+    .donut-layout { display: grid; grid-template-columns: 148px 1fr; align-items: center; gap: 24px; }
+    .donut-chart {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 148px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+    }
+    .role-donut {
+      background: conic-gradient(
+        var(--front) 0 39.08%,
+        var(--middle) 39.08% 75.86%,
+        var(--back) 75.86% 100%
+      );
+    }
+    .origin-donut {
+      background: conic-gradient(
+        var(--origin-cn) 0 74.71%,
+        var(--origin-hk) 74.71% 78.16%,
+        var(--origin-foreign) 78.16% 100%
+      );
+    }
+    .donut-center {
+      display: grid;
+      place-items: center;
+      align-content: center;
+      width: 88px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--surface);
+      box-shadow: 0 0 0 1px color-mix(in srgb, var(--line) 50%, transparent);
+    }
+    .donut-center strong { font-size: 25px; line-height: 1; }
+    .donut-center span { color: var(--muted); font-size: 11px; margin-top: 5px; }
+    .chart-legend { display: grid; gap: 13px; }
+    .chart-legend-row { display: grid; grid-template-columns: minmax(74px, 1fr) 34px 38px; align-items: center; gap: 8px; font-size: 13px; }
+    .chart-legend-label { color: var(--text); white-space: nowrap; }
+    .chart-legend-value { font-size: 16px; font-weight: 750; text-align: right; }
+    .chart-legend-percent { color: var(--muted); font-size: 12px; text-align: right; }
+    .legend-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+    .dot-front { background: var(--front); }
+    .dot-middle { background: var(--middle); }
+    .dot-back { background: var(--back); }
+    .dot-origin-cn { background: var(--origin-cn); }
+    .dot-origin-hk { background: var(--origin-hk); }
+    .dot-origin-foreign { background: var(--origin-foreign); }
+    .mini-bars { display: grid; gap: 10px; }
+    .mini-row { display: grid; grid-template-columns: minmax(110px, 1fr) 2fr 34px; align-items: center; gap: 10px; font-size: 13px; }
+    .mini-track { height: 8px; background: var(--surface-soft); border-radius: 99px; overflow: hidden; }
+    .mini-fill { height: 100%; background: var(--brand); border-radius: inherit; }
+    .change-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+    .change-list li { display: grid; grid-template-columns: 42px 1fr; gap: 10px; align-items: start; }
+    .delta { font-weight: 750; color: var(--brand); }
+    .delta.down { color: var(--warn); }
+    .change-list small { display: block; color: var(--muted); margin-top: 2px; }
+    .origin-overview { margin: 0 0 28px; }
+    .origin-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .origin-card { padding: 18px 20px; }
+    .origin-card h3 { margin: 0; font-size: 16px; }
+    .origin-count { color: var(--muted); font-size: 13px; margin-top: 4px; }
+    .origin-list { margin: 14px 0 0; padding-left: 20px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .origin-list li + li { margin-top: 5px; }
+    .tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--line);
+      margin: 6px 0 20px;
+    }
+    .tab {
+      border: 0;
+      border-bottom: 3px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      padding: 10px 12px;
+      cursor: pointer;
+      font-weight: 650;
+    }
+    .tab[aria-selected="true"] { color: var(--text); border-bottom-color: var(--brand); }
+    [hidden] { display: none !important; }
+    .filters {
+      padding: 16px;
+      display: grid;
+      grid-template-columns: minmax(220px, 1.5fr) repeat(4, minmax(135px, .65fr)) auto auto;
+      gap: 10px;
+      align-items: end;
+      margin-bottom: 14px;
+    }
+    .history-controls {
+      padding: 16px;
+      display: grid;
+      grid-template-columns: minmax(240px, 420px) auto;
+      gap: 12px;
+      align-items: end;
+      margin-bottom: 14px;
+    }
+    .history-summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 14px 0 20px;
+    }
+    .history-stat { padding: 16px 18px; }
+    .history-stat-label { color: var(--muted); font-size: 12px; }
+    .history-stat-value { margin-top: 4px; font-size: 24px; font-weight: 750; }
+    .history-week + .history-week { margin-top: 28px; padding-top: 8px; border-top: 1px solid var(--line); }
+    .history-week-head { margin: 0 0 12px; }
+    .history-week-head h3 { margin: 0; font-size: 18px; }
+    .history-week-meta { color: var(--muted); font-size: 13px; margin-top: 4px; }
+    label { display: grid; gap: 6px; color: var(--muted); font-size: 12px; font-weight: 650; }
+    input, select {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 0 11px;
+    }
+    input:focus, select:focus, button:focus-visible, a:focus-visible { outline: 3px solid color-mix(in srgb, var(--brand) 34%, transparent); outline-offset: 2px; }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 18px 0 10px;
+    }
+    .section-head h2 { margin: 0; font-size: 20px; }
+    .result-count { color: var(--muted); font-size: 13px; }
+    .job-groups { display: grid; gap: 14px; }
+    .job-company { overflow: hidden; }
+    .job-company summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 20px;
+      cursor: pointer;
+      list-style: none;
+      background: var(--surface);
+    }
+    .job-company summary::-webkit-details-marker { display: none; }
+    .job-company summary::after { content: "▾"; color: var(--muted); font-size: 14px; }
+    .job-company:not([open]) summary::after { content: "▸"; }
+    .company-heading { min-width: 0; display: flex; align-items: center; gap: 12px; }
+    .company-heading-copy { min-width: 0; }
+    .company-heading h3 { margin: 0 0 7px; font-size: 17px; }
+    .company-heading .badge { margin-right: 6px; }
+    .company-logo-frame {
+      width: 68px;
+      height: 44px;
+      flex: 0 0 68px;
+      display: grid;
+      place-items: center;
+      padding: 5px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      overflow: hidden;
+    }
+    .company-logo { display: block; max-width: 100%; max-height: 100%; object-fit: contain; }
+    .company-job-count { color: var(--muted); font-size: 13px; white-space: nowrap; margin-left: auto; }
+    .job-list { border-top: 1px solid var(--line); }
+    .job-item {
+      display: grid;
+      grid-template-columns: 32px minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: start;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    .job-item:last-child { border-bottom: 0; }
+    .job-item:hover { background: color-mix(in srgb, var(--brand) 4%, var(--surface)); }
+    .job-number { color: var(--muted); font-size: 12px; font-weight: 700; padding-top: 3px; }
+    .job-title-link { display: inline-block; font-weight: 700; line-height: 1.45; text-decoration: none; }
+    .job-title-link:hover { color: var(--brand); text-decoration: underline; }
+    .job-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+    .source-label { color: var(--muted); font-size: 13px; }
+    .table-wrap { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 13px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { color: var(--muted); font-size: 12px; letter-spacing: .03em; background: var(--surface-soft); }
+    td { font-size: 14px; line-height: 1.45; }
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: color-mix(in srgb, var(--brand) 4%, var(--surface)); }
+    .company-cell { max-width: 300px; font-weight: 650; }
+    .job-link { font-weight: 650; text-decoration: none; }
+    .job-link:hover { color: var(--brand); text-decoration: underline; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 2px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .badge-front { color: var(--front); background: color-mix(in srgb, var(--front) 13%, transparent); }
+    .badge-middle { color: var(--middle); background: color-mix(in srgb, var(--middle) 13%, transparent); }
+    .badge-back { color: var(--back); background: color-mix(in srgb, var(--back) 13%, transparent); }
+    .badge-official { color: var(--brand); background: var(--brand-soft); }
+    .badge-pending { color: var(--warn); background: color-mix(in srgb, var(--warn) 12%, transparent); }
+    .badge-origin-cn { color: var(--origin-cn); background: color-mix(in srgb, var(--origin-cn) 12%, transparent); }
+    .badge-origin-hk { color: var(--origin-hk); background: color-mix(in srgb, var(--origin-hk) 12%, transparent); }
+    .badge-origin-foreign { color: var(--origin-foreign); background: color-mix(in srgb, var(--origin-foreign) 12%, transparent); }
+    .source { color: var(--muted); font-size: 13px; }
+    .apply { color: var(--brand); font-weight: 700; white-space: nowrap; text-decoration: none; }
+    .apply:hover { text-decoration: underline; }
+    .empty { padding: 48px 20px; text-align: center; color: var(--muted); }
+    .note { color: var(--muted); font-size: 13px; line-height: 1.55; margin: 0 0 14px; }
+    .status { font-weight: 700; }
+    .coverage-result { color: var(--muted); }
+    footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; line-height: 1.6; }
+    @media (max-width: 1050px) {
+      .kpis { grid-template-columns: repeat(2, 1fr); }
+      .insights { grid-template-columns: 1fr 1fr; }
+      .filters { grid-template-columns: 1fr 1fr; }
+      .filters label:first-child { grid-column: 1 / -1; }
+      .history-summary { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 20px, 1480px); }
+      .topbar-inner { min-height: 58px; }
+      .top-meta { display: none; }
+      main { padding-top: 26px; }
+      .kpis, .insights { grid-template-columns: 1fr; }
+      .origin-grid { grid-template-columns: 1fr; }
+      .filters { grid-template-columns: 1fr; }
+      .filters label:first-child { grid-column: auto; }
+      .history-controls, .history-summary { grid-template-columns: 1fr; }
+      .donut-layout { grid-template-columns: 120px 1fr; gap: 18px; }
+      .donut-chart { width: 120px; }
+      .donut-center { width: 72px; }
+      .table-wrap { border: 0; background: transparent; box-shadow: none; overflow: visible; }
+      table, thead, tbody, tr, th, td { display: block; }
+      thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+      tbody { display: grid; gap: 10px; }
+      tbody tr { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px; box-shadow: var(--shadow); }
+      tbody tr:hover { background: var(--surface); }
+      td { border: 0; padding: 5px 0; }
+      td::before { content: attr(data-label); display: block; color: var(--muted); font-size: 11px; margin-bottom: 2px; }
+      td:empty { display: none; }
+      .company-cell { max-width: none; }
+      .section-head { align-items: flex-start; flex-direction: column; gap: 4px; }
+      .mini-row { grid-template-columns: minmax(100px, 1fr) 1.5fr 30px; }
+      .job-company summary { align-items: flex-start; padding: 16px; }
+      .company-logo-frame { width: 56px; height: 40px; flex-basis: 56px; }
+      .job-item { grid-template-columns: 28px minmax(0, 1fr); padding: 15px 16px; }
+      .job-item > .apply { grid-column: 2; justify-self: start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <div class="brand"><span class="brand-mark">ETF</span><span>Hong Kong Talent Watch</span></div>
+      <div class="top-meta">每週一 09:00 自動更新 · 香港時間</div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section aria-labelledby="page-title">
+      <div class="eyebrow">ETF / ETP Issuer Careers</div>
+      <h1 id="page-title">香港 ETF 發行商招聘看板</h1>
+      <p class="lede">追蹤港交所發行商在香港公開招聘的非實習職位；優先採用公司官方申請入口，並以 LinkedIn、JobsDB 交叉核對。</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" id="jump-jobs" type="button">瀏覽全部職位</button>
+      </div>
+    </section>
+
+    <section class="kpis" aria-label="招聘摘要">
+      <article class="card kpi"><div class="kpi-label">已驗證職位</div><div class="kpi-value">87</div><div class="kpi-note">截至 2026-09-18 14:47 香港時間</div></article>
+      <article class="card kpi"><div class="kpi-label">有招聘的發行商品牌</div><div class="kpi-value">17</div><div class="kpi-note">31 個法律實體已逐家核查</div></article>
+      <article class="card kpi"><div class="kpi-label">官方直連職位</div><div class="kpi-value" id="official-count">22</div><div class="kpi-note">優先於平台轉載連結</div></article>
+      <article class="card kpi"><div class="kpi-label">待核實線索</div><div class="kpi-value">0</div><div class="kpi-note">目前沒有待核實職位</div></article>
+    </section>
+
+    <section class="insights" aria-label="招聘分布">
+      <article class="card panel">
+        <h2>前／中／後台分布</h2>
+        <div class="donut-layout">
+          <div class="donut-chart role-donut" role="img" aria-label="共 87 個職位：前台 34，佔 39%；中台 32，佔 37%；後台 21，佔 24%">
+            <div class="donut-center"><strong>87</strong><span>總計</span></div>
+          </div>
+          <div class="chart-legend">
+            <div class="chart-legend-row"><span class="chart-legend-label"><i class="legend-dot dot-front"></i>前台</span><strong class="chart-legend-value">34</strong><span class="chart-legend-percent">39%</span></div>
+            <div class="chart-legend-row"><span class="chart-legend-label"><i class="legend-dot dot-middle"></i>中台</span><strong class="chart-legend-value">32</strong><span class="chart-legend-percent">37%</span></div>
+            <div class="chart-legend-row"><span class="chart-legend-label"><i class="legend-dot dot-back"></i>後台</span><strong class="chart-legend-value">21</strong><span class="chart-legend-percent">24%</span></div>
+          </div>
+        </div>
+      </article>
+      <article class="card panel">
+        <h2>機構類型分布</h2>
+        <div class="donut-layout">
+          <div class="donut-chart origin-donut" role="img" aria-label="共 87 個職位：在港中資 65，佔 75%；港資 3，佔 3%；外資 19，佔 22%">
+            <div class="donut-center"><strong>87</strong><span>總計</span></div>
+          </div>
+          <div class="chart-legend">
+            <div class="chart-legend-row"><span class="chart-legend-label"><i class="legend-dot dot-origin-cn"></i>在港中資</span><strong class="chart-legend-value">65</strong><span class="chart-legend-percent">75%</span></div>
+            <div class="chart-legend-row"><span class="chart-legend-label"><i class="legend-dot dot-origin-hk"></i>港資</span><strong class="chart-legend-value">3</strong><span class="chart-legend-percent">3%</span></div>
+            <div class="chart-legend-row"><span class="chart-legend-label"><i class="legend-dot dot-origin-foreign"></i>外資</span><strong class="chart-legend-value">19</strong><span class="chart-legend-percent">22%</span></div>
+          </div>
+        </div>
+      </article>
+      <article class="card panel">
+        <h2>職位最多的公司</h2>
+        <div class="mini-bars" id="top-companies">
+          <div class="mini-row"><span>中國國際金融香港資產管理</span><div class="mini-track"><div class="mini-fill" style="width:100.0%"></div></div><strong>26</strong></div>
+          <div class="mini-row"><span>中銀國際英國保誠資產管理</span><div class="mini-track"><div class="mini-fill" style="width:65.4%"></div></div><strong>17</strong></div>
+          <div class="mini-row"><span>Invesco Capital Management LLC／Invesco Hong Kong</span><div class="mini-track"><div class="mini-fill" style="width:50.0%"></div></div><strong>13</strong></div>
+          <div class="mini-row"><span>華夏基金</span><div class="mini-track"><div class="mini-fill" style="width:30.8%"></div></div><strong>8</strong></div>
+          <div class="mini-row"><span>博時基金</span><div class="mini-track"><div class="mini-fill" style="width:23.1%"></div></div><strong>6</strong></div>
+        </div>
+      </article>
+      <article class="card panel">
+        <h2>本輪變動</h2>
+        <ul class="change-list">
+          <li><span class="delta down">−8</span><div>本輪 QC 剔除失效職位<small>JobsDB 5 個、LinkedIn 1 個、OfferToday 2 個</small></div></li>
+          <li><span class="delta down">−2</span><div>ICBC AM<small>Junior Investment Analyst、Execution Trader</small></div></li>
+          <li><span class="delta down">−4</span><div>BOCI、博時、南方東英、恒生<small>各移除 1 個已下架或停止申請職位</small></div></li>
+          <li><span class="delta down">−2</span><div>未來資產 OfferToday 線索<small>職位頁已不再顯示職位內容</small></div></li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="origin-overview" aria-labelledby="origin-title">
+      <div class="section-head">
+        <h2 id="origin-title">發行商背景分類</h2>
+        <span class="result-count">按母集團主要背景與品牌來源地歸類；台、日、韓、歐美機構列作外資</span>
+      </div>
+      <div class="origin-grid">
+        <article class="card origin-card">
+          <h3><span class="badge badge-origin-cn">在港中資</span></h3>
+          <div class="origin-count">13 個法律實體</div>
+          <ul class="origin-list">
+            <li>中銀國際英國保誠資產管理</li><li>博時基金國際</li><li>華夏基金香港</li><li>中國國際金融香港資產管理</li><li>招商證券資產管理香港</li><li>南方東英</li><li>易方達資產管理香港</li><li>富國資產管理香港</li><li>嘉實國際資產管理</li><li>工銀瑞信資產管理國際</li><li>中國平安資產管理香港</li><li>山證國際資產管理</li><li>泰康資產管理香港</li>
+          </ul>
+        </article>
+        <article class="card origin-card">
+          <h3><span class="badge badge-origin-hk">港資</span></h3>
+          <div class="origin-count">6 個法律實體</div>
+          <ul class="origin-list">
+            <li>都會金融香港</li><li>恒生投資管理</li><li>小飛資產管理（MicroBit）</li><li>潘渡（Pando Finance）</li><li>Premia Partners</li><li>惠理基金管理香港</li>
+          </ul>
+        </article>
+        <article class="card origin-card">
+          <h3><span class="badge badge-origin-foreign">外資</span></h3>
+          <div class="origin-count">12 個法律實體</div>
+          <ul class="origin-list">
+            <li>東方匯理（法國）</li><li>貝萊德（美國）</li><li>DWS（德國）</li><li>富邦（台灣）</li><li>匯豐資產管理（英國）</li><li>Invesco（美國）</li><li>未來資產（韓國）</li><li>日興資產管理（日本）</li><li>輝立資本管理（新加坡）</li><li>三星資產運用（韓國）</li><li>State Street 亞洲實體（美國）</li><li>State Street 新加坡實體（美國）</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <nav class="tabs" role="tablist" aria-label="看板內容">
+      <button class="tab" role="tab" aria-selected="true" aria-controls="jobs-panel" id="jobs-tab" data-tab="jobs" type="button">已驗證職位</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="history-panel" id="history-tab" data-tab="history" type="button">每週紀錄</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="coverage-panel" id="coverage-tab" data-tab="coverage" type="button">官方網站核查</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="appendix-panel" id="appendix-tab" data-tab="appendix" type="button">集團招聘入口</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="pending-panel" id="pending-tab" data-tab="pending" type="button">待核實</button>
+    </nav>
+
+    <section id="jobs-panel" role="tabpanel" aria-labelledby="jobs-tab">
+      <form class="card filters" id="filters-form">
+        <label>搜尋職位或公司
+          <input id="search" type="search" placeholder="例如 ETF、Risk、CICC">
+        </label>
+        <label>公司
+          <select id="company-filter"><option value="">全部公司</option></select>
+        </label>
+        <label>公司背景
+          <select id="origin-filter">
+            <option value="">全部背景</option><option>在港中資</option><option>港資</option><option>外資</option>
+          </select>
+        </label>
+        <label>分類
+          <select id="category-filter">
+            <option value="">全部分類</option><option>前台</option><option>中台</option><option>後台</option>
+          </select>
+        </label>
+        <label>來源
+          <select id="source-filter">
+            <option value="">全部來源</option><option value="官方">官方</option><option value="LinkedIn">LinkedIn</option><option value="JobsDB">JobsDB</option><option value="其他">其他</option>
+          </select>
+        </label>
+        <button class="btn btn-primary" id="confirm-filter" type="submit">確認</button>
+        <button class="btn" id="reset" type="button">重設</button>
+      </form>
+      <div class="section-head">
+        <h2>香港公開職位</h2>
+        <div><span class="result-count" id="result-count" aria-live="polite"></span> <button class="btn" id="export-csv" type="button">匯出 CSV</button></div>
+      </div>
+      <div class="job-groups" id="jobs-list">
+        <details class="card job-company" open>
+          <summary><div class="company-heading"><span class="company-logo-frame" aria-hidden="true"><img class="company-logo" src="assets/logos/amundi.png" alt="" loading="lazy"></span><div class="company-heading-copy"><h3>東方匯理資產管理香港有限公司（Amundi）</h3><span class="badge badge-origin-foreign">外資</span></div></div><span class="company-job-count">1 個職位</span></summary>
+          <div class="job-list">
+            <article class="job-item"><span class="job-number">01</span><div><a class="job-title-link" href="https://jobs.amundi.com/offre-de-emploi/emploi-asia-global-fixed-income-investment-specialist-h-f_109979.aspx" target="_blank" rel="noopener noreferrer">Asia Global Fixed Income Investment Specialist H/F</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="badge badge-official">官方</span><span class="source-label">官方</span></div></div><a class="apply" href="https://jobs.amundi.com/offre-de-emploi/emploi-asia-global-fixed-income-investment-specialist-h-f_109979.aspx" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+          </div>
+        </details>
+        <details class="card job-company" open>
+          <summary><div class="company-heading"><span class="company-logo-frame" aria-hidden="true"><img class="company-logo" src="assets/logos/blackrock.svg" alt="" loading="lazy"></span><div class="company-heading-copy"><h3>貝萊德資產管理北亞有限公司（BlackRock）</h3><span class="badge badge-origin-foreign">外資</span></div></div><span class="company-job-count">1 個職位</span></summary>
+          <div class="job-list">
+            <article class="job-item"><span class="job-number">01</span><div><a class="job-title-link" href="https://careers.blackrock.com/job/hong-kong/associate-apac-etf-platform/45831/99062046976" target="_blank" rel="noopener noreferrer">Associate, APAC ETF Platform</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="badge badge-official">官方</span><span class="source-label">官方</span></div></div><a class="apply" href="https://careers.blackrock.com/job/hong-kong/associate-apac-etf-platform/45831/99062046976" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+          </div>
+        </details>
+        <details class="card job-company" open>
+          <summary><div class="company-heading"><span class="company-logo-frame" aria-hidden="true"><img class="company-logo" src="assets/logos/boci-prudential.svg" alt="" loading="lazy"></span><div class="company-heading-copy"><h3>中銀國際英國保誠資產管理有限公司（BOCI-Prudential）</h3><span class="badge badge-origin-cn">在港中資</span></div></div><span class="company-job-count">17 個職位</span></summary>
+          <div class="job-list">
+            <article class="job-item"><span class="job-number">01</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94616679" target="_blank" rel="noopener noreferrer">Research Analyst (Investment-Japan Equity)</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94616679" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">02</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94382222" target="_blank" rel="noopener noreferrer">VP to Director, Institutional Business (Sales)</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94382222" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">03</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94540255" target="_blank" rel="noopener noreferrer">Assistant Portfolio Manager/Portfolio Manager</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94540255" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">04</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94227441" target="_blank" rel="noopener noreferrer">Senior Manager to Vice President, Investment Fund Services</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94227441" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">05</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/93788287" target="_blank" rel="noopener noreferrer">Analyst, Global Equities</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/93788287" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">06</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94090922" target="_blank" rel="noopener noreferrer">Analyst to AVP, Multi-Asset Investment (Quantitative)</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94090922" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">07</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94330255" target="_blank" rel="noopener noreferrer">Quantitative Researcher</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94330255" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">08</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94227875" target="_blank" rel="noopener noreferrer">Manager to VP, Portfolio Analysis &amp; Solutions</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94227875" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">09</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94093412" target="_blank" rel="noopener noreferrer">VP to Director, ETF Specialist</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94093412" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">10</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94091056" target="_blank" rel="noopener noreferrer">Manager/Senior Manager, Retirement Services (Business Development, MPF and ORSO)</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94091056" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">11</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94205771" target="_blank" rel="noopener noreferrer">Analyst, Risk Control (Risk Management)</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94205771" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">12</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94583578" target="_blank" rel="noopener noreferrer">Assistant System Analyst</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94583578" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">13</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94583639" target="_blank" rel="noopener noreferrer">Senior Analyst Programmer</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94583639" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">14</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94616114" target="_blank" rel="noopener noreferrer">Senior Administrator, Unit Trust Dealing (Operations)</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94616114" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">15</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94187648" target="_blank" rel="noopener noreferrer">(Assistant) System Administrator</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94187648" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">16</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94090682" target="_blank" rel="noopener noreferrer">Assistant Manager, Unit Trust Dealing (Operations)</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94090682" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">17</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94090764" target="_blank" rel="noopener noreferrer">Senior Customer Service Officer (Call Centre Team)</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94090764" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+          </div>
+        </details>
+        <details class="card job-company" open>
+          <summary><div class="company-heading"><span class="company-logo-frame" aria-hidden="true"><img class="company-logo" src="assets/logos/bosera.ico" alt="" loading="lazy"></span><div class="company-heading-copy"><h3>博時基金（國際）有限公司（Bosera）</h3><span class="badge badge-origin-cn">在港中資</span></div></div><span class="company-job-count">6 個職位</span></summary>
+          <div class="job-list">
+            <article class="job-item"><span class="job-number">01</span><div><a class="job-title-link" href="https://www.bosera.com.hk/zh-HK/careers#job" target="_blank" rel="noopener noreferrer">資深 IT 經理 Director, IT（官方職位頁；電郵申請）</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="badge badge-official">官方</span><span class="source-label">官方；申請至 hkhr@bosera.com</span></div></div><a class="apply" href="https://www.bosera.com.hk/zh-HK/careers#job" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">02</span><div><a class="job-title-link" href="https://www.bosera.com.hk/zh-HK/careers#job" target="_blank" rel="noopener noreferrer">法規專員 Analyst, Risk, Legal and Compliance（官方職位頁；電郵申請）</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="badge badge-official">官方</span><span class="source-label">官方；申請至 hkhr@bosera.com</span></div></div><a class="apply" href="https://www.bosera.com.hk/zh-HK/careers#job" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">03</span><div><a class="job-title-link" href="https://www.bosera.com.hk/zh-HK/careers#job" target="_blank" rel="noopener noreferrer">產品經理 Manager, Products（官方職位頁；電郵申請）</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="badge badge-official">官方</span><span class="source-label">官方；申請至 hkhr@bosera.com</span></div></div><a class="apply" href="https://www.bosera.com.hk/zh-HK/careers#job" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">04</span><div><a class="job-title-link" href="https://www.bosera.com.hk/zh-HK/careers#job" target="_blank" rel="noopener noreferrer">運營 Manager, Operations（官方職位頁；電郵申請）</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="badge badge-official">官方</span><span class="source-label">官方；申請至 hkhr@bosera.com</span></div></div><a class="apply" href="https://www.bosera.com.hk/zh-HK/careers#job" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">05</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94133857" target="_blank" rel="noopener noreferrer">Analyst, Equity</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94133857" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">06</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94101006" target="_blank" rel="noopener noreferrer">公司综合管理高级专员</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94101006" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+          </div>
+        </details>
+        <details class="card job-company" open>
+          <summary><div class="company-heading"><span class="company-logo-frame" aria-hidden="true"><img class="company-logo" src="assets/logos/chinaamc.ico" alt="" loading="lazy"></span><div class="company-heading-copy"><h3>華夏基金（香港）有限公司（ChinaAMC）</h3><span class="badge badge-origin-cn">在港中資</span></div></div><span class="company-job-count">8 個職位</span></summary>
+          <div class="job-list">
+            <article class="job-item"><span class="job-number">01</span><div><a class="job-title-link" href="https://hk.linkedin.com/jobs/view/index-strategist-at-china-asset-management-hong-kong-4431637831" target="_blank" rel="noopener noreferrer">Index Strategist</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：LinkedIn</span></div></div><a class="apply" href="https://hk.linkedin.com/jobs/view/index-strategist-at-china-asset-management-hong-kong-4431637831" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">02</span><div><a class="job-title-link" href="https://hk.linkedin.com/jobs/view/etf-portfolio-manager-at-china-asset-management-hong-kong-4412744040" target="_blank" rel="noopener noreferrer">ETF Portfolio Manager</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：LinkedIn</span></div></div><a class="apply" href="https://hk.linkedin.com/jobs/view/etf-portfolio-manager-at-china-asset-management-hong-kong-4412744040" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">03</span><div><a class="job-title-link" href="https://hk.linkedin.com/jobs/view/research-assistant-at-china-asset-management-hong-kong-4434448835" target="_blank" rel="noopener noreferrer">Research Assistant</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：LinkedIn</span></div></div><a class="apply" href="https://hk.linkedin.com/jobs/view/research-assistant-at-china-asset-management-hong-kong-4434448835" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">04</span><div><a class="job-title-link" href="https://hk.linkedin.com/jobs/view/%E5%88%B8%E5%95%86%E6%B8%A0%E9%81%93%E9%94%80%E5%94%AE-at-china-asset-management-hong-kong-4421814976" target="_blank" rel="noopener noreferrer">券商渠道銷售</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：LinkedIn（使用者於 2026-09-18 人工確認）</span></div></div><a class="apply" href="https://hk.linkedin.com/jobs/view/%E5%88%B8%E5%95%86%E6%B8%A0%E9%81%93%E9%94%80%E5%94%AE-at-china-asset-management-hong-kong-4421814976" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">05</span><div><a class="job-title-link" href="https://hk.linkedin.com/jobs/view/product-development-at-china-asset-management-hong-kong-4464078588" target="_blank" rel="noopener noreferrer">Product Development</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：LinkedIn（使用者於 2026-09-18 人工確認）</span></div></div><a class="apply" href="https://hk.linkedin.com/jobs/view/product-development-at-china-asset-management-hong-kong-4464078588" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">06</span><div><a class="job-title-link" href="https://hk.linkedin.com/jobs/view/etf-strategist-product-manager-at-china-asset-management-hong-kong-4414550339" target="_blank" rel="noopener noreferrer">ETF Product Manager 产品主理人</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：LinkedIn（使用者於 2026-09-18 人工確認）</span></div></div><a class="apply" href="https://hk.linkedin.com/jobs/view/etf-strategist-product-manager-at-china-asset-management-hong-kong-4414550339" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">07</span><div><a class="job-title-link" href="https://hk.linkedin.com/jobs/view/legal-and-product-compliance-vice-president-senior-manager-at-china-asset-management-hong-kong-4436368408" target="_blank" rel="noopener noreferrer">Legal and Product Compliance VP/Senior Manager</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：LinkedIn（使用者於 2026-09-18 人工確認）</span></div></div><a class="apply" href="https://hk.linkedin.com/jobs/view/legal-and-product-compliance-vice-president-senior-manager-at-china-asset-management-hong-kong-4436368408" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">08</span><div><a class="job-title-link" href="https://hk.linkedin.com/jobs/view/fund-operations-officer-at-china-asset-management-hong-kong-4433088404" target="_blank" rel="noopener noreferrer">Fund Operations Officer</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：LinkedIn（使用者於 2026-09-18 人工確認）</span></div></div><a class="apply" href="https://hk.linkedin.com/jobs/view/fund-operations-officer-at-china-asset-management-hong-kong-4433088404" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+          </div>
+        </details>
+        <details class="card job-company" open>
+          <summary><div class="company-heading"><span class="company-logo-frame" aria-hidden="true"><img class="company-logo" src="assets/logos/cicc.png" alt="" loading="lazy"></span><div class="company-heading-copy"><h3>中國國際金融香港資產管理有限公司（CICC）</h3><span class="badge badge-origin-cn">在港中資</span></div></div><span class="company-job-count">26 個職位</span></summary>
+          <div class="job-list">
+            <article class="job-item"><span class="job-number">01</span><div><a class="job-title-link" href="https://hk.linkedin.com/jobs/view/wealth-management-trader-at-cicc-4455605440" target="_blank" rel="noopener noreferrer">Wealth Management - Trader</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：LinkedIn</span></div></div><a class="apply" href="https://hk.linkedin.com/jobs/view/wealth-management-trader-at-cicc-4455605440" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">02</span><div><a class="job-title-link" href="https://hk.linkedin.com/jobs/view/wealth-management-investment-assistant-at-cicc-4455609400" target="_blank" rel="noopener noreferrer">Wealth Management - Investment Assistant</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：LinkedIn</span></div></div><a class="apply" href="https://hk.linkedin.com/jobs/view/wealth-management-investment-assistant-at-cicc-4455609400" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">03</span><div><a class="job-title-link" href="https://hk.linkedin.com/jobs/view/wealth-management-institutional-wealth-advisor-at-cicc-4462933342" target="_blank" rel="noopener noreferrer">Wealth Management - Institutional Wealth Advisor</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：LinkedIn</span></div></div><a class="apply" href="https://hk.linkedin.com/jobs/view/wealth-management-institutional-wealth-advisor-at-cicc-4462933342" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">04</span><div><a class="job-title-link" href="https://hk.linkedin.com/jobs/view/wealth-management-private-wealth-advisor-at-cicc-4462938339" target="_blank" rel="noopener noreferrer">Wealth Management - Private Wealth Advisor</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：LinkedIn</span></div></div><a class="apply" href="https://hk.linkedin.com/jobs/view/wealth-management-private-wealth-advisor-at-cicc-4462938339" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">05</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/93791070" target="_blank" rel="noopener noreferrer">Client Development and Management Specialist (J19525)</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/93791070" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">06</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94083188" target="_blank" rel="noopener noreferrer">Business Development and Marketing Specialist (J17564)</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94083188" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">07</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94116789" target="_blank" rel="noopener noreferrer">Trader (J19561)</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94116789" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">08</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94306657" target="_blank" rel="noopener noreferrer">Position for Equity Financing Business Development and Execution (J19582)</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94306657" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">09</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/93964126" target="_blank" rel="noopener noreferrer">Assistant Wealth Manager</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/93964126" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">10</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/93467321" target="_blank" rel="noopener noreferrer">Position for Equity Review (J19486)</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/93467321" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">11</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/93791069" target="_blank" rel="noopener noreferrer">Client Digital Service Specialist (J19523)</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/93791069" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">12</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/93791071" target="_blank" rel="noopener noreferrer">Risk Analyst - Market Risk (J19517)</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/93791071" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">13</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/93791072" target="_blank" rel="noopener noreferrer">Risk Analyst - Risk Quant (J19519)</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/93791072" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">14</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/93803269" target="_blank" rel="noopener noreferrer">Customer Strategy Specialist (J18750)</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/93803269" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">15</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/93883988" target="_blank" rel="noopener noreferrer">Equities Market Risk Specialist (J19350)</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/93883988" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">16</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94116783" target="_blank" rel="noopener noreferrer">OTC Desk Middle Office (J19558)</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94116783" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">17</span><div><a class="job-title-link" href="https://hk.linkedin.com/jobs/view/position-for-general-support-at-cicc-4406960151" target="_blank" rel="noopener noreferrer">Position for General Support</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="source-label">來源：LinkedIn</span></div></div><a class="apply" href="https://hk.linkedin.com/jobs/view/position-for-general-support-at-cicc-4406960151" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">18</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94528631" target="_blank" rel="noopener noreferrer">Operations Specialist (Syndicate Support) (J19741)</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94528631" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">19</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94528629" target="_blank" rel="noopener noreferrer">Operations Specialist (Project Management Support) (J19743)</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94528629" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">20</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94528630" target="_blank" rel="noopener noreferrer">Operations Specialist (Account Opening Support) (J19739)</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94528630" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">21</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/93525728" target="_blank" rel="noopener noreferrer">Operations Specialist (Settlement Support) (J19483)</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/93525728" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">22</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/93817600" target="_blank" rel="noopener noreferrer">Operations Specialist (J19533)</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/93817600" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">23</span><div><a class="job-title-link" href="https://hk.linkedin.com/jobs/view/compliance-officer-aml-team-at-cicc-4452304157" target="_blank" rel="noopener noreferrer">Compliance Officer (AML team)</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：LinkedIn（使用者於 2026-09-18 人工確認）</span></div></div><a class="apply" href="https://hk.linkedin.com/jobs/view/compliance-officer-aml-team-at-cicc-4452304157" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">24</span><div><a class="job-title-link" href="https://hk.linkedin.com/jobs/view/credit-risk-wealth-management-at-cicc-4462991900" target="_blank" rel="noopener noreferrer">Credit Risk (Wealth Management)</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：LinkedIn（使用者於 2026-09-18 人工確認）</span></div></div><a class="apply" href="https://hk.linkedin.com/jobs/view/credit-risk-wealth-management-at-cicc-4462991900" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">25</span><div><a class="job-title-link" href="https://hk.linkedin.com/jobs/view/wealth-management-business-analyst-specialist-at-cicc-4462943315" target="_blank" rel="noopener noreferrer">Wealth Management - Business Analyst Specialist</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：LinkedIn（使用者於 2026-09-18 人工確認）</span></div></div><a class="apply" href="https://hk.linkedin.com/jobs/view/wealth-management-business-analyst-specialist-at-cicc-4462943315" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">26</span><div><a class="job-title-link" href="https://hk.linkedin.com/jobs/view/wealth-management-customer-strategy-specialist-at-cicc-4462941325" target="_blank" rel="noopener noreferrer">Wealth Management - Customer Strategy Specialist</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：LinkedIn（使用者於 2026-09-18 人工確認）</span></div></div><a class="apply" href="https://hk.linkedin.com/jobs/view/wealth-management-customer-strategy-specialist-at-cicc-4462941325" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+          </div>
+        </details>
+        <details class="card job-company" open>
+          <summary><div class="company-heading"><span class="company-logo-frame" aria-hidden="true"><img class="company-logo" src="assets/logos/csop.png" alt="" loading="lazy"></span><div class="company-heading-copy"><h3>南方東英資產管理有限公司（CSOP）</h3><span class="badge badge-origin-cn">在港中資</span></div></div><span class="company-job-count">1 個職位</span></summary>
+          <div class="job-list">
+            <article class="job-item"><span class="job-number">01</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94492174" target="_blank" rel="noopener noreferrer">Junior Fund Operations</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94492174" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+          </div>
+        </details>
+        <details class="card job-company" open>
+          <summary><div class="company-heading"><span class="company-logo-frame" aria-hidden="true"><img class="company-logo" src="assets/logos/dws.svg" alt="" loading="lazy"></span><div class="company-heading-copy"><h3>Deutsche Asset Management S.A.／DWS</h3><span class="badge badge-origin-foreign">外資</span></div></div><span class="company-job-count">3 個職位</span></summary>
+          <div class="job-list">
+            <article class="job-item"><span class="job-number">01</span><div><a class="job-title-link" href="https://db.wd3.myworkdayjobs.com/en-US/DWSWebsite/job/Hong-Kong-Intl-Commerce-Ctr/Coverage-Specialist--Hong-Kong---Mainland-China_R0446056" target="_blank" rel="noopener noreferrer">Coverage Specialist, Hong Kong &amp; Mainland China</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="badge badge-official">官方</span><span class="source-label">官方（DWS Workday，R0446056）</span></div></div><a class="apply" href="https://db.wd3.myworkdayjobs.com/en-US/DWSWebsite/job/Hong-Kong-Intl-Commerce-Ctr/Coverage-Specialist--Hong-Kong---Mainland-China_R0446056" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">02</span><div><a class="job-title-link" href="https://db.wd3.myworkdayjobs.com/en-US/DWSWebsite/job/Hong-Kong-Intl-Commerce-Ctr/XMLNAME-2027-DWS-Graduate-Program--PACE----Investment---Hong-Kong_R0446314" target="_blank" rel="noopener noreferrer">2027 DWS Graduate Program (P.A.C.E.) - Investment – Hong Kong SAR</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="badge badge-official">官方</span><span class="source-label">官方（全職，R0446314）</span></div></div><a class="apply" href="https://db.wd3.myworkdayjobs.com/en-US/DWSWebsite/job/Hong-Kong-Intl-Commerce-Ctr/XMLNAME-2027-DWS-Graduate-Program--PACE----Investment---Hong-Kong_R0446314" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">03</span><div><a class="job-title-link" href="https://db.wd3.myworkdayjobs.com/en-US/DWSWebsite/job/Hong-Kong-Intl-Commerce-Ctr/XMLNAME-2027-DWS-Graduate-Program--PACE----Communications--Brand---CSR-team---Hong-Kong-SAR_R0445385" target="_blank" rel="noopener noreferrer">2027 DWS Graduate Program (P.A.C.E.) – Communications, Brand &amp; CSR team – Hong Kong SAR</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="badge badge-official">官方</span><span class="source-label">官方（全職，R0445385）</span></div></div><a class="apply" href="https://db.wd3.myworkdayjobs.com/en-US/DWSWebsite/job/Hong-Kong-Intl-Commerce-Ctr/XMLNAME-2027-DWS-Graduate-Program--PACE----Communications--Brand---CSR-team---Hong-Kong-SAR_R0445385" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+          </div>
+        </details>
+        <details class="card job-company" open>
+          <summary><div class="company-heading"><span class="company-logo-frame" aria-hidden="true"><img class="company-logo" src="assets/logos/doo-financial.webp" alt="" loading="lazy"></span><div class="company-heading-copy"><h3>都會金融香港有限公司（Doo Financial）</h3><span class="badge badge-origin-hk">港資</span></div></div><span class="company-job-count">1 個職位</span></summary>
+          <div class="job-list">
+            <article class="job-item"><span class="job-number">01</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94416395" target="_blank" rel="noopener noreferrer">Trading Operations Officer (Metals)</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94416395" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+          </div>
+        </details>
+        <details class="card job-company" open>
+          <summary><div class="company-heading"><span class="company-logo-frame" aria-hidden="true"><img class="company-logo" src="assets/logos/fubon.svg" alt="" loading="lazy"></span><div class="company-heading-copy"><h3>富邦基金管理（香港）有限公司（Fubon）</h3><span class="badge badge-origin-foreign">外資</span></div></div><span class="company-job-count">1 個職位</span></summary>
+          <div class="job-list">
+            <article class="job-item"><span class="job-number">01</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94077710" target="_blank" rel="noopener noreferrer">Senior Portfolio Manager / ETF Investment Management Lead 資深基金經理／ETF投資管理主管</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94077710" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+          </div>
+        </details>
+        <details class="card job-company" open>
+          <summary><div class="company-heading"><span class="company-logo-frame" aria-hidden="true"><img class="company-logo" src="assets/logos/hang-seng.svg" alt="" loading="lazy"></span><div class="company-heading-copy"><h3>恒生投資管理有限公司（Hang Seng Investment Management）</h3><span class="badge badge-origin-hk">港資</span></div></div><span class="company-job-count">1 個職位</span></summary>
+          <div class="job-list">
+            <article class="job-item"><span class="job-number">01</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94172356" target="_blank" rel="noopener noreferrer">Assistant Portfolio Manager, Index Investments</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：JobsDB（Hang Seng Bank 招聘實體）</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94172356" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+          </div>
+        </details>
+        <details class="card job-company" open>
+          <summary><div class="company-heading"><span class="company-logo-frame" aria-hidden="true"><img class="company-logo" src="assets/logos/harvest.png" alt="" loading="lazy"></span><div class="company-heading-copy"><h3>嘉實國際資產管理有限公司（Harvest Global Investments）</h3><span class="badge badge-origin-cn">在港中資</span></div></div><span class="company-job-count">2 個職位</span></summary>
+          <div class="job-list">
+            <article class="job-item"><span class="job-number">01</span><div><a class="job-title-link" href="https://hk.linkedin.com/jobs/view/bond-dealer-analyst-asso-at-harvest-global-investments-limited-4458938570" target="_blank" rel="noopener noreferrer">Bond Dealer-Analyst/Asso</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：LinkedIn</span></div></div><a class="apply" href="https://hk.linkedin.com/jobs/view/bond-dealer-analyst-asso-at-harvest-global-investments-limited-4458938570" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">02</span><div><a class="job-title-link" href="https://hk.linkedin.com/jobs/view/product-manager-at-harvest-global-investments-limited-4442016771" target="_blank" rel="noopener noreferrer">Product Manager</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：LinkedIn</span></div></div><a class="apply" href="https://hk.linkedin.com/jobs/view/product-manager-at-harvest-global-investments-limited-4442016771" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+          </div>
+        </details>
+        <details class="card job-company" open>
+          <summary><div class="company-heading"><span class="company-logo-frame" aria-hidden="true"><img class="company-logo" src="assets/logos/icbc-am.png" alt="" loading="lazy"></span><div class="company-heading-copy"><h3>工銀瑞信資產管理（國際）有限公司（ICBC AM）</h3><span class="badge badge-origin-cn">在港中資</span></div></div><span class="company-job-count">2 個職位</span></summary>
+          <div class="job-list">
+            <article class="job-item"><span class="job-number">01</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94194788" target="_blank" rel="noopener noreferrer">Investment Analyst</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94194788" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">02</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94195781" target="_blank" rel="noopener noreferrer">Senior Product Manager</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94195781" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+          </div>
+        </details>
+        <details class="card job-company" open>
+          <summary><div class="company-heading"><span class="company-logo-frame" aria-hidden="true"><img class="company-logo" src="assets/logos/invesco.svg" alt="" loading="lazy"></span><div class="company-heading-copy"><h3>Invesco Capital Management LLC／Invesco Hong Kong</h3><span class="badge badge-origin-foreign">外資</span></div></div><span class="company-job-count">13 個職位</span></summary>
+          <div class="job-list">
+            <article class="job-item"><span class="job-number">01</span><div><a class="job-title-link" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Associate--Strategy---Analytics--Invesco-Real-Estate-_R-15396" target="_blank" rel="noopener noreferrer">Associate, Strategy &amp; Analytics (Invesco Real Estate)</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="badge badge-official">官方</span><span class="source-label">官方（R-15396）</span></div></div><a class="apply" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Associate--Strategy---Analytics--Invesco-Real-Estate-_R-15396" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">02</span><div><a class="job-title-link" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Equity-ETF-Strategist--APAC_R-15484" target="_blank" rel="noopener noreferrer">Equity ETF Strategist, APAC</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="badge badge-official">官方</span><span class="source-label">官方（R-15484）</span></div></div><a class="apply" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Equity-ETF-Strategist--APAC_R-15484" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">03</span><div><a class="job-title-link" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Fixed-Income-ETF-Strategist--APAC_R-15485" target="_blank" rel="noopener noreferrer">Fixed Income ETF Strategist, APAC</a><div class="job-meta"><span class="badge badge-front">前台</span><span class="badge badge-official">官方</span><span class="source-label">官方（R-15485）</span></div></div><a class="apply" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Fixed-Income-ETF-Strategist--APAC_R-15485" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">04</span><div><a class="job-title-link" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Assistant-Manager--Compliance_R-14486" target="_blank" rel="noopener noreferrer">Assistant Manager, Compliance</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="badge badge-official">官方</span><span class="source-label">官方（R-14486）</span></div></div><a class="apply" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Assistant-Manager--Compliance_R-14486" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">05</span><div><a class="job-title-link" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Lead--Content-Strategy---Digital-Engagement_R-15357" target="_blank" rel="noopener noreferrer">Lead, Content Strategy &amp; Digital Engagement (Marketing)</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="badge badge-official">官方</span><span class="source-label">官方（R-15357）</span></div></div><a class="apply" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Lead--Content-Strategy---Digital-Engagement_R-15357" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">06</span><div><a class="job-title-link" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Manager--Intermediary-Marketing_R-15397" target="_blank" rel="noopener noreferrer">Manager, Intermediary Marketing</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="badge badge-official">官方</span><span class="source-label">官方（R-15397）</span></div></div><a class="apply" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Manager--Intermediary-Marketing_R-15397" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">07</span><div><a class="job-title-link" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Dir--Private-Markets-Product--Real-Esate--APAC_R-14824" target="_blank" rel="noopener noreferrer">Director, Private Markets Product, Real Estate, APAC</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="badge badge-official">官方</span><span class="source-label">官方（R-14824）</span></div></div><a class="apply" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Dir--Private-Markets-Product--Real-Esate--APAC_R-14824" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">08</span><div><a class="job-title-link" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Head-of-Investments-Legal--Asia-Pacific_R-14821" target="_blank" rel="noopener noreferrer">Head of Investments Legal, Asia Pacific</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="badge badge-official">官方</span><span class="source-label">官方（R-14821）</span></div></div><a class="apply" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Head-of-Investments-Legal--Asia-Pacific_R-14821" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">09</span><div><a class="job-title-link" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Regional-Head-of-Front-Office-Operations---APAC_R-14549" target="_blank" rel="noopener noreferrer">Regional Head of Front Office Operations - APAC</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="badge badge-official">官方</span><span class="source-label">官方（R-14549）</span></div></div><a class="apply" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Regional-Head-of-Front-Office-Operations---APAC_R-14549" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">10</span><div><a class="job-title-link" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Associate-Director--Technology-Hong-Kong---Singapore_R-14546" target="_blank" rel="noopener noreferrer">Associate Director, Technology Hong Kong &amp; Singapore</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="badge badge-official">官方</span><span class="source-label">官方（R-14546）</span></div></div><a class="apply" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Associate-Director--Technology-Hong-Kong---Singapore_R-14546" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">11</span><div><a class="job-title-link" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Senior-Business-Analyst--Investment-Technology_R-14956" target="_blank" rel="noopener noreferrer">Senior Business Analyst, Investment Technology</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="badge badge-official">官方</span><span class="source-label">官方（R-14956）</span></div></div><a class="apply" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Senior-Business-Analyst--Investment-Technology_R-14956" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">12</span><div><a class="job-title-link" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Senior-Business-Analyst--Digital-Distribution---Enterprise-Engineering_R-14367" target="_blank" rel="noopener noreferrer">Senior Business Analyst, Digital Distribution &amp; Enterprise Engineering</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="badge badge-official">官方</span><span class="source-label">官方（R-14367）</span></div></div><a class="apply" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Senior-Business-Analyst--Digital-Distribution---Enterprise-Engineering_R-14367" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">13</span><div><a class="job-title-link" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Senior-Manager--APAC-Product-Owner---Digital-Distribution---Enterprise-Engineering_R-14368" target="_blank" rel="noopener noreferrer">Senior Manager, APAC Product Owner – Digital Distribution &amp; Enterprise Engineering</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="badge badge-official">官方</span><span class="source-label">官方（R-14368）</span></div></div><a class="apply" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Senior-Manager--APAC-Product-Owner---Digital-Distribution---Enterprise-Engineering_R-14368" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+          </div>
+        </details>
+        <details class="card job-company" open>
+          <summary><div class="company-heading"><span class="company-logo-frame" aria-hidden="true"><img class="company-logo" src="assets/logos/ping-an.jpg" alt="" loading="lazy"></span><div class="company-heading-copy"><h3>中國平安資產管理（香港）有限公司（Ping An）</h3><span class="badge badge-origin-cn">在港中資</span></div></div><span class="company-job-count">2 個職位</span></summary>
+          <div class="job-list">
+            <article class="job-item"><span class="job-number">01</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94206079" target="_blank" rel="noopener noreferrer">Portfolio Associate</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94206079" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+            <article class="job-item"><span class="job-number">02</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94092197" target="_blank" rel="noopener noreferrer">Operations Associate / Senior Associate (Contract)</a><div class="job-meta"><span class="badge badge-back">後台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94092197" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+          </div>
+        </details>
+        <details class="card job-company" open>
+          <summary><div class="company-heading"><span class="company-logo-frame" aria-hidden="true"><img class="company-logo" src="assets/logos/taikang.png" alt="" loading="lazy"></span><div class="company-heading-copy"><h3>泰康資產管理（香港）有限公司（Taikang）</h3><span class="badge badge-origin-cn">在港中資</span></div></div><span class="company-job-count">1 個職位</span></summary>
+          <div class="job-list">
+            <article class="job-item"><span class="job-number">01</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/92211976" target="_blank" rel="noopener noreferrer">VP of Product Management</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/92211976" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+          </div>
+        </details>
+        <details class="card job-company" open>
+          <summary><div class="company-heading"><span class="company-logo-frame" aria-hidden="true"><img class="company-logo" src="assets/logos/value-partners.png" alt="" loading="lazy"></span><div class="company-heading-copy"><h3>惠理基金管理香港有限公司（Value Partners）</h3><span class="badge badge-origin-hk">港資</span></div></div><span class="company-job-count">1 個職位</span></summary>
+          <div class="job-list">
+            <article class="job-item"><span class="job-number">01</span><div><a class="job-title-link" href="https://hk.jobsdb.com/job/94424065" target="_blank" rel="noopener noreferrer">Senior Associate / Assistant Manager – Fund Operations</a><div class="job-meta"><span class="badge badge-middle">中台</span><span class="source-label">來源：JobsDB</span></div></div><a class="apply" href="https://hk.jobsdb.com/job/94424065" target="_blank" rel="noopener noreferrer">申請 ↗</a></article>
+          </div>
+        </details>
+      </div>
+      <div class="empty" id="jobs-empty" hidden>沒有符合目前篩選條件的職位。</div>
+    </section>
+
+    <section id="history-panel" role="tabpanel" aria-labelledby="history-tab" hidden>
+      <div class="section-head">
+        <div>
+          <h2>每週搜尋紀錄</h2>
+          <p class="note">保存每次完成核准後的職位快照，方便按週回看。歷史紀錄反映當週核驗結果，不代表職位目前仍然開放。</p>
+        </div>
+      </div>
+      <form class="card history-controls" id="history-form">
+        <label>報告週期
+          <select id="history-period" aria-describedby="history-period-note">
+            <option value="all">全部週期（跨週搜尋）</option>
+          </select>
+        </label>
+        <button class="btn btn-primary" type="submit">確認</button>
+      </form>
+      <p class="note" id="history-period-note">選擇週期後按「確認」，即可查看該週完整職位快照。</p>
+      <div id="history-summary" class="history-summary" aria-live="polite"></div>
+      <div id="history-list"></div>
+      <div class="empty card" id="history-empty" hidden>暫時沒有可回看的週度紀錄。</div>
+    </section>
+
+    <section id="coverage-panel" role="tabpanel" aria-labelledby="coverage-tab" hidden>
+      <div class="section-head"><h2>31 個法律實體官方網站核查</h2><span class="result-count">已逐家打開官方來源</span></div>
+      <p class="note">「未見公開職位」不等於公司沒有招聘；只代表官方網站未提供可直接核驗的香港申請入口。平台職位會另外標示。</p>
+      <div class="table-wrap">
+        <table aria-label="官方網站核查結果">
+          <thead><tr><th>#</th><th>法律實體</th><th>公司背景</th><th>官方來源</th><th>核查結果</th></tr></thead>
+          <tbody id="coverage-body">
+          <tr><td data-label="#">1</td><td class="company-cell" data-label="法律實體">Amundi Hong Kong Limited</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="官方來源"><a class="job-link" href="https://jobs.amundi.com/" target="_blank" rel="noopener noreferrer">Amundi Careers</a></td><td data-label="核查結果"><span class="status">官方在招</span><div class="coverage-result">官方 1 個香港正式職位</div></td></tr>
+          <tr><td data-label="#">2</td><td class="company-cell" data-label="法律實體">BlackRock Asset Management North Asia Limited</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="官方來源"><a class="job-link" href="https://careers.blackrock.com/location/hong-kong-sar-jobs/45831/1819730/2" target="_blank" rel="noopener noreferrer">BlackRock 香港職位</a></td><td data-label="核查結果"><span class="status">官方在招</span><div class="coverage-result">官方共 2 個香港結果；排除 1 個 Summer Internship，保留 1 個</div></td></tr>
+          <tr><td data-label="#">3</td><td class="company-cell" data-label="法律實體">BOCI-Prudential Asset Management Limited</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.boci-pru.com.hk/" target="_blank" rel="noopener noreferrer">公司官網</a></td><td data-label="核查結果"><span class="status">已檢查</span><div class="coverage-result">官網未見可直接申請的公開職位；JobsDB 17 個於 2026-09-18 重新核驗為 Active</div></td></tr>
+          <tr><td data-label="#">4</td><td class="company-cell" data-label="法律實體">Bosera Asset Management (International) Co., Limited</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.bosera.com.hk/zh-HK/careers" target="_blank" rel="noopener noreferrer">官方 Careers</a></td><td data-label="核查結果"><span class="status">官方在招</span><div class="coverage-result">官方 4 個正式職位；實習生計畫已排除；JobsDB 2 個於 2026-09-18 重新核驗為 Active</div></td></tr>
+          <tr><td data-label="#">5</td><td class="company-cell" data-label="法律實體">China Asset Management (Hong Kong) Limited</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.chinaamc.com.hk/" target="_blank" rel="noopener noreferrer">公司官網</a></td><td data-label="核查結果"><span class="status">已檢查</span><div class="coverage-result">官網未見可直接申請職位清單；LinkedIn 8 個已核驗，其中 5 個由使用者於 2026-09-18 人工確認</div></td></tr>
+          <tr><td data-label="#">6</td><td class="company-cell" data-label="法律實體">China International Capital Corporation Hong Kong Asset Management Limited</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="官方來源"><a class="job-link" href="https://en.cicc.com/" target="_blank" rel="noopener noreferrer">CICC 官網</a></td><td data-label="核查結果"><span class="status">官方在招</span><div class="coverage-result">官方企業站未提供可逐項核驗的香港資管招聘清單；LinkedIn／JobsDB 26 個已核驗，其中 4 個由使用者於 2026-09-18 人工確認</div></td></tr>
+          <tr><td data-label="#">7</td><td class="company-cell" data-label="法律實體">CMS Asset Management (HK) Co., Limited</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.cmschina.com.hk/en/AM/FundProduct" target="_blank" rel="noopener noreferrer">官方資管頁</a></td><td data-label="核查結果"><span class="status">已檢查</span><div class="coverage-result">未見發行商實體職位；招商證券國際 9 個集團職位另列</div></td></tr>
+          <tr><td data-label="#">8</td><td class="company-cell" data-label="法律實體">CSOP Asset Management Limited</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.csopasset.com/" target="_blank" rel="noopener noreferrer">CSOP 官網</a></td><td data-label="核查結果"><span class="status">已檢查</span><div class="coverage-result">官網未見公開職位清單；JobsDB 1 個於 2026-09-18 重新核驗為 Active</div></td></tr>
+          <tr><td data-label="#">9</td><td class="company-cell" data-label="法律實體">Deutsche Asset Management S.A.</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="官方來源"><a class="job-link" href="https://db.wd3.myworkdayjobs.com/en-US/DWSWebsite" target="_blank" rel="noopener noreferrer">DWS 官方招聘</a></td><td data-label="核查結果"><span class="status">官方在招</span><div class="coverage-result">官方香港清單 3 個，均為全職且可申請</div></td></tr>
+          <tr><td data-label="#">10</td><td class="company-cell" data-label="法律實體">Doo Financial HK Limited</td><td data-label="公司背景"><span class="badge badge-origin-hk">港資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.doofinancial.hk/en" target="_blank" rel="noopener noreferrer">公司官網</a></td><td data-label="核查結果"><span class="status">已檢查</span><div class="coverage-result">官網未見與發行商實體匹配的公開職位；JobsDB 1 個已核驗</div></td></tr>
+          <tr><td data-label="#">11</td><td class="company-cell" data-label="法律實體">E Fund Management (Hong Kong) Co., Limited</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.efunds.com.hk/" target="_blank" rel="noopener noreferrer">公司官網</a></td><td data-label="核查結果"><span class="status">未見官方職位</span><div class="coverage-result">未找到可獨立驗證的香港公開職位</div></td></tr>
+          <tr><td data-label="#">12</td><td class="company-cell" data-label="法律實體">Fubon Fund Management (Hong Kong) Limited</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.fubonfund.com.hk/eng/" target="_blank" rel="noopener noreferrer">公司官網</a></td><td data-label="核查結果"><span class="status">已檢查</span><div class="coverage-result">官網未見可直接申請職位；JobsDB 1 個已核驗</div></td></tr>
+          <tr><td data-label="#">13</td><td class="company-cell" data-label="法律實體">Fullgoal Asset Management (HK) Limited</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.fullgoal.com.hk/" target="_blank" rel="noopener noreferrer">公司官網</a></td><td data-label="核查結果"><span class="status">未見官方職位</span><div class="coverage-result">未找到可獨立驗證的香港公開職位</div></td></tr>
+          <tr><td data-label="#">14</td><td class="company-cell" data-label="法律實體">Hang Seng Investment Management Limited</td><td data-label="公司背景"><span class="badge badge-origin-hk">港資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.hangseng.com/en-hk/careers/" target="_blank" rel="noopener noreferrer">恒生招聘</a></td><td data-label="核查結果"><span class="status">官方在招</span><div class="coverage-result">JobsDB 1 個職位於 2026-09-18 核驗為 Active；另 1 個 LinkedIn 職位顯示「目前不接受應徵」並已移除</div></td></tr>
+          <tr><td data-label="#">15</td><td class="company-cell" data-label="法律實體">Harvest Global Investments Limited</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.harvestglobal.com.hk/" target="_blank" rel="noopener noreferrer">公司官網</a></td><td data-label="核查結果"><span class="status">已檢查</span><div class="coverage-result">官網未見可直接申請職位清單；LinkedIn 2 個已核驗</div></td></tr>
+          <tr><td data-label="#">16</td><td class="company-cell" data-label="法律實體">HSBC Investment Funds (Hong Kong) Limited</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.hsbc.com/careers/" target="_blank" rel="noopener noreferrer">HSBC Careers</a></td><td data-label="核查結果"><span class="status">未見官方職位</span><div class="coverage-result">集團招聘入口已查，未找到可明確歸屬此發行商實體的香港職位</div></td></tr>
+          <tr><td data-label="#">17</td><td class="company-cell" data-label="法律實體">ICBC UBS Asset Management (International) Company Limited</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.icbcubs.com.hk/" target="_blank" rel="noopener noreferrer">公司官網</a></td><td data-label="核查結果"><span class="status">已檢查</span><div class="coverage-result">官網未見公開招聘清單；JobsDB 2 個於 2026-09-18 重新核驗為 Active；另 2 個失效職位已移除</div></td></tr>
+          <tr><td data-label="#">18</td><td class="company-cell" data-label="法律實體">Invesco Capital Management LLC</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="官方來源"><a class="job-link" href="https://invesco.wd1.myworkdayjobs.com/en-US/IVZ?locations=1804888b7f5a100128d467efb26b0000" target="_blank" rel="noopener noreferrer">Invesco 香港官方職位</a></td><td data-label="核查結果"><span class="status">官方在招</span><div class="coverage-result">官方 13 個香港全職職位</div></td></tr>
+          <tr><td data-label="#">19</td><td class="company-cell" data-label="法律實體">MicroBit Capital Management Limited</td><td data-label="公司背景"><span class="badge badge-origin-hk">港資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.microbit.ai/" target="_blank" rel="noopener noreferrer">公司官網</a></td><td data-label="核查結果"><span class="status">未見官方職位</span><div class="coverage-result">無公開招聘入口；未找到可獨立驗證職位</div></td></tr>
+          <tr><td data-label="#">20</td><td class="company-cell" data-label="法律實體">Mirae Asset Global Investments (Hong Kong) Limited</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.horizonsetfs.com.hk/" target="_blank" rel="noopener noreferrer">Horizons ETFs 官網</a></td><td data-label="核查結果"><span class="status">已檢查</span><div class="coverage-result">官網未見香港招聘入口；2 個 OfferToday 連結已不再顯示職位內容並已移除</div></td></tr>
+          <tr><td data-label="#">21</td><td class="company-cell" data-label="法律實體">Nikko Asset Management Hong Kong Limited</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.nikkoam.com.hk/" target="_blank" rel="noopener noreferrer">Nikko AM 官網</a></td><td data-label="核查結果"><span class="status">未見官方職位</span><div class="coverage-result">已查全球招聘入口，未找到香港在招職位</div></td></tr>
+          <tr><td data-label="#">22</td><td class="company-cell" data-label="法律實體">Pando Finance Limited</td><td data-label="公司背景"><span class="badge badge-origin-hk">港資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.pandofinance.com.hk/en/" target="_blank" rel="noopener noreferrer">公司官網</a></td><td data-label="核查結果"><span class="status">未見官方職位</span><div class="coverage-result">無公開招聘職位</div></td></tr>
+          <tr><td data-label="#">23</td><td class="company-cell" data-label="法律實體">Phillip Capital Management (HK) Limited</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.phillipfunds.com.hk/" target="_blank" rel="noopener noreferrer">公司官網</a></td><td data-label="核查結果"><span class="status">未見官方職位</span><div class="coverage-result">未找到可獨立驗證的發行商實體職位</div></td></tr>
+          <tr><td data-label="#">24</td><td class="company-cell" data-label="法律實體">Ping An of China Asset Management (Hong Kong) Company Limited</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="官方來源"><a class="job-link" href="https://asset.pingan.com.hk/en/Join-Us" target="_blank" rel="noopener noreferrer">官方 Join Us</a></td><td data-label="核查結果"><span class="status">官方在招</span><div class="coverage-result">官方明確顯示「No vacancy at this moment」；JobsDB 2 個仍 Active，故保留並註明來源</div></td></tr>
+          <tr><td data-label="#">25</td><td class="company-cell" data-label="法律實體">Premia Partners Company Limited</td><td data-label="公司背景"><span class="badge badge-origin-hk">港資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.premia-partners.com/" target="_blank" rel="noopener noreferrer">公司官網</a></td><td data-label="核查結果"><span class="status">未見官方職位</span><div class="coverage-result">未見公開在招職位</div></td></tr>
+          <tr><td data-label="#">26</td><td class="company-cell" data-label="法律實體">Samsung Asset Management (Hong Kong) Limited</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.samsungetf.com.hk/" target="_blank" rel="noopener noreferrer">公司官網</a></td><td data-label="核查結果"><span class="status">未見官方職位</span><div class="coverage-result">未找到香港公開職位</div></td></tr>
+          <tr><td data-label="#">27</td><td class="company-cell" data-label="法律實體">Shanxi Securities International Asset Management Limited</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="官方來源"><a class="job-link" href="http://am.ssif.com.hk/" target="_blank" rel="noopener noreferrer">官方資管頁</a></td><td data-label="核查結果"><span class="status">已檢查</span><div class="coverage-result">未見資管實體職位；山證國際集團 3 個職位另列</div></td></tr>
+          <tr><td data-label="#">28</td><td class="company-cell" data-label="法律實體">State Street Global Advisors Asia Limited</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="官方來源"><a class="job-link" href="https://careers.statestreet.com/global/en/search-results?keywords=&amp;location=Hong%20Kong" target="_blank" rel="noopener noreferrer">State Street 香港招聘</a></td><td data-label="核查結果"><span class="status">官方在招</span><div class="coverage-result">官方集團入口 8 個香港職位；法律僱主未鎖定為本實體，故列附錄</div></td></tr>
+          <tr><td data-label="#">29</td><td class="company-cell" data-label="法律實體">State Street Global Advisors Singapore Limited</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="官方來源"><a class="job-link" href="https://careers.statestreet.com/global/en/search-results" target="_blank" rel="noopener noreferrer">State Street 招聘</a></td><td data-label="核查結果"><span class="status">未見官方職位</span><div class="coverage-result">未找到由新加坡發行商實體對外招聘、且工作地點在香港的可核驗職位</div></td></tr>
+          <tr><td data-label="#">30</td><td class="company-cell" data-label="法律實體">Taikang Asset Management (Hong Kong) Company Limited</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="官方來源"><a class="job-link" href="https://hk.taikangasset.cn/" target="_blank" rel="noopener noreferrer">公司官網</a></td><td data-label="核查結果"><span class="status">已檢查</span><div class="coverage-result">官網未見可直接申請職位；JobsDB 1 個已核驗</div></td></tr>
+          <tr><td data-label="#">31</td><td class="company-cell" data-label="法律實體">Value Partners Hong Kong Limited</td><td data-label="公司背景"><span class="badge badge-origin-hk">港資</span></td><td data-label="官方來源"><a class="job-link" href="https://www.valuepartners-group.com/" target="_blank" rel="noopener noreferrer">Value Partners 官網</a></td><td data-label="核查結果"><span class="status">已檢查</span><div class="coverage-result">官網未見可直接申請職位清單；JobsDB 1 個已核驗</div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="appendix-panel" role="tabpanel" aria-labelledby="appendix-tab" hidden>
+      <div class="section-head"><h2>集團招聘入口</h2><span class="result-count">20 個，不計入嚴格口徑 87 個</span></div>
+      <p class="note">職位位於香港且可申請，但法律僱主並非港交所名單中的發行商實體。</p>
+      <div class="table-wrap">
+        <table aria-label="集團招聘職位">
+          <thead><tr><th>集團公司</th><th>公司背景</th><th>分類</th><th>職位</th><th>申請</th></tr></thead>
+          <tbody id="appendix-body">
+          <tr><td class="company-cell" data-label="集團公司">招商證券國際有限公司</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="分類"><span class="badge badge-front">前台</span></td><td data-label="職位"><a class="job-link" href="https://hk.jobsdb.com/job/94614917" target="_blank" rel="noopener noreferrer">Associate, Global Markets Trader (OTC Derivatives)</a></td><td data-label="申請"><a class="apply" href="https://hk.jobsdb.com/job/94614917" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          <tr><td class="company-cell" data-label="集團公司">招商證券國際有限公司</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="分類"><span class="badge badge-front">前台</span></td><td data-label="職位"><a class="job-link" href="https://hk.jobsdb.com/job/94549233" target="_blank" rel="noopener noreferrer">Junior Institutional Sales, Global Institutions</a></td><td data-label="申請"><a class="apply" href="https://hk.jobsdb.com/job/94549233" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          <tr><td class="company-cell" data-label="集團公司">招商證券國際有限公司</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="分類"><span class="badge badge-front">前台</span></td><td data-label="職位"><a class="job-link" href="https://hk.jobsdb.com/job/94241976" target="_blank" rel="noopener noreferrer">Associate, Quantitative Private Fund, Institutional Sales</a></td><td data-label="申請"><a class="apply" href="https://hk.jobsdb.com/job/94241976" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          <tr><td class="company-cell" data-label="集團公司">招商證券國際有限公司</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="分類"><span class="badge badge-front">前台</span></td><td data-label="職位"><a class="job-link" href="https://hk.jobsdb.com/job/94194879" target="_blank" rel="noopener noreferrer">Analyst, Institutional Equities Sales Trader</a></td><td data-label="申請"><a class="apply" href="https://hk.jobsdb.com/job/94194879" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          <tr><td class="company-cell" data-label="集團公司">招商證券國際有限公司</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="分類"><span class="badge badge-middle">中台</span></td><td data-label="職位"><a class="job-link" href="https://hk.jobsdb.com/job/94383259" target="_blank" rel="noopener noreferrer">Associate, Securities Inventory Management, Global Markets</a></td><td data-label="申請"><a class="apply" href="https://hk.jobsdb.com/job/94383259" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          <tr><td class="company-cell" data-label="集團公司">招商證券國際有限公司</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="分類"><span class="badge badge-middle">中台</span></td><td data-label="職位"><a class="job-link" href="https://hk.jobsdb.com/job/94329676" target="_blank" rel="noopener noreferrer">Equities Compliance Associate (Securities &amp; Brokerage)</a></td><td data-label="申請"><a class="apply" href="https://hk.jobsdb.com/job/94329676" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          <tr><td class="company-cell" data-label="集團公司">招商證券國際有限公司</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="分類"><span class="badge badge-back">後台</span></td><td data-label="職位"><a class="job-link" href="https://hk.jobsdb.com/job/94549005" target="_blank" rel="noopener noreferrer">Analyst to Associate, Account Management, Business Operations 帳戶管理崗</a></td><td data-label="申請"><a class="apply" href="https://hk.jobsdb.com/job/94549005" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          <tr><td class="company-cell" data-label="集團公司">招商證券國際有限公司</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="分類"><span class="badge badge-back">後台</span></td><td data-label="職位"><a class="job-link" href="https://hk.jobsdb.com/job/94271055" target="_blank" rel="noopener noreferrer">Department Secretary/ Executive Assistant (Contract)</a></td><td data-label="申請"><a class="apply" href="https://hk.jobsdb.com/job/94271055" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          <tr><td class="company-cell" data-label="集團公司">招商證券國際有限公司</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="分類"><span class="badge badge-back">後台</span></td><td data-label="職位"><a class="job-link" href="https://hk.jobsdb.com/job/94195437" target="_blank" rel="noopener noreferrer">Settlement Officer, Business Operations (Contract)</a></td><td data-label="申請"><a class="apply" href="https://hk.jobsdb.com/job/94195437" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          <tr><td class="company-cell" data-label="集團公司">山證國際金融控股有限公司</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="分類"><span class="badge badge-front">前台</span></td><td data-label="職位"><a class="job-link" href="https://hk.jobsdb.com/job/93824869" target="_blank" rel="noopener noreferrer">Institutional Sales Manager, Global Futures</a></td><td data-label="申請"><a class="apply" href="https://hk.jobsdb.com/job/93824869" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          <tr><td class="company-cell" data-label="集團公司">山證國際金融控股有限公司</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="分類"><span class="badge badge-front">前台</span></td><td data-label="職位"><a class="job-link" href="https://hk.jobsdb.com/job/94465230" target="_blank" rel="noopener noreferrer">投行承做岗</a></td><td data-label="申請"><a class="apply" href="https://hk.jobsdb.com/job/94465230" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          <tr><td class="company-cell" data-label="集團公司">山證國際金融控股有限公司</td><td data-label="公司背景"><span class="badge badge-origin-cn">在港中資</span></td><td data-label="分類"><span class="badge badge-front">前台</span></td><td data-label="職位"><a class="job-link" href="https://hk.jobsdb.com/job/94465166" target="_blank" rel="noopener noreferrer">Derivatives Arbitrage Strategy Investment Manager</a></td><td data-label="申請"><a class="apply" href="https://hk.jobsdb.com/job/94465166" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          <tr><td class="company-cell" data-label="集團公司">State Street 集團香港招聘入口</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="分類"><span class="badge badge-front">前台</span></td><td data-label="職位"><a class="job-link" href="https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Sales-and-Service-Client-Services---Assistant-Vice-President_R-796234/apply" target="_blank" rel="noopener noreferrer">Sales and Service Client Services - Assistant Vice President</a></td><td data-label="申請"><a class="apply" href="https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Sales-and-Service-Client-Services---Assistant-Vice-President_R-796234/apply" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          <tr><td class="company-cell" data-label="集團公司">State Street 集團香港招聘入口</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="分類"><span class="badge badge-middle">中台</span></td><td data-label="職位"><a class="job-link" href="https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Market-Risk--APAC---Vice-President_R-796236/apply" target="_blank" rel="noopener noreferrer">Market Risk, APAC - Vice President</a></td><td data-label="申請"><a class="apply" href="https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Market-Risk--APAC---Vice-President_R-796236/apply" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          <tr><td class="company-cell" data-label="集團公司">State Street 集團香港招聘入口</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="分類"><span class="badge badge-middle">中台</span></td><td data-label="職位"><a class="job-link" href="https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/APAC-Market-Risk--Assistant-Vice-President_R-796229/apply" target="_blank" rel="noopener noreferrer">APAC Market Risk, Assistant Vice President</a></td><td data-label="申請"><a class="apply" href="https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/APAC-Market-Risk--Assistant-Vice-President_R-796229/apply" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          <tr><td class="company-cell" data-label="集團公司">State Street 集團香港招聘入口</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="分類"><span class="badge badge-middle">中台</span></td><td data-label="職位"><a class="job-link" href="https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Financing-Solutions-Product-Strategy--Assistant-Vice-President_R-783912/apply" target="_blank" rel="noopener noreferrer">Financing Solutions Product Strategy, Assistant Vice President</a></td><td data-label="申請"><a class="apply" href="https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Financing-Solutions-Product-Strategy--Assistant-Vice-President_R-783912/apply" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          <tr><td class="company-cell" data-label="集團公司">State Street 集團香港招聘入口</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="分類"><span class="badge badge-middle">中台</span></td><td data-label="職位"><a class="job-link" href="https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Depositary-Fiduciary-Services--Assistant-Vice-President_R-797204-1/apply" target="_blank" rel="noopener noreferrer">Depositary/Fiduciary Services, Assistant Vice President</a></td><td data-label="申請"><a class="apply" href="https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Depositary-Fiduciary-Services--Assistant-Vice-President_R-797204-1/apply" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          <tr><td class="company-cell" data-label="集團公司">State Street 集團香港招聘入口</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="分類"><span class="badge badge-middle">中台</span></td><td data-label="職位"><a class="job-link" href="https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Vice-President--Legal-Counsel---Markets--APAC-_R-785505/apply" target="_blank" rel="noopener noreferrer">Vice President, Legal Counsel – Markets (APAC)</a></td><td data-label="申請"><a class="apply" href="https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Vice-President--Legal-Counsel---Markets--APAC-_R-785505/apply" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          <tr><td class="company-cell" data-label="集團公司">State Street 集團香港招聘入口</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="分類"><span class="badge badge-back">後台</span></td><td data-label="職位"><a class="job-link" href="https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Core-Operations--Officer_R-797243/apply" target="_blank" rel="noopener noreferrer">Core Operations, Officer</a></td><td data-label="申請"><a class="apply" href="https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Core-Operations--Officer_R-797243/apply" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          <tr><td class="company-cell" data-label="集團公司">State Street 集團香港招聘入口</td><td data-label="公司背景"><span class="badge badge-origin-foreign">外資</span></td><td data-label="分類"><span class="badge badge-back">後台</span></td><td data-label="職位"><a class="job-link" href="https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Core-Operations--Senior-Associate_R-797242/apply" target="_blank" rel="noopener noreferrer">Core Operations, Senior Associate</a></td><td data-label="申請"><a class="apply" href="https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Core-Operations--Senior-Associate_R-797242/apply" target="_blank" rel="noopener noreferrer">開啟 ↗</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="pending-panel" role="tabpanel" aria-labelledby="pending-tab" hidden>
+      <div class="section-head"><h2>待核實線索</h2><span class="result-count">0 個</span></div>
+      <div class="empty" id="pending-empty">目前沒有待核實線索。</div>
+      <div class="table-wrap" id="pending-table-wrap" hidden>
+        <table aria-label="待核實職位">
+          <thead><tr><th>公司</th><th>公司背景</th><th>分類</th><th>職位線索</th><th>未通過原因</th></tr></thead>
+          <tbody id="pending-body">
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      資料截面：2026-09-18 14:47（香港時間）。已逐條核對公開頁面狀態、香港地點及僱主；同一職位跨平台重複時只保留一條，公司官方頁與第三方平台狀態衝突時以官方頁為準。職位仍可能隨時下架，申請前請再次查看連結。
+    </footer>
+  </main>
+
+  <script type="application/json" id="dashboard-data">
+{
+  "history": [
+    {
+      "date": "2026-09-18",
+      "checkedAt": "2026-09-18 14:47",
+      "jobs": [{"company":"東方匯理資產管理香港有限公司（Amundi）","category":"前台","title":"Asia Global Fixed Income Investment Specialist H/F","url":"https://jobs.amundi.com/offre-de-emploi/emploi-asia-global-fixed-income-investment-specialist-h-f_109979.aspx","source":"官方"},{"company":"貝萊德資產管理北亞有限公司（BlackRock）","category":"中台","title":"Associate, APAC ETF Platform","url":"https://careers.blackrock.com/job/hong-kong/associate-apac-etf-platform/45831/99062046976","source":"官方"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"Research Analyst (Investment-Japan Equity)","url":"https://hk.jobsdb.com/job/94616679","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"VP to Director, Institutional Business (Sales)","url":"https://hk.jobsdb.com/job/94382222","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"Assistant Portfolio Manager/Portfolio Manager","url":"https://hk.jobsdb.com/job/94540255","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"Senior Manager to Vice President, Investment Fund Services","url":"https://hk.jobsdb.com/job/94227441","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"Analyst, Global Equities","url":"https://hk.jobsdb.com/job/93788287","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"Analyst to AVP, Multi-Asset Investment (Quantitative)","url":"https://hk.jobsdb.com/job/94090922","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"Quantitative Researcher","url":"https://hk.jobsdb.com/job/94330255","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"Manager to VP, Portfolio Analysis & Solutions","url":"https://hk.jobsdb.com/job/94227875","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"VP to Director, ETF Specialist","url":"https://hk.jobsdb.com/job/94093412","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"前台","title":"Manager/Senior Manager, Retirement Services (Business Development, MPF and ORSO)","url":"https://hk.jobsdb.com/job/94091056","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"中台","title":"Analyst, Risk Control (Risk Management)","url":"https://hk.jobsdb.com/job/94205771","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"後台","title":"Assistant System Analyst","url":"https://hk.jobsdb.com/job/94583578","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"後台","title":"Senior Analyst Programmer","url":"https://hk.jobsdb.com/job/94583639","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"後台","title":"Senior Administrator, Unit Trust Dealing (Operations)","url":"https://hk.jobsdb.com/job/94616114","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"後台","title":"(Assistant) System Administrator","url":"https://hk.jobsdb.com/job/94187648","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"後台","title":"Assistant Manager, Unit Trust Dealing (Operations)","url":"https://hk.jobsdb.com/job/94090682","source":"JobsDB"},{"company":"中銀國際英國保誠資產管理有限公司（BOCI-Prudential）","category":"後台","title":"Senior Customer Service Officer (Call Centre Team)","url":"https://hk.jobsdb.com/job/94090764","source":"JobsDB"},{"company":"博時基金（國際）有限公司（Bosera）","category":"後台","title":"資深 IT 經理 Director, IT（官方職位頁；電郵申請）","url":"https://www.bosera.com.hk/zh-HK/careers#job","source":"官方；申請至 hkhr@bosera.com"},{"company":"博時基金（國際）有限公司（Bosera）","category":"中台","title":"法規專員 Analyst, Risk, Legal and Compliance（官方職位頁；電郵申請）","url":"https://www.bosera.com.hk/zh-HK/careers#job","source":"官方；申請至 hkhr@bosera.com"},{"company":"博時基金（國際）有限公司（Bosera）","category":"中台","title":"產品經理 Manager, Products（官方職位頁；電郵申請）","url":"https://www.bosera.com.hk/zh-HK/careers#job","source":"官方；申請至 hkhr@bosera.com"},{"company":"博時基金（國際）有限公司（Bosera）","category":"後台","title":"運營 Manager, Operations（官方職位頁；電郵申請）","url":"https://www.bosera.com.hk/zh-HK/careers#job","source":"官方；申請至 hkhr@bosera.com"},{"company":"博時基金（國際）有限公司（Bosera）","category":"前台","title":"Analyst, Equity","url":"https://hk.jobsdb.com/job/94133857","source":"JobsDB"},{"company":"博時基金（國際）有限公司（Bosera）","category":"後台","title":"公司综合管理高级专员","url":"https://hk.jobsdb.com/job/94101006","source":"JobsDB"},{"company":"華夏基金（香港）有限公司（ChinaAMC）","category":"前台","title":"Index Strategist","url":"https://hk.linkedin.com/jobs/view/index-strategist-at-china-asset-management-hong-kong-4431637831","source":"LinkedIn"},{"company":"華夏基金（香港）有限公司（ChinaAMC）","category":"前台","title":"ETF Portfolio Manager","url":"https://hk.linkedin.com/jobs/view/etf-portfolio-manager-at-china-asset-management-hong-kong-4412744040","source":"LinkedIn"},{"company":"華夏基金（香港）有限公司（ChinaAMC）","category":"前台","title":"Research Assistant","url":"https://hk.linkedin.com/jobs/view/research-assistant-at-china-asset-management-hong-kong-4434448835","source":"LinkedIn"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"前台","title":"Wealth Management - Trader","url":"https://hk.linkedin.com/jobs/view/wealth-management-trader-at-cicc-4455605440","source":"LinkedIn"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"前台","title":"Wealth Management - Investment Assistant","url":"https://hk.linkedin.com/jobs/view/wealth-management-investment-assistant-at-cicc-4455609400","source":"LinkedIn"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"前台","title":"Wealth Management - Institutional Wealth Advisor","url":"https://hk.linkedin.com/jobs/view/wealth-management-institutional-wealth-advisor-at-cicc-4462933342","source":"LinkedIn"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"前台","title":"Wealth Management - Private Wealth Advisor","url":"https://hk.linkedin.com/jobs/view/wealth-management-private-wealth-advisor-at-cicc-4462938339","source":"LinkedIn"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"前台","title":"Client Development and Management Specialist (J19525)","url":"https://hk.jobsdb.com/job/93791070","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"前台","title":"Business Development and Marketing Specialist (J17564)","url":"https://hk.jobsdb.com/job/94083188","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"前台","title":"Trader (J19561)","url":"https://hk.jobsdb.com/job/94116789","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"前台","title":"Position for Equity Financing Business Development and Execution (J19582)","url":"https://hk.jobsdb.com/job/94306657","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"前台","title":"Assistant Wealth Manager","url":"https://hk.jobsdb.com/job/93964126","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Position for Equity Review (J19486)","url":"https://hk.jobsdb.com/job/93467321","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Client Digital Service Specialist (J19523)","url":"https://hk.jobsdb.com/job/93791069","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Risk Analyst - Market Risk (J19517)","url":"https://hk.jobsdb.com/job/93791071","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Risk Analyst - Risk Quant (J19519)","url":"https://hk.jobsdb.com/job/93791072","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Customer Strategy Specialist (J18750)","url":"https://hk.jobsdb.com/job/93803269","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Equities Market Risk Specialist (J19350)","url":"https://hk.jobsdb.com/job/93883988","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"OTC Desk Middle Office (J19558)","url":"https://hk.jobsdb.com/job/94116783","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"後台","title":"Position for General Support","url":"https://hk.linkedin.com/jobs/view/position-for-general-support-at-cicc-4406960151","source":"LinkedIn"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"後台","title":"Operations Specialist (Syndicate Support) (J19741)","url":"https://hk.jobsdb.com/job/94528631","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"後台","title":"Operations Specialist (Project Management Support) (J19743)","url":"https://hk.jobsdb.com/job/94528629","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"後台","title":"Operations Specialist (Account Opening Support) (J19739)","url":"https://hk.jobsdb.com/job/94528630","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"後台","title":"Operations Specialist (Settlement Support) (J19483)","url":"https://hk.jobsdb.com/job/93525728","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"後台","title":"Operations Specialist (J19533)","url":"https://hk.jobsdb.com/job/93817600","source":"JobsDB"},{"company":"南方東英資產管理有限公司（CSOP）","category":"後台","title":"Junior Fund Operations","url":"https://hk.jobsdb.com/job/94492174","source":"JobsDB"},{"company":"Deutsche Asset Management S.A.／DWS","category":"前台","title":"Coverage Specialist, Hong Kong & Mainland China","url":"https://db.wd3.myworkdayjobs.com/en-US/DWSWebsite/job/Hong-Kong-Intl-Commerce-Ctr/Coverage-Specialist--Hong-Kong---Mainland-China_R0446056","source":"官方（DWS Workday，R0446056）"},{"company":"Deutsche Asset Management S.A.／DWS","category":"前台","title":"2027 DWS Graduate Program (P.A.C.E.) - Investment – Hong Kong SAR","url":"https://db.wd3.myworkdayjobs.com/en-US/DWSWebsite/job/Hong-Kong-Intl-Commerce-Ctr/XMLNAME-2027-DWS-Graduate-Program--PACE----Investment---Hong-Kong_R0446314","source":"官方（全職，R0446314）"},{"company":"Deutsche Asset Management S.A.／DWS","category":"中台","title":"2027 DWS Graduate Program (P.A.C.E.) – Communications, Brand & CSR team – Hong Kong SAR","url":"https://db.wd3.myworkdayjobs.com/en-US/DWSWebsite/job/Hong-Kong-Intl-Commerce-Ctr/XMLNAME-2027-DWS-Graduate-Program--PACE----Communications--Brand---CSR-team---Hong-Kong-SAR_R0445385","source":"官方（全職，R0445385）"},{"company":"都會金融香港有限公司（Doo Financial）","category":"中台","title":"Trading Operations Officer (Metals)","url":"https://hk.jobsdb.com/job/94416395","source":"JobsDB"},{"company":"富邦基金管理（香港）有限公司（Fubon）","category":"前台","title":"Senior Portfolio Manager / ETF Investment Management Lead 資深基金經理／ETF投資管理主管","url":"https://hk.jobsdb.com/job/94077710","source":"JobsDB"},{"company":"恒生投資管理有限公司（Hang Seng Investment Management）","category":"前台","title":"Assistant Portfolio Manager, Index Investments","url":"https://hk.jobsdb.com/job/94172356","source":"JobsDB（Hang Seng Bank 招聘實體）"},{"company":"嘉實國際資產管理有限公司（Harvest Global Investments）","category":"前台","title":"Bond Dealer-Analyst/Asso","url":"https://hk.linkedin.com/jobs/view/bond-dealer-analyst-asso-at-harvest-global-investments-limited-4458938570","source":"LinkedIn"},{"company":"嘉實國際資產管理有限公司（Harvest Global Investments）","category":"中台","title":"Product Manager","url":"https://hk.linkedin.com/jobs/view/product-manager-at-harvest-global-investments-limited-4442016771","source":"LinkedIn"},{"company":"工銀瑞信資產管理（國際）有限公司（ICBC AM）","category":"前台","title":"Investment Analyst","url":"https://hk.jobsdb.com/job/94194788","source":"JobsDB"},{"company":"工銀瑞信資產管理（國際）有限公司（ICBC AM）","category":"中台","title":"Senior Product Manager","url":"https://hk.jobsdb.com/job/94195781","source":"JobsDB"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"前台","title":"Associate, Strategy & Analytics (Invesco Real Estate)","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Associate--Strategy---Analytics--Invesco-Real-Estate-_R-15396","source":"官方（R-15396）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"前台","title":"Equity ETF Strategist, APAC","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Equity-ETF-Strategist--APAC_R-15484","source":"官方（R-15484）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"前台","title":"Fixed Income ETF Strategist, APAC","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Fixed-Income-ETF-Strategist--APAC_R-15485","source":"官方（R-15485）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"中台","title":"Assistant Manager, Compliance","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Assistant-Manager--Compliance_R-14486","source":"官方（R-14486）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"中台","title":"Lead, Content Strategy & Digital Engagement (Marketing)","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Lead--Content-Strategy---Digital-Engagement_R-15357","source":"官方（R-15357）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"中台","title":"Manager, Intermediary Marketing","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Manager--Intermediary-Marketing_R-15397","source":"官方（R-15397）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"中台","title":"Director, Private Markets Product, Real Estate, APAC","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Dir--Private-Markets-Product--Real-Esate--APAC_R-14824","source":"官方（R-14824）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"中台","title":"Head of Investments Legal, Asia Pacific","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Head-of-Investments-Legal--Asia-Pacific_R-14821","source":"官方（R-14821）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"中台","title":"Regional Head of Front Office Operations - APAC","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Regional-Head-of-Front-Office-Operations---APAC_R-14549","source":"官方（R-14549）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"後台","title":"Associate Director, Technology Hong Kong & Singapore","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Associate-Director--Technology-Hong-Kong---Singapore_R-14546","source":"官方（R-14546）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"後台","title":"Senior Business Analyst, Investment Technology","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Senior-Business-Analyst--Investment-Technology_R-14956","source":"官方（R-14956）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"後台","title":"Senior Business Analyst, Digital Distribution & Enterprise Engineering","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Senior-Business-Analyst--Digital-Distribution---Enterprise-Engineering_R-14367","source":"官方（R-14367）"},{"company":"Invesco Capital Management LLC／Invesco Hong Kong","category":"後台","title":"Senior Manager, APAC Product Owner – Digital Distribution & Enterprise Engineering","url":"https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Senior-Manager--APAC-Product-Owner---Digital-Distribution---Enterprise-Engineering_R-14368","source":"官方（R-14368）"},{"company":"中國平安資產管理（香港）有限公司（Ping An）","category":"中台","title":"Portfolio Associate","url":"https://hk.jobsdb.com/job/94206079","source":"JobsDB"},{"company":"中國平安資產管理（香港）有限公司（Ping An）","category":"後台","title":"Operations Associate / Senior Associate (Contract)","url":"https://hk.jobsdb.com/job/94092197","source":"JobsDB"},{"company":"泰康資產管理（香港）有限公司（Taikang）","category":"中台","title":"VP of Product Management","url":"https://hk.jobsdb.com/job/92211976","source":"JobsDB"},{"company":"惠理基金管理香港有限公司（Value Partners）","category":"中台","title":"Senior Associate / Assistant Manager – Fund Operations","url":"https://hk.jobsdb.com/job/94424065","source":"JobsDB"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Compliance Officer (AML team)","url":"https://hk.linkedin.com/jobs/view/compliance-officer-aml-team-at-cicc-4452304157","source":"LinkedIn（使用者於 2026-09-18 人工確認）"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Credit Risk (Wealth Management)","url":"https://hk.linkedin.com/jobs/view/credit-risk-wealth-management-at-cicc-4462991900","source":"LinkedIn（使用者於 2026-09-18 人工確認）"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Wealth Management - Business Analyst Specialist","url":"https://hk.linkedin.com/jobs/view/wealth-management-business-analyst-specialist-at-cicc-4462943315","source":"LinkedIn（使用者於 2026-09-18 人工確認）"},{"company":"中國國際金融香港資產管理有限公司（CICC）","category":"中台","title":"Wealth Management - Customer Strategy Specialist","url":"https://hk.linkedin.com/jobs/view/wealth-management-customer-strategy-specialist-at-cicc-4462941325","source":"LinkedIn（使用者於 2026-09-18 人工確認）"},{"company":"華夏基金（香港）有限公司（ChinaAMC）","category":"前台","title":"券商渠道銷售","url":"https://hk.linkedin.com/jobs/view/%E5%88%B8%E5%95%86%E6%B8%A0%E9%81%93%E9%94%80%E5%94%AE-at-china-asset-management-hong-kong-4421814976","source":"LinkedIn（使用者於 2026-09-18 人工確認）"},{"company":"華夏基金（香港）有限公司（ChinaAMC）","category":"中台","title":"Product Development","url":"https://hk.linkedin.com/jobs/view/product-development-at-china-asset-management-hong-kong-4464078588","source":"LinkedIn（使用者於 2026-09-18 人工確認）"},{"company":"華夏基金（香港）有限公司（ChinaAMC）","category":"中台","title":"ETF Product Manager 产品主理人","url":"https://hk.linkedin.com/jobs/view/etf-strategist-product-manager-at-china-asset-management-hong-kong-4414550339","source":"LinkedIn（使用者於 2026-09-18 人工確認）"},{"company":"華夏基金（香港）有限公司（ChinaAMC）","category":"中台","title":"Legal and Product Compliance VP/Senior Manager","url":"https://hk.linkedin.com/jobs/view/legal-and-product-compliance-vice-president-senior-manager-at-china-asset-management-hong-kong-4436368408","source":"LinkedIn（使用者於 2026-09-18 人工確認）"},{"company":"華夏基金（香港）有限公司（ChinaAMC）","category":"中台","title":"Fund Operations Officer","url":"https://hk.linkedin.com/jobs/view/fund-operations-officer-at-china-asset-management-hong-kong-4433088404","source":"LinkedIn（使用者於 2026-09-18 人工確認）"}]
+    }
+  ],
+  "jobs": [
+    {
+      "company": "東方匯理資產管理香港有限公司（Amundi）",
+      "category": "前台",
+      "title": "Asia Global Fixed Income Investment Specialist H/F",
+      "url": "https://jobs.amundi.com/offre-de-emploi/emploi-asia-global-fixed-income-investment-specialist-h-f_109979.aspx",
+      "source": "官方"
+    },
+    {
+      "company": "貝萊德資產管理北亞有限公司（BlackRock）",
+      "category": "中台",
+      "title": "Associate, APAC ETF Platform",
+      "url": "https://careers.blackrock.com/job/hong-kong/associate-apac-etf-platform/45831/99062046976",
+      "source": "官方"
+    },
+    {
+      "company": "中銀國際英國保誠資產管理有限公司（BOCI-Prudential）",
+      "category": "前台",
+      "title": "Research Analyst (Investment-Japan Equity)",
+      "url": "https://hk.jobsdb.com/job/94616679",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中銀國際英國保誠資產管理有限公司（BOCI-Prudential）",
+      "category": "前台",
+      "title": "VP to Director, Institutional Business (Sales)",
+      "url": "https://hk.jobsdb.com/job/94382222",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中銀國際英國保誠資產管理有限公司（BOCI-Prudential）",
+      "category": "前台",
+      "title": "Assistant Portfolio Manager/Portfolio Manager",
+      "url": "https://hk.jobsdb.com/job/94540255",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中銀國際英國保誠資產管理有限公司（BOCI-Prudential）",
+      "category": "前台",
+      "title": "Senior Manager to Vice President, Investment Fund Services",
+      "url": "https://hk.jobsdb.com/job/94227441",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中銀國際英國保誠資產管理有限公司（BOCI-Prudential）",
+      "category": "前台",
+      "title": "Analyst, Global Equities",
+      "url": "https://hk.jobsdb.com/job/93788287",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中銀國際英國保誠資產管理有限公司（BOCI-Prudential）",
+      "category": "前台",
+      "title": "Analyst to AVP, Multi-Asset Investment (Quantitative)",
+      "url": "https://hk.jobsdb.com/job/94090922",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中銀國際英國保誠資產管理有限公司（BOCI-Prudential）",
+      "category": "前台",
+      "title": "Quantitative Researcher",
+      "url": "https://hk.jobsdb.com/job/94330255",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中銀國際英國保誠資產管理有限公司（BOCI-Prudential）",
+      "category": "前台",
+      "title": "Manager to VP, Portfolio Analysis & Solutions",
+      "url": "https://hk.jobsdb.com/job/94227875",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中銀國際英國保誠資產管理有限公司（BOCI-Prudential）",
+      "category": "前台",
+      "title": "VP to Director, ETF Specialist",
+      "url": "https://hk.jobsdb.com/job/94093412",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中銀國際英國保誠資產管理有限公司（BOCI-Prudential）",
+      "category": "前台",
+      "title": "Manager/Senior Manager, Retirement Services (Business Development, MPF and ORSO)",
+      "url": "https://hk.jobsdb.com/job/94091056",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中銀國際英國保誠資產管理有限公司（BOCI-Prudential）",
+      "category": "中台",
+      "title": "Analyst, Risk Control (Risk Management)",
+      "url": "https://hk.jobsdb.com/job/94205771",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中銀國際英國保誠資產管理有限公司（BOCI-Prudential）",
+      "category": "後台",
+      "title": "Assistant System Analyst",
+      "url": "https://hk.jobsdb.com/job/94583578",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中銀國際英國保誠資產管理有限公司（BOCI-Prudential）",
+      "category": "後台",
+      "title": "Senior Analyst Programmer",
+      "url": "https://hk.jobsdb.com/job/94583639",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中銀國際英國保誠資產管理有限公司（BOCI-Prudential）",
+      "category": "後台",
+      "title": "Senior Administrator, Unit Trust Dealing (Operations)",
+      "url": "https://hk.jobsdb.com/job/94616114",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中銀國際英國保誠資產管理有限公司（BOCI-Prudential）",
+      "category": "後台",
+      "title": "(Assistant) System Administrator",
+      "url": "https://hk.jobsdb.com/job/94187648",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中銀國際英國保誠資產管理有限公司（BOCI-Prudential）",
+      "category": "後台",
+      "title": "Assistant Manager, Unit Trust Dealing (Operations)",
+      "url": "https://hk.jobsdb.com/job/94090682",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中銀國際英國保誠資產管理有限公司（BOCI-Prudential）",
+      "category": "後台",
+      "title": "Senior Customer Service Officer (Call Centre Team)",
+      "url": "https://hk.jobsdb.com/job/94090764",
+      "source": "JobsDB"
+    },
+    {
+      "company": "博時基金（國際）有限公司（Bosera）",
+      "category": "後台",
+      "title": "資深 IT 經理 Director, IT（官方職位頁；電郵申請）",
+      "url": "https://www.bosera.com.hk/zh-HK/careers#job",
+      "source": "官方；申請至 hkhr@bosera.com"
+    },
+    {
+      "company": "博時基金（國際）有限公司（Bosera）",
+      "category": "中台",
+      "title": "法規專員 Analyst, Risk, Legal and Compliance（官方職位頁；電郵申請）",
+      "url": "https://www.bosera.com.hk/zh-HK/careers#job",
+      "source": "官方；申請至 hkhr@bosera.com"
+    },
+    {
+      "company": "博時基金（國際）有限公司（Bosera）",
+      "category": "中台",
+      "title": "產品經理 Manager, Products（官方職位頁；電郵申請）",
+      "url": "https://www.bosera.com.hk/zh-HK/careers#job",
+      "source": "官方；申請至 hkhr@bosera.com"
+    },
+    {
+      "company": "博時基金（國際）有限公司（Bosera）",
+      "category": "後台",
+      "title": "運營 Manager, Operations（官方職位頁；電郵申請）",
+      "url": "https://www.bosera.com.hk/zh-HK/careers#job",
+      "source": "官方；申請至 hkhr@bosera.com"
+    },
+    {
+      "company": "博時基金（國際）有限公司（Bosera）",
+      "category": "前台",
+      "title": "Analyst, Equity",
+      "url": "https://hk.jobsdb.com/job/94133857",
+      "source": "JobsDB"
+    },
+    {
+      "company": "博時基金（國際）有限公司（Bosera）",
+      "category": "後台",
+      "title": "公司综合管理高级专员",
+      "url": "https://hk.jobsdb.com/job/94101006",
+      "source": "JobsDB"
+    },
+    {
+      "company": "華夏基金（香港）有限公司（ChinaAMC）",
+      "category": "前台",
+      "title": "Index Strategist",
+      "url": "https://hk.linkedin.com/jobs/view/index-strategist-at-china-asset-management-hong-kong-4431637831",
+      "source": "LinkedIn"
+    },
+    {
+      "company": "華夏基金（香港）有限公司（ChinaAMC）",
+      "category": "前台",
+      "title": "ETF Portfolio Manager",
+      "url": "https://hk.linkedin.com/jobs/view/etf-portfolio-manager-at-china-asset-management-hong-kong-4412744040",
+      "source": "LinkedIn"
+    },
+    {
+      "company": "華夏基金（香港）有限公司（ChinaAMC）",
+      "category": "前台",
+      "title": "Research Assistant",
+      "url": "https://hk.linkedin.com/jobs/view/research-assistant-at-china-asset-management-hong-kong-4434448835",
+      "source": "LinkedIn"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "前台",
+      "title": "Wealth Management - Trader",
+      "url": "https://hk.linkedin.com/jobs/view/wealth-management-trader-at-cicc-4455605440",
+      "source": "LinkedIn"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "前台",
+      "title": "Wealth Management - Investment Assistant",
+      "url": "https://hk.linkedin.com/jobs/view/wealth-management-investment-assistant-at-cicc-4455609400",
+      "source": "LinkedIn"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "前台",
+      "title": "Wealth Management - Institutional Wealth Advisor",
+      "url": "https://hk.linkedin.com/jobs/view/wealth-management-institutional-wealth-advisor-at-cicc-4462933342",
+      "source": "LinkedIn"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "前台",
+      "title": "Wealth Management - Private Wealth Advisor",
+      "url": "https://hk.linkedin.com/jobs/view/wealth-management-private-wealth-advisor-at-cicc-4462938339",
+      "source": "LinkedIn"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "前台",
+      "title": "Client Development and Management Specialist (J19525)",
+      "url": "https://hk.jobsdb.com/job/93791070",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "前台",
+      "title": "Business Development and Marketing Specialist (J17564)",
+      "url": "https://hk.jobsdb.com/job/94083188",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "前台",
+      "title": "Trader (J19561)",
+      "url": "https://hk.jobsdb.com/job/94116789",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "前台",
+      "title": "Position for Equity Financing Business Development and Execution (J19582)",
+      "url": "https://hk.jobsdb.com/job/94306657",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "前台",
+      "title": "Assistant Wealth Manager",
+      "url": "https://hk.jobsdb.com/job/93964126",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "中台",
+      "title": "Position for Equity Review (J19486)",
+      "url": "https://hk.jobsdb.com/job/93467321",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "中台",
+      "title": "Client Digital Service Specialist (J19523)",
+      "url": "https://hk.jobsdb.com/job/93791069",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "中台",
+      "title": "Risk Analyst - Market Risk (J19517)",
+      "url": "https://hk.jobsdb.com/job/93791071",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "中台",
+      "title": "Risk Analyst - Risk Quant (J19519)",
+      "url": "https://hk.jobsdb.com/job/93791072",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "中台",
+      "title": "Customer Strategy Specialist (J18750)",
+      "url": "https://hk.jobsdb.com/job/93803269",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "中台",
+      "title": "Equities Market Risk Specialist (J19350)",
+      "url": "https://hk.jobsdb.com/job/93883988",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "中台",
+      "title": "OTC Desk Middle Office (J19558)",
+      "url": "https://hk.jobsdb.com/job/94116783",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "後台",
+      "title": "Position for General Support",
+      "url": "https://hk.linkedin.com/jobs/view/position-for-general-support-at-cicc-4406960151",
+      "source": "LinkedIn"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "後台",
+      "title": "Operations Specialist (Syndicate Support) (J19741)",
+      "url": "https://hk.jobsdb.com/job/94528631",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "後台",
+      "title": "Operations Specialist (Project Management Support) (J19743)",
+      "url": "https://hk.jobsdb.com/job/94528629",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "後台",
+      "title": "Operations Specialist (Account Opening Support) (J19739)",
+      "url": "https://hk.jobsdb.com/job/94528630",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "後台",
+      "title": "Operations Specialist (Settlement Support) (J19483)",
+      "url": "https://hk.jobsdb.com/job/93525728",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "後台",
+      "title": "Operations Specialist (J19533)",
+      "url": "https://hk.jobsdb.com/job/93817600",
+      "source": "JobsDB"
+    },
+    {
+      "company": "南方東英資產管理有限公司（CSOP）",
+      "category": "後台",
+      "title": "Junior Fund Operations",
+      "url": "https://hk.jobsdb.com/job/94492174",
+      "source": "JobsDB"
+    },
+    {
+      "company": "Deutsche Asset Management S.A.／DWS",
+      "category": "前台",
+      "title": "Coverage Specialist, Hong Kong & Mainland China",
+      "url": "https://db.wd3.myworkdayjobs.com/en-US/DWSWebsite/job/Hong-Kong-Intl-Commerce-Ctr/Coverage-Specialist--Hong-Kong---Mainland-China_R0446056",
+      "source": "官方（DWS Workday，R0446056）"
+    },
+    {
+      "company": "Deutsche Asset Management S.A.／DWS",
+      "category": "前台",
+      "title": "2027 DWS Graduate Program (P.A.C.E.) - Investment – Hong Kong SAR",
+      "url": "https://db.wd3.myworkdayjobs.com/en-US/DWSWebsite/job/Hong-Kong-Intl-Commerce-Ctr/XMLNAME-2027-DWS-Graduate-Program--PACE----Investment---Hong-Kong_R0446314",
+      "source": "官方（全職，R0446314）"
+    },
+    {
+      "company": "Deutsche Asset Management S.A.／DWS",
+      "category": "中台",
+      "title": "2027 DWS Graduate Program (P.A.C.E.) – Communications, Brand & CSR team – Hong Kong SAR",
+      "url": "https://db.wd3.myworkdayjobs.com/en-US/DWSWebsite/job/Hong-Kong-Intl-Commerce-Ctr/XMLNAME-2027-DWS-Graduate-Program--PACE----Communications--Brand---CSR-team---Hong-Kong-SAR_R0445385",
+      "source": "官方（全職，R0445385）"
+    },
+    {
+      "company": "都會金融香港有限公司（Doo Financial）",
+      "category": "中台",
+      "title": "Trading Operations Officer (Metals)",
+      "url": "https://hk.jobsdb.com/job/94416395",
+      "source": "JobsDB"
+    },
+    {
+      "company": "富邦基金管理（香港）有限公司（Fubon）",
+      "category": "前台",
+      "title": "Senior Portfolio Manager / ETF Investment Management Lead 資深基金經理／ETF投資管理主管",
+      "url": "https://hk.jobsdb.com/job/94077710",
+      "source": "JobsDB"
+    },
+    {
+      "company": "恒生投資管理有限公司（Hang Seng Investment Management）",
+      "category": "前台",
+      "title": "Assistant Portfolio Manager, Index Investments",
+      "url": "https://hk.jobsdb.com/job/94172356",
+      "source": "JobsDB（Hang Seng Bank 招聘實體）"
+    },
+    {
+      "company": "嘉實國際資產管理有限公司（Harvest Global Investments）",
+      "category": "前台",
+      "title": "Bond Dealer-Analyst/Asso",
+      "url": "https://hk.linkedin.com/jobs/view/bond-dealer-analyst-asso-at-harvest-global-investments-limited-4458938570",
+      "source": "LinkedIn"
+    },
+    {
+      "company": "嘉實國際資產管理有限公司（Harvest Global Investments）",
+      "category": "中台",
+      "title": "Product Manager",
+      "url": "https://hk.linkedin.com/jobs/view/product-manager-at-harvest-global-investments-limited-4442016771",
+      "source": "LinkedIn"
+    },
+    {
+      "company": "工銀瑞信資產管理（國際）有限公司（ICBC AM）",
+      "category": "前台",
+      "title": "Investment Analyst",
+      "url": "https://hk.jobsdb.com/job/94194788",
+      "source": "JobsDB"
+    },
+    {
+      "company": "工銀瑞信資產管理（國際）有限公司（ICBC AM）",
+      "category": "中台",
+      "title": "Senior Product Manager",
+      "url": "https://hk.jobsdb.com/job/94195781",
+      "source": "JobsDB"
+    },
+    {
+      "company": "Invesco Capital Management LLC／Invesco Hong Kong",
+      "category": "前台",
+      "title": "Associate, Strategy & Analytics (Invesco Real Estate)",
+      "url": "https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Associate--Strategy---Analytics--Invesco-Real-Estate-_R-15396",
+      "source": "官方（R-15396）"
+    },
+    {
+      "company": "Invesco Capital Management LLC／Invesco Hong Kong",
+      "category": "前台",
+      "title": "Equity ETF Strategist, APAC",
+      "url": "https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Equity-ETF-Strategist--APAC_R-15484",
+      "source": "官方（R-15484）"
+    },
+    {
+      "company": "Invesco Capital Management LLC／Invesco Hong Kong",
+      "category": "前台",
+      "title": "Fixed Income ETF Strategist, APAC",
+      "url": "https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Fixed-Income-ETF-Strategist--APAC_R-15485",
+      "source": "官方（R-15485）"
+    },
+    {
+      "company": "Invesco Capital Management LLC／Invesco Hong Kong",
+      "category": "中台",
+      "title": "Assistant Manager, Compliance",
+      "url": "https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Assistant-Manager--Compliance_R-14486",
+      "source": "官方（R-14486）"
+    },
+    {
+      "company": "Invesco Capital Management LLC／Invesco Hong Kong",
+      "category": "中台",
+      "title": "Lead, Content Strategy & Digital Engagement (Marketing)",
+      "url": "https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Lead--Content-Strategy---Digital-Engagement_R-15357",
+      "source": "官方（R-15357）"
+    },
+    {
+      "company": "Invesco Capital Management LLC／Invesco Hong Kong",
+      "category": "中台",
+      "title": "Manager, Intermediary Marketing",
+      "url": "https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Manager--Intermediary-Marketing_R-15397",
+      "source": "官方（R-15397）"
+    },
+    {
+      "company": "Invesco Capital Management LLC／Invesco Hong Kong",
+      "category": "中台",
+      "title": "Director, Private Markets Product, Real Estate, APAC",
+      "url": "https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Dir--Private-Markets-Product--Real-Esate--APAC_R-14824",
+      "source": "官方（R-14824）"
+    },
+    {
+      "company": "Invesco Capital Management LLC／Invesco Hong Kong",
+      "category": "中台",
+      "title": "Head of Investments Legal, Asia Pacific",
+      "url": "https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Head-of-Investments-Legal--Asia-Pacific_R-14821",
+      "source": "官方（R-14821）"
+    },
+    {
+      "company": "Invesco Capital Management LLC／Invesco Hong Kong",
+      "category": "中台",
+      "title": "Regional Head of Front Office Operations - APAC",
+      "url": "https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Regional-Head-of-Front-Office-Operations---APAC_R-14549",
+      "source": "官方（R-14549）"
+    },
+    {
+      "company": "Invesco Capital Management LLC／Invesco Hong Kong",
+      "category": "後台",
+      "title": "Associate Director, Technology Hong Kong & Singapore",
+      "url": "https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Associate-Director--Technology-Hong-Kong---Singapore_R-14546",
+      "source": "官方（R-14546）"
+    },
+    {
+      "company": "Invesco Capital Management LLC／Invesco Hong Kong",
+      "category": "後台",
+      "title": "Senior Business Analyst, Investment Technology",
+      "url": "https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Senior-Business-Analyst--Investment-Technology_R-14956",
+      "source": "官方（R-14956）"
+    },
+    {
+      "company": "Invesco Capital Management LLC／Invesco Hong Kong",
+      "category": "後台",
+      "title": "Senior Business Analyst, Digital Distribution & Enterprise Engineering",
+      "url": "https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Senior-Business-Analyst--Digital-Distribution---Enterprise-Engineering_R-14367",
+      "source": "官方（R-14367）"
+    },
+    {
+      "company": "Invesco Capital Management LLC／Invesco Hong Kong",
+      "category": "後台",
+      "title": "Senior Manager, APAC Product Owner – Digital Distribution & Enterprise Engineering",
+      "url": "https://invesco.wd1.myworkdayjobs.com/en-US/IVZ/job/Hong-Kong-Hong-Kong/Senior-Manager--APAC-Product-Owner---Digital-Distribution---Enterprise-Engineering_R-14368",
+      "source": "官方（R-14368）"
+    },
+    {
+      "company": "中國平安資產管理（香港）有限公司（Ping An）",
+      "category": "中台",
+      "title": "Portfolio Associate",
+      "url": "https://hk.jobsdb.com/job/94206079",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中國平安資產管理（香港）有限公司（Ping An）",
+      "category": "後台",
+      "title": "Operations Associate / Senior Associate (Contract)",
+      "url": "https://hk.jobsdb.com/job/94092197",
+      "source": "JobsDB"
+    },
+    {
+      "company": "泰康資產管理（香港）有限公司（Taikang）",
+      "category": "中台",
+      "title": "VP of Product Management",
+      "url": "https://hk.jobsdb.com/job/92211976",
+      "source": "JobsDB"
+    },
+    {
+      "company": "惠理基金管理香港有限公司（Value Partners）",
+      "category": "中台",
+      "title": "Senior Associate / Assistant Manager – Fund Operations",
+      "url": "https://hk.jobsdb.com/job/94424065",
+      "source": "JobsDB"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "中台",
+      "title": "Compliance Officer (AML team)",
+      "url": "https://hk.linkedin.com/jobs/view/compliance-officer-aml-team-at-cicc-4452304157",
+      "source": "LinkedIn（使用者於 2026-09-18 人工確認）"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "中台",
+      "title": "Credit Risk (Wealth Management)",
+      "url": "https://hk.linkedin.com/jobs/view/credit-risk-wealth-management-at-cicc-4462991900",
+      "source": "LinkedIn（使用者於 2026-09-18 人工確認）"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "中台",
+      "title": "Wealth Management - Business Analyst Specialist",
+      "url": "https://hk.linkedin.com/jobs/view/wealth-management-business-analyst-specialist-at-cicc-4462943315",
+      "source": "LinkedIn（使用者於 2026-09-18 人工確認）"
+    },
+    {
+      "company": "中國國際金融香港資產管理有限公司（CICC）",
+      "category": "中台",
+      "title": "Wealth Management - Customer Strategy Specialist",
+      "url": "https://hk.linkedin.com/jobs/view/wealth-management-customer-strategy-specialist-at-cicc-4462941325",
+      "source": "LinkedIn（使用者於 2026-09-18 人工確認）"
+    },
+    {
+      "company": "華夏基金（香港）有限公司（ChinaAMC）",
+      "category": "前台",
+      "title": "券商渠道銷售",
+      "url": "https://hk.linkedin.com/jobs/view/%E5%88%B8%E5%95%86%E6%B8%A0%E9%81%93%E9%94%80%E5%94%AE-at-china-asset-management-hong-kong-4421814976",
+      "source": "LinkedIn（使用者於 2026-09-18 人工確認）"
+    },
+    {
+      "company": "華夏基金（香港）有限公司（ChinaAMC）",
+      "category": "中台",
+      "title": "Product Development",
+      "url": "https://hk.linkedin.com/jobs/view/product-development-at-china-asset-management-hong-kong-4464078588",
+      "source": "LinkedIn（使用者於 2026-09-18 人工確認）"
+    },
+    {
+      "company": "華夏基金（香港）有限公司（ChinaAMC）",
+      "category": "中台",
+      "title": "ETF Product Manager 产品主理人",
+      "url": "https://hk.linkedin.com/jobs/view/etf-strategist-product-manager-at-china-asset-management-hong-kong-4414550339",
+      "source": "LinkedIn（使用者於 2026-09-18 人工確認）"
+    },
+    {
+      "company": "華夏基金（香港）有限公司（ChinaAMC）",
+      "category": "中台",
+      "title": "Legal and Product Compliance VP/Senior Manager",
+      "url": "https://hk.linkedin.com/jobs/view/legal-and-product-compliance-vice-president-senior-manager-at-china-asset-management-hong-kong-4436368408",
+      "source": "LinkedIn（使用者於 2026-09-18 人工確認）"
+    },
+    {
+      "company": "華夏基金（香港）有限公司（ChinaAMC）",
+      "category": "中台",
+      "title": "Fund Operations Officer",
+      "url": "https://hk.linkedin.com/jobs/view/fund-operations-officer-at-china-asset-management-hong-kong-4433088404",
+      "source": "LinkedIn（使用者於 2026-09-18 人工確認）"
+    }
+  ],
+  "appendix": [
+    {
+      "company": "招商證券國際有限公司",
+      "category": "前台",
+      "title": "Associate, Global Markets Trader (OTC Derivatives)",
+      "url": "https://hk.jobsdb.com/job/94614917",
+      "source": "集團入口"
+    },
+    {
+      "company": "招商證券國際有限公司",
+      "category": "前台",
+      "title": "Junior Institutional Sales, Global Institutions",
+      "url": "https://hk.jobsdb.com/job/94549233",
+      "source": "集團入口"
+    },
+    {
+      "company": "招商證券國際有限公司",
+      "category": "前台",
+      "title": "Associate, Quantitative Private Fund, Institutional Sales",
+      "url": "https://hk.jobsdb.com/job/94241976",
+      "source": "集團入口"
+    },
+    {
+      "company": "招商證券國際有限公司",
+      "category": "前台",
+      "title": "Analyst, Institutional Equities Sales Trader",
+      "url": "https://hk.jobsdb.com/job/94194879",
+      "source": "集團入口"
+    },
+    {
+      "company": "招商證券國際有限公司",
+      "category": "中台",
+      "title": "Associate, Securities Inventory Management, Global Markets",
+      "url": "https://hk.jobsdb.com/job/94383259",
+      "source": "集團入口"
+    },
+    {
+      "company": "招商證券國際有限公司",
+      "category": "中台",
+      "title": "Equities Compliance Associate (Securities & Brokerage)",
+      "url": "https://hk.jobsdb.com/job/94329676",
+      "source": "集團入口"
+    },
+    {
+      "company": "招商證券國際有限公司",
+      "category": "後台",
+      "title": "Analyst to Associate, Account Management, Business Operations 帳戶管理崗",
+      "url": "https://hk.jobsdb.com/job/94549005",
+      "source": "集團入口"
+    },
+    {
+      "company": "招商證券國際有限公司",
+      "category": "後台",
+      "title": "Department Secretary/ Executive Assistant (Contract)",
+      "url": "https://hk.jobsdb.com/job/94271055",
+      "source": "集團入口"
+    },
+    {
+      "company": "招商證券國際有限公司",
+      "category": "後台",
+      "title": "Settlement Officer, Business Operations (Contract)",
+      "url": "https://hk.jobsdb.com/job/94195437",
+      "source": "集團入口"
+    },
+    {
+      "company": "山證國際金融控股有限公司",
+      "category": "前台",
+      "title": "Institutional Sales Manager, Global Futures",
+      "url": "https://hk.jobsdb.com/job/93824869",
+      "source": "集團入口"
+    },
+    {
+      "company": "山證國際金融控股有限公司",
+      "category": "前台",
+      "title": "投行承做岗",
+      "url": "https://hk.jobsdb.com/job/94465230",
+      "source": "集團入口"
+    },
+    {
+      "company": "山證國際金融控股有限公司",
+      "category": "前台",
+      "title": "Derivatives Arbitrage Strategy Investment Manager",
+      "url": "https://hk.jobsdb.com/job/94465166",
+      "source": "集團入口"
+    },
+    {
+      "company": "State Street 集團香港招聘入口",
+      "category": "前台",
+      "title": "Sales and Service Client Services - Assistant Vice President",
+      "url": "https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Sales-and-Service-Client-Services---Assistant-Vice-President_R-796234/apply",
+      "source": "集團入口"
+    },
+    {
+      "company": "State Street 集團香港招聘入口",
+      "category": "中台",
+      "title": "Market Risk, APAC - Vice President",
+      "url": "https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Market-Risk--APAC---Vice-President_R-796236/apply",
+      "source": "集團入口"
+    },
+    {
+      "company": "State Street 集團香港招聘入口",
+      "category": "中台",
+      "title": "APAC Market Risk, Assistant Vice President",
+      "url": "https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/APAC-Market-Risk--Assistant-Vice-President_R-796229/apply",
+      "source": "集團入口"
+    },
+    {
+      "company": "State Street 集團香港招聘入口",
+      "category": "中台",
+      "title": "Financing Solutions Product Strategy, Assistant Vice President",
+      "url": "https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Financing-Solutions-Product-Strategy--Assistant-Vice-President_R-783912/apply",
+      "source": "集團入口"
+    },
+    {
+      "company": "State Street 集團香港招聘入口",
+      "category": "中台",
+      "title": "Depositary/Fiduciary Services, Assistant Vice President",
+      "url": "https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Depositary-Fiduciary-Services--Assistant-Vice-President_R-797204-1/apply",
+      "source": "集團入口"
+    },
+    {
+      "company": "State Street 集團香港招聘入口",
+      "category": "中台",
+      "title": "Vice President, Legal Counsel – Markets (APAC)",
+      "url": "https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Vice-President--Legal-Counsel---Markets--APAC-_R-785505/apply",
+      "source": "集團入口"
+    },
+    {
+      "company": "State Street 集團香港招聘入口",
+      "category": "後台",
+      "title": "Core Operations, Officer",
+      "url": "https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Core-Operations--Officer_R-797243/apply",
+      "source": "集團入口"
+    },
+    {
+      "company": "State Street 集團香港招聘入口",
+      "category": "後台",
+      "title": "Core Operations, Senior Associate",
+      "url": "https://statestreet.wd1.myworkdayjobs.com/Global/job/Hong-Kong-China/Core-Operations--Senior-Associate_R-797242/apply",
+      "source": "集團入口"
+    }
+  ],
+  "pending": [],
+  "coverage": [
+    {
+      "n": 1,
+      "entity": "Amundi Hong Kong Limited",
+      "label": "Amundi Careers",
+      "url": "https://jobs.amundi.com/",
+      "result": "官方 1 個香港正式職位"
+    },
+    {
+      "n": 2,
+      "entity": "BlackRock Asset Management North Asia Limited",
+      "label": "BlackRock 香港職位",
+      "url": "https://careers.blackrock.com/location/hong-kong-sar-jobs/45831/1819730/2",
+      "result": "官方共 2 個香港結果；排除 1 個 Summer Internship，保留 1 個"
+    },
+    {
+      "n": 3,
+      "entity": "BOCI-Prudential Asset Management Limited",
+      "label": "公司官網",
+      "url": "https://www.boci-pru.com.hk/",
+      "result": "官網未見可直接申請的公開職位；JobsDB 17 個於 2026-09-18 重新核驗為 Active"
+    },
+    {
+      "n": 4,
+      "entity": "Bosera Asset Management (International) Co., Limited",
+      "label": "官方 Careers",
+      "url": "https://www.bosera.com.hk/zh-HK/careers",
+      "result": "官方 4 個正式職位；實習生計畫已排除；JobsDB 2 個於 2026-09-18 重新核驗為 Active"
+    },
+    {
+      "n": 5,
+      "entity": "China Asset Management (Hong Kong) Limited",
+      "label": "公司官網",
+      "url": "https://www.chinaamc.com.hk/",
+      "result": "官網未見可直接申請職位清單；LinkedIn 8 個已核驗，其中 5 個由使用者於 2026-09-18 人工確認"
+    },
+    {
+      "n": 6,
+      "entity": "China International Capital Corporation Hong Kong Asset Management Limited",
+      "label": "CICC 官網",
+      "url": "https://en.cicc.com/",
+      "result": "官方企業站未提供可逐項核驗的香港資管招聘清單；LinkedIn／JobsDB 26 個已核驗，其中 4 個由使用者於 2026-09-18 人工確認"
+    },
+    {
+      "n": 7,
+      "entity": "CMS Asset Management (HK) Co., Limited",
+      "label": "官方資管頁",
+      "url": "https://www.cmschina.com.hk/en/AM/FundProduct",
+      "result": "未見發行商實體職位；招商證券國際 9 個集團職位另列"
+    },
+    {
+      "n": 8,
+      "entity": "CSOP Asset Management Limited",
+      "label": "CSOP 官網",
+      "url": "https://www.csopasset.com/",
+      "result": "官網未見公開職位清單；JobsDB 1 個於 2026-09-18 重新核驗為 Active"
+    },
+    {
+      "n": 9,
+      "entity": "Deutsche Asset Management S.A.",
+      "label": "DWS 官方招聘",
+      "url": "https://db.wd3.myworkdayjobs.com/en-US/DWSWebsite",
+      "result": "官方香港清單 3 個，均為全職且可申請"
+    },
+    {
+      "n": 10,
+      "entity": "Doo Financial HK Limited",
+      "label": "公司官網",
+      "url": "https://www.doofinancial.hk/en",
+      "result": "官網未見與發行商實體匹配的公開職位；JobsDB 1 個已核驗"
+    },
+    {
+      "n": 11,
+      "entity": "E Fund Management (Hong Kong) Co., Limited",
+      "label": "公司官網",
+      "url": "https://www.efunds.com.hk/",
+      "result": "未找到可獨立驗證的香港公開職位"
+    },
+    {
+      "n": 12,
+      "entity": "Fubon Fund Management (Hong Kong) Limited",
+      "label": "公司官網",
+      "url": "https://www.fubonfund.com.hk/eng/",
+      "result": "官網未見可直接申請職位；JobsDB 1 個已核驗"
+    },
+    {
+      "n": 13,
+      "entity": "Fullgoal Asset Management (HK) Limited",
+      "label": "公司官網",
+      "url": "https://www.fullgoal.com.hk/",
+      "result": "未找到可獨立驗證的香港公開職位"
+    },
+    {
+      "n": 14,
+      "entity": "Hang Seng Investment Management Limited",
+      "label": "恒生招聘",
+      "url": "https://www.hangseng.com/en-hk/careers/",
+      "result": "JobsDB 1 個職位於 2026-09-18 核驗為 Active；另 1 個 LinkedIn 職位顯示「目前不接受應徵」並已移除"
+    },
+    {
+      "n": 15,
+      "entity": "Harvest Global Investments Limited",
+      "label": "公司官網",
+      "url": "https://www.harvestglobal.com.hk/",
+      "result": "官網未見可直接申請職位清單；LinkedIn 2 個已核驗"
+    },
+    {
+      "n": 16,
+      "entity": "HSBC Investment Funds (Hong Kong) Limited",
+      "label": "HSBC Careers",
+      "url": "https://www.hsbc.com/careers/",
+      "result": "集團招聘入口已查，未找到可明確歸屬此發行商實體的香港職位"
+    },
+    {
+      "n": 17,
+      "entity": "ICBC UBS Asset Management (International) Company Limited",
+      "label": "公司官網",
+      "url": "https://www.icbcubs.com.hk/",
+      "result": "官網未見公開招聘清單；JobsDB 2 個於 2026-09-18 重新核驗為 Active；另 2 個失效職位已移除"
+    },
+    {
+      "n": 18,
+      "entity": "Invesco Capital Management LLC",
+      "label": "Invesco 香港官方職位",
+      "url": "https://invesco.wd1.myworkdayjobs.com/en-US/IVZ?locations=1804888b7f5a100128d467efb26b0000",
+      "result": "官方 13 個香港全職職位"
+    },
+    {
+      "n": 19,
+      "entity": "MicroBit Capital Management Limited",
+      "label": "公司官網",
+      "url": "https://www.microbit.ai/",
+      "result": "無公開招聘入口；未找到可獨立驗證職位"
+    },
+    {
+      "n": 20,
+      "entity": "Mirae Asset Global Investments (Hong Kong) Limited",
+      "label": "Horizons ETFs 官網",
+      "url": "https://www.horizonsetfs.com.hk/",
+      "result": "官網未見香港招聘入口；2 個 OfferToday 連結已不再顯示職位內容並已移除"
+    },
+    {
+      "n": 21,
+      "entity": "Nikko Asset Management Hong Kong Limited",
+      "label": "Nikko AM 官網",
+      "url": "https://www.nikkoam.com.hk/",
+      "result": "已查全球招聘入口，未找到香港在招職位"
+    },
+    {
+      "n": 22,
+      "entity": "Pando Finance Limited",
+      "label": "公司官網",
+      "url": "https://www.pandofinance.com.hk/en/",
+      "result": "無公開招聘職位"
+    },
+    {
+      "n": 23,
+      "entity": "Phillip Capital Management (HK) Limited",
+      "label": "公司官網",
+      "url": "https://www.phillipfunds.com.hk/",
+      "result": "未找到可獨立驗證的發行商實體職位"
+    },
+    {
+      "n": 24,
+      "entity": "Ping An of China Asset Management (Hong Kong) Company Limited",
+      "label": "官方 Join Us",
+      "url": "https://asset.pingan.com.hk/en/Join-Us",
+      "result": "官方明確顯示「No vacancy at this moment」；JobsDB 2 個仍 Active，故保留並註明來源"
+    },
+    {
+      "n": 25,
+      "entity": "Premia Partners Company Limited",
+      "label": "公司官網",
+      "url": "https://www.premia-partners.com/",
+      "result": "未見公開在招職位"
+    },
+    {
+      "n": 26,
+      "entity": "Samsung Asset Management (Hong Kong) Limited",
+      "label": "公司官網",
+      "url": "https://www.samsungetf.com.hk/",
+      "result": "未找到香港公開職位"
+    },
+    {
+      "n": 27,
+      "entity": "Shanxi Securities International Asset Management Limited",
+      "label": "官方資管頁",
+      "url": "http://am.ssif.com.hk/",
+      "result": "未見資管實體職位；山證國際集團 3 個職位另列"
+    },
+    {
+      "n": 28,
+      "entity": "State Street Global Advisors Asia Limited",
+      "label": "State Street 香港招聘",
+      "url": "https://careers.statestreet.com/global/en/search-results?keywords=&location=Hong%20Kong",
+      "result": "官方集團入口 8 個香港職位；法律僱主未鎖定為本實體，故列附錄"
+    },
+    {
+      "n": 29,
+      "entity": "State Street Global Advisors Singapore Limited",
+      "label": "State Street 招聘",
+      "url": "https://careers.statestreet.com/global/en/search-results",
+      "result": "未找到由新加坡發行商實體對外招聘、且工作地點在香港的可核驗職位"
+    },
+    {
+      "n": 30,
+      "entity": "Taikang Asset Management (Hong Kong) Company Limited",
+      "label": "公司官網",
+      "url": "https://hk.taikangasset.cn/",
+      "result": "官網未見可直接申請職位；JobsDB 1 個已核驗"
+    },
+    {
+      "n": 31,
+      "entity": "Value Partners Hong Kong Limited",
+      "label": "Value Partners 官網",
+      "url": "https://www.valuepartners-group.com/",
+      "result": "官網未見可直接申請職位清單；JobsDB 1 個已核驗"
+    }
+  ]
+}
+  </script>
+  <script src="hong-kong-etf-jobs-dashboard.js" defer></script>
+</body>
+</html>
