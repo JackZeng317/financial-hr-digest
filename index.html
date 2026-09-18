@@ -104,6 +104,8 @@ h1{margin:0 0 4px;font-size:25px;letter-spacing:.5px}
 
 /* ===== 招聘可視化圖表 ===== */
 .opviz{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0 16px}
+.opviz.single{grid-template-columns:1fr}
+.opviz.single .vizcard{max-width:640px}
 .vizcard{background:var(--card);border:1px solid var(--border);border-radius:12px;
   padding:16px 18px;box-shadow:var(--shadow)}
 .vizcard.full{grid-column:1/-1}
@@ -297,6 +299,12 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 .tag.etf{color:var(--accent);background:var(--accent-soft)}
 .tag.lv{color:#b8860b;background:#fbf2dc}
 .tag.none{color:var(--muted);background:#eef2f7}
+.bgtag{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;white-space:nowrap}
+.bgtag.bg-cn{color:#c0392b;background:#fdecea}
+.bgtag.bg-hk{color:#b8860b;background:#fbf2dc}
+.bgtag.bg-fo{color:#2563eb;background:#e8f0fe}
+.etp-table .etp-bg{white-space:nowrap}
+.etp-bg .origin{font-size:11px;color:var(--muted);margin-left:6px}
 .etp-table .etp-site{color:var(--muted);white-space:nowrap}
 .etp-table .etp-site a{color:var(--accent);text-decoration:none;font-weight:600}
 .etp-table .etp-site a:hover{text-decoration:underline}
@@ -376,7 +384,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 </div>
 
 <script>window.DATA={"hrDigest":{
- "generatedAt": "2026-09-18 11:19:42",
+ "generatedAt": "2026-09-18 12:17:21",
  "reportCount": 58,
  "totalItems": 407,
  "dateRange": [
@@ -9341,7 +9349,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   "2026-04-16",
   "2026-09-14"
  ],
- "generatedAt": "2026-09-18 11:19",
+ "generatedAt": "2026-09-18 12:17",
  "reports": [
   {
    "categories": [
@@ -37738,7 +37746,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   ],
   "disclaimer": "本報告由人工智能助理根據公開資料整理，內容僅供內部參考，不構成法律意見。法規條文隨時可能修訂，具體適用情況請以官方最新公布為準，並在作出任何決策前諮詢合資格的法律專業人士。資料來源已於各項目及來源清單中列明，惟連結可能隨時間失效。"
 },"etp":{
-  "generatedAt": "2026-09-18 10:59",
+  "generatedAt": "2026-09-18 12:16",
   "source": "HKEX List of ETP Issuers（香港交易所·官方在港 ETP 發行商名單）",
   "sourceUrl": "https://www.hkex.com.hk/Products/Securities/Exchange-Traded-Products/Issuers/List-of-Issuers?sc_lang=zh-HK",
   "issuers": [
@@ -37749,7 +37757,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.amundi.com.hk/",
-      "enName": "Amundi Hong Kong Limited"
+      "enName": "Amundi Hong Kong Limited",
+      "background": "外資",
+      "origin": "法國"
     },
     {
       "name": "貝萊德資產管理北亞有限公司",
@@ -37758,7 +37768,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.blackrock.com/hk/",
-      "enName": "Blackrock Asset Management North Asia Limited"
+      "enName": "Blackrock Asset Management North Asia Limited",
+      "background": "外資",
+      "origin": "美國"
     },
     {
       "name": "中銀國際英國保誠資產管理有限公司",
@@ -37767,7 +37779,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.boci-pru.com.hk/",
-      "enName": "BOCI-Prudential Asset Management Limited"
+      "enName": "BOCI-Prudential Asset Management Limited",
+      "background": "在港中資",
+      "origin": ""
     },
     {
       "name": "博時基金(國際)有限公司",
@@ -37776,7 +37790,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.bosera.com.hk/",
-      "enName": "Bosera Asset Management (International) Co., Limited"
+      "enName": "Bosera Asset Management (International) Co., Limited",
+      "background": "在港中資",
+      "origin": ""
     },
     {
       "name": "華夏基金（香港）有限公司",
@@ -37785,7 +37801,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": true,
       "website": "https://www.chinaamc.com.hk/",
-      "enName": "China Asset Management (Hong Kong) Limited"
+      "enName": "China Asset Management (Hong Kong) Limited",
+      "background": "在港中資",
+      "origin": ""
     },
     {
       "name": "中國國際金融香港資產管理有限公司",
@@ -37794,7 +37812,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.cicchkam.com/",
-      "enName": "China International Capital Corporation Hong Kong Asset Management Limited"
+      "enName": "China International Capital Corporation Hong Kong Asset Management Limited",
+      "background": "在港中資",
+      "origin": ""
     },
     {
       "name": "招商證券資產管理（香港）有限公司",
@@ -37803,7 +37823,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.cmschina.com.hk/AM/Profile",
-      "enName": "CMS Asset Management (HK) Co., Limited"
+      "enName": "CMS Asset Management (HK) Co., Limited",
+      "background": "在港中資",
+      "origin": ""
     },
     {
       "name": "南方東英資產管理有限公司",
@@ -37812,7 +37834,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": true,
       "website": "https://www.csopasset.com/tc/home",
-      "enName": "CSOP Asset Management Limited"
+      "enName": "CSOP Asset Management Limited",
+      "background": "在港中資",
+      "origin": ""
     },
     {
       "name": "Deutsche Asset Management S.A.",
@@ -37821,7 +37845,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://etf.dws.com/",
-      "enName": "Deutsche Asset Management S.A."
+      "enName": "Deutsche Asset Management S.A.",
+      "background": "外資",
+      "origin": "德國"
     },
     {
       "name": "都會金融香港有限公司",
@@ -37830,7 +37856,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.doofinancial.hk/",
-      "enName": "Doo Financial HK Limited"
+      "enName": "Doo Financial HK Limited",
+      "background": "港資",
+      "origin": ""
     },
     {
       "name": "易方達資產管理（香港）有限公司",
@@ -37839,7 +37867,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.efunds.com.hk/",
-      "enName": "E Fund Management (Hong Kong) Co., Limited"
+      "enName": "E Fund Management (Hong Kong) Co., Limited",
+      "background": "在港中資",
+      "origin": ""
     },
     {
       "name": "富邦基金管理",
@@ -37848,7 +37878,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": true,
       "website": "https://www.fubonfund.com.hk/",
-      "enName": "Fubon Fund Management (Hong Kong) Limited"
+      "enName": "Fubon Fund Management (Hong Kong) Limited",
+      "background": "外資",
+      "origin": "台灣"
     },
     {
       "name": "富國資產管理（香港）有限公司",
@@ -37857,7 +37889,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.fullgoal.com.hk/",
-      "enName": "Fullgoal Asset Management (Hong Kong) Limited"
+      "enName": "Fullgoal Asset Management (Hong Kong) Limited",
+      "background": "在港中資",
+      "origin": ""
     },
     {
       "name": "恒生投資管理有限公司",
@@ -37866,7 +37900,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.hangsenginvestment.com/",
-      "enName": "Hang Seng Investment Management Limited"
+      "enName": "Hang Seng Investment Management Limited",
+      "background": "港資",
+      "origin": ""
     },
     {
       "name": "嘉實國際資產管理有限公司",
@@ -37875,7 +37911,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.harvestglobal.com.hk/",
-      "enName": "Harvest Global Investments Limited"
+      "enName": "Harvest Global Investments Limited",
+      "background": "在港中資",
+      "origin": ""
     },
     {
       "name": "匯豐投資基金(香港)有限公司",
@@ -37884,7 +37922,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.assetmanagement.hsbc.com.hk/",
-      "enName": "HSBC Investment Funds (Hong Kong) Limited"
+      "enName": "HSBC Investment Funds (Hong Kong) Limited",
+      "background": "外資",
+      "origin": "英國"
     },
     {
       "name": "工銀瑞信資產管理（國際）有限公司",
@@ -37893,7 +37933,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.icbccs.com.hk/",
-      "enName": "ICBC Credit Suisse Asset Management (International) Limited"
+      "enName": "ICBC Credit Suisse Asset Management (International) Limited",
+      "background": "在港中資",
+      "origin": ""
     },
     {
       "name": "Invesco Capital Management LLC",
@@ -37902,7 +37944,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.invesco.com.hk/",
-      "enName": "Invesco Capital Management LLC"
+      "enName": "Invesco Capital Management LLC",
+      "background": "外資",
+      "origin": "美國"
     },
     {
       "name": "日興資產管理香港有限公司",
@@ -37911,7 +37955,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.nikkoam.com.hk/",
-      "enName": "Nikko Asset Management Hong Kong Limited"
+      "enName": "Nikko Asset Management Hong Kong Limited",
+      "background": "外資",
+      "origin": "日本"
     },
     {
       "name": "小飛資產管理有限公司",
@@ -37920,7 +37966,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.microbit.ai/",
-      "enName": "MicroBit Capital Management Limited"
+      "enName": "MicroBit Capital Management Limited",
+      "background": "港資",
+      "origin": ""
     },
     {
       "name": "未來資產環球投資 (香港)有限公司",
@@ -37929,7 +37977,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": true,
       "website": "https://investments.miraeasset.com.hk/",
-      "enName": "Mirae Asset Global Investments (Hong Kong) Limited"
+      "enName": "Mirae Asset Global Investments (Hong Kong) Limited",
+      "background": "外資",
+      "origin": "韓國"
     },
     {
       "name": "潘渡有限公司",
@@ -37938,7 +37988,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.pandofinance.com.hk/",
-      "enName": "Pando Finance Limited"
+      "enName": "Pando Finance Limited",
+      "background": "港資",
+      "origin": ""
     },
     {
       "name": "中國平安資產管理 (香港)有限公司",
@@ -37947,7 +37999,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.asset.pingan.com.hk/",
-      "enName": "Ping An of China Asset Management (Hong Kong) Company Limited"
+      "enName": "Ping An of China Asset Management (Hong Kong) Company Limited",
+      "background": "在港中資",
+      "origin": ""
     },
     {
       "name": "輝立資本管理（香港）有限公司",
@@ -37956,7 +38010,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.phillipfunds.com.hk/",
-      "enName": "Phillip Capital Management (HK) Limited"
+      "enName": "Phillip Capital Management (HK) Limited",
+      "background": "外資",
+      "origin": "新加坡"
     },
     {
       "name": "Premia Partners Company Limited",
@@ -37965,7 +38021,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.premia-partners.com/",
-      "enName": "Premia Partners Company Limited"
+      "enName": "Premia Partners Company Limited",
+      "background": "港資",
+      "origin": ""
     },
     {
       "name": "三星資產運用（香港）有限公司",
@@ -37974,7 +38032,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": true,
       "website": "https://www.samsungetfhk.com/",
-      "enName": "Samsung Asset Management (Hong Kong) Limited"
+      "enName": "Samsung Asset Management (Hong Kong) Limited",
+      "background": "外資",
+      "origin": "韓國"
     },
     {
       "name": "山證國際資產管理有限公司",
@@ -37983,7 +38043,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.ssif.com.hk/",
-      "enName": "Shanxi Securities International Asset Management Limited"
+      "enName": "Shanxi Securities International Asset Management Limited",
+      "background": "在港中資",
+      "origin": ""
     },
     {
       "name": "道富環球投資管理亞洲有限公司",
@@ -37992,7 +38054,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.ssga.com/",
-      "enName": "State Street Global Advisors Asia Limited"
+      "enName": "State Street Global Advisors Asia Limited",
+      "background": "外資",
+      "origin": "美國"
     },
     {
       "name": "泰康資產管理 (香港) 有限公司",
@@ -38001,7 +38065,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://hk.taikangasset.cn/",
-      "enName": "Taikang Asset Management (Hong Kong) Company Limited"
+      "enName": "Taikang Asset Management (Hong Kong) Company Limited",
+      "background": "在港中資",
+      "origin": ""
     },
     {
       "name": "惠理基金管理香港有限公司",
@@ -38010,7 +38076,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       "isETF": true,
       "isLeveraged": false,
       "website": "https://www.valuepartners.com.hk/",
-      "enName": "Value Partners Hong Kong Limited"
+      "enName": "Value Partners Hong Kong Limited",
+      "background": "港資",
+      "origin": ""
     }
   ],
   "totals": {
@@ -38022,7 +38090,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "added": [],
     "removed": []
   }
-},"generatedAt":"2026-09-18 11:19"};</script>
+},"generatedAt":"2026-09-18 12:17"};</script>
 <script>
 (function(){
   var DATA=window.DATA||{};
@@ -38355,6 +38423,13 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     {k:'港資公司',c:'#b8860b'},
     {k:'香港本地公司',c:'#16857a'}
   ];
+  // ETP 發行商背景分類（配色沿用招聘圖表的「在港中資／港資／外資」色系，維持全站一致）
+  var VIZ_BG=[
+    {k:'在港中資',c:'#c0392b'},
+    {k:'港資',c:'#b8860b'},
+    {k:'外資',c:'#2563eb'}
+  ];
+  var BG_CLASS={'在港中資':'bg-cn','港資':'bg-hk','外資':'bg-fo'};
   function vizCount(jobs,keyFn){
     var m={};
     (jobs||[]).forEach(function(j){
@@ -38583,7 +38658,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     var E=(typeof DATA!=='undefined'&&DATA.etp)||{issuers:[],totals:{},changes:{}};
     var issuers=(E.issuers||[]).filter(function(it){
       if(!q)return true;
-      return (it.name||'').toLowerCase().indexOf(q)>=0;
+      // 支援中文名 / 官方英文名 / 背景分類 三種關鍵字
+      return ((it.name||'')+' '+(it.enName||'')+' '+(it.background||'')).toLowerCase().indexOf(q)>=0;
     });
     var html='';
     // 來源 + 更新時間
@@ -38607,12 +38683,18 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       '<div class="ovcard"><b>'+(t.etfIssuerCount||0)+'</b><span>ETF 發行商</span></div>'+
       '<div class="ovcard"><b>'+(t.lvIssuerCount||0)+'</b><span>槓桿／反向發行商</span></div>'+
     '</div>';
+    // 背景分類分布（扇形圖，隨搜尋關鍵字即時重算）
+    if(issuers.length){
+      var bgMap={};
+      issuers.forEach(function(it){ if(it.background) bgMap[it.background]=(bgMap[it.background]||0)+1; });
+      html+='<div class="opviz single">'+vizBlock('發行商背景分布',VIZ_BG,bgMap,issuers.length)+'</div>';
+    }
     // 表格
     if(!issuers.length){
       html+='<div class="empty">查無符合條件的發行商，試試其他關鍵字。</div>';
     }else{
       html+='<table class="etp-table"><thead><tr>'+
-        '<th class="idx">#</th><th>發行商</th><th>類型</th><th>官網</th></tr></thead><tbody>';
+        '<th class="idx">#</th><th>發行商</th><th>類型</th><th>背景</th><th>官網</th></tr></thead><tbody>';
       issuers.forEach(function(it,idx){
         var isSelf=(/南方東英|CSOP/i).test(it.name||'');
         var tags='';
@@ -38623,6 +38705,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
           '<td class="idx">'+(idx+1)+'</td>'+
           '<td class="etp-name">'+hl(it.name,q)+(isSelf?'<span class="self">CSOP（自營）</span>':'')+(it.enName?'<span class="en">'+esc(it.enName)+'</span>':'')+'</td>'+
           '<td>'+tags+'</td>'+
+          '<td class="etp-bg">'+(it.background?'<span class="bgtag '+(BG_CLASS[it.background]||'')+'">'+esc(it.background)+'</span>':'—')+
+            (it.origin?'<span class="origin">'+esc(it.origin)+'</span>':'')+'</td>'+
           '<td class="etp-site">'+(it.website?'<a href="'+esc(it.website)+'" target="_blank" rel="noopener">官網 ↗</a>':'—')+'</td>'+
         '</tr>';
       });
