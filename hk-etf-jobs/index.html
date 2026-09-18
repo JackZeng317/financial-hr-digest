@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="香港 ETF／ETP 發行商招聘職位看板">
-  <title>香港 ETF 發行商招聘每周看板</title>
+  <meta name="description" content="CSOP 人事速遞與香港 ETF 發行商招聘綜合看板">
+  <title>CSOP HR Market Color 綜合看板</title>
   <style>
     :root {
       color-scheme: light dark;
@@ -61,41 +61,78 @@
     button, input, select { font: inherit; }
     button, select, input { min-height: 42px; }
     .shell { width: min(1480px, calc(100% - 32px)); margin: 0 auto; }
-    .topbar {
-      background: color-mix(in srgb, var(--surface) 92%, transparent);
-      border-bottom: 1px solid var(--line);
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(18px);
-    }
+    .topbar { color: #fff; background: linear-gradient(135deg, #173f79 0%, #2f68b2 100%); overflow: hidden; }
     .topbar-inner {
-      min-height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+      position: relative;
+      padding: 28px 0 22px;
+    }
+    .topbar-inner::after {
+      content: "";
+      position: absolute;
+      inset: -40px -80px;
+      pointer-events: none;
+      opacity: .08;
+      background-image: repeating-linear-gradient(-28deg, transparent 0 72px, #fff 73px 74px);
     }
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 700;
-      color: var(--navy);
+      font-size: clamp(23px, 3vw, 32px);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      color: #fff;
     }
     .brand-mark {
       display: grid;
       place-items: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: var(--brand);
-      color: #fff;
-      letter-spacing: -.04em;
-      font-size: 13px;
+      width: 38px;
+      height: 38px;
+      font-size: 25px;
     }
-    .top-meta { color: var(--muted); font-size: 13px; text-align: right; }
-    main { padding: 40px 0 56px; }
+    .top-meta { margin-top: 4px; color: rgba(255,255,255,.86); font-size: 14px; }
+    .hub-stats { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .hub-stat {
+      min-width: 132px;
+      padding: 10px 15px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 10px;
+      background: rgba(255,255,255,.17);
+      backdrop-filter: blur(5px);
+    }
+    .hub-stat strong { display: block; color: #fff; font-size: 19px; line-height: 1.25; }
+    .hub-stat span { display: block; margin-top: 4px; color: rgba(255,255,255,.82); font-size: 11.5px; }
+    .chapter-bar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: color-mix(in srgb, var(--bg) 94%, transparent);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
+    .chapter-tabs { display: flex; gap: 10px; padding-top: 14px; overflow-x: auto; }
+    .chapter-tab {
+      min-height: 58px;
+      flex: 0 1 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 10px 18px;
+      border: 1px solid var(--line);
+      border-bottom: 0;
+      border-radius: 12px 12px 0 0;
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+    .chapter-tab:hover { color: var(--brand); }
+    .chapter-tab[aria-selected="true"] { color: #fff; border-color: #245da5; background: linear-gradient(135deg, #1d4f90, #2f69b5); }
+    .chapter-count { font-size: 11px; opacity: .76; }
+    main { padding: 32px 0 56px; }
     .eyebrow {
       color: var(--brand);
       font-weight: 700;
@@ -103,7 +140,7 @@
       text-transform: uppercase;
       font-size: 12px;
     }
-    h1 { margin: 8px 0 10px; max-width: 760px; font-size: clamp(32px, 5vw, 56px); line-height: 1.08; letter-spacing: -.035em; }
+    .chapter-title { margin: 8px 0 10px; max-width: 860px; font-size: clamp(30px, 4.5vw, 48px); line-height: 1.1; letter-spacing: -.035em; }
     .lede { margin: 0; max-width: 760px; color: var(--muted); font-size: 16px; line-height: 1.7; }
     .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
     .btn {
@@ -485,8 +522,13 @@
     }
     @media (max-width: 720px) {
       .shell { width: min(100% - 20px, 1480px); }
-      .topbar-inner { min-height: 58px; }
-      .top-meta { display: none; }
+      .topbar-inner { padding: 22px 0 18px; }
+      .top-meta { font-size: 12px; }
+      .hub-stats { display: grid; grid-template-columns: 1fr 1fr; }
+      .hub-stat { min-width: 0; }
+      .hub-stat:nth-of-type(3), .hub-stat:nth-of-type(6) { grid-column: 1 / -1; }
+      .chapter-tabs { gap: 7px; padding-top: 10px; }
+      .chapter-tab { min-height: 52px; flex: 1 0 auto; padding: 8px 13px; font-size: 14px; }
       main { padding-top: 26px; }
       .kpis, .insights { grid-template-columns: 1fr; }
       .origin-grid { grid-template-columns: 1fr; }
@@ -524,29 +566,44 @@
 <body>
   <header class="topbar">
     <div class="shell topbar-inner">
-      <div class="brand"><span class="brand-mark">ETF</span><span>Hong Kong Talent Watch</span></div>
-      <div class="top-meta">每週一 09:00 自動更新 · 香港時間</div>
+      <div class="brand"><span class="brand-mark" aria-hidden="true">🔬</span><span>CSOP HR Market Color 綜合看板</span></div>
+      <div class="top-meta">團隊共享 · 全歷史歸檔 · 人事速遞 × 香港 ETF 發行商招聘一鍵切換</div>
+      <div class="hub-stats" aria-label="章節摘要">
+        <article class="hub-stat" data-chapter-stat="etf"><strong>95</strong><span>已驗證公開職位</span></article>
+        <article class="hub-stat" data-chapter-stat="etf"><strong>18</strong><span>有招聘的監察品牌</span></article>
+        <article class="hub-stat" data-chapter-stat="etf"><strong>2026-09-18 14:47</strong><span>最後核驗（香港時間）</span></article>
+        <article class="hub-stat" data-chapter-stat="people" hidden><strong id="hrd-report-total">—</strong><span>人事速遞期數</span></article>
+        <article class="hub-stat" data-chapter-stat="people" hidden><strong id="hrd-item-total">—</strong><span>人事資訊</span></article>
+        <article class="hub-stat" data-chapter-stat="people" hidden><strong id="hrd-generated-at">—</strong><span>最後更新</span></article>
+      </div>
     </div>
   </header>
 
+  <div class="chapter-bar">
+    <nav class="shell chapter-tabs" role="tablist" aria-label="綜合看板章節">
+      <button class="chapter-tab" role="tab" aria-selected="true" aria-controls="jobs-panel" id="etf-chapter-tab" data-chapter="etf" type="button"><span aria-hidden="true">💼</span><span>香港 ETF 發行商招聘每周看板</span><span class="chapter-count">95</span></button>
+      <button class="chapter-tab" role="tab" aria-selected="false" aria-controls="people-panel" id="people-chapter-tab" data-chapter="people" type="button"><span aria-hidden="true">👔</span><span>人事速遞</span><span class="chapter-count" id="hrd-tab-count">—</span></button>
+    </nav>
+  </div>
+
   <main class="shell">
-    <section aria-labelledby="page-title">
+    <section id="etf-intro" aria-labelledby="page-title">
       <div class="eyebrow">ETF / ETP Issuer Careers</div>
-      <h1 id="page-title">香港 ETF 發行商招聘每周看板</h1>
+      <h2 class="chapter-title" id="page-title">香港 ETF 發行商招聘每周看板</h2>
       <p class="lede">追蹤港交所發行商及使用者指定補充資產管理機構在香港公開招聘的非實習職位；優先採用公司官方申請入口，並以 LinkedIn、JobsDB 交叉核對。</p>
       <div class="hero-actions">
         <button class="btn btn-primary" id="jump-jobs" type="button">瀏覽全部職位</button>
       </div>
     </section>
 
-    <section class="kpis" aria-label="招聘摘要">
+    <section class="kpis" id="etf-kpis" aria-label="招聘摘要">
       <article class="card kpi"><div class="kpi-label">已驗證職位</div><div class="kpi-value">95</div><div class="kpi-note">截至 2026-09-18 香港時間</div></article>
       <article class="card kpi"><div class="kpi-label">有招聘的監察品牌</div><div class="kpi-value">18</div><div class="kpi-note">31 個 HKEX 法律實體＋1 個補充機構</div></article>
       <article class="card kpi"><div class="kpi-label">官方直連職位</div><div class="kpi-value" id="official-count">30</div><div class="kpi-note">優先於平台轉載連結</div></article>
       <article class="card kpi"><div class="kpi-label">待核實線索</div><div class="kpi-value">0</div><div class="kpi-note">目前沒有待核實職位</div></article>
     </section>
 
-    <section class="insights" aria-label="招聘分布">
+    <section class="insights" id="etf-insights" aria-label="招聘分布">
       <article class="card panel">
         <h2>前／中／後台分布</h2>
         <div class="donut-layout">
@@ -595,7 +652,7 @@
       </article>
     </section>
 
-    <section class="origin-overview" aria-labelledby="origin-title">
+    <section class="origin-overview" id="etf-origin" aria-labelledby="origin-title">
       <div class="section-head">
         <h2 id="origin-title">監察機構背景分類</h2>
         <span class="result-count">按母集團主要背景與品牌來源地歸類；台、日、韓、歐美機構列作外資</span>
@@ -625,9 +682,8 @@
       </div>
     </section>
 
-    <nav class="tabs" role="tablist" aria-label="看板內容">
+    <nav class="tabs" id="etf-tabs" role="tablist" aria-label="香港 ETF 招聘看板內容">
       <button class="tab" role="tab" aria-selected="true" aria-controls="jobs-panel" id="jobs-tab" data-tab="jobs" type="button">已驗證職位</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="people-panel" id="people-tab" data-tab="people" type="button">👔 人事速遞</button>
       <button class="tab" role="tab" aria-selected="false" aria-controls="history-panel" id="history-tab" data-tab="history" type="button">每週紀錄</button>
       <button class="tab" role="tab" aria-selected="false" aria-controls="coverage-panel" id="coverage-tab" data-tab="coverage" type="button">官方網站核查</button>
       <button class="tab" role="tab" aria-selected="false" aria-controls="appendix-panel" id="appendix-tab" data-tab="appendix" type="button">集團招聘入口</button>
@@ -854,19 +910,14 @@
       <div class="empty" id="jobs-empty" hidden>沒有符合目前篩選條件的職位。</div>
     </section>
 
-    <section id="people-panel" role="tabpanel" aria-labelledby="people-tab" hidden>
+    <section id="people-panel" role="tabpanel" aria-labelledby="people-chapter-tab" hidden>
       <div class="section-head">
         <div>
           <h2>👔 人事速遞</h2>
           <p class="note">追蹤香港、大中華、亞太及國際金融機構的人事變動、招聘趨勢與薪酬資訊，內容與主站「人事速遞」同步。</p>
         </div>
       </div>
-      <div class="hrd-overview" aria-label="人事速遞資料概覽">
-        <article class="card hrd-stat"><span>報告期數</span><strong id="hrd-report-total">—</strong></article>
-        <article class="card hrd-stat"><span>人事資訊</span><strong id="hrd-item-total">—</strong></article>
-        <article class="card hrd-stat"><span>資料日期</span><strong id="hrd-date-range">—</strong></article>
-        <article class="card hrd-stat"><span>最後更新</span><strong id="hrd-generated-at">—</strong></article>
-      </div>
+      <p class="note" id="hrd-date-range">資料日期：—</p>
       <form class="card hrd-filters" id="hrd-filters-form">
         <label>搜尋機構、人物或關鍵字
           <input id="hrd-search" type="search" placeholder="例如：匯豐、私銀、Citi、裁員、公募基金">
@@ -1006,9 +1057,10 @@
       </div>
     </section>
 
-    <footer>
+    <footer id="etf-footer">
       資料截面：2026-09-18 14:47（香港時間）。已逐條核對公開頁面狀態、香港地點及僱主；同一職位跨平台重複時只保留一條，公司官方頁與第三方平台狀態衝突時以官方頁為準。職位仍可能隨時下架，申請前請再次查看連結。
     </footer>
+    <footer id="people-footer" hidden>資料來源：金融人事速遞 · <span id="people-footer-updated">最後更新時間載入中</span></footer>
   </main>
 
   <script type="application/json" id="dashboard-data">

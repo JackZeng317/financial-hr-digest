@@ -182,10 +182,14 @@
       q("#hrd-toggle-all").textContent = hrdState.allOpen ? "摺疊全部" : "展開全部";
     };
     const initHrd = function () {
-      q("#hrd-report-total").textContent = HRD.reportCount || hrdReports.length;
-      q("#hrd-item-total").textContent = HRD.totalItems || hrdReports.reduce(function (sum, report) { return sum + (report.itemCount || 0); }, 0);
-      q("#hrd-date-range").textContent = Array.isArray(HRD.dateRange) ? HRD.dateRange.join(" 至 ") : "—";
+      const reportTotal = HRD.reportCount || hrdReports.length;
+      const itemTotal = HRD.totalItems || hrdReports.reduce(function (sum, report) { return sum + (report.itemCount || 0); }, 0);
+      q("#hrd-report-total").textContent = reportTotal;
+      q("#hrd-item-total").textContent = itemTotal;
+      q("#hrd-tab-count").textContent = reportTotal;
+      q("#hrd-date-range").textContent = "資料日期：" + (Array.isArray(HRD.dateRange) ? HRD.dateRange.join(" 至 ") : "—");
       q("#hrd-generated-at").textContent = HRD.generatedAt || "—";
+      q("#people-footer-updated").textContent = "更新於 " + (HRD.generatedAt || "—");
       q("#hrd-period").insertAdjacentHTML("beforeend", hrdReports.map(function (report) {
         return '<option value="' + esc(report.date) + '">' + esc(report.date) + '（' + esc(report.itemCount || 0) + ' 條）</option>';
       }).join(""));
@@ -380,13 +384,48 @@
       renderJobs();
     });
 
+    let activeChapter = window.location.hash === "#people" ? "people" : "etf";
+    let activeEtfTab = "jobs";
+    const etfSectionIds = ["etf-intro","etf-kpis","etf-insights","etf-origin","etf-tabs"];
+    const etfPanelNames = ["jobs","history","coverage","appendix","pending"];
+    const setChapter = function (chapter, moveToContent) {
+      activeChapter = chapter === "people" ? "people" : "etf";
+      document.querySelectorAll(".chapter-tab").forEach(function (tab) {
+        tab.setAttribute("aria-selected", String(tab.dataset.chapter === activeChapter));
+      });
+      document.querySelectorAll("[data-chapter-stat]").forEach(function (stat) {
+        stat.hidden = stat.dataset.chapterStat !== activeChapter;
+      });
+      etfSectionIds.forEach(function (id) { q("#" + id).hidden = activeChapter !== "etf"; });
+      etfPanelNames.forEach(function (name) {
+        q("#" + name + "-panel").hidden = activeChapter !== "etf" || name !== activeEtfTab;
+      });
+      q("#people-panel").hidden = activeChapter !== "people";
+      q("#etf-footer").hidden = activeChapter !== "etf";
+      q("#people-footer").hidden = activeChapter !== "people";
+      try {
+        window.history.replaceState(null, "", window.location.pathname + window.location.search + (activeChapter === "people" ? "#people" : "#etf"));
+      } catch (error) { /* 靜態預覽環境可能不允許改寫網址 */ }
+      if (moveToContent && window.scrollY > q(".chapter-bar").offsetTop + 80) {
+        q(".chapter-bar").scrollIntoView({behavior:"smooth", block:"start"});
+      }
+    };
+
+    document.querySelectorAll(".chapter-tab").forEach(function (tab) {
+      tab.addEventListener("click", function () { setChapter(tab.dataset.chapter, true); });
+    });
+    window.addEventListener("hashchange", function () {
+      setChapter(window.location.hash === "#people" ? "people" : "etf", false);
+    });
     document.querySelectorAll(".tab").forEach(function (tab) {
       tab.addEventListener("click", function () {
+        activeEtfTab = tab.dataset.tab;
         document.querySelectorAll(".tab").forEach(function (t) { t.setAttribute("aria-selected", String(t === tab)); });
-        ["jobs","people","history","coverage","appendix","pending"].forEach(function (name) { q("#" + name + "-panel").hidden = tab.dataset.tab !== name; });
+        etfPanelNames.forEach(function (name) { q("#" + name + "-panel").hidden = activeChapter !== "etf" || tab.dataset.tab !== name; });
       });
     });
     q("#jump-jobs").addEventListener("click", function () {
+      setChapter("etf", false);
       q("#jobs-tab").click();
       q("#jobs-panel").scrollIntoView({behavior:"smooth", block:"start"});
       q("#search").focus({preventScroll:true});
@@ -407,4 +446,5 @@
     });
     renderJobs();
     renderHistory();
+    setChapter(activeChapter, false);
 })();
