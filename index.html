@@ -147,6 +147,29 @@ h1{margin:0 0 4px;font-size:25px;letter-spacing:.5px}
 .oplegend ul{margin:8px 0 4px;padding-left:18px;line-height:1.85}
 .oplegend b{color:var(--fg)}
 
+/* 公司背景分類卡片（在港中資 / 港資 / 外資） */
+.bgcards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0 2px}
+.bgcard{background:var(--bg);border:1px solid var(--border);border-radius:10px;
+  padding:11px 13px 5px;min-width:0}
+.bgcard-h{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.3px;
+  padding:2px 11px;border-radius:20px}
+.bgcard-h.bg-cn{color:#c0392b;background:#fdecea}
+.bgcard-h.bg-hk{color:#b8860b;background:#fbf2dc}
+.bgcard-h.bg-fo{color:#2563eb;background:#e8f0fe}
+.bgcard-n{font-size:11px;font-weight:600;color:var(--muted);margin:7px 0 5px}
+.bgcards ul{list-style:none;margin:0;padding:0;line-height:1.45}
+.bgcards li{position:relative;padding:5px 0 5px 11px;font-size:12.5px;
+  color:var(--fg);border-bottom:1px dashed var(--border)}
+.bgcards li:last-child{border-bottom:none}
+.bgcards li::before{content:'';position:absolute;left:0;top:13px;width:4px;height:4px;
+  border-radius:50%;background:var(--muted)}
+.bgcards li .zh{display:block;font-weight:600;word-break:break-word}
+.bgcards li .en{display:block;font-size:11px;color:var(--muted);font-style:normal;
+  line-height:1.35;margin-top:1px;word-break:break-word}
+.bgcard-note{font-size:11.5px;color:var(--muted);margin:9px 0 6px;line-height:1.6}
+.bgcard-note b{color:var(--fg)}
+@media(max-width:760px){.bgcards{grid-template-columns:1fr}}
+
 /* 重要提醒（可點開／收起，預設收合） */
 .ophl{background:linear-gradient(180deg,#fffbf2 0%,#fff7e6 100%);
   border:1px solid #f3dcae;border-left:3px solid #d98416;border-radius:10px;
@@ -416,12 +439,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     </details>
     <details class="oplegend hide" id="opBgLegend">
       <summary>公司背景分類說明（在港中資 / 港資 / 外資）</summary>
-      <ul>
-        <li><b>在港中資</b>：中資金融機構在香港的分支／子公司，如中金、交銀國際、華夏基金香港、博時基金國際、工銀瑞信國際、南方東英、嘉實國際、中國人壽等</li>
-        <li><b>港資</b>：香港本地資本機構，如恒生投資管理、惠理基金、東亞銀行等</li>
-        <li><b>外資</b>：歐美、日、韓、台及新加坡等地機構，如摩根、富達、施羅德、PIMCO、東方匯理、貝萊德、DWS、未來資產、三星等</li>
-        <li>分類按<b>母集團主要背景與品牌來源地</b>歸類；台、日、韓、歐美機構一律列作外資。</li>
-      </ul>
+      <div class="bgcards" id="opBgCards"></div>
+      <div class="bgcard-note" id="opBgNote"></div>
     </details>
     <main id="opList"></main>
   </div>
@@ -441,7 +460,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 </div>
 
 <script>window.DATA={"hrDigest":{
- "generatedAt": "2026-09-18 14:49:24",
+ "generatedAt": "2026-09-18 14:54:30",
  "reportCount": 58,
  "totalItems": 407,
  "dateRange": [
@@ -9406,7 +9425,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   "2026-04-16",
   "2026-09-14"
  ],
- "generatedAt": "2026-09-18 14:49",
+ "generatedAt": "2026-09-18 14:54",
  "reports": [
   {
    "categories": [
@@ -41294,7 +41313,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "added": [],
     "removed": []
   }
-},"generatedAt":"2026-09-18 14:49"};</script>
+},"generatedAt":"2026-09-18 14:54"};</script>
 <script>
 (function(){
   var DATA=window.DATA||{};
@@ -41727,6 +41746,66 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     {k:'外資',c:'#2563eb'}
   ];
   var BG_CLASS={'在港中資':'bg-cn','港資':'bg-hk','外資':'bg-fo'};
+  // ===== 公司背景分類標準（分類表共 31 個法律實體）=====
+  // 每項：[分類表中文名, 對應 HKEX 官方英文名]
+  var BG_STD=[
+    {k:'在港中資',n:13,list:[
+      ['中銀國際英國保誠資產管理','BOCI-Prudential Asset Management Limited'],
+      ['博時基金國際','Bosera Asset Management (International) Co., Limited'],
+      ['華夏基金香港','China Asset Management (Hong Kong) Limited'],
+      ['中國國際金融香港資產管理','China International Capital Corporation Hong Kong Asset Management Limited'],
+      ['招商證券資產管理香港','CMS Asset Management (HK) Co., Limited'],
+      ['南方東英','CSOP Asset Management Limited'],
+      ['易方達資產管理香港','E Fund Management (Hong Kong) Co., Limited'],
+      ['富國資產管理香港','Fullgoal Asset Management (Hong Kong) Limited'],
+      ['嘉實國際資產管理','Harvest Global Investments Limited'],
+      ['工銀瑞信資產管理國際','ICBC UBS Asset Management (International) Company Limited'],
+      ['中國平安資產管理香港','Ping An of China Asset Management (Hong Kong) Company Limited'],
+      ['山證國際資產管理','Shanxi Securities International Asset Management Limited'],
+      ['泰康資產管理香港','Taikang Asset Management (Hong Kong) Company Limited']
+    ]},
+    {k:'港資',n:6,list:[
+      ['都會金融香港','Doo Financial HK Limited'],
+      ['恒生投資管理','Hang Seng Investment Management Limited'],
+      ['小飛資產管理（MicroBit）','MicroBit Capital Management Limited'],
+      ['潘渡（Pando Finance）','Pando Finance Limited'],
+      ['Premia Partners','Premia Partners Company Limited'],
+      ['惠理基金管理香港','Value Partners Hong Kong Limited']
+    ]},
+    {k:'外資',n:12,list:[
+      ['東方匯理（法國）','Amundi Hong Kong Limited'],
+      ['貝萊德（美國）','Blackrock Asset Management North Asia Limited'],
+      ['DWS（德國）','Deutsche Asset Management S.A.'],
+      ['富邦（台灣）','Fubon Fund Management (Hong Kong) Limited'],
+      ['匯豐資產管理（英國）','HSBC Investment Funds (Hong Kong) Limited'],
+      ['Invesco（美國）','Invesco Capital Management LLC'],
+      ['未來資產（韓國）','Mirae Asset Global Investments (Hong Kong) Limited'],
+      ['日興資產管理（日本）','Nikko Asset Management Hong Kong Limited'],
+      ['輝立資產管理（新加坡）','Phillip Capital Management (HK) Limited'],
+      ['三星資產運用（韓國）','Samsung Asset Management (Hong Kong) Limited'],
+      ['State Street 亞洲實體（美國）','State Street Global Advisors Asia Limited'],
+      ['State Street 新加坡實體（美國）','State Street Global Advisors Singapore Limited']
+    ]}
+  ];
+  var BG_NOTE='分類按<b>母集團主要背景與品牌來源地</b>歸類；台灣、日本、韓國、歐美及新加坡機構一律列作外資。'+
+    '※ State Street（美國）在分類標準中拆為「亞洲實體」與「新加坡實體」兩家，'+
+    '惟 HKEX 發行商名單僅列「道富環球投資管理亞洲有限公司」1 家，故看板發行商統計為外資 11 家（總計 30 家）。';
+  // 三張卡片（給招聘週報與 ETP 兩處共用）
+  function bgCardsHtml(){
+    return BG_STD.map(function(g){
+      return '<div class="bgcard">'+
+        '<div class="bgcard-h '+(BG_CLASS[g.k]||'')+'">'+esc(g.k)+'</div>'+
+        '<div class="bgcard-n">'+g.n+' 個法律實體</div>'+
+        '<ul>'+g.list.map(function(it){
+          return '<li><span class="zh">'+esc(it[0])+'</span>'+
+                 (it[1]?'<em class="en">'+esc(it[1])+'</em>':'')+'</li>';
+        }).join('')+'</ul>'+
+      '</div>';
+    }).join('');
+  }
+  // 填入招聘週報的「公司背景分類說明」卡片（靜態標準，不隨搜尋變動）
+  document.getElementById('opBgCards').innerHTML=bgCardsHtml();
+  document.getElementById('opBgNote').innerHTML=BG_NOTE;
   function vizCount(jobs,keyFn){
     var m={};
     (jobs||[]).forEach(function(j){
@@ -42008,6 +42087,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     ETP_ALIAS.forEach(function(a){ if((it.name||'').indexOf(a[0])>=0) h+=' '+a[1]; });
     return h;
   }
+  var etpBgOpen=false;   // 背景分類說明卡的展開狀態（ETP）
   function renderEtp(){
     var q=state.q.trim().toLowerCase();
     var qt=keyToks(state.q);
@@ -42050,6 +42130,11 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       issuers.forEach(function(it){ if(it.background) bgMap[it.background]=(bgMap[it.background]||0)+1; });
       html+='<div class="opviz single">'+vizBlock('發行商背景分布',VIZ_BG,bgMap,issuers.length)+'</div>';
     }
+    // 發行商背景分類說明（卡片式，預設收合；重繪時保留展開狀態）
+    html+='<details class="oplegend" id="etpBgLegend"'+(etpBgOpen?' open':'')+'>'+
+      '<summary>發行商背景分類說明（在港中資 / 港資 / 外資）</summary>'+
+      '<div class="bgcards">'+bgCardsHtml()+'</div>'+
+      '<div class="bgcard-note">'+BG_NOTE+'</div></details>';
     // 表格
     if(!issuers.length){
       html+='<div class="empty">查無符合條件的發行商，試試其他關鍵字。</div>';
@@ -42074,6 +42159,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       html+='</tbody></table>';
     }
     document.getElementById('etpView').innerHTML=html;
+    // 記住分類說明卡的展開狀態，避免每次搜尋都被收合
+    var etpLb=document.getElementById('etpBgLegend');
+    if(etpLb) etpLb.addEventListener('toggle',function(){etpBgOpen=etpLb.open;});
     var tot=(E.issuers||[]).length;
     document.getElementById('count').textContent='共 '+tot+' 家發行商'+(q?('，符合 '+issuers.length+' 家'):'');
   }
