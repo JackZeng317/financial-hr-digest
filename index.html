@@ -147,13 +147,19 @@ h1{margin:0 0 4px;font-size:25px;letter-spacing:.5px}
 .oplegend ul{margin:8px 0 4px;padding-left:18px;line-height:1.85}
 .oplegend b{color:var(--fg)}
 
-/* 重要提示 */
+/* 重要提醒（可點開／收起，預設收合） */
 .ophl{background:linear-gradient(180deg,#fffbf2 0%,#fff7e6 100%);
   border:1px solid #f3dcae;border-left:3px solid #d98416;border-radius:10px;
-  padding:12px 16px 14px;margin-bottom:14px}
-.ophl-h{font-size:13px;font-weight:700;color:#9a5d10;margin-bottom:8px;
-  display:flex;align-items:center;gap:6px;letter-spacing:.3px}
-.ophl-l{margin:0;padding-left:22px;font-size:13px;color:#5c4e2a;line-height:1.7}
+  padding:10px 16px;margin-bottom:14px}
+.ophl summary{font-size:13px;font-weight:700;color:#9a5d10;
+  display:flex;align-items:center;gap:6px;letter-spacing:.3px;
+  cursor:pointer;user-select:none;list-style:none;padding:2px 0}
+.ophl summary::-webkit-details-marker{display:none}
+.ophl summary::before{content:'▸';color:#d98416;transition:transform .15s}
+.ophl[open] summary::before{content:'▾'}
+.ophl summary .ophl-n{font-size:11.5px;font-weight:700;color:#8a6a2a;
+  background:#f6e3bb;border-radius:10px;padding:1px 8px;letter-spacing:0}
+.ophl-l{margin:8px 0 2px;padding-left:22px;font-size:13px;color:#5c4e2a;line-height:1.7}
 .ophl-l li{margin-bottom:6px}
 .ophl-l li:last-child{margin-bottom:0}
 .ophl-l li::marker{color:#d98416;font-weight:700}
@@ -396,16 +402,25 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     </div>
     <div class="opov" id="opOv"></div>
     <div class="opviz" id="opViz"></div>
-    <div class="ophl hide" id="opHl">
-      <div class="ophl-h">⚠️ 重要提醒</div>
+    <details class="ophl hide" id="opHl">
+      <summary>⚠️ 重要提醒<span class="ophl-n" id="opHlN"></span></summary>
       <ol class="ophl-l" id="opHlL"></ol>
-    </div>
+    </details>
     <details class="oplegend hide" id="opLegend">
       <summary>前台 / 中台 / 後台 分類說明</summary>
       <ul>
         <li><b>前台</b>：投資管理、交易、銷售、研究、業務發展、財富管理</li>
         <li><b>中台</b>：風險管理、合規、產品開發、市場推廣、客戶服務、內部審計</li>
         <li><b>後台</b>：運營、IT／技術、人力資源、財務、法律／公司秘書、行政</li>
+      </ul>
+    </details>
+    <details class="oplegend hide" id="opBgLegend">
+      <summary>公司背景分類說明（在港中資 / 港資 / 外資）</summary>
+      <ul>
+        <li><b>在港中資</b>：中資金融機構在香港的分支／子公司，如中金、交銀國際、華夏基金香港、博時基金國際、工銀瑞信國際、南方東英、嘉實國際、中國人壽等</li>
+        <li><b>港資</b>：香港本地資本機構，如恒生投資管理、惠理基金、東亞銀行等</li>
+        <li><b>外資</b>：歐美、日、韓、台及新加坡等地機構，如摩根、富達、施羅德、PIMCO、東方匯理、貝萊德、DWS、未來資產、三星等</li>
+        <li>分類按<b>母集團主要背景與品牌來源地</b>歸類；台、日、韓、歐美機構一律列作外資。</li>
       </ul>
     </details>
     <main id="opList"></main>
@@ -426,7 +441,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 </div>
 
 <script>window.DATA={"hrDigest":{
- "generatedAt": "2026-09-18 14:40:47",
+ "generatedAt": "2026-09-18 14:49:24",
  "reportCount": 58,
  "totalItems": 407,
  "dateRange": [
@@ -9391,7 +9406,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   "2026-04-16",
   "2026-09-14"
  ],
- "generatedAt": "2026-09-18 14:40",
+ "generatedAt": "2026-09-18 14:49",
  "reports": [
   {
    "categories": [
@@ -41279,7 +41294,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "added": [],
     "removed": []
   }
-},"generatedAt":"2026-09-18 14:40"};</script>
+},"generatedAt":"2026-09-18 14:49"};</script>
 <script>
 (function(){
   var DATA=window.DATA||{};
@@ -41805,14 +41820,18 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     renderOpViz((r.jobsFlat||[]).filter(function(j){return matchOp(j,q);}),r.date);
     // 前中後台分類說明：單週模式才顯示
     document.getElementById('opLegend').classList.remove('hide');
-    // 重要提示
+    // 公司背景分類說明（在港中資／港資／外資）
+    document.getElementById('opBgLegend').classList.remove('hide');
+    // 重要提醒（可點開／收起，標題顯示條數）
     var hlEl=document.getElementById('opHl');
     var hlL=document.getElementById('opHlL');
+    var hlN=document.getElementById('opHlN');
     if(r.highlights&&r.highlights.length){
       hlEl.classList.remove('hide');
       hlL.innerHTML=r.highlights.map(function(t){return '<li>'+esc(t)+'</li>';}).join('');
+      if(hlN)hlN.textContent=r.highlights.length+' 條';
     }else{
-      hlEl.classList.add('hide');hlL.innerHTML='';
+      hlEl.classList.add('hide');hlL.innerHTML='';if(hlN)hlN.textContent='';
     }
     // 類別 → 公司 → 前中後台 → 職位
     var cats=(r.categories||[]);
@@ -41868,6 +41887,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       renderOpViz(allJobs,null);
       document.getElementById('opHl').classList.add('hide');
       document.getElementById('opLegend').classList.add('hide');
+      // 公司背景分類說明與「機構類型分布」圖對應，跨週模式同樣顯示
+      document.getElementById('opBgLegend').classList.remove('hide');
       renderOpSum(total);
     }else{
       var r=OP.reports.filter(function(x){return x.date===state.opDate;})[0];
