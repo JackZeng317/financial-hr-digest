@@ -426,7 +426,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 </div>
 
 <script>window.DATA={"hrDigest":{
- "generatedAt": "2026-09-18 14:12:11",
+ "generatedAt": "2026-09-18 14:22:08",
  "reportCount": 58,
  "totalItems": 407,
  "dateRange": [
@@ -9391,7 +9391,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   "2026-04-16",
   "2026-09-14"
  ],
- "generatedAt": "2026-09-18 14:12",
+ "generatedAt": "2026-09-18 14:22",
  "reports": [
   {
    "categories": [
@@ -41279,7 +41279,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "added": [],
     "removed": []
   }
-},"generatedAt":"2026-09-18 14:12"};</script>
+},"generatedAt":"2026-09-18 14:22"};</script>
 <script>
 (function(){
   var DATA=window.DATA||{};
@@ -41391,7 +41391,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       chips.classList.add('hide'); toggle.classList.add('hide'); hrBar.classList.add('hide');
       lbChips.classList.remove('hide');
     }else if(m==='etp'){
-      q.placeholder='搜尋發行商名稱，例如：CSOP、南方東英、華夏、BlackRock、三星…';
+      q.placeholder='搜尋發行商名稱／簡稱／背景，例如：CSOP、華夏基金香港、BlackRock、iShares、DWS、景順、在港中資…';
       chips.classList.add('hide'); toggle.classList.add('hide'); hrBar.classList.add('hide');
       lbChips.classList.add('hide');
     }else{
@@ -41936,13 +41936,70 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   }
 
   // ===== ETP 發行商名單 =====
+  // 比對前先正規化：忽略括號／空白／標點。HKEX 名稱寫作「華夏基金（香港）有限公司」，
+  // 用戶常照分類表寫「華夏基金香港」，不處理就搜不到。
+  function normKey(s){
+    return String(s==null?'':s).toLowerCase()
+      .replace(/[\s\u3000（）()\[\]【】〖〗{}｛｝<>《》·・,，、;；:：\/\\|\-—–_'"]/g,'');
+  }
+  // 查詢字串切成多個關鍵字（照分類表寫「DWS（德國）」＝ dws + 德國，兩者都要命中）
+  var ETP_BGS=['在港中資','港資','外資'];
+  function keyToks(s){
+    return String(s==null?'':s).toLowerCase()
+      .split(/[\s\u3000（）()\[\]【】〖〗{}｛｝<>《》·・,，、;；:：\/\\|\-—–_'"]+/)
+      .map(normKey)
+      .filter(function(t){return t.length>0;});
+  }
+  // 俗稱／舊稱／分類表用語（讓「中金」「DWS」「景順」「iShares」「保誠」都搜得到）
+  var ETP_ALIAS=[
+    ['中銀國際','boci 中銀保誠 保誠'],
+    ['博時','bosera'],
+    ['華夏','chinaamc'],
+    ['中國國際金融','cicc 中金'],
+    ['招商證券','cms 招證'],
+    ['南方東英','csop 南方'],
+    ['易方達','efund e fund'],
+    ['富國','fullgoal'],
+    ['嘉實','harvest 嘉實國際'],
+    ['工銀瑞信','icbc 工銀 ubs 瑞信'],
+    ['中國平安','ping an 平安'],
+    ['山證','shanxi'],
+    ['泰康','taikang'],
+    ['都會','doo financial'],
+    ['恒生投資','hang seng hsil 恒生投資管理'],
+    ['小飛','microbit 小飛資產管理'],
+    ['潘渡','pando 潘渡資產管理'],
+    ['惠理','value partners 惠理基金'],
+    ['東方匯理','amundi'],
+    ['貝萊德','blackrock ishares 安碩'],
+    ['Deutsche','dws 德意志'],
+    ['富邦','fubon'],
+    ['匯豐','hsbc 匯豐資產管理'],
+    ['Invesco','景順'],
+    ['未來資產','mirae'],
+    ['日興','nikko'],
+    ['輝立','phillip'],
+    ['三星','samsung'],
+    ['道富','state street ssga spdr 標普 亞洲實體']
+  ];
+  function etpHay(it){
+    var h=[it.name,it.enName,it.background,it.origin].join(' ');
+    ETP_ALIAS.forEach(function(a){ if((it.name||'').indexOf(a[0])>=0) h+=' '+a[1]; });
+    return h;
+  }
   function renderEtp(){
     var q=state.q.trim().toLowerCase();
+    var qt=keyToks(state.q);
     var E=(typeof DATA!=='undefined'&&DATA.etp)||{issuers:[],totals:{},changes:{}};
     var issuers=(E.issuers||[]).filter(function(it){
-      if(!q)return true;
-      // 支援中文名 / 官方英文名 / 背景分類 三種關鍵字
-      return ((it.name||'')+' '+(it.enName||'')+' '+(it.background||'')).toLowerCase().indexOf(q)>=0;
+      if(!qt.length)return true;
+      // 支援中文名 / 官方英文名 / 背景 / 來源地 / 俗稱別名；多個關鍵字需全部命中
+      var hay=normKey(etpHay(it));
+      return qt.every(function(t){
+        // 背景分類須完全相符，否則「港資」會誤中「（香港）資產管理」這類公司名
+        if(ETP_BGS.indexOf(t)>=0) return (it.background||'')===t;
+        return hay.indexOf(t)>=0;
+      });
     });
     var html='';
     // 來源 + 更新時間
