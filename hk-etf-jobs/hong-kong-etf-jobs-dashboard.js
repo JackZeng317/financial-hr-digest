@@ -78,6 +78,177 @@
       return '<a class="' + (cls || "job-link") + '" href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + esc(title) + "</a>";
     };
 
+    const HRD = window.HR_DIGEST_DATA || {reports:[]};
+    const HRD_REGIONS = {
+      "HK/Greater China": {label:"香港／大中華", cls:""},
+      "Mainland China": {label:"中國內地", cls:"hrd-dot-cn"},
+      "Asia Pacific": {label:"亞太", cls:"hrd-dot-apac"},
+      "International": {label:"國際", cls:"hrd-dot-intl"},
+      "Compensation": {label:"薪酬", cls:"hrd-dot-comp"}
+    };
+    const hrdState = {query:"", period:"ALL", region:"all", open:new Set(), closed:new Set(), allOpen:false};
+    const hrdReports = Array.isArray(HRD.reports) ? HRD.reports.slice().sort(function (a,b) {
+      return String(b.date).localeCompare(String(a.date));
+    }) : [];
+    if (hrdReports.length) hrdState.open.add(hrdReports[0].date);
+
+    const safeHrdUrl = function (value) {
+      try {
+        const parsed = new URL(value);
+        return parsed.protocol === "http:" || parsed.protocol === "https:" ? parsed.href : "";
+      } catch (error) { return ""; }
+    };
+    const hrdHighlight = function (value, query) {
+      const text = String(value == null ? "" : value);
+      if (!query) return esc(text);
+      const pattern = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      try {
+        return text.split(new RegExp("(" + pattern + ")", "gi")).map(function (part) {
+          return part.toLocaleLowerCase("zh-Hant") === query.toLocaleLowerCase("zh-Hant") ? "<mark>" + esc(part) + "</mark>" : esc(part);
+        }).join("");
+      } catch (error) { return esc(text); }
+    };
+    const hrdMatches = function (item, query) {
+      if (!query) return true;
+      const haystack = [item.title, item.org, item.hr]
+        .concat(item.bullets || [])
+        .concat((item.sources || []).map(function (source) { return source.name; }))
+        .join(" ")
+        .toLocaleLowerCase("zh-Hant");
+      return haystack.indexOf(query.toLocaleLowerCase("zh-Hant")) >= 0;
+    };
+    const hrdFilteredReports = function () {
+      return hrdReports.filter(function (report) {
+        return hrdState.period === "ALL" || report.date === hrdState.period;
+      }).map(function (report) {
+        const sections = (report.sections || []).filter(function (section) {
+          return hrdState.region === "all" || section.region === hrdState.region;
+        }).map(function (section) {
+          return {
+            region: section.region,
+            emoji: section.emoji,
+            items: (section.items || []).filter(function (item) { return hrdMatches(item, hrdState.query); })
+          };
+        }).filter(function (section) { return section.items.length > 0; });
+        return {
+          report: report,
+          sections: sections,
+          count: sections.reduce(function (sum, section) { return sum + section.items.length; }, 0)
+        };
+      }).filter(function (entry) { return entry.count > 0; });
+    };
+    const hrdItemHtml = function (item) {
+      const bullets = (item.bullets || []).length
+        ? '<ul class="hrd-bullets">' + item.bullets.map(function (bullet) { return '<li>' + hrdHighlight(bullet, hrdState.query) + '</li>'; }).join("") + '</ul>'
+        : "";
+      const view = item.hr ? '<div class="hrd-view"><strong>💡 HR 視角：</strong>' + hrdHighlight(item.hr, hrdState.query) + '</div>' : "";
+      const sources = (item.sources || []).map(function (source) {
+        const url = safeHrdUrl(source.url);
+        return url ? '<a class="hrd-source" href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + esc(source.name || "來源") + '</a>' : "";
+      }).filter(Boolean);
+      const sourceHtml = sources.length ? '<div class="hrd-sources"><span>📎 來源</span>' + sources.join("") + '</div>' : "";
+      const org = item.org ? '<span class="hrd-org">' + hrdHighlight(item.org, hrdState.query) + '</span>' : "";
+      const session = item.session === "evening" ? '<span class="hrd-org">晚間場</span>' : "";
+      return '<article class="hrd-item"><div class="hrd-item-head"><span class="hrd-item-num">' + esc(item.num) + '.</span><h4 class="hrd-item-title">' + hrdHighlight(item.title, hrdState.query) + '</h4>' + org + session + '</div>' + bullets + view + sourceHtml + '</article>';
+    };
+    const hrdSectionHtml = function (section) {
+      const region = HRD_REGIONS[section.region] || {label:section.region, cls:""};
+      return '<section class="hrd-section"><div class="hrd-section-title"><span class="hrd-dot ' + esc(region.cls) + '"></span>' + esc(region.label) + ' · ' + section.items.length + ' 條</div>' + section.items.map(hrdItemHtml).join("") + '</section>';
+    };
+    const hrdReportHtml = function (entry) {
+      const report = entry.report;
+      const isOpen = hrdState.allOpen ? !hrdState.closed.has(report.date) : hrdState.open.has(report.date);
+      const sessions = (report.sessions || []).map(function (session) {
+        if (session === "evening") return '<span class="hrd-session hrd-session-evening">含晚間場</span>';
+        if (session === "catchup") return '<span class="hrd-session">補刊</span>';
+        return "";
+      }).join("");
+      let body = "";
+      if (isOpen) {
+        const insights = (report.insights || []).length
+          ? '<aside class="hrd-insights"><h4>🧭 本期啟示</h4><ul>' + report.insights.map(function (insight) { return '<li>' + hrdHighlight(insight, hrdState.query) + '</li>'; }).join("") + '</ul></aside>'
+          : "";
+        body = '<div class="hrd-report-body">' + entry.sections.map(hrdSectionHtml).join("") + insights + '</div>';
+      }
+      return '<article class="card hrd-report" data-hrd-date="' + esc(report.date) + '"><button class="hrd-report-head" type="button" aria-expanded="' + String(isOpen) + '"><span class="hrd-report-date">' + esc(report.date) + '</span>' + sessions + '<span class="hrd-report-count">' + (isOpen ? '▼' : '▶') + ' ' + entry.count + ' 條</span></button>' + (report.summary ? '<div class="hrd-summary">' + hrdHighlight(report.summary, hrdState.query) + '</div>' : "") + body + '</article>';
+    };
+    const renderHrd = function () {
+      const reports = hrdFilteredReports();
+      const count = reports.reduce(function (sum, entry) { return sum + entry.count; }, 0);
+      q("#hrd-list").innerHTML = reports.map(hrdReportHtml).join("");
+      q("#hrd-list").hidden = reports.length === 0;
+      q("#hrd-empty").hidden = reports.length !== 0;
+      q("#hrd-result-count").textContent = "顯示 " + reports.length + " 期、" + count + " 條資訊";
+      q("#hrd-toggle-all").textContent = hrdState.allOpen ? "摺疊全部" : "展開全部";
+    };
+    const initHrd = function () {
+      q("#hrd-report-total").textContent = HRD.reportCount || hrdReports.length;
+      q("#hrd-item-total").textContent = HRD.totalItems || hrdReports.reduce(function (sum, report) { return sum + (report.itemCount || 0); }, 0);
+      q("#hrd-date-range").textContent = Array.isArray(HRD.dateRange) ? HRD.dateRange.join(" 至 ") : "—";
+      q("#hrd-generated-at").textContent = HRD.generatedAt || "—";
+      q("#hrd-period").insertAdjacentHTML("beforeend", hrdReports.map(function (report) {
+        return '<option value="' + esc(report.date) + '">' + esc(report.date) + '（' + esc(report.itemCount || 0) + ' 條）</option>';
+      }).join(""));
+      q("#hrd-filters-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        hrdState.query = q("#hrd-search").value.trim();
+        hrdState.period = q("#hrd-period").value;
+        hrdState.region = q("#hrd-region").value;
+        hrdState.closed.clear();
+        if (hrdState.query) {
+          hrdState.allOpen = true;
+          hrdState.open.clear();
+        } else if (hrdState.period !== "ALL") {
+          hrdState.allOpen = false;
+          hrdState.open.clear();
+          hrdState.open.add(hrdState.period);
+        } else {
+          hrdState.allOpen = false;
+          hrdState.open.clear();
+          if (hrdReports.length) hrdState.open.add(hrdReports[0].date);
+        }
+        renderHrd();
+      });
+      q("#hrd-search").addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          q("#hrd-filters-form").requestSubmit();
+        }
+      });
+      q("#hrd-reset").addEventListener("click", function () {
+        q("#hrd-search").value = "";
+        q("#hrd-period").value = "ALL";
+        q("#hrd-region").value = "all";
+        hrdState.query = "";
+        hrdState.period = "ALL";
+        hrdState.region = "all";
+        hrdState.allOpen = false;
+        hrdState.open.clear();
+        hrdState.closed.clear();
+        if (hrdReports.length) hrdState.open.add(hrdReports[0].date);
+        renderHrd();
+      });
+      q("#hrd-toggle-all").addEventListener("click", function () {
+        hrdState.allOpen = !hrdState.allOpen;
+        hrdState.open.clear();
+        hrdState.closed.clear();
+        renderHrd();
+      });
+      q("#hrd-list").addEventListener("click", function (event) {
+        const head = event.target.closest(".hrd-report-head");
+        if (!head) return;
+        const date = head.closest(".hrd-report").dataset.hrdDate;
+        if (hrdState.allOpen) {
+          if (hrdState.closed.has(date)) hrdState.closed.delete(date);
+          else hrdState.closed.add(date);
+        } else if (hrdState.open.has(date)) hrdState.open.delete(date);
+        else hrdState.open.add(date);
+        renderHrd();
+      });
+      renderHrd();
+    };
+    initHrd();
+
     const companies = Array.from(new Set(DATA.jobs.map(function (d) { return d.company; }))).sort(function (a,b) { return a.localeCompare(b, "zh-Hant"); });
     q("#company-filter").insertAdjacentHTML("beforeend", companies.map(function (c) { return '<option value="' + esc(c) + '">' + esc(c) + "</option>"; }).join(""));
     q("#official-count").textContent = DATA.jobs.filter(function (d) { return sourceType(d.source) === "官方"; }).length;
@@ -212,7 +383,7 @@
     document.querySelectorAll(".tab").forEach(function (tab) {
       tab.addEventListener("click", function () {
         document.querySelectorAll(".tab").forEach(function (t) { t.setAttribute("aria-selected", String(t === tab)); });
-        ["jobs","history","coverage","appendix","pending"].forEach(function (name) { q("#" + name + "-panel").hidden = tab.dataset.tab !== name; });
+        ["jobs","people","history","coverage","appendix","pending"].forEach(function (name) { q("#" + name + "-panel").hidden = tab.dataset.tab !== name; });
       });
     });
     q("#jump-jobs").addEventListener("click", function () {

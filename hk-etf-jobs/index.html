@@ -364,6 +364,114 @@
     .note { color: var(--muted); font-size: 13px; line-height: 1.55; margin: 0 0 14px; }
     .status { font-weight: 700; }
     .coverage-result { color: var(--muted); }
+    .hrd-overview {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .hrd-stat { padding: 16px 18px; }
+    .hrd-stat strong { display: block; margin-top: 4px; font-size: 23px; letter-spacing: -.02em; }
+    .hrd-stat span { color: var(--muted); font-size: 12px; }
+    .hrd-filters {
+      display: grid;
+      grid-template-columns: minmax(240px, 1.5fr) minmax(180px, .75fr) minmax(170px, .7fr) auto;
+      gap: 10px;
+      align-items: end;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+    .hrd-actions { display: flex; gap: 8px; }
+    .hrd-result-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 12px 0;
+    }
+    .hrd-list { display: grid; gap: 14px; }
+    .hrd-report { overflow: hidden; }
+    .hrd-report-head {
+      width: 100%;
+      min-height: 0;
+      padding: 16px 18px;
+      border: 0;
+      background: var(--surface);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      cursor: pointer;
+      text-align: left;
+    }
+    .hrd-report-head:hover { background: color-mix(in srgb, var(--brand) 4%, var(--surface)); }
+    .hrd-report-date { font-size: 17px; font-weight: 750; }
+    .hrd-session {
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: var(--brand-soft);
+      color: var(--brand);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .hrd-session-evening { color: var(--warn); background: color-mix(in srgb, var(--warn) 12%, transparent); }
+    .hrd-report-count { margin-left: auto; color: var(--muted); font-size: 12px; }
+    .hrd-summary { padding: 0 18px 14px; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
+    .hrd-report-body { border-top: 1px solid var(--line); padding: 4px 18px 18px; }
+    .hrd-section { margin-top: 16px; }
+    .hrd-section-title {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px dashed var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 750;
+    }
+    .hrd-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); }
+    .hrd-dot-cn { background: var(--origin-cn); }
+    .hrd-dot-apac { background: var(--back); }
+    .hrd-dot-intl { background: var(--middle); }
+    .hrd-dot-comp { background: var(--origin-hk); }
+    .hrd-item { margin-bottom: 10px; padding: 10px 0 10px 12px; border-left: 2px solid var(--line); }
+    .hrd-item:hover { border-left-color: var(--brand); }
+    .hrd-item-head { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+    .hrd-item-num { min-width: 18px; color: var(--muted); font-size: 12px; font-weight: 750; }
+    .hrd-item-title { flex: 1; min-width: 220px; margin: 0; font-size: 14.5px; line-height: 1.5; }
+    .hrd-org { padding: 2px 8px; border-radius: 5px; background: var(--surface-soft); color: var(--muted); font-size: 11px; font-weight: 700; }
+    .hrd-bullets { margin: 7px 0 0; padding-left: 26px; color: color-mix(in srgb, var(--text) 82%, var(--muted)); font-size: 13.5px; line-height: 1.6; }
+    .hrd-bullets li + li { margin-top: 3px; }
+    .hrd-view {
+      margin-top: 8px;
+      padding: 8px 11px;
+      border-left: 3px solid var(--origin-hk);
+      border-radius: 0 7px 7px 0;
+      background: color-mix(in srgb, var(--origin-hk) 8%, var(--surface));
+      color: color-mix(in srgb, var(--text) 84%, var(--origin-hk));
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .hrd-view strong { color: var(--origin-hk); }
+    .hrd-sources { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; margin-top: 8px; color: var(--muted); font-size: 12px; }
+    .hrd-source {
+      padding: 3px 9px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface-soft);
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 650;
+    }
+    .hrd-source:hover { border-color: var(--brand); }
+    .hrd-insights { margin-top: 16px; padding: 13px 15px; border-radius: 9px; background: var(--surface-soft); }
+    .hrd-insights h4 { margin: 0 0 7px; color: var(--brand); font-size: 13px; }
+    .hrd-insights ul { margin: 0; padding-left: 20px; }
+    .hrd-insights li { font-size: 13px; line-height: 1.55; }
+    .hrd-insights li + li { margin-top: 4px; }
+    mark { padding: 0 2px; border-radius: 2px; background: color-mix(in srgb, var(--origin-hk) 35%, transparent); color: inherit; }
     footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; line-height: 1.6; }
     @media (max-width: 1050px) {
       .kpis { grid-template-columns: repeat(2, 1fr); }
@@ -371,6 +479,9 @@
       .filters { grid-template-columns: 1fr 1fr; }
       .filters label:first-child { grid-column: 1 / -1; }
       .history-summary { grid-template-columns: 1fr 1fr; }
+      .hrd-overview { grid-template-columns: repeat(2, 1fr); }
+      .hrd-filters { grid-template-columns: 1fr 1fr; }
+      .hrd-filters label:first-child { grid-column: 1 / -1; }
     }
     @media (max-width: 720px) {
       .shell { width: min(100% - 20px, 1480px); }
@@ -382,6 +493,12 @@
       .filters { grid-template-columns: 1fr; }
       .filters label:first-child { grid-column: auto; }
       .history-controls, .history-summary { grid-template-columns: 1fr; }
+      .hrd-overview, .hrd-filters { grid-template-columns: 1fr; }
+      .hrd-filters label:first-child { grid-column: auto; }
+      .hrd-actions { width: 100%; }
+      .hrd-actions .btn { flex: 1; }
+      .hrd-result-bar { align-items: flex-start; flex-direction: column; }
+      .hrd-item-title { min-width: 180px; }
       .donut-layout { grid-template-columns: 120px 1fr; gap: 18px; }
       .donut-chart { width: 120px; }
       .donut-center { width: 72px; }
@@ -510,6 +627,7 @@
 
     <nav class="tabs" role="tablist" aria-label="看板內容">
       <button class="tab" role="tab" aria-selected="true" aria-controls="jobs-panel" id="jobs-tab" data-tab="jobs" type="button">已驗證職位</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="people-panel" id="people-tab" data-tab="people" type="button">👔 人事速遞</button>
       <button class="tab" role="tab" aria-selected="false" aria-controls="history-panel" id="history-tab" data-tab="history" type="button">每週紀錄</button>
       <button class="tab" role="tab" aria-selected="false" aria-controls="coverage-panel" id="coverage-tab" data-tab="coverage" type="button">官方網站核查</button>
       <button class="tab" role="tab" aria-selected="false" aria-controls="appendix-panel" id="appendix-tab" data-tab="appendix" type="button">集團招聘入口</button>
@@ -734,6 +852,49 @@
         </details>
       </div>
       <div class="empty" id="jobs-empty" hidden>沒有符合目前篩選條件的職位。</div>
+    </section>
+
+    <section id="people-panel" role="tabpanel" aria-labelledby="people-tab" hidden>
+      <div class="section-head">
+        <div>
+          <h2>👔 人事速遞</h2>
+          <p class="note">追蹤香港、大中華、亞太及國際金融機構的人事變動、招聘趨勢與薪酬資訊，內容與主站「人事速遞」同步。</p>
+        </div>
+      </div>
+      <div class="hrd-overview" aria-label="人事速遞資料概覽">
+        <article class="card hrd-stat"><span>報告期數</span><strong id="hrd-report-total">—</strong></article>
+        <article class="card hrd-stat"><span>人事資訊</span><strong id="hrd-item-total">—</strong></article>
+        <article class="card hrd-stat"><span>資料日期</span><strong id="hrd-date-range">—</strong></article>
+        <article class="card hrd-stat"><span>最後更新</span><strong id="hrd-generated-at">—</strong></article>
+      </div>
+      <form class="card hrd-filters" id="hrd-filters-form">
+        <label>搜尋機構、人物或關鍵字
+          <input id="hrd-search" type="search" placeholder="例如：匯豐、私銀、Citi、裁員、公募基金">
+        </label>
+        <label>報告週期
+          <select id="hrd-period"><option value="ALL">全部週期（跨週搜尋）</option></select>
+        </label>
+        <label>地區分類
+          <select id="hrd-region">
+            <option value="all">全部地區</option>
+            <option value="HK/Greater China">香港／大中華</option>
+            <option value="Mainland China">中國內地</option>
+            <option value="Asia Pacific">亞太</option>
+            <option value="International">國際</option>
+            <option value="Compensation">薪酬</option>
+          </select>
+        </label>
+        <div class="hrd-actions">
+          <button class="btn btn-primary" type="submit">確認</button>
+          <button class="btn" id="hrd-reset" type="button">重設</button>
+        </div>
+      </form>
+      <div class="hrd-result-bar">
+        <span class="result-count" id="hrd-result-count" aria-live="polite">載入中…</span>
+        <button class="btn" id="hrd-toggle-all" type="button">展開全部</button>
+      </div>
+      <div class="hrd-list" id="hrd-list"></div>
+      <div class="empty card" id="hrd-empty" hidden>沒有符合目前篩選條件的人事資訊。</div>
     </section>
 
     <section id="history-panel" role="tabpanel" aria-labelledby="history-tab" hidden>
@@ -1898,6 +2059,7 @@
   ]
 }
   </script>
+  <script src="hr-digest-data.js" defer></script>
   <script src="hong-kong-etf-jobs-dashboard.js" defer></script>
 </body>
 </html>
