@@ -308,6 +308,30 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 .etp-table .etp-site{color:var(--muted);white-space:nowrap}
 .etp-table .etp-site a{color:var(--accent);text-decoration:none;font-weight:600}
 .etp-table .etp-site a:hover{text-decoration:underline}
+
+/* 招聘週報：檢索列 */
+.opfilter{background:var(--card);border:1px solid var(--border);border-radius:12px;
+  box-shadow:var(--shadow);padding:13px 16px 11px;margin-bottom:14px}
+.opf-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+.opf-fl{display:flex;flex-direction:column;gap:5px}
+.opf-fl label{font-size:11.5px;font-weight:600;color:var(--muted);letter-spacing:.3px}
+.opf-fl input,.opf-fl select{padding:9px 11px;font-size:13.5px;border:1px solid var(--border);
+  border-radius:9px;background:var(--card);color:var(--text);outline:none;width:100%}
+.opf-fl input:focus,.opf-fl select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.opf-q{flex:1 1 230px;min-width:190px}
+.opf-s{flex:0 1 152px;min-width:128px}
+.opf-btns{display:flex;gap:8px}
+.opf-btns button{padding:9px 20px;font-size:13.5px;font-weight:700;border-radius:9px;cursor:pointer;transition:.15s}
+#opApply{background:#0f2b46;color:#fff;border:1px solid #0f2b46}
+#opApply:hover{background:#1a3f63;border-color:#1a3f63}
+#opReset{background:var(--card);color:var(--muted);border:1px solid var(--border)}
+#opReset:hover{border-color:var(--accent);color:var(--accent)}
+.opf-sum{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:10px;
+  padding-top:9px;border-top:1px dashed var(--border);font-size:12.5px;color:var(--muted)}
+.opf-tag{background:var(--accent-soft);color:var(--accent);border-radius:20px;
+  padding:2px 10px;font-size:11.5px;font-weight:600}
+.opf-n{margin-left:auto;color:var(--muted)}
+.opf-n b{color:var(--text);font-size:13.5px}
 </style>
 </head>
 <body>
@@ -345,13 +369,29 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     <main id="list"></main>
   </div>
 
-  <!-- 招聘週報模式：日期選擇 + 概覽 + 列表 -->
+  <!-- 招聘週報模式：檢索列 + 日期選擇 + 概覽 + 列表 -->
   <div id="opView" class="hide">
+    <div class="opfilter">
+      <div class="opf-bar">
+        <div class="opf-fl opf-q">
+          <label for="opQ">搜尋職位或公司</label>
+          <input id="opQ" type="search" placeholder="例如 ETF、Risk、CICC" autocomplete="off">
+        </div>
+        <div class="opf-fl opf-s"><label for="opCo">公司</label><select id="opCo"></select></div>
+        <div class="opf-fl opf-s"><label for="opBg">公司背景</label><select id="opBg"></select></div>
+        <div class="opf-fl opf-s"><label for="opFn">分類</label><select id="opFn"></select></div>
+        <div class="opf-fl opf-s"><label for="opSrc">來源</label><select id="opSrc"></select></div>
+        <div class="opf-btns">
+          <button id="opApply" type="button">確認</button>
+          <button id="opReset" type="button">重設</button>
+        </div>
+      </div>
+      <div class="opf-sum" id="opSum"></div>
+    </div>
     <div class="opbar">
       <label for="opSel">報告週期</label>
       <select id="opSel"></select>
     </div>
-    <div class="chips hide" id="opChips"></div>
     <div class="opov" id="opOv"></div>
     <div class="opviz" id="opViz"></div>
     <div class="ophl hide" id="opHl">
@@ -384,7 +424,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 </div>
 
 <script>window.DATA={"hrDigest":{
- "generatedAt": "2026-09-18 12:31:29",
+ "generatedAt": "2026-09-18 13:18:53",
  "reportCount": 58,
  "totalItems": 407,
  "dateRange": [
@@ -9349,7 +9389,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   "2026-04-16",
   "2026-09-14"
  ],
- "generatedAt": "2026-09-18 12:31",
+ "generatedAt": "2026-09-18 13:18",
  "reports": [
   {
    "categories": [
@@ -41237,7 +41277,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "added": [],
     "removed": []
   }
-},"generatedAt":"2026-09-18 12:31"};</script>
+},"generatedAt":"2026-09-18 13:18"};</script>
 <script>
 (function(){
   var DATA=window.DATA||{};
@@ -41258,7 +41298,11 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     open:{}, allOpen:false,
     hrDate:(HR.reports.length?'ALL':'ALL'),
     opDate:(OP.reports.length?OP.reports[OP.reports.length-1].date:'ALL'),
+    opQ:'',
     opCompany:'all',
+    opBg:'all',
+    opFn:'all',
+    opSrc:'all',
     labourRegion:'all'
   };
 
@@ -41335,24 +41379,24 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       return;
     }
     tb.classList.remove('hide');
-    var opChips=document.getElementById('opChips');
     var lbChips=document.getElementById('labourChips');
     if(m==='hr'){
       q.placeholder='搜尋機構／人物／關鍵字，例如：匯豐、私銀、Citi、裁員、公募基金…';
       chips.classList.remove('hide'); toggle.classList.remove('hide'); hrBar.classList.remove('hide');
-      opChips.classList.add('hide'); lbChips.classList.add('hide');
+      lbChips.classList.add('hide');
     }else if(m==='labour'){
       q.placeholder='搜尋法規／關鍵字，例如：最低工資、年假、簽證、CPF、退休…';
       chips.classList.add('hide'); toggle.classList.add('hide'); hrBar.classList.add('hide');
-      opChips.classList.add('hide'); lbChips.classList.remove('hide');
+      lbChips.classList.remove('hide');
     }else if(m==='etp'){
       q.placeholder='搜尋發行商名稱，例如：CSOP、南方東英、華夏、BlackRock、三星…';
       chips.classList.add('hide'); toggle.classList.add('hide'); hrBar.classList.add('hide');
-      opChips.classList.add('hide'); lbChips.classList.add('hide');
+      lbChips.classList.add('hide');
     }else{
-      q.placeholder='搜尋職位／公司／前中後台，例如：ETF、Compliance、CICC、前台…';
+      // 招聘週報自帶檢索列（關鍵字 + 公司／背景／分類／來源），隱藏全站工具列避免兩個搜尋框
       chips.classList.add('hide'); toggle.classList.add('hide'); hrBar.classList.add('hide');
-      opChips.classList.remove('hide'); lbChips.classList.add('hide');
+      lbChips.classList.add('hide');
+      tb.classList.add('hide');
     }
     render();
     renderStats();
@@ -41388,27 +41432,95 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     });
   })();
 
-  // ===== OP：公司 chips =====
-  // 取「最新一期」（日期最大）作為公司命名標準，避免跨期歷史命名變體干擾。
+  // ===== OP：公司名稱正規化（僅供檢索比對，不改動列表顯示） =====
+  // 同一家機構在不同期數有「CICC / CICC（中金公司）/ China International Capital Corporation」
+  // 等寫法，若不歸併，選「CICC」會漏掉其餘寫法的職位。新機構若出現新寫法，
+  // 會落到下方後綴清理規則，最壞情況只是在選單多一個選項，不會誤合併。
+  var CO_ALIAS=[
+    [/^CICC|^China International Capital Corporation/i,'CICC（中金公司）'],
+    [/^ChinaAMC/i,'ChinaAMC（華夏基金香港）'],
+    [/^BOCOM/i,'BOCOM International（交銀國際）'],
+    [/^Bosera/i,'Bosera AM International（博時基金國際）'],
+    [/^CSOP/i,'CSOP Asset Management'],
+    [/^Hang Seng/i,'Hang Seng Investment Management（恒生投資管理）'],
+    [/^Harvest/i,'Harvest Global Investments（嘉實國際）'],
+    [/^ICBC/i,'ICBC UBS Asset Management（工銀瑞信國際）'],
+    [/^JPMorgan/i,'JPMorgan Asset Management'],
+    [/^Value Partners/i,'Value Partners（惠理基金）'],
+    [/^China Life Franklin/i,'China Life Franklin Asset Management（中國人壽富蘭克林）'],
+    [/^Mirae/i,'Mirae Asset Global Investments (Hong Kong)（未來資產環球投資香港）'],
+    [/^GF International/i,'GF International Investment Management（廣發國際資產管理）'],
+    [/^Franklin Templeton/i,'Franklin Templeton'],
+    [/^Fidelity/i,'Fidelity International'],
+    [/^Amundi/i,'Amundi Hong Kong'],
+    [/^Jane Street/i,'Jane Street'],
+    [/^PIMCO/i,'PIMCO'],
+    [/^Schroders/i,'Schroders']
+  ];
+  function canonCompany(c){
+    c=String(c==null?'':c).trim();
+    for(var i=0;i<CO_ALIAS.length;i++){if(CO_ALIAS[i][0].test(c))return CO_ALIAS[i][1];}
+    return c.replace(/\s+Limited\.?$/i,'').replace(/\s+Company\.?$/i,'').trim()||c;
+  }
+  // 職位來源：由申請連結網域歸類（LinkedIn / JobsDB / 公司官網 / 其他平台）
+  function jobSource(j){
+    var u=String((j&&j.link)||'').toLowerCase();
+    if(!/^https?:\/\//.test(u))return '無連結';
+    if(u.indexOf('linkedin.com')>=0)return 'LinkedIn';
+    if(u.indexOf('jobsdb.com')>=0)return 'JobsDB';
+    if(/ctgoodjobs|jobrapido|offertoday|techjobasia|indeed\.|glassdoor|efinancialcareers/.test(u))return '其他平台';
+    return '公司官網';
+  }
+
+  // ===== OP：檢索列（關鍵字 + 公司 / 公司背景 / 分類 / 來源） =====
+  var OP_BG=['在港中資','港資','外資'];
+  var OP_FN=['前台','中台','後台'];
+  var OP_SRC=['LinkedIn','JobsDB','公司官網','其他平台'];
   (function(){
-    var latest=OP.reports.reduce(function(a,b){return (b.date||'')>(a.date||'')?b:a;},OP.reports[0]||{});
-    var companies={};
-    (latest.jobsFlat||[]).forEach(function(j){
-      var c=(j.company||'').trim();
-      if(c && !companies[c]) companies[c]=true;
+    var coMap={};
+    OP.reports.forEach(function(r){
+      (r.jobsFlat||[]).forEach(function(j){
+        var c=canonCompany(j.company);if(c)coMap[c]=true;
+      });
     });
-    var list=Object.keys(companies).sort();
-    var h='<div class="chip'+(state.opCompany==='all'?' on':'')+'" data-c="all">全部</div>';
-    list.forEach(function(c){
-      h+='<div class="chip'+(state.opCompany===c?' on':'')+'" data-c="'+esc(c)+'">'+esc(c)+'</div>';
+    var cos=Object.keys(coMap).sort(function(a,b){return a.localeCompare(b,'zh-Hant');});
+    function opts(list,allLabel){
+      var h='<option value="all">'+esc(allLabel)+'</option>';
+      list.forEach(function(k){h+='<option value="'+esc(k)+'">'+esc(k)+'</option>';});
+      return h;
+    }
+    // 來源選單：只有在資料裡真的出現「沒有連結」的職位時才多掛一個選項
+    var hasNoLink=false;
+    OP.reports.forEach(function(r){
+      (r.jobsFlat||[]).forEach(function(j){if(jobSource(j)==='無連結')hasNoLink=true;});
     });
-    var el=document.getElementById('opChips');
-    el.innerHTML=h;
-    el.addEventListener('click',function(e){
-      var t=e.target.closest('.chip');if(!t)return;
-      state.opCompany=t.getAttribute('data-c');
-      [].forEach.call(el.querySelectorAll('.chip'),function(x){x.classList.remove('on');});
-      t.classList.add('on');render();
+    var srcs=hasNoLink?OP_SRC.concat(['無連結']):OP_SRC.slice();
+    var selIds=['opCo','opBg','opFn','opSrc'];
+    document.getElementById('opCo').innerHTML=opts(cos,'全部公司');
+    document.getElementById('opBg').innerHTML=opts(OP_BG,'全部背景');
+    document.getElementById('opFn').innerHTML=opts(OP_FN,'全部分類');
+    document.getElementById('opSrc').innerHTML=opts(srcs,'全部來源');
+    var qEl=document.getElementById('opQ');
+    function apply(){
+      // 空值一律視為「全部」，避免選單未初始化時誤篩
+      state.opQ=qEl.value.trim();
+      state.opCompany=document.getElementById('opCo').value||'all';
+      state.opBg=document.getElementById('opBg').value||'all';
+      state.opFn=document.getElementById('opFn').value||'all';
+      state.opSrc=document.getElementById('opSrc').value||'all';
+      render();
+    }
+    function reset(){
+      qEl.value='';
+      selIds.forEach(function(id){document.getElementById(id).value='all';});
+      state.opQ='';state.opCompany='all';state.opBg='all';state.opFn='all';state.opSrc='all';
+      render();
+    }
+    document.getElementById('opApply').addEventListener('click',apply);
+    document.getElementById('opReset').addEventListener('click',reset);
+    qEl.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();apply();}});
+    selIds.forEach(function(id){
+      document.getElementById(id).addEventListener('keydown',function(e){if(e.key==='Enter')apply();});
     });
   })();
 
@@ -41541,11 +41653,34 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 
   function matchJob(j,q){
     if(!q)return true;
-    var s=(j.title||'')+' '+(j.company||'')+' '+(j.function||'')+' '+(j.category||'');
+    var s=(j.title||'')+' '+(j.company||'')+' '+(j.function||'')+' '+(j.category||'')+' '+(j.background||'');
     return s.toLowerCase().indexOf(q.toLowerCase())>=0;
   }
-  function matchCompany(j){
-    return state.opCompany==='all' || (j.company||'')===state.opCompany;
+  // 招聘週報：關鍵字 + 公司 / 公司背景 / 分類 / 來源，四個下拉皆為 'all' 代表不篩
+  function matchOp(j,q){
+    if(!matchJob(j,q))return false;
+    if(state.opCompany!=='all' && canonCompany(j.company)!==state.opCompany)return false;
+    if(state.opBg!=='all' && (j.background||'')!==state.opBg)return false;
+    if(state.opFn!=='all' && (j.function||'')!==state.opFn)return false;
+    if(state.opSrc!=='all' && jobSource(j)!==state.opSrc)return false;
+    return true;
+  }
+  // 檢索列下方的「已套用條件 + 結果數」
+  function renderOpSum(n){
+    var el=document.getElementById('opSum');
+    if(!el)return;
+    var tags=[];
+    if(state.opQ)tags.push('關鍵字：'+state.opQ);
+    if(state.opCompany!=='all')tags.push('公司：'+state.opCompany);
+    if(state.opBg!=='all')tags.push('背景：'+state.opBg);
+    if(state.opFn!=='all')tags.push('分類：'+state.opFn);
+    if(state.opSrc!=='all')tags.push('來源：'+state.opSrc);
+    var h=tags.length
+      ? '<span>已套用</span>'+tags.map(function(t){return '<span class="opf-tag">'+esc(t)+'</span>';}).join('')
+      : '<span>未套用篩選，顯示全部職位</span>';
+    h+='<span class="opf-n">符合 <b>'+n+'</b> 個職位</span>';
+    el.innerHTML=h;
+    document.getElementById('count').textContent='共 '+n+' 個職位符合';
   }
   function renderJob(j,q){
     var star=(j.title||'').indexOf('⭐')>=0;
@@ -41659,8 +41794,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       '<div class="ovcard"><b>'+(ov.change||'—')+'</b><span>較上週變化</span></div>'+
       '<div class="ovcard"><b>'+(ov.companies||0)+'</b><span>追蹤公司</span></div>';
     document.getElementById('opOv').innerHTML=ovcards;
-    // 可視化圖表（依當前搜尋／公司篩選條件即時計算）
-    renderOpViz((r.jobsFlat||[]).filter(function(j){return matchJob(j,q)&&matchCompany(j);}),r.date);
+    // 可視化圖表（依當前檢索條件即時計算）
+    renderOpViz((r.jobsFlat||[]).filter(function(j){return matchOp(j,q);}),r.date);
     // 前中後台分類說明：單週模式才顯示
     document.getElementById('opLegend').classList.remove('hide');
     // 重要提示
@@ -41684,7 +41819,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
           (co.count!=null?'<span class="cc">'+co.count+' 職位</span>':'')+'</div>';
         var fnHtml='';
         (co.functions||[]).forEach(function(fn){
-          var jobs=(fn.jobs||[]).filter(function(j){return matchJob(j,q)&&matchCompany(j);});
+          var jobs=(fn.jobs||[]).filter(function(j){return matchOp(j,q);});
           if(!jobs.length)return;
           catCount+=jobs.length; totalShown+=jobs.length;
           fnHtml+='<div class="fn"><div class="fnname">'+esc(fn.name)+
@@ -41702,15 +41837,15 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     });
     var box=document.getElementById('opList');
     box.innerHTML=html||'<div class="empty">本週期查無符合職位，試試其他關鍵字。</div>';
-    document.getElementById('count').textContent='共 '+totalShown+' 個職位符合';
+    renderOpSum(totalShown);
   }
   function renderOpenings(){
-    var q=state.q.trim();
+    var q=state.opQ.trim();
     if(state.opDate==='ALL'){
       // 跨週：按日期分組顯示
       var html=''; var total=0; var allJobs=[];
       OP.reports.slice().reverse().forEach(function(r){
-        var jobs=(r.jobsFlat||[]).filter(function(j){return matchJob(j,q)&&matchCompany(j);});
+        var jobs=(r.jobsFlat||[]).filter(function(j){return matchOp(j,q);});
         if(!jobs.length)return;
         total+=jobs.length; allJobs=allJobs.concat(jobs);
         html+='<div class="opdate">📅 '+esc(r.date)+' · '+jobs.length+' 個職位</div>';
@@ -41726,7 +41861,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       renderOpViz(allJobs,null);
       document.getElementById('opHl').classList.add('hide');
       document.getElementById('opLegend').classList.add('hide');
-      document.getElementById('count').textContent='共 '+total+' 個職位符合';
+      renderOpSum(total);
     }else{
       var r=OP.reports.filter(function(x){return x.date===state.opDate;})[0];
       if(!r){document.getElementById('opList').innerHTML='<div class="empty">該週期無資料。</div>';return;}
@@ -41879,6 +42014,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
         renderHR();
       }else if(state.mode==='etp'){
         renderEtp();
+      }else if(state.mode==='labour'){
+        renderLabour();
       }else{renderOpenings();}
     },180);
   });
