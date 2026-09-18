@@ -108,13 +108,20 @@ h1{margin:0 0 4px;font-size:25px;letter-spacing:.5px}
   padding:16px 18px;box-shadow:var(--shadow)}
 .vizcard.full{grid-column:1/-1}
 .viz-h{font-size:15px;font-weight:700;margin:0 0 15px;color:var(--text)}
-.viz-bar{display:flex;height:14px;border-radius:999px;overflow:hidden;margin-bottom:16px;background:#eef1f5}
-.viz-bar>i{display:block;height:100%;transition:width .45s ease}
-.viz-nums{display:flex;flex-wrap:wrap;gap:14px 26px}
-.viz-num b{display:block;font-size:26px;font-weight:700;line-height:1.1;color:var(--text)}
-.viz-num .lab{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;
-  color:var(--muted);margin-top:3px;white-space:nowrap}
-.viz-num .lab em{font-style:normal;color:var(--text);font-weight:600}
+/* 扇形（甜甜圈）圖 */
+.viz-body{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.viz-donut{flex:0 0 auto;width:138px;height:138px}
+.viz-donut circle.seg{transition:stroke-dasharray .45s ease,stroke-dashoffset .45s ease}
+.viz-donut .dcenter{font-size:23px;font-weight:700;fill:var(--text)}
+.viz-donut .dsub{font-size:9.5px;fill:var(--muted);letter-spacing:.5px}
+.viz-legend{flex:1;min-width:132px;display:flex;flex-direction:column;gap:9px}
+.viz-li{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted)}
+.viz-li .k{flex:1;min-width:0;color:var(--text);white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+.viz-li b{font-size:16px;font-weight:700;color:var(--text);
+  font-variant-numeric:tabular-nums;line-height:1}
+.viz-li em{font-style:normal;font-size:12px;color:var(--muted);min-width:36px;
+  text-align:right;font-variant-numeric:tabular-nums}
 .viz-dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto;display:inline-block}
 /* 週趨勢柱狀圖 */
 .viz-trend{display:flex;align-items:flex-end;gap:5px;padding-top:4px}
@@ -227,8 +234,10 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   .toolbar{top:50px}
   .opov{grid-template-columns:repeat(2,1fr)}
   .opviz{grid-template-columns:1fr}
-  .viz-nums{gap:12px 20px}
-  .viz-num b{font-size:22px}
+  .viz-body{gap:14px}
+  .viz-donut{width:118px;height:118px}
+  .viz-legend{gap:7px}
+  .viz-li b{font-size:15px}
   .rhead{padding:12px 14px}
   .rsum,.rbody{padding-left:14px;padding-right:14px}
   .itemtitle{font-size:14px}
@@ -365,7 +374,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 </div>
 
 <script>window.DATA={"hrDigest":{
- "generatedAt": "2026-09-17 18:07:05",
+ "generatedAt": "2026-09-18 10:46:58",
  "reportCount": 58,
  "totalItems": 407,
  "dateRange": [
@@ -9330,7 +9339,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   "2026-04-16",
   "2026-09-14"
  ],
- "generatedAt": "2026-09-17 18:07",
+ "generatedAt": "2026-09-18 10:46",
  "reports": [
   {
    "categories": [
@@ -38066,7 +38075,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "added": [],
     "removed": []
   }
-},"generatedAt":"2026-09-17 18:07"};</script>
+},"generatedAt":"2026-09-18 10:46"};</script>
 <script>
 (function(){
   var DATA=window.DATA||{};
@@ -38407,23 +38416,42 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     });
     return m;
   }
-  // 堆疊比例條 + 大數字 + 圓點圖例（含百分比）
+  // 扇形（甜甜圈）圖 + 圖例（數字 + 百分比），中心顯示總計
   function vizBlock(title,defs,map,total){
-    var segs='',nums='',used=0;
+    var CX=66,CY=66,R=52,SW=19;
+    var C=2*Math.PI*R;                 // 圓周長，作為 dasharray 的基數
+    var parts=[];
     defs.forEach(function(d){
       var n=map[d.k]||0;
-      if(!n)return;
-      used+=n;
-      var pct=total?Math.round(n/total*100):0;
-      segs+='<i style="width:'+(total?(n/total*100):0)+'%;background:'+d.c+'"></i>';
-      nums+='<div class="viz-num"><b>'+n+'</b>'+
-        '<span class="lab"><span class="viz-dot" style="background:'+d.c+'"></span>'+
-        esc(d.k)+' <em>'+pct+'%</em></span></div>';
+      if(!n)return;                    // 零筆類別略過，不佔扇形
+      parts.push({k:d.k,c:d.c,n:n});
     });
-    if(!segs)segs='<i style="width:100%;background:#eef1f5"></i>';
-    if(!nums)nums='<div class="viz-num"><b>0</b><span class="lab">無資料</span></div>';
+    var sum=parts.reduce(function(a,p){return a+p.n;},0);
+    var ring='',legend='',off=0;
+    if(!sum){
+      ring='<circle cx="'+CX+'" cy="'+CY+'" r="'+R+'" fill="none" stroke="#eef1f5" stroke-width="'+SW+'"/>';
+      legend='<div class="viz-li"><span class="viz-dot" style="background:#cbd5e1"></span>'+
+        '<span class="k">無資料</span><b>0</b><em>—</em></div>';
+    }else{
+      parts.forEach(function(p){
+        var len=p.n/sum*C;
+        var gap=(parts.length>1&&len>10)?3:0;   // 扇形間留細縫
+        var dash=Math.max(0,len-gap);
+        var pct=total?Math.round(p.n/total*100):Math.round(p.n/sum*100);
+        ring+='<circle class="seg" cx="'+CX+'" cy="'+CY+'" r="'+R+'" fill="none" stroke="'+p.c+
+          '" stroke-width="'+SW+'" stroke-dasharray="'+dash.toFixed(2)+' '+(C-dash).toFixed(2)+
+          '" stroke-dashoffset="'+(-off).toFixed(2)+'" transform="rotate(-90 '+CX+' '+CY+')">'+
+          '<title>'+esc(p.k)+'：'+p.n+'（'+pct+'%）</title></circle>';
+        off+=len;
+        legend+='<div class="viz-li"><span class="viz-dot" style="background:'+p.c+'"></span>'+
+          '<span class="k">'+esc(p.k)+'</span><b>'+p.n+'</b><em>'+pct+'%</em></div>';
+      });
+    }
+    var center='<text class="dcenter" x="'+CX+'" y="64" text-anchor="middle">'+(total||sum)+'</text>'+
+      '<text class="dsub" x="'+CX+'" y="80" text-anchor="middle">總計</text>';
     return '<div class="vizcard"><div class="viz-h">'+title+'</div>'+
-      '<div class="viz-bar">'+segs+'</div><div class="viz-nums">'+nums+'</div></div>';
+      '<div class="viz-body"><svg class="viz-donut" viewBox="0 0 132 132" role="img">'+
+      ring+center+'</svg><div class="viz-legend">'+legend+'</div></div></div>';
   }
   // 近 N 週職位總數柱狀圖
   function vizTrend(highlightDate){
