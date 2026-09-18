@@ -174,6 +174,8 @@ h1{margin:0 0 4px;font-size:25px;letter-spacing:.5px}
 .job:last-child{border-bottom:none}
 .jt{font-size:13.5px;flex:1;min-width:0;word-break:break-word}
 .jt .star{color:var(--comp);margin-right:3px}
+.jt .jco{font-style:normal;font-size:11.5px;font-weight:600;color:var(--muted);
+  background:#f1f5f9;border-radius:4px;padding:1px 6px;margin-right:7px;white-space:nowrap}
 .apply{font-size:12px;color:#fff;background:var(--op);text-decoration:none;
   padding:3px 11px;border-radius:6px;white-space:nowrap;font-weight:600}
 .apply:hover{background:#0c6358}
@@ -424,7 +426,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 </div>
 
 <script>window.DATA={"hrDigest":{
- "generatedAt": "2026-09-18 13:18:53",
+ "generatedAt": "2026-09-18 14:12:11",
  "reportCount": 58,
  "totalItems": 407,
  "dateRange": [
@@ -9389,7 +9391,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   "2026-04-16",
   "2026-09-14"
  ],
- "generatedAt": "2026-09-18 13:18",
+ "generatedAt": "2026-09-18 14:12",
  "reports": [
   {
    "categories": [
@@ -41277,7 +41279,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     "added": [],
     "removed": []
   }
-},"generatedAt":"2026-09-18 13:18"};</script>
+},"generatedAt":"2026-09-18 14:12"};</script>
 <script>
 (function(){
   var DATA=window.DATA||{};
@@ -41436,26 +41438,27 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
   // 同一家機構在不同期數有「CICC / CICC（中金公司）/ China International Capital Corporation」
   // 等寫法，若不歸併，選「CICC」會漏掉其餘寫法的職位。新機構若出現新寫法，
   // 會落到下方後綴清理規則，最壞情況只是在選單多一個選項，不會誤合併。
+  // canonical 一律採「English（中文）」格式，所有公司都有中英對照（未分類公司除外）
   var CO_ALIAS=[
     [/^CICC|^China International Capital Corporation/i,'CICC（中金公司）'],
     [/^ChinaAMC/i,'ChinaAMC（華夏基金香港）'],
     [/^BOCOM/i,'BOCOM International（交銀國際）'],
     [/^Bosera/i,'Bosera AM International（博時基金國際）'],
-    [/^CSOP/i,'CSOP Asset Management'],
+    [/^CSOP/i,'CSOP Asset Management（南方東英資產管理）'],
     [/^Hang Seng/i,'Hang Seng Investment Management（恒生投資管理）'],
     [/^Harvest/i,'Harvest Global Investments（嘉實國際）'],
     [/^ICBC/i,'ICBC UBS Asset Management（工銀瑞信國際）'],
-    [/^JPMorgan/i,'JPMorgan Asset Management'],
+    [/^JPMorgan|^J\.?P\.? ?Morgan/i,'JPMorgan Asset Management（摩根資產管理）'],
     [/^Value Partners/i,'Value Partners（惠理基金）'],
     [/^China Life Franklin/i,'China Life Franklin Asset Management（中國人壽富蘭克林）'],
     [/^Mirae/i,'Mirae Asset Global Investments (Hong Kong)（未來資產環球投資香港）'],
     [/^GF International/i,'GF International Investment Management（廣發國際資產管理）'],
-    [/^Franklin Templeton/i,'Franklin Templeton'],
-    [/^Fidelity/i,'Fidelity International'],
-    [/^Amundi/i,'Amundi Hong Kong'],
-    [/^Jane Street/i,'Jane Street'],
-    [/^PIMCO/i,'PIMCO'],
-    [/^Schroders/i,'Schroders']
+    [/^Franklin Templeton/i,'Franklin Templeton（富蘭克林鄧普頓）'],
+    [/^Fidelity/i,'Fidelity International（富達國際）'],
+    [/^Amundi/i,'Amundi Hong Kong（東方匯理資產管理香港）'],
+    [/^Jane Street/i,'Jane Street（簡街）'],
+    [/^PIMCO/i,'PIMCO（品浩）'],
+    [/^Schroders/i,'Schroders（施羅德）']
   ];
   function canonCompany(c){
     c=String(c==null?'':c).trim();
@@ -41653,7 +41656,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 
   function matchJob(j,q){
     if(!q)return true;
-    var s=(j.title||'')+' '+(j.company||'')+' '+(j.function||'')+' '+(j.category||'')+' '+(j.background||'');
+    // 同時比對原始公司名與中英對照名，讓「中金」「交銀」「南方東英」等中文關鍵字也能命中
+    var s=(j.title||'')+' '+(j.company||'')+' '+(canonCompany(j.company)||'')+' '+
+      (j.function||'')+' '+(j.category||'')+' '+(j.background||'');
     return s.toLowerCase().indexOf(q.toLowerCase())>=0;
   }
   // 招聘週報：關鍵字 + 公司 / 公司背景 / 分類 / 來源，四個下拉皆為 'all' 代表不篩
@@ -41682,10 +41687,12 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     el.innerHTML=h;
     document.getElementById('count').textContent='共 '+n+' 個職位符合';
   }
-  function renderJob(j,q){
+  function renderJob(j,q,withCo){
     var star=(j.title||'').indexOf('⭐')>=0;
     var t=j.title.replace('⭐','').trim();
     var h='<li class="job"><span class="jt">';
+    // 跨週模式沒有公司分組外框，改在職位前掛中英對照的公司標籤
+    if(withCo)h+='<em class="jco">'+esc(canonCompany(j.company))+'</em>';
     if(star)h+='<span class="star">⭐</span>';
     h+=hl(t,q)+'</span>';
     if(safeUrl(j.link))h+='<a class="apply" href="'+esc(safeUrl(j.link))+'" target="_blank" rel="noopener">申請 ↗</a>';
@@ -41815,7 +41822,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
         '<span class="ccount"></span></div>';
       var catCount=0;
       (cat.companies||[]).forEach(function(co){
-        var coHtml='<div class="company"><div class="coname">'+hl(co.name,q)+
+        var coHtml='<div class="company"><div class="coname">'+hl(canonCompany(co.name),q)+
           (co.count!=null?'<span class="cc">'+co.count+' 職位</span>':'')+'</div>';
         var fnHtml='';
         (co.functions||[]).forEach(function(fn){
@@ -41850,7 +41857,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
         total+=jobs.length; allJobs=allJobs.concat(jobs);
         html+='<div class="opdate">📅 '+esc(r.date)+' · '+jobs.length+' 個職位</div>';
         html+='<div class="catcard" style="margin-bottom:18px"><div class="company"><ul class="jobs">';
-        jobs.forEach(function(j){html+=renderJob(j,q);});
+        jobs.forEach(function(j){html+=renderJob(j,q,true);});
         html+='</ul></div></div>';
       });
       var box=document.getElementById('opList');
