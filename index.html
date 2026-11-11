@@ -1398,6 +1398,17 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
 }
 @media(max-width:400px){.orgeditbar{padding:9px}.orgeditbar button,.orgfilebtn{font-size:12.5px;padding:6px 9px}}
 
+
+/* CROSS_ASSET_TAB_V1 */
+#crossassetView .cahead{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin:2px 0 14px}
+#crossassetView .cahead h2{font-size:19px;margin:0 0 3px;color:var(--text)}
+#crossassetView .cahead .casub{font-size:13px;color:var(--muted);line-height:1.6}
+#crossassetView .cabtn{flex:none;display:inline-block;padding:8px 15px;border:1px solid var(--border);
+  border-radius:8px;background:var(--card);color:var(--accent);font-size:13.5px;font-weight:600;
+  text-decoration:none;box-shadow:var(--shadow)}
+#crossassetView .cabtn:hover{background:var(--accent-soft)}
+#crossassetFrame{display:block;width:100%;height:2450px;border:1px solid var(--border);
+  border-radius:12px;background:#fff;box-shadow:var(--shadow)}
 </style>
 
 <!-- GoatCounter 訪問統計（免費、隱私友好）：把下方 GC_CODE 改為你在 goatcounter.com 註冊的免費 code 即可啟用；
@@ -1440,6 +1451,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     <div class="tab" data-mode="op">💼 資管公司招聘週報<span class="tnum" id="tOP"></span></div>
     <div class="tab" data-mode="broker">💹 券商公司招聘週報<span class="tnum" id="tBR"></span></div>
     <div class="tab" data-mode="trend">💡 招聘趨勢<span class="tnum" id="tTR"></span></div>
+    <!-- CROSS_ASSET_TAB_V1 -->
+    <div class="tab" data-mode="crossasset">📊 跨資產週報</div>
   </div>
   <div class="tbgrp">
     <div class="tbgrp-h" data-f="month"><i></i><span>每月</span><em>月初</em></div>
@@ -1783,6 +1796,19 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       <h4>中資 / 港資 / 外資 招聘佔比趨勢 <span class="tr-sub">每期 100% 堆疊</span></h4>
       <div id="trBg"></div>
     </div>
+  </div>
+
+    <!-- CROSS_ASSET_TAB_V1 -->
+  <div id="crossassetView" class="hide">
+    <div class="cahead">
+      <div>
+        <h2>跨資產週報｜股票・債券・黃金・原油・美元</h2>
+        <div class="casub">每週一 09:30 自動更新　│　資料時點與來源見面板頁尾　│　紅＝指標上升、綠＝指標下降</div>
+      </div>
+      <a class="cabtn" href="cross-asset.html" target="_blank" rel="noopener">在新分頁開啟完整面板 ↗</a>
+    </div>
+    <iframe id="crossassetFrame" title="跨資產週報可視化面板" data-src="cross-asset.html"
+      src="about:blank" frameborder="0" scrolling="auto" loading="lazy"></iframe>
   </div>
 
   <footer id="foot"></footer>
@@ -33684,6 +33710,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
     document.getElementById('rvView').classList.toggle('hide',m!=='rv');
     document.getElementById('wxView').classList.toggle('hide',m!=='wx');
     document.getElementById('hkeView').classList.toggle('hide',m!=='hke');
+    document.getElementById('crossassetView').classList.toggle('hide',m!=='crossasset');
     document.getElementById('orgView').classList.toggle('hide',m!=='org');
     // 二級公司菜單只在本分頁展開，避免佔用其他分頁的導覽空間
     document.getElementById('orgNav').classList.toggle('hide',m!=='org');
@@ -33725,6 +33752,14 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 0}
       lbChips.classList.add('hide');
       tb.classList.add('hide');
       renderAi(); renderStats();
+      return;
+        }else if(m==='crossasset'){
+      chips.classList.add('hide'); toggle.classList.add('hide'); hrBar.classList.add('hide');
+      lbChips.classList.add('hide');
+      tb.classList.add('hide');
+      var cf=document.getElementById('crossassetFrame');
+      if(cf && cf.getAttribute('src')!=='cross-asset.html'){ cf.src='cross-asset.html'; }
+      renderStats();
       return;
     }else if(m==='trend'){
       chips.classList.add('hide'); toggle.classList.add('hide'); hrBar.classList.add('hide');
