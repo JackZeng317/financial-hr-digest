@@ -126,7 +126,73 @@ footer b{color:var(--ink2);}
 .disc{margin-top:14px;background:#fff8f2;border:1px solid #f0dcc5;border-radius:6px;
   padding:12px 16px;color:#7a5320;font-size:13px;line-height:1.8;}
 @media(max-width:1150px){.kpis{grid-template-columns:repeat(2,1fr);}.grid2,.boxes{grid-template-columns:1fr;}}
+
+/* ===== 夜間閱覽（跟隨主看板 hrdigest-theme，2026-11-13） =====
+   本面板以 iframe 嵌在綜合看板，主題由父頁 postMessage 傳入；
+   獨立開啟時則讀 ?theme= 或同一 origin 的 localStorage。
+   既有共用定義一行未改，本段整段移除即可還原日間版。 */
+html[data-theme="dark"]{
+  --bg:#101722; --card:#1a2534; --line:#33445c; --ink:#e7eef8; --ink2:#c2d1e4;
+  --muted:#a4b5ca; --up:#ff7b7b; --down:#4fd39b; --accent:#7ab2f5;
+  --amber:#e0a94a; --chip:#223a58; color-scheme:dark;
+}
+html[data-theme="dark"] body{background:var(--bg);color:var(--ink)}
+html[data-theme="dark"] header{border-bottom-color:var(--accent)}
+html[data-theme="dark"] .tldr{background:linear-gradient(100deg,#1e2c3e,#182332);border-color:var(--line)}
+html[data-theme="dark"] .kpi,html[data-theme="dark"] .panel,
+html[data-theme="dark"] .chain,html[data-theme="dark"] .box{box-shadow:none}
+html[data-theme="dark"] .tag{border-color:var(--line)}
+html[data-theme="dark"] th{background:#22303f}
+html[data-theme="dark"] tbody tr:hover{background:#22303f}
+html[data-theme="dark"] .toggle{border-color:var(--line)}
+html[data-theme="dark"] .toggle button{background:var(--card);color:var(--ink2)}
+html[data-theme="dark"] .toggle button.on{background:var(--accent);color:#101722}
+html[data-theme="dark"] .node{background:#22303f;border-color:var(--line)}
+html[data-theme="dark"] .node.hot{background:#3a2226;border-color:#6b3a3a}
+html[data-theme="dark"] .node.cool{background:#1e3a30;border-color:#35634e}
+html[data-theme="dark"] .chain h3 .no{background:var(--accent);color:#101722}
+html[data-theme="dark"] .disc{background:#34291a;border-color:#59452a;color:#f2d6a0}
+html[data-theme="dark"] footer b{color:var(--ink2)}
 </style>
+<script>
+/* 主題同步：首次繪製前套用，避免 iframe 內閃白。
+   優先序：URL ?theme= > 父頁 localStorage > 本頁 localStorage > light。 */
+(function(){
+  var KEY='hrdigest-theme';
+  function fromUrl(){
+    var m=/[?&]theme=(dark|light)\b/.exec(location.search||'');
+    return m?m[1]:'';
+  }
+  function stored(){
+    try{
+      if(window.parent!==window && window.parent.localStorage){
+        var p=window.parent.localStorage.getItem(KEY);
+        if(p==='dark'||p==='light') return p;
+      }
+    }catch(e){}
+    try{ var s=localStorage.getItem(KEY); if(s==='dark'||s==='light') return s; }catch(e){}
+    return 'light';
+  }
+  window.setDashboardTheme=function(t,persist){
+    var dark=(t==='dark');
+    document.documentElement.setAttribute('data-theme',dark?'dark':'light');
+    if(persist){ try{localStorage.setItem(KEY,dark?'dark':'light');}catch(e){} }
+    if(window.applyChartTheme){ try{window.applyChartTheme(dark);}catch(e){} }
+  };
+  window.setDashboardTheme(fromUrl()||stored(),false);
+  window.addEventListener('message',function(e){
+    var d=e.data;
+    if(d && d.type==='hrdigest-theme' && (d.theme==='dark'||d.theme==='light')){
+      window.setDashboardTheme(d.theme,true);
+    }
+  });
+  window.addEventListener('storage',function(e){
+    if(e.key===KEY && (e.newValue==='dark'||e.newValue==='light')){
+      window.setDashboardTheme(e.newValue,false);
+    }
+  });
+})();
+</script>
 </head>
 <body>
 <div class="wrap">
@@ -298,27 +364,39 @@ footer b{color:var(--ink2);}
 
 </div>
 <script>
-var UP = '#c62828', DOWN = '#16845a', AMBER = '#b8731b';
+/* 圖表配色隨主題（head 內主題腳本已先設 data-theme）。
+   以 try/catch 讀取，讓 build_dashboard.py 的無 DOM smoke test 也能執行。 */
+var DARK = (function(){
+  try{ return !!document.documentElement && document.documentElement.getAttribute('data-theme')==='dark'; }
+  catch(e){ return false; }
+})();
+var C_INK = DARK ? '#e7eef8' : '#1b2430';
+var C_INK2 = DARK ? '#a4b5ca' : '#4a586b';
+var C_LINE = DARK ? '#33445c' : '#ccd5e0';
+var C_GRID = DARK ? '#2d3d54' : '#eef2f7';
+var UP = '#c62828', DOWN = '#16845a', AMBER = DARK ? '#e0a94a' : '#b8731b';
 function pt(v, c) { return { value: v, itemStyle: { color: c }, label: { position: v >= 0 ? 'right' : 'left' } }; }
 function pct(v) { return v > 0 ? '+' + v.toFixed(2) + '%' : v.toFixed(2) + '%'; }
 
 var baseGrid = { left: 130, right: 66, top: 12, bottom: 30 };
-var axisLine = { lineStyle: { color: '#ccd5e0' } };
-var splitLine = { lineStyle: { color: '#eef2f7' } };
-var labelStyle = { color: '#4a586b', fontSize: 13 };
+var axisLine = { lineStyle: { color: C_LINE } };
+var splitLine = { lineStyle: { color: C_GRID } };
+var labelStyle = { color: C_INK2, fontSize: 13 };
 
 var c1 = echarts.init(document.getElementById('chartAssets'));
 c1.setOption({
-  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, valueFormatter: function (v) { return pct(v); } },
+  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' },
+    backgroundColor: DARK ? '#1a2534' : '#ffffff', borderColor: C_LINE,
+    textStyle: { color: C_INK }, valueFormatter: function (v) { return pct(v); } },
   grid: { left: 136, right: 74, top: 12, bottom: 30 },
   xAxis: { type: 'value', name: '%', nameTextStyle: labelStyle, axisLine: axisLine,
     splitLine: splitLine, axisLabel: labelStyle, min: -15, max: 8 },
   yAxis: { type: 'category', inverse: true, axisLine: axisLine, axisTick: { show: false },
-    axisLabel: { color: '#1b2430', fontSize: 13.5 },
+    axisLabel: { color: C_INK, fontSize: 13.5 },
     data: ['COMEX 白銀', 'COMEX 黃金', '美元指數 DXY', '標普 500', '納斯達克綜合', 'WTI 原油', 'Brent 原油'] },
   series: [{
     type: 'bar', barWidth: '58%',
-    label: { show: true, position: 'right', color: '#1b2430', fontSize: 13, fontWeight: 600,
+    label: { show: true, position: 'right', color: C_INK, fontSize: 13, fontWeight: 600,
       formatter: function (p) { return pct(p.value); } },
     data: [pt(5.98, UP), pt(4.88, UP), pt(0.31, UP), pt(-2.68, DOWN), pt(-3.37, DOWN), pt(-11.25, DOWN), pt(-11.29, DOWN)]
   }]
@@ -326,16 +404,18 @@ c1.setOption({
 
 var c2 = echarts.init(document.getElementById('chartEquity'));
 c2.setOption({
-  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, valueFormatter: function (v) { return pct(v); } },
+  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' },
+    backgroundColor: DARK ? '#1a2534' : '#ffffff', borderColor: C_LINE,
+    textStyle: { color: C_INK }, valueFormatter: function (v) { return pct(v); } },
   grid: { left: 136, right: 74, top: 12, bottom: 30 },
   xAxis: { type: 'value', name: '%', nameTextStyle: labelStyle, axisLine: axisLine,
     splitLine: splitLine, axisLabel: labelStyle, min: -16, max: 11 },
   yAxis: { type: 'category', inverse: true, axisLine: axisLine, axisTick: { show: false },
-    axisLabel: { color: '#1b2430', fontSize: 13.5 },
+    axisLabel: { color: C_INK, fontSize: 13.5 },
     data: ['印度 SENSEX30', '恒生科技', '恒生指數', '道瓊工業', '標普 500', 'MSCI 全球', '納斯達克綜合', '日經 225', '韓國 KOSPI', '台灣加權'] },
   series: [{
     type: 'bar', barWidth: '62%',
-    label: { show: true, position: 'right', color: '#1b2430', fontSize: 13, fontWeight: 600,
+    label: { show: true, position: 'right', color: C_INK, fontSize: 13, fontWeight: 600,
       formatter: function (p) { return pct(p.value); } },
     data: [pt(8.82, UP), pt(8.61, UP), pt(5.10, UP), pt(-0.94, DOWN), pt(-2.68, DOWN),
       pt(-2.70, DOWN), pt(-3.37, DOWN), pt(-9.25, DOWN), pt(-11.71, DOWN), pt(-12.19, DOWN)]
@@ -344,23 +424,46 @@ c2.setOption({
 
 var c3 = echarts.init(document.getElementById('chartRates'));
 c3.setOption({
-  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, valueFormatter: function (v) { return '+' + v.toFixed(2) + ' bp'; } },
+  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' },
+    backgroundColor: DARK ? '#1a2534' : '#ffffff', borderColor: C_LINE,
+    textStyle: { color: C_INK }, valueFormatter: function (v) { return '+' + v.toFixed(2) + ' bp'; } },
   grid: { left: 62, right: 26, top: 22, bottom: 34 },
   xAxis: { type: 'category', axisLine: axisLine, axisTick: { show: false },
-    axisLabel: { color: '#1b2430', fontSize: 13.5 },
+    axisLabel: { color: C_INK, fontSize: 13.5 },
     data: ['2 年', '3 年', '5 年', '10 年', '30 年'] },
   yAxis: { type: 'value', name: 'bp', nameTextStyle: labelStyle, axisLine: axisLine,
     splitLine: splitLine, axisLabel: labelStyle, max: 22 },
   series: [{
     type: 'bar', barWidth: '46%',
     itemStyle: { color: AMBER, borderRadius: [4, 4, 0, 0] },
-    label: { show: true, position: 'top', color: '#1b2430', fontSize: 13, fontWeight: 600,
+    label: { show: true, position: 'top', color: C_INK, fontSize: 13, fontWeight: 600,
       formatter: function (p) { return '+' + p.value.toFixed(2); } },
     data: [18.46, 16.90, 14.79, 11.17, 7.74]
   }]
 });
 
 var charts = [c1, c2, c3];
+/* 父頁切換主題時由 postMessage 呼叫；不重新載入 iframe，保留捲動位置。
+   只在真實瀏覽器執行，build_dashboard.py 的 smoke test 不會呼叫此函式。 */
+window.applyChartTheme = function (dark) {
+  var ink = dark ? '#e7eef8' : '#1b2430',
+      ink2 = dark ? '#a4b5ca' : '#4a586b',
+      line = dark ? '#33445c' : '#ccd5e0',
+      grid = dark ? '#2d3d54' : '#eef2f7',
+      amber = dark ? '#e0a94a' : '#b8731b',
+      tip = dark ? '#1a2534' : '#ffffff';
+  var patch = {
+    backgroundColor: 'transparent',
+    xAxis: { axisLabel: { color: ink2 }, axisLine: { lineStyle: { color: line } },
+             splitLine: { lineStyle: { color: grid } }, nameTextStyle: { color: ink2 } },
+    yAxis: { axisLabel: { color: ink }, axisLine: { lineStyle: { color: line } },
+             splitLine: { lineStyle: { color: grid } }, nameTextStyle: { color: ink2 } },
+    tooltip: { backgroundColor: tip, borderColor: line, textStyle: { color: ink } },
+    series: [{ label: { color: ink } }]
+  };
+  for (var i = 0; i < charts.length; i++) { charts[i].setOption(patch); }
+  c3.setOption({ series: [{ itemStyle: { color: amber } }] });
+};
 window.addEventListener('resize', function () {
   for (var i = 0; i < charts.length; i++) { charts[i].resize(); }
 });
